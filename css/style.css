@@ -102,16 +102,60 @@ header {
   display: block;
 }
 
-.s1-about_us {
+.s1 {
+  padding: 100px 0;
+}
+
+.page_number_title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 50px;
+}
+.page_number_title .page_number {
+  color: #118BDD;
+  font-family: "TTNorms-Bold";
+  font-size: 20px;
+}
+.page_number_title .page_title {
+  color: "TTNorms-Black";
+  font-family: "TTNorms-Bold";
+  font-size: 40px;
+}
+
+.product {
   height: 100vh;
   width: 100%;
   background-color: #fff;
+}
+.product .product_cards {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  justify-content: space-between;
+}
+.product .product_cards .produbct_card {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+.product .product_cards .product_title {
+  display: block;
+  font-family: "TTNorms-Bold";
+  font-size: 22px;
+  max-width: 250px;
+}
+
+.s2-about_us {
+  height: 100vh;
+  width: 100%;
+  background-color: rgb(129, 129, 129);
 }
 
 .header_content {
   position: fixed;
   top: 0;
-  z-index: 3;
+  z-index: 11;
   width: 100%;
 }
 
@@ -141,7 +185,7 @@ header {
 
 .header_nav {
   height: auto;
-  margin-top: 30px;
+  margin: 30px 0;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -157,14 +201,13 @@ header {
   font-size: 14px;
   font-family: "TTNorms-Bold";
   text-transform: uppercase;
-  transition: 0.5s all ease;
 }
 .header_nav ul a li {
   color: #fff;
   transition: 0.5s all ease;
 }
 .header_nav ul a:hover, .header_nav ul a:hover svg g {
-  color: #118BDD;
+  color: #118BDD !important;
   fill: #118BDD;
 }
 .header_nav ul a svg {
@@ -201,8 +244,15 @@ header {
   margin: 0 auto;
 }
 
-.logo img {
+.logo {
   height: 35px;
+  width: 100px;
+}
+.logo svg {
+  height: 100%;
+}
+.logo svg .logo_anm {
+  fill: #fff;
 }
 
 .lang {
@@ -211,9 +261,6 @@ header {
   color: #fff;
   font-size: 14px;
   font-family: "TTNorms-Bold";
-}
-.lang a {
-  transition: 0.5s all ease;
 }
 .lang a:hover {
   color: #118BDD;
@@ -249,12 +296,35 @@ header {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
+  -webkit-clip-path: inset(-10px);
+          clip-path: inset(-10px);
 }
 .addition .addition-card {
   display: flex;
   gap: 10px;
   align-items: flex-start;
   width: 330px;
+}
+.addition .addition-card:nth-child(1) {
+  transform: translateY(150px);
+  animation: move-up 2s 0s forwards;
+}
+.addition .addition-card:nth-child(2) {
+  transform: translateY(150px);
+  animation: move-up 2s 1s forwards;
+}
+.addition .addition-card:nth-child(3) {
+  transform: translateY(150px);
+  animation: move-up 2s 2s forwards;
+}
+.addition .addition-card:nth-child(4) {
+  transform: translateY(150px);
+  animation: move-up 2s 3s forwards;
+}
+@keyframes move-up {
+  100% {
+    transform: translateY(0px);
+  }
 }
 .addition .addition-card .addition-icon {
   width: 40px;
@@ -271,7 +341,7 @@ header {
 }
 .addition .addition-card .addition-content .addition-title {
   color: #fff;
-  font-family: "TTNorms-Black";
+  font-family: "TTNorms-Bold";
   font-size: 24px;
   margin-bottom: 5px;
 }
@@ -281,4 +351,60 @@ header {
   font-size: 16px;
   line-height: 19px;
   display: block;
+}
+
+.navigation {
+  height: 100%;
+  width: 300px;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+.navigation .nav_list {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+  margin-right: 75px;
+}
+.navigation .nav_list:hover .nav_name {
+  opacity: 1;
+}
+.navigation .nav_list:hover .nav_num {
+  color: #118BDD;
+  cursor: pointer;
+}
+.navigation .nav_list .nav_name {
+  background-color: #118BDD;
+  color: #fff;
+  width: 100px;
+  text-align: center;
+  padding: 8px 15px;
+  font-size: 12px;
+  font-family: "TTNorms-Medium";
+  position: relative;
+  right: 10px;
+  opacity: 0;
+}
+.navigation .nav_list .nav_name::before {
+  content: "";
+  position: absolute;
+  left: 100px;
+  top: 0px;
+  border: 15px solid transparent;
+  border-left: 15px solid #118bdd;
+}
+.navigation .nav_list .nav_num {
+  font-family: "TTNorms-Bold";
+  font-size: 16px;
+  width: 20px;
+  color: #7B7B7B;
+}
+.navigation .nav_list .num01 {
+  color: #118BDD;
 }/*# sourceMappingURL=style.css.map */

@@ -27,15 +27,56 @@ header {
     object-position: 50% 50%;
     display: block;
 }
-.s1-about_us{
+.s1{
+    padding: 100px 0;
+}
+.page_number_title{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    margin-bottom: 50px;
+    .page_number{
+        color: $blue;
+        font-family: $bold;
+        font-size: 20px;
+    }
+    .page_title{
+        color: $black;
+        font-family: $bold;
+        font-size: 40px;
+    }
+}
+.product{
     height: 100vh;
     width: 100%;
-    background-color: #fff;   
+    background-color: #fff;
+    .product_cards{
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        justify-content: space-between;
+        .produbct_card{
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+        }
+        .product_title{
+            display: block;
+            font-family: $bold;
+            font-size: 22px;
+            max-width: 250px;
+        }
+    }
+}
+.s2-about_us{
+    height: 100vh;
+    width: 100%;
+    background-color: rgb(129, 129, 129);   
 }
 .header_content{
     position: fixed;
     top: 0;
-    z-index: 3;
+    z-index: 11;
     width: 100%;
 }
 .content_general{
@@ -64,7 +105,7 @@ header {
 }
 .header_nav{
     height: auto;
-    margin-top: 30px;
+    margin: 30px 0;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -79,13 +120,13 @@ header {
             font-size: 14px;
             font-family: $bold;
             text-transform: uppercase;
-            transition: 0.5s all ease;
+            // transition: 0.5s all ease;
             li{
                 color: #fff;
                 transition: 0.5s all ease;
             }
             &:hover,  &:hover svg g{
-                color: #118BDD;
+                color: #118BDD !important;
                 fill: #118BDD;
             }
             svg {
@@ -127,8 +168,16 @@ header {
     width: 100%;
     margin: 0 auto;
 }
-.logo img{
+.logo{
     height: 35px;
+    width: 100px;
+    svg{
+        height: 100%;
+        .logo_anm{
+            fill: #fff;
+            // transition: 0.5s all ease;
+        }
+    }
 }
 .lang{
     display: flex;
@@ -137,7 +186,7 @@ header {
     font-size: 14px;
     font-family: $bold;
     a{
-        transition: 0.5s all ease;
+        // transition: 0.5s all ease;
         &:hover{
             color: #118BDD;
             font-family: $bold;
@@ -172,12 +221,34 @@ header {
         align-items: center;
         justify-content: space-between;
         gap: 20px;
+        clip-path: inset(-10px);
     }
     .addition-card{
         display: flex;
         gap: 10px;
         align-items: flex-start;
         width: 330px;
+        &:nth-child(1){
+            transform: translateY(150px);
+            animation: move-up 2s 0s forwards;
+        }
+        &:nth-child(2){
+            transform: translateY(150px);
+            animation: move-up 2s 1s forwards;
+        }
+        &:nth-child(3){
+            transform: translateY(150px);
+            animation: move-up 2s 2s forwards;
+        }
+        &:nth-child(4){
+            transform: translateY(150px);
+            animation: move-up 2s 3s forwards;
+        }
+        @keyframes move-up {
+            100%{
+                transform: translateY(0px)
+            }
+        }
         .addition-icon{
             width: 40px;
             height: 40px;
@@ -192,7 +263,7 @@ header {
             height: 62px;
             .addition-title{
                 color: #fff;
-                font-family: $black;
+                font-family: $bold;
                 font-size: 24px;
                 margin-bottom: 5px;
             }
@@ -203,6 +274,63 @@ header {
                 line-height: 19px;
                 display: block;
             }
+        }
+    }
+}
+
+.navigation{
+    height: 100%;
+    width: 300px;
+    // background-color: red;
+    position: fixed;
+    top: 0;
+    right: 0;
+    z-index: 10;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    .nav_list{
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        gap: 10px;
+        margin-right: 75px;
+        &:hover .nav_name{
+            opacity: 1;
+        }
+        &:hover .nav_num{
+            color: #118BDD;
+            cursor: pointer;
+        }
+        .nav_name {
+            background-color: #118BDD;
+            color: #fff;
+            width: 100px;
+            text-align: center;
+            padding: 8px 15px;
+            font-size: 12px;
+            font-family: $medium;
+            position: relative;
+            right: 10px;
+            opacity: 0;
+            &::before{
+                content: "";
+                position: absolute;
+                left: 100px;
+                top: 0px;
+                border: 15px solid transparent;
+                border-left: 15px solid #118bdd;
+            }
+        }
+        .nav_num{
+            font-family: $bold;
+            font-size: 16px;
+            width: 20px;
+            color: #7B7B7B;
+        }
+        .num01{
+            color: #118BDD;
         }
     }
 }
