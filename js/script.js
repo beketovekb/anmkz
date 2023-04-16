@@ -11,16 +11,33 @@ $(document).scroll(function() {
 });
 
 
-$(window).scroll(function(){
-  var offset = $('.header').offset(),
-      offsetwb = $('.header + .s1-about_us').offset();
-  if ($(this).scrollTop() > offset.top && $(this).scrollTop() < offsetwb.top)  {
-    $('.num01').css('color','#7B7B7B');
-    $('.num02').css('color','#118BDD');
-  }
-  else {
-    $('.num01').css('color','#118BDD');
-    $('.num02').css('color','#7B7B7B');
-  }
-});
+// $(window).scroll(function(){
+//   var offset = $('.header').offset(),
+//       offsetwb = $('.header + .s1-about_us').offset();
+//   if ($(this).scrollTop() > offset.top && $(this).scrollTop() < offsetwb.top)  {
+//     $('.num01').css('color','#7B7B7B');
+//     $('.num02').css('color','#118BDD');
+//   }
+//   else {
+//     $('.num01').css('color','#118BDD');
+//     $('.num02').css('color','#7B7B7B');
+//   }
+// });
 
+// выбираем блоки
+const blocks = document.querySelectorAll('section');
+
+// добавляем обработчик событий прокрутки
+window.addEventListener('scroll', () => {
+  // получаем текущую позицию скролла
+  const currentPosition = window.scrollY;
+  
+  // проходимся по всем блокам
+  blocks.forEach((block, index) => {
+    // проверяем, если блок находится в видимой области
+    if (currentPosition >= block.offsetTop && currentPosition < block.offsetTop + block.offsetHeight) {
+      // выводим номер блока
+      console.log(`Текущий блок: ${index + 1}`);
+    }
+  });
+});
