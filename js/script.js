@@ -37,7 +37,18 @@ window.addEventListener('scroll', () => {
     // проверяем, если блок находится в видимой области
     if (currentPosition >= block.offsetTop && currentPosition < block.offsetTop + block.offsetHeight) {
       // выводим номер блока
-      console.log(`Текущий блок: ${index + 1}`);
+      ind = index + 1
+      console.log(`Текущий блок: ${ind}`);
+      for (let i = 1; i <= 7; i++) { // выведет 0, затем 1, затем 2
+        if(i==ind)
+        {
+          $('.num0'+ind).css('color','#118BDD');
+        }
+        else
+        {
+          $('.num0'+i).css('color','#7B7B7B');
+        }
+      }
     }
   });
 });
