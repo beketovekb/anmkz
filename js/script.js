@@ -37,11 +37,11 @@ window.addEventListener('scroll', () => {
     // проверяем, если блок находится в видимой области
     const headerContent = document.querySelector('.header_content');
     const headerContentHeight = headerContent.offsetHeight;
-    console.log(`Высота элемента: ${headerContentHeight}px`);
+    // console.log(`Высота элемента: ${headerContentHeight}px`);
     if (currentPosition >= block.offsetTop - headerContentHeight && currentPosition < block.offsetTop + block.offsetHeight) {
       // выводим номер блока
       ind = index + 1
-      console.log(`Текущий блок: ${ind}`);
+      // console.log(`Текущий блок: ${ind}`);
       for (let i = 1; i <= 7; i++) { // выведет 0, затем 1, затем 2
         if (i == ind) {
           $('.num0' + ind).css('color', '#118BDD');
