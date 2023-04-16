@@ -35,7 +35,7 @@ window.addEventListener('scroll', () => {
   // проходимся по всем блокам
   blocks.forEach((block, index) => {
     // проверяем, если блок находится в видимой области
-    if (currentPosition >= block.offsetTop && currentPosition < block.offsetTop + block.offsetHeight) {
+    if (currentPosition >= block.offsetTop - 100 && currentPosition < block.offsetTop  + block.offsetHeight) {
       // выводим номер блока
       ind = index + 1
       console.log(`Текущий блок: ${ind}`);
