@@ -49,6 +49,8 @@ $('body').on('click', '.toolbar-ol', function(){
 // Параграф (p)
 $('body').on('click', '.toolbar-p', function(){
 	document.execCommand('formatBlock', false, 'p');
+	var listId = window.getSelection().focusNode.parentNode;
+                  $(listId).addClass("text_caption");
 	return false;
 });
 
@@ -201,3 +203,52 @@ $('body').on('click', '.toolbar-copy', function(){
 	document.execCommand('copy', false, null);
 	return false;
 });
+
+$('body').on('keydown', function() {
+	console.log("Ok");
+	editorText = $('#geneditor').html();
+	$('#editorText').text(editorText);
+	editorText2 = $('#geneditoropsinie').html();
+	$('#editorTextOpisanie').text(editorText2);
+  });
+
+  $( '#savegen' ).click( function() {
+    if ( confirm( 'Вы уверены?' ) ) {
+      // если пользователь нажал "да"
+      alert( 'Вы выбрали "да".' );
+    } else {
+      // если пользователь нажал "нет" или закрыл диалоговое окно
+      alert( 'Вы выбрали "нет".' );
+    }
+  });
+
+
+
+  const database = firebase.database();
+
+  function saveGenText() {
+	const textToSave = $('#geneditor').html();
+	console.log(textToSave);
+	database.ref('page/genpage').set({
+	  zagolovok: textToSave
+	});
+	alert("Заголовок изменен");
+  }
+  function saveGenTextOpisanie() {
+	const textToSave = $('#geneditoropsinie').html();
+	console.log(textToSave);
+	database.ref('page/genpage/opisanie').set(textToSave);
+	alert("Описание изменено");
+  }
+
+  database.ref('page/genpage/opisanie').on('value', (snapshot) => {
+	const value = snapshot.val();
+	console.log(value);
+	$('#geneditoropsinie').text(value);
+  });
+
+  database.ref('page/genpage/zagolovok').on('value', (snapshot) => {
+	const value = snapshot.val();
+	console.log(value);
+	$('#geneditor').text(value);
+  });

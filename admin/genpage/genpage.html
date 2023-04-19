@@ -1,9 +1,10 @@
 <link rel="stylesheet" href="genpage/genstyle.css">
-<script src="js/page/genscript.js"></script>
+<!--Заголовок -->
+<div class="row">
 <div class="col-lg-6">
     <div class="card">
         <div class="card-header">
-            <strong>Главный блок</strong> редактирование
+            <strong>Главный блок</strong> Заголовок
         </div>
         <div class="card-body card-block">
             <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
@@ -62,19 +63,177 @@
                     <a href="#" class="toolbar-copy fas fa-copy" title="Копировать"></a>
                 </div>
                 
-                <div class="editor" contenteditable="true">
+                <div class="editor" id="geneditor" name="geneditor" contenteditable="true">
 
                 </div>
             </form>
         </div>
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary btn-sm">
-                <i class="fa fa-dot-circle-o"></i> Submit
-            </button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#savegen">
+                Подтвердить
+              </button>
             <button type="reset" class="btn btn-danger btn-sm">
-                <i class="fa fa-ban"></i> Reset
+                <i class="fa fa-ban"></i> Отменить
             </button>
         </div>
     </div>
 </div>
-<!-- <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script> -->
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-header">
+            <strong>Главный блок</strong> заголовок
+        </div>
+        <div class="card-body card-block">
+            <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
+                
+                <div id="editorText"></div>
+            </form>
+        </div>
+        
+    </div>
+</div>
+</div>
+<!-- -->
+
+<!-- Модальное окно -->
+<div class="modal fade" id="savegen" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmModalLabel">Сохранить изменения</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Вы уверены, что хотите выполнить это действие?
+        </div>
+        <div class="modal-footer">
+          <!-- Кнопка "Да" -->
+          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="saveGenText();">Да</button>
+          <!-- Кнопка "Нет" -->
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+<!-- Описание -->
+<div class="row">
+  <div class="col-lg-6">
+    <div class="card">
+        <div class="card-header">
+            <strong>Главный блок</strong> Описание
+        </div>
+        <div class="card-body card-block">
+            <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
+                <div class="toolbar">
+                    <a href="#" class="toolbar-b fas fa-bold" title="Жирный"></a>
+                    <a href="#" class="toolbar-i fas fa-italic" title="Курсив"></a>
+                    <a href="#" class="toolbar-u fas fa-underline" title="Подчёркнутый"></a>
+                    <a href="#" class="toolbar-s fas fa-strikethrough" title="Зачёркнутый"></a>
+                    <a href="#" class="toolbar-sup fas fa-superscript" title="Верхний индекс"></a>
+                    <a href="#" class="toolbar-sub fas fa-subscript" title="Нижний индекс"></a>
+                    <a href="#" class="toolbar-ul fas fa-list-ul" title="Маркированный список"></a>
+                    <a href="#" class="toolbar-ol fas fa-list-ol" title="Нумерованный список"></a>
+                    <a href="#" class="toolbar-p" title="Параграф">p</a>  
+                    <a href="#" class="toolbar-h1" title="Заголовок">H1</a>
+                    <a href="#" class="toolbar-hr" title="Горизонтальная линия">hr</a>    
+                    <a href="#" class="toolbar-blockquote fas fa-quote-right" title="Цитата"></a>
+                    <a href="#" class="toolbar-img far fa-image" title="Изображение"></a>
+                     <a href="#" class="toolbar-a fas fa-link" title="Ссылка"></a>  
+                    <a href="#" class="toolbar-unlink fas fa-unlink" title="Удаление ссылки"></a>
+                    <a href="#" class="toolbar-html" title="Вставить html">HTML</a>  
+                    <a href="#" class="toolbar-text" title="Вставить текст">Text</a>
+                    <br>	
+                    <a href="#" class="toolbar-left fas fa-align-left" title="по левому краю"></a>
+                    <a href="#" class="toolbar-center fas fa-align-center" title="по центру"></a>
+                    <a href="#" class="toolbar-right fas fa-align-right" title="по правому краю"></a>
+                    <a href="#" class="toolbar-justify fas fa-align-justify" title="по ширине"></a>
+                    <select class="toolbar-font">
+                        <option selected="selected" disabled="disabled">Шрифт</option>
+                        <option value="arial">Arial</option>
+                        <option value="Courier New">Courier New</option>
+                        <option value="georgia">Georgia</option>
+                        <option value="impact">Impact</option>
+                        <option value="roboto">Tahoma</option>
+                        <option value="Times New Roman">Times New Roman</option>
+                        <option value="verdana">Verdana</option>
+                    </select>
+                    <select class="toolbar-size">
+                        <option selected="selected" disabled="disabled">Размер</option>
+                        <option value="1">10px</option>
+                        <option value="2">12px</option>
+                        <option value="3">14px</option>
+                        <option value="4">16px</option>
+                        <option value="5">18px</option>
+                        <option value="6">21px</option>
+                        <option value="7">26px</option>
+                    </select>
+                    <span>Цвет</span> <input class="toolbar-color" type="color" value="#ff0000">
+                    <span>Фон</span> <input class="toolbar-bg" type="color" value="#ffff00">
+                    <br>
+                    <a href="#" class="toolbar-undo fas fa-undo" title="Отмена"></a>
+                    <a href="#" class="toolbar-redo fas fa-redo" title="Повтор"></a>  		
+                    <a href="#" class="toolbar-delete far fa-trash-alt" title="Удалить"></a>
+                    <a href="#" class="toolbar-selectAll">Выделить всё</a>
+                    <a href="#" class="toolbar-removeFormat">Очистить стили</a>
+                    <a href="#" class="toolbar-cut fas fa-cut" title="Вырезать"></a>
+                    <a href="#" class="toolbar-copy fas fa-copy" title="Копировать"></a>
+                </div>
+                
+                <div class="editor" id="geneditoropsinie" name="geneditoropsinie" contenteditable="true">
+                    Идет загрузка данных...
+                </div>
+            </form>
+        </div>
+        <div class="card-footer">
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#savegenopisanie">
+                Подтвердить
+              </button>
+            <button type="reset" class="btn btn-danger btn-sm">
+                <i class="fa fa-ban"></i> Отменить
+            </button>
+        </div>
+    </div>
+</div>
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-header">
+            <strong>Главный блок</strong> Описание
+        </div>
+        <div class="card-body card-block">
+            <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
+                
+                <div id="editorTextOpisanie"></div>
+            </form>
+        </div>
+        
+    </div>
+</div>
+</div>
+<!-- Модальное окно -->
+<div class="modal fade" id="savegenopisanie" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmModalLabel">Сохранить изменения Описание</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Вы уверены, что хотите выполнить это действие?
+        </div>
+        <div class="modal-footer">
+          <!-- Кнопка "Да" -->
+          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="saveGenTextOpisanie();">Да</button>
+          <!-- Кнопка "Нет" -->
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
