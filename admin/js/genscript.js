@@ -206,8 +206,10 @@ $('body').on('click', '.toolbar-copy', function(){
 
 $('body').on('keydown', function() {
 	console.log("Ok");
-	editorText = $('.editor').html();
+	editorText = $('#geneditor').html();
 	$('#editorText').text(editorText);
+	editorText2 = $('#geneditoropsinie').html();
+	$('#editorTextOpisanie').text(editorText2);
   });
 
   $( '#savegen' ).click( function() {
@@ -220,15 +222,33 @@ $('body').on('keydown', function() {
     }
   });
 
-  
 
-// $('.editor').on('keydown', function(e) {
-// 	if (e.keyCode === 13) { // проверяем, что нажата клавиша Enter
-// 	  e.preventDefault(); // отменяем стандартное поведение (перенос строки)
-// 	  const cursorPos = this.selectionStart; // получаем текущую позицию курсора
-// 	  const value = this.value;
-// 	  const newValue = value.substring(0, cursorPos) + "<br>" + value.substring(cursorPos); // добавляем <br>
-// 	  this.value = newValue; // устанавливаем новое значение
-// 	  this.setSelectionRange(cursorPos + 4, cursorPos + 4); // устанавливаем позицию курсора после <br>
-// 	}
-//   });
+
+  const database = firebase.database();
+
+  function saveGenText() {
+	const textToSave = $('#geneditor').html();
+	console.log(textToSave);
+	database.ref('page/genpage').set({
+	  zagolovok: textToSave
+	});
+	alert("Заголовок изменен");
+  }
+  function saveGenTextOpisanie() {
+	const textToSave = $('#geneditoropsinie').html();
+	console.log(textToSave);
+	database.ref('page/genpage/opisanie').set(textToSave);
+	alert("Описание изменено");
+  }
+
+  database.ref('page/genpage/opisanie').on('value', (snapshot) => {
+	const value = snapshot.val();
+	console.log(value);
+	$('#geneditoropsinie').text(value);
+  });
+
+  database.ref('page/genpage/zagolovok').on('value', (snapshot) => {
+	const value = snapshot.val();
+	console.log(value);
+	$('#geneditor').text(value);
+  });
