@@ -163,7 +163,8 @@ header {
 }
 .content_general .general_block {
   display: flex;
-  align-items: center;
+  justify-content: center;
+  flex-direction: column;
   height: 100%;
 }
 .content_general .general_block h1 {
