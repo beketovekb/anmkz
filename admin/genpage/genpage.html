@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="genpage/genstyle.css">
-<script src="js/page/genscript.js"></script>
+
 <div class="col-lg-6">
     <div class="card">
         <div class="card-header">
@@ -62,19 +62,56 @@
                     <a href="#" class="toolbar-copy fas fa-copy" title="Копировать"></a>
                 </div>
                 
-                <div class="editor" contenteditable="true">
+                <div class="editor" name="geneditor" contenteditable="true">
 
                 </div>
             </form>
         </div>
         <div class="card-footer">
-            <button type="submit" class="btn btn-primary btn-sm">
-                <i class="fa fa-dot-circle-o"></i> Submit
-            </button>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#savegen">
+                Подтвердить
+              </button>
             <button type="reset" class="btn btn-danger btn-sm">
-                <i class="fa fa-ban"></i> Reset
+                <i class="fa fa-ban"></i> Отменить
             </button>
         </div>
     </div>
 </div>
-<!-- <script src="https://snipp.ru/cdn/jquery/2.1.1/jquery.min.js"></script> -->
+<div class="col-lg-6">
+    <div class="card">
+        <div class="card-header">
+            <strong>Главный блок</strong> редактирование
+        </div>
+        <div class="card-body card-block">
+            <form action="#" method="post" enctype="multipart/form-data" class="form-horizontal">
+                
+                <p id="editorText"></p>
+            </form>
+        </div>
+        
+    </div>
+</div>
+<!-- -->
+
+<!-- Модальное окно -->
+<div class="modal fade" id="savegen" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="confirmModalLabel">Сохранить изменения</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          Вы уверены, что хотите выполнить это действие?
+        </div>
+        <div class="modal-footer">
+          <!-- Кнопка "Да" -->
+          <button type="button" class="btn btn-primary" data-dismiss="modal" onclick="alert('Вы выбрали Да')">Да</button>
+          <!-- Кнопка "Нет" -->
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Нет</button>
+        </div>
+      </div>
+    </div>
+  </div>

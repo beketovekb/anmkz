@@ -49,6 +49,8 @@ $('body').on('click', '.toolbar-ol', function(){
 // Параграф (p)
 $('body').on('click', '.toolbar-p', function(){
 	document.execCommand('formatBlock', false, 'p');
+	var listId = window.getSelection().focusNode.parentNode;
+                  $(listId).addClass("text_caption");
 	return false;
 });
 
@@ -201,3 +203,32 @@ $('body').on('click', '.toolbar-copy', function(){
 	document.execCommand('copy', false, null);
 	return false;
 });
+
+$('body').on('keydown', function() {
+	console.log("Ok");
+	editorText = $('.editor').html();
+	$('#editorText').text(editorText);
+  });
+
+  $( '#savegen' ).click( function() {
+    if ( confirm( 'Вы уверены?' ) ) {
+      // если пользователь нажал "да"
+      alert( 'Вы выбрали "да".' );
+    } else {
+      // если пользователь нажал "нет" или закрыл диалоговое окно
+      alert( 'Вы выбрали "нет".' );
+    }
+  });
+
+  
+
+// $('.editor').on('keydown', function(e) {
+// 	if (e.keyCode === 13) { // проверяем, что нажата клавиша Enter
+// 	  e.preventDefault(); // отменяем стандартное поведение (перенос строки)
+// 	  const cursorPos = this.selectionStart; // получаем текущую позицию курсора
+// 	  const value = this.value;
+// 	  const newValue = value.substring(0, cursorPos) + "<br>" + value.substring(cursorPos); // добавляем <br>
+// 	  this.value = newValue; // устанавливаем новое значение
+// 	  this.setSelectionRange(cursorPos + 4, cursorPos + 4); // устанавливаем позицию курсора после <br>
+// 	}
+//   });
