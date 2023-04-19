@@ -20,7 +20,8 @@ header {
     z-index: 2;
     .general_block{
         display: flex;
-        align-items: center;
+        justify-content: center;
+        flex-direction: column;
         height: 100%;
         h1{
             font-size: 54px;
