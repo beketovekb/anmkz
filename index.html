@@ -5,7 +5,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ТЕСТ ANM (АтырауНефтеМаш)</title>
-    <link rel="stylesheet" href="css/style.css">
+    <!-- Link Swiper's CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="css/style.css">  
 </head>
 <body>
     <section class="header" id="num01">
@@ -184,9 +186,11 @@
     </section>
     <section class="product"  id="num02">
         <div class="container">
-            <div class="page_number_title">
-                <span class="page_number">02</span>
-                <h2 class="page_title">Наша продукция </h2>
+            <div class="page_title_component">
+                <div class="page_number_title">
+                    <span class="page_number">02</span>
+                    <h2 class="page_title">Наша продукция</h2>
+                </div>
             </div>
             <div class="product_cards">
                 <div class="produbct_card">
@@ -1947,7 +1951,77 @@
             </div>
         </div>
     </section>
+    <section class="chronology">
+            <span class="center_title">История компании</span>
+        <div class="car">
+            <div class="svg"></div>
+           </div>
+        <div class="swiper mySwiper">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide">
+                <span class="age">1918 год</span>
+                <span class="age_desc">появились механические мастерские по ремонту водного и железнодорожного транспорта</span>
+              </div>
+              <div class="swiper-slide">
+                <span class="age">1922 год</span>
+                <span class="age_desc">мастерская перепрофилирована для выпуска запасных частей и ремонта нефтепромыслового оборудования</span>
+              </div>
+              <div class="swiper-slide">
+                <span class="age">1931 год</span>
+                <span class="age_desc">механические мастерские переименованы в механический завод</span>
+              </div>
+              <div class="swiper-slide">
+                <span class="age">1941 год</span>
+                <span class="age_desc">на базе мастерских был сооружен эвакуированный из Украины станкостроительный завод им. Петровского</span>
+              </div>
+              <div class="swiper-slide">
+                <span class="age">2000 год</span>
+                <span class="age_desc">было создано ТОО «АтырауНефтеМаш»</span>
+              </div>
+              <div class="swiper-slide">
+                <span class="age">2006 год</span>
+                <span class="age_desc">принято решение о переносе производства за черту города на новую площадку</span>
+              </div>
+              <div class="swiper-slide">
+                <span class="age">2008 год</span>
+                <span class="age_desc">начато строительство механосборочного цеха</span>
+              </div>
+              <div class="swiper-slide">
+                <span class="age">2016 год</span>
+                <span class="age_desc">введён в эксплуатацию новый Цех тяжёлого машиностроения (ЦТМ) площадью 8 640 кв.м. Цех оснащён уникальным оборудованием, не имеющим аналогов в Республике Казахстан. </span>
+              </div>
+              <div class="swiper-slide">
+                <span class="age">2020 год</span>
+                <span class="age_desc">признан Лучшим заводом в нефтегазовой отрасли KAZSERVICE AWARDS</span>
+              </div>
+            </div>
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+          
+            <div class="swiper-pagination">
+            </div>
+          </div>
+    </section>
+    <section class="news"></section>
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+    var swiper = new Swiper(".mySwiper", {
+        slidesPerView: "auto",
+        spaceBetween: 20,
+        pagination: {
+        el: ".swiper-pagination",
+        type: "progressbar",
+        },
+        navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",  
+        },
+    });
+    </script>
     <script src="js/script.js"></script>
 </body>
 </html>

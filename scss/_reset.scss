@@ -12,6 +12,12 @@ ol, ul {
 *::before,
 *::after {
   box-sizing: border-box;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Old versions of Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none;
 }
 img {
     max-width: 100%;
@@ -27,4 +33,10 @@ input, button, textarea, a {
 a{
     color: #fff;
     text-decoration: none;
+}
+html:root{
+    --swiper-theme-color: #118BDD !important;
+}
+html:root {
+    --swiper-navigation-size: 28px;
 }
