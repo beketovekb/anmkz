@@ -10,7 +10,9 @@ $(document).scroll(function () {
 
 });
 
-
+window.ontouchstart = function(e) {
+  e.preventDefault();
+}
 // $(window).scroll(function(){
 //   var offset = $('.header').offset(),
 //       offsetwb = $('.header + .s1-about_us').offset();
