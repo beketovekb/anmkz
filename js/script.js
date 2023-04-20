@@ -1,7 +1,7 @@
-var $header = $('.header_content, .header_nav ul');
-var $submenu = $('.point_menu .submenu_list');
-var $headerlink = $('.header_nav a, .location_place');
-var $logo = $('.logo svg .logo_anm, .logo svg .caption_logo_anm')
+var $header = $('.double_header, .double_header .header_nav ul');
+var $submenu = $('.double_header .point_menu .submenu_list');
+var $headerlink = $('.double_header .header_nav a, .double_header .location_place');
+var $logo = $('.double_header .logo svg .logo_anm, .double_header .logo svg .caption_logo_anm')
 $(document).scroll(function () {
   $header.css({ "background-color": $(this).scrollTop() < 10 ? "transparent" : "#fff" });
   $submenu.css({ "background-color": $(this).scrollTop() < 10 ? "#0C0E16" : "#fff" });

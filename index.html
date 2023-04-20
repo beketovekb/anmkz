@@ -13,7 +13,7 @@
     <section class="header" id="num01">
         <div class="appelation"></div>
         <video class="background_video" src="source/background.mp4" muted autoplay loop></video>
-        <div class="header_content">
+        <div class="header_content double_header">
             <div class="container">
                 <nav class="header_nav">
                     <div class="logo">
@@ -82,8 +82,8 @@
 
                     </div>
                     <ul>
-                        <li><a href="">Главная</a></li>
-                        <li class="point_menu"><a href="">О компании</a></li>
+                        <li><a href="index.html">Главная</a></li>
+                        <li class="point_menu"><a href="about.html">О компании</a></li>
                         <li><a href="">Новости</a></li>
                         <li class="point_menu">
                             <a href="">Продукция и услуги
@@ -2791,7 +2791,7 @@
                     <h2 class="page_title">О компании</h2>
                 </div>
                 <div class="more">
-                    <a href="">Подробнее</a>
+                    <a href="about.html">Подробнее</a>
                 </div>
             </div>
             <div class="about_us-content">
@@ -3096,8 +3096,8 @@
                 <div class="col-3 footer_main">
                     <span class="footerCol_title">Разделы сайта</span>
                     <ul>
-                        <li><a href="">Главная</a></li>
-                        <li><a href="">О компании</a></li>
+                        <li><a href="index.html">Главная</a></li>
+                        <li><a href="about.html">О компании</a></li>
                         <li><a href="">Новости</a></li>
                         <li><a href="">Продукция и услуги</a></li>
                         <li><a href="">Карьера</a></li>
@@ -3165,29 +3165,29 @@
         });
     </script>
 
-<script>
-    const progressCircle = document.querySelector(".autoplay-progress svg");
-    const progressContent = document.querySelector(".autoplay-progress span");
-    var swiper = new Swiper(".mySwiper2", {
-      slidesPerView: 8.5,
-      spaceBetween: 20,
-      centeredSlides: false,
-      autoplay: {
-        delay: 1500,
-        disableOnInteraction: false
-      },
-      navigation: {
-        nextEl: ".swiper-button-next",
-        prevEl: ".swiper-button-prev"
-      },
-    //   on: {
-    //     autoplayTimeLeft(s, time, progress) {
-    //       progressCircle.style.setProperty("--progress", 1 - progress);
-    //       progressContent.textContent = `${Math.ceil(time / 1000)}s`;
-    //     }
-    //   }
-    });
-  </script>
+    <script>
+        const progressCircle = document.querySelector(".autoplay-progress svg");
+        const progressContent = document.querySelector(".autoplay-progress span");
+        var swiper = new Swiper(".mySwiper2", {
+        slidesPerView: 8.5,
+        spaceBetween: 20,
+        centeredSlides: false,
+        autoplay: {
+            delay: 1500,
+            disableOnInteraction: false
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev"
+        },
+        //   on: {
+        //     autoplayTimeLeft(s, time, progress) {
+        //       progressCircle.style.setProperty("--progress", 1 - progress);
+        //       progressContent.textContent = `${Math.ceil(time / 1000)}s`;
+        //     }
+        //   }
+        });
+    </script>
     <script src="js/script.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>

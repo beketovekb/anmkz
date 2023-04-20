@@ -1150,4 +1150,173 @@ footer .subFooter {
 footer .subFooter a {
   color: #606269;
   font-size: 16px;
+}
+
+.single_header {
+  height: auto;
+}
+.single_header .header_content {
+  position: relative;
+}
+.single_header .header_content .header_nav .logo_anm {
+  fill: #000;
+}
+.single_header .header_content .header_nav ul a {
+  color: #000;
+}
+.single_header .header_content .lang a {
+  color: #000;
+}
+.single_header .header_content .location_info {
+  color: #000;
+}
+
+.bredcrumbs_grey {
+  background-color: #FAFAFA;
+  width: 100%;
+  padding: 30px 0 20px;
+}
+.bredcrumbs_grey .bc_link {
+  color: #BABABA;
+}
+.bredcrumbs_grey .bc_link a {
+  color: #BABABA;
+  font-family: "TTNorms-Medium";
+  font-size: 14px;
+}
+.bredcrumbs_grey .bc_link a:nth-last-child(1) {
+  color: #118BDD;
+}
+
+.about_bg {
+  height: 400px;
+  background-image: url(../img/about_img.png);
+  background-position: center;
+  background-size: cover;
+}
+
+.about-left_content {
+  padding: 50px 20px;
+  background-color: #118BDD;
+  position: relative;
+  top: -120px;
+}
+.about-left_content h2 {
+  color: #fff;
+  font-size: 46px;
+  font-family: "TTNorms-Bold";
+  text-transform: uppercase;
+  margin-bottom: 10px;
+  line-height: 150%;
+}
+.about-left_content .about_location {
+  display: flex;
+}
+.about-left_content .about_location span {
+  color: #fff;
+  font-family: "TTNorms-Regular";
+  font-size: 14px;
+  margin-left: 10px;
+}
+.about-left_content .about_additional {
+  margin-top: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+}
+.about-left_content .about_additional .about_ad1 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.about-left_content .about_additional .about_ad1 .about_desc {
+  color: #fff;
+}
+.about-left_content .about_additional .about_ad1 .about_desc h3 {
+  font-size: 32px;
+  font-family: "TTNorms-Bold";
+  line-height: 150%;
+}
+.about-left_content .about_additional .about_ad1 .about_desc span {
+  font-size: 18px;
+  font-family: "TTNorms-Regular";
+}
+
+.about_content {
+  background-color: #FAFAFA;
+}
+.about_content .about-right_content {
+  margin-top: 50px;
+  padding-left: 20px;
+}
+.about_content .about-right_content h2 {
+  margin-bottom: 20px;
+  font-family: "TTNorms-Bold";
+  font-size: 28px;
+}
+
+.managers {
+  background-color: #FAFAFA;
+}
+.managers h2 {
+  font-family: "TTNorms-Bold";
+  font-size: 46px;
+  line-height: 150%;
+}
+.managers .managers_cards {
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  gap: 20px;
+}
+.managers .managers_cards .manager {
+  padding: 30px 65px;
+  background-color: #fff;
+}
+.managers .managers_cards .manager:hover {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+.managers .managers_cards .manager:hover .manager_photo {
+  filter: grayscale(0);
+}
+.managers .managers_cards .manager .manager_photo {
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  border-radius: 100%;
+  background-position: center;
+  background-image: url(../img/manager.jpg);
+  filter: grayscale(1);
+  transition: 0.15s all ease;
+}
+.managers .managers_cards .manager .manager_name {
+  color: #000;
+  font-size: 24px;
+  font-family: "TTNorms-Bold";
+  line-height: 180%;
+  margin-top: 10px;
+  display: block;
+}
+.managers .managers_cards .manager .manager_post {
+  font-size: 18px;
+  color: #434343;
+  margin-bottom: 20px;
+  line-height: 180%;
+  display: block;
+}
+.managers .managers_cards .manager .manager_mail {
+  font-size: 18px;
+  color: #878787;
+  line-height: 180%;
+  display: block;
+}
+.managers .managers_cards .manager .manager_phone {
+  font-size: 18px;
+  color: #878787;
+  line-height: 180%;
+  display: block;
+}
+
+.about_partners {
+  margin-bottom: 100px;
 }/*# sourceMappingURL=style.css.map */
