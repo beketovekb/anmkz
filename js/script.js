@@ -88,3 +88,10 @@ jQuery("section").click(function(){
 });
 
 
+if($(".current_page:first").hasClass("active_page")) {
+  $('.prev_page').addClass('default');
+}
+
+if($(".current_page:last").hasClass("active_page")) {
+  $('.next_page').addClass('default');
+}
