@@ -169,23 +169,41 @@
                     </div>
                     <div class="col-8">
                         <form action="" method="post" class="form">
-                            <div class="left_form">
-                                <div class="input_shell">
-                                    <span>Имя Фамилия</span>
-                                    <input type="text" placeholder="Введите имя" class="input_name">
+                            <div class="form_shell">
+                                <div class="left_form">
+                                    <div class="input_shell">
+                                        <span>Имя Фамилия</span>
+                                        <input type="text" placeholder="Введите имя" class="input_name">
+                                        <div class="error_notification">
+                                            <span>Заполните поле</span>
+                                            <hr>
+                                        </div>
+                                    </div>
+                                    <div class="input_shell">
+                                        <span>Номер телефона</span>
+                                        <input type="phone" placeholder="+7 (776) 109 59 48" class="input_phone">
+                                        <div class="error_notification">
+                                            <span>Заполните поле</span>
+                                            <hr>
+                                        </div>
+                                    </div>
+                                    <div class="input_shell">
+                                        <span>Email</span>
+                                        <input type="email" placeholder="Введите эл.почту" class="input_email">
+                                        <div class="error_notification">
+                                            <span>Заполните поле</span>
+                                            <hr>
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="input_shell">
-                                    <span>Номер телефона</span>
-                                    <input type="phone" placeholder="+7 (776) 109 59 48" class="input_phone">
-                                </div>
-                                <div class="input_shell">
-                                    <span>Email</span>
-                                    <input type="email" placeholder="Введите эл.почту" class="input_email">
+                                <div class="right_form">
+                                    <div class="input_shell">
+                                        <span>Вопрос</span>
+                                        <textarea name="" id="" placeholder="Ваш вопрос" class="textarea_questions"></textarea>
+                                    </div>
                                 </div>
                             </div>
-                            <div class="right_form">
-                                <textarea name="" id="" placeholder="Ваш вопрос" class="textarea_questions"></textarea>
-                            </div>
+                            <button type="submit" class="submit_btn">Задать вопрос</button>
                         </form>
                     </div>
                 </div>
