@@ -1532,48 +1532,97 @@ footer{
             font-family: $bold;
         }
         .form{
-            display: flex;
-            gap: 10px;
-            .left_form{
+            .form_shell{
                 display: flex;
-                flex-direction: column;
                 gap: 10px;
-                width: fit-content;
-                .input_shell{
-                    position: relative;
-                    .input_name, .input_phone, .input_email{
-                        height: 60px;
-                        width: 330px;
-                        padding: 18px 20px;
-                        border: 1px solid #393E52;
-                        background-color: transparent;
-                        color: #fff;
-                        font-size: 16px;
-                        &:focus{
-                            border: 1px solid #fff; 
+                .left_form{
+                    display: flex;
+                    flex-direction: column;
+                    gap: 10px;
+                    width: fit-content;
+                    .input_shell{
+                        position: relative;
+                        .input_name, .input_phone, .input_email{
+                            height: 60px;
+                            width: 330px;
+                            padding: 18px 20px;
+                            border: 1px solid #393E52;
+                            background-color: transparent;
+                            color: #fff;
+                            font-size: 16px;
+                            &:focus{
+                                border: 1px solid #fff; 
+                            }
+                        }
+                        .error_notification{
+                            display: none;
+                            span{
+                                position: absolute;
+                                right: 10px;
+                                z-index: 2;
+                                top: 24px;
+                                color: #EB2020;
+                                font-size: 12px;
+                                font-family: $light;
+                            }
+                            hr{
+                                height: 1px;
+                                border: none;
+                                background-color: #EB2020;
+                            }
+                        }
+                        &>span{
+                            color: #747576;
+                            font-size: 12px;
+                            background-color: #061A27;
+                            position: absolute;
+                            left: 10px;
+                            top: -10px;
+                            padding: 2px 10px;
                         }
                     }
-                    span{
-                        color: #747576;
-                        font-size: 12px;
-                        background-color: #061A27;
-                        position: absolute;
-                        left: 10px;
-                        top: -10px;
-                        padding: 2px 10px;
+                }
+                .right_form{
+                    width: 100%;
+                    .input_shell{
+                        position: relative;
+                        .textarea_questions{
+                            height: 200px;
+                            max-height: 200px;
+                            width: 100%;
+                            max-width: 580px;
+                            padding: 18px 20px;
+                            border: 1px solid #393E52;
+                            background-color: transparent;
+                            color: #fff;
+                            &:focus{
+                                border: 1px solid #fff; 
+                            }
+                        }
+                        &>span{
+                            color: #747576;
+                            font-size: 12px;
+                            background-color: #061A27;
+                            position: absolute;
+                            left: 10px;
+                            top: -10px;
+                            padding: 2px 10px;
+                        }
                     }
                 }
             }
-            .right_form{
-                width: 100%;
-                .textarea_questions{
-                    height: 200px;
-                    max-height: 200px;
-                    width: 100%;
-                    max-width: 580px;
-                    padding: 18px 20px;
-                    border: 1px solid #393E52;
-                    background-color: transparent;
+            
+            .submit_btn{
+                padding: 20px 54px;
+                background-color: #118BDD;
+                font-size: 14px;
+                font-family: $bold;
+                color: #fff;
+                margin-top: 10px;
+                float: right;
+                transition: 0.15s all ease;
+                &:hover{
+                    background-color: #006BB2;
                 }
             }
         }
