@@ -154,3 +154,9 @@ window.addEventListener("DOMContentLoaded", function() {
 });
 
 });
+
+function lngsel(lng)
+{
+  localStorage.setItem("glblng", lng);
+  window.location.href = "index.html";
+}
