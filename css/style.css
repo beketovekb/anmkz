@@ -1170,6 +1170,9 @@ footer .subFooter a {
 .single_header-light .header_content .location_info {
   color: #000;
 }
+.single_header-light .header_content .submenu ul a {
+  color: #fff;
+}
 
 .single_header-dark {
   height: auto;
@@ -1200,11 +1203,15 @@ footer .subFooter a {
 }
 .bredcrumbs_grey .bc_link a {
   color: #BABABA;
-  font-family: "TTNorms-Medium";
+  font-family: "TTNorms-Regular";
   font-size: 14px;
 }
 .bredcrumbs_grey .bc_link a:nth-last-child(1) {
   color: #118BDD;
+}
+
+.bg_transparent {
+  background-color: transparent !important;
 }
 
 .about_bg {
@@ -1531,4 +1538,81 @@ footer .subFooter a {
   left: 0;
   background: transparent;
   background-image: linear-gradient(to bottom, #000000, rgba(0, 0, 0, 0) 60%);
+}
+
+.detail_nc {
+  width: 100%;
+  position: absolute;
+  top: 135px;
+}
+.detail_nc .detail_news_content {
+  background-color: #fff;
+  padding: 50px;
+  margin-top: 170px;
+  display: flex;
+}
+.detail_nc .detail_news_content .back_page_btn {
+  background-color: #118BDD;
+  padding: 13px;
+  margin-top: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+.detail_nc .detail_news_content .left_block_dn {
+  padding-left: 20px;
+}
+.detail_nc .detail_news_content .left_block_dn .detail_news_title {
+  font-family: "TTNorms-Bold";
+  font-size: 46px;
+  line-height: 150%;
+  margin-bottom: 20px;
+}
+.detail_nc .detail_news_content .left_block_dn .detail_news_img {
+  width: 100%;
+  height: 640px;
+  background-image: url(../img/news_card1.png);
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 50px;
+}
+.detail_nc .detail_content {
+  margin-top: 170px;
+}
+
+.certificate_content {
+  background-color: #FAFAFA;
+  padding-bottom: 50px;
+}
+.certificate_content .page_title {
+  font-size: 46px;
+  font-family: "TTNorms-Bold";
+  line-height: 150%;
+}
+.certificate_content .page_certificate_cards {
+  display: grid;
+  -moz-column-gap: 20px;
+       column-gap: 20px;
+  row-gap: 40px;
+  grid-template-columns: repeat(4, 1fr);
+  margin-top: 20px;
+  margin-bottom: 40px;
+}
+.certificate_content .page_certificate_cards .gallery_caption {
+  color: #000;
+  display: block;
+  text-align: center;
+  margin-top: 10px;
+  font-family: "TTNorms-Medium";
+  font-size: 18px;
+}
+.certificate_content .page_certificate_cards .gallery-img {
+  height: 480px;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: center;
+     object-position: center;
+  background: #fff;
 }/*# sourceMappingURL=style.css.map */

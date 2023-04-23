@@ -1035,6 +1035,9 @@ footer{
         .location_info{
             color: #000;
         }
+        .submenu ul a {
+            color: #fff;
+        }
     }
 }
 .single_header-dark{
@@ -1065,13 +1068,16 @@ footer{
         color: #BABABA;
         a{
             color: #BABABA;
-            font-family: $medium;
+            font-family: $regular;
             font-size: 14px;
             &:nth-last-child(1){
                 color: #118BDD;
             }
         }
     }
+}
+.bg_transparent{
+    background-color: transparent !important;
 }
 .about_bg{
     height: 400px;
@@ -1305,6 +1311,7 @@ footer{
         }
     }
 }
+
 .pagination {
     margin-top: 20px;
     display: flex;
@@ -1390,5 +1397,76 @@ footer{
         left: 0;   
         background: transparent;
         background-image: linear-gradient(to bottom, #000000, #00000000 60%);
+    }
+}
+.detail_nc{
+    width: 100%;
+    position: absolute;
+    top: 135px;
+    .detail_news_content{
+        background-color: #fff;
+        padding: 50px;
+        margin-top: 170px;
+        display: flex;
+        .back_page_btn {
+            background-color: #118BDD;
+            padding: 13px;
+            margin-top: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: fit-content;
+        }
+        .left_block_dn{
+            padding-left: 20px;
+            .detail_news_title{
+                font-family: $bold;
+                font-size: 46px;
+                line-height: 150%;
+                margin-bottom: 20px;
+            }
+            .detail_news_img{
+                width: 100%;
+                height: 640px;
+                background-image: url(../img/news_card1.png);
+                background-size: cover;
+                background-position: center;
+                margin-bottom: 50px;
+            }
+        }
+    }
+    .detail_content{
+        margin-top: 170px;
+    }
+}
+.certificate_content{
+    background-color: #FAFAFA;
+    padding-bottom: 50px;
+    .page_title{
+        font-size: 46px;
+        font-family: $bold;
+        line-height: 150%;
+    }
+    .page_certificate_cards{
+        display: grid;
+        column-gap: 20px;
+        row-gap: 40px;
+        grid-template-columns: repeat(4, 1fr);
+        margin-top: 20px;
+        margin-bottom: 40px;
+        .gallery_caption{
+            color: #000;
+            display: block;
+            text-align: center;
+            margin-top: 10px;
+            font-family: $medium;
+            font-size: 18px;
+        }
+        .gallery-img{
+            height: 480px;
+            object-fit: cover;
+            object-position: center;
+            background: #fff;
+        }
     }
 }
