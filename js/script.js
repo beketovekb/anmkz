@@ -95,3 +95,24 @@ if($(".current_page:first").hasClass("active_page")) {
 if($(".current_page:last").hasClass("active_page")) {
   $('.next_page').addClass('default');
 }
+
+// Initialize and add the map
+function initMap() {
+  // The location of Uluru
+  const uluru = { lat: 47.113489, lng: 51.970052 };
+  // The map, centered at Uluru
+  const map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 16,
+    center: uluru,
+    mapId: 'c200362333115e00'
+  });
+  // The marker, positioned at Uluru
+  var marker_image = '../img/map_marker.svg';
+  const marker = new google.maps.Marker({
+    position: uluru,
+    map: map,
+    icon: marker_image
+  });
+}
+
+window.initMap = initMap;
