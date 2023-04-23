@@ -1766,4 +1766,143 @@ footer .subFooter a {
 }
 .page_contacts .contacts_form .form .submit_btn:hover {
   background-color: #006BB2;
+}
+
+.vacancy_content {
+  background-color: #FAFAFA;
+  padding-bottom: 50px;
+}
+.vacancy_content .page_title {
+  font-size: 46px;
+  font-family: "TTNorms-Bold";
+  line-height: 150%;
+}
+.vacancy_content .vacancy_table {
+  margin-top: 20px;
+  @import url("https://fonts.googleapis.com/css?family=Hind:300,400&display=swap");
+}
+.vacancy_content .vacancy_table > span {
+  display: block;
+  font-family: "TTNorms-Bold";
+  font-size: 18px;
+  line-height: 150%;
+  margin-bottom: 20px;
+}
+.vacancy_content .vacancy_table .accordion .list_work span {
+  display: block;
+  font-size: 16px;
+  font-family: "TTNorms-Medium";
+  line-height: 150%;
+  margin-bottom: 10px;
+}
+.vacancy_content .vacancy_table .accordion .list_work ul {
+  list-style: disc;
+  position: relative;
+  left: 30px;
+  margin-bottom: 20px;
+}
+.vacancy_content .vacancy_table .accordion .list_work ul li {
+  font-size: 16px;
+  line-height: 150%;
+}
+.vacancy_content .vacancy_table .accordion button {
+  background-color: #fff;
+  position: relative;
+  display: block;
+  text-align: left;
+  width: 100%;
+  padding: 25px;
+  color: #7288a2;
+  font-size: 1.15rem;
+  font-weight: 400;
+  border: none;
+  outline: none;
+  transition: 0.15s all ease;
+}
+.vacancy_content .vacancy_table .accordion button:hover, .vacancy_content .vacancy_table .accordion button:focus {
+  cursor: pointer;
+  color: #03b5d2;
+}
+.vacancy_content .vacancy_table .accordion button:hover::after, .vacancy_content .vacancy_table .accordion button:focus::after {
+  cursor: pointer;
+  color: #03b5d2;
+  border: 1px solid #03b5d2;
+}
+.vacancy_content .vacancy_table .accordion button .accordion-title {
+  padding: 1em 1.5em 1em 0;
+  color: #000;
+  font-family: "TTNorms-Medium";
+  font-size: 18px;
+}
+.vacancy_content .vacancy_table .accordion button .icon {
+  display: inline-block;
+  position: absolute;
+  top: 28px;
+  right: 25px;
+  width: 25px;
+}
+.vacancy_content .vacancy_table .accordion button .icon::before {
+  display: block;
+  position: absolute;
+  content: "";
+  top: 9px;
+  left: 5px;
+  width: 10px;
+  height: 2px;
+  background: currentColor;
+}
+.vacancy_content .vacancy_table .accordion button .icon::after {
+  display: block;
+  position: absolute;
+  content: "";
+  top: 5px;
+  left: 9px;
+  width: 2px;
+  height: 10px;
+  background: currentColor;
+}
+.vacancy_content .vacancy_table .accordion svg {
+  transition: 0.15s all ease;
+}
+.vacancy_content .vacancy_table .accordion svg path {
+  stroke: #000;
+  stroke-width: 2px;
+}
+.vacancy_content .vacancy_table .accordion .accordion-content {
+  padding: 0 25px;
+  margin-bottom: 10px;
+  height: 0;
+}
+.vacancy_content .vacancy_table .accordion button[aria-expanded=true] {
+  background-color: #118BDD;
+}
+.vacancy_content .vacancy_table .accordion button[aria-expanded=true] .accordion-title {
+  color: #fff;
+}
+.vacancy_content .vacancy_table .accordion button[aria-expanded=true] svg {
+  transform: scale(-1);
+  transition: 0.15s all ease;
+}
+.vacancy_content .vacancy_table .accordion button[aria-expanded=true] path {
+  stroke: #fff;
+}
+.vacancy_content .vacancy_table .accordion button[aria-expanded=true] .icon::after {
+  width: 0;
+}
+.vacancy_content .vacancy_table .accordion button[aria-expanded=true] + .accordion-content {
+  opacity: 1;
+  height: auto;
+  transition: all 200ms linear;
+  will-change: opacity, max-height;
+  background-color: #F6F6F6;
+  padding: 25px;
+}
+.vacancy_content .vacancy_table .accordion .accordion-content {
+  opacity: 0;
+  overflow: hidden;
+  will-change: opacity, max-height;
+}
+.vacancy_content .vacancy_table .accordion .accordion-content p {
+  font-size: 1rem;
+  font-weight: 300;
 }/*# sourceMappingURL=style.css.map */
