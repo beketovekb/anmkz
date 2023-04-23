@@ -1770,7 +1770,6 @@ footer .subFooter a {
 
 .vacancy_content {
   background-color: #FAFAFA;
-  padding-bottom: 50px;
 }
 .vacancy_content .page_title {
   font-size: 46px;
@@ -1779,6 +1778,7 @@ footer .subFooter a {
 }
 .vacancy_content .vacancy_table {
   margin-top: 20px;
+  margin-bottom: 100px;
   @import url("https://fonts.googleapis.com/css?family=Hind:300,400&display=swap");
 }
 .vacancy_content .vacancy_table > span {
@@ -1905,4 +1905,24 @@ footer .subFooter a {
 .vacancy_content .vacancy_table .accordion .accordion-content p {
   font-size: 1rem;
   font-weight: 300;
+}
+.vacancy_content .form_vacancy {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+}
+.vacancy_content .form_vacancy .col-3 {
+  margin-left: calc((100% - 1380px) / 2);
+}
+.vacancy_content .form_vacancy .col-3 span {
+  font-size: 28px;
+  font-family: "TTNorms-Bold";
+  margin-bottom: 20px;
+}
+.vacancy_content .form_vacancy .col-8 {
+  height: 520px;
+  background-image: url(../img/vacancy_bg.jpg);
+  background-size: cover;
+  background-position: center;
 }/*# sourceMappingURL=style.css.map */

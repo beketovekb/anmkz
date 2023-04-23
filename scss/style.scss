@@ -1631,7 +1631,6 @@ footer{
 
 .vacancy_content{
     background-color: #FAFAFA;
-    padding-bottom: 50px;
     .page_title{
         font-size: 46px;
         font-family: $bold;
@@ -1639,6 +1638,7 @@ footer{
     }
     .vacancy_table{
         margin-top: 20px;
+        margin-bottom: 100px;
         &>span{
             display: block;
             font-family: $bold;
@@ -1780,6 +1780,26 @@ footer{
                 font-weight: 300;
                 }
             }
+        }
+    }
+    .form_vacancy{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        .col-3{
+            margin-left: calc((100% - 1380px) / 2);
+            span{
+                font-size: 28px;
+                font-family: $bold;
+                margin-bottom: 20px;
+            }
+        }
+        .col-8{
+            height: 520px;
+            background-image: url(../img/vacancy_bg.jpg);
+            background-size: cover;
+            background-position: center;
         }
     }
 }
