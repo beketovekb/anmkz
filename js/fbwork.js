@@ -5,10 +5,19 @@ const database = firebase.database();
 // 	$('#geneditoropsinie').text(value);
 //   });
 
+function loadLng() {
+  if(localStorage.getItem("glblng")!=null)
+  {myValue = localStorage.getItem("glblng");}
+  //alert(myValue);
+  gentt();
+  }
 
-  database.ref('page/genpage/zagolovok').on('value', (snapshot) => {
-	const value = snapshot.val();
-	console.log(value);
-    //  $('#gentitle').text(value);
-     document.getElementById('gentitle').innerHTML = value;
-  });
+  function gentt()
+  {
+    database.ref(myValue+'/page/genpage/zagolovok').on('value', (snapshot) => {
+      const value = snapshot.val();
+      console.log(value);
+         document.getElementById('gentitle').innerHTML = value;
+      });
+  }
+  

@@ -6,10 +6,5 @@ document.getElementById('genpage').addEventListener('click', function(event) {
         document.getElementById('pagediv').innerHTML = data;
       });
 
-      database.ref('page/genpage/opisanie').once('value')
-  .then((snapshot) => {
-    const value = snapshot.val();
-    console.log("Read");
-    $('#geneditoropsinie').text(value);
-  });
+      loadAdminGen('ru','#geneditoropsinieru','#geneditorru');
   });
