@@ -1912,15 +1912,259 @@ footer .subFooter a {
   align-items: center;
   background-color: #fff;
 }
-.vacancy_content .form_vacancy .col-3 {
+.vacancy_content .form_vacancy .row {
+  align-items: center;
+}
+.vacancy_content .form_vacancy .col-4 {
   margin-left: calc((100% - 1380px) / 2);
 }
-.vacancy_content .form_vacancy .col-3 span {
+.vacancy_content .form_vacancy .col-4 span {
   font-size: 28px;
   font-family: "TTNorms-Bold";
   margin-bottom: 20px;
+  line-height: 150%;
 }
-.vacancy_content .form_vacancy .col-8 {
+.vacancy_content .form_vacancy .col-4 form {
+  margin-top: 20px;
+}
+.vacancy_content .form_vacancy .col-4 form .submit_btn {
+  display: block;
+  width: 100%;
+  height: 60px;
+  background-color: #118BDD;
+  color: #fff;
+  margin-top: 10px;
+  font-size: 16px;
+  font-family: "TTNorms-Bold";
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell {
+  display: flex;
+  gap: 10px;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell {
+  position: relative;
+  /****** CODE ******/
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .input_name, .vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .input_phone, .vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .input_email {
+  height: 60px;
+  width: 100%;
+  padding: 18px 20px;
+  border: 1px solid #393E52;
+  background-color: transparent;
+  color: #fff;
+  font-size: 16px;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .error_notification {
+  display: none;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .error_notification span {
+  position: absolute;
+  right: 10px;
+  z-index: 2;
+  top: 24px;
+  color: #EB2020;
+  font-size: 12px;
+  font-family: "TTNorms-Light";
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .error_notification hr {
+  height: 1px;
+  border: none;
+  background-color: #EB2020;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell > span {
+  color: #747576;
+  font-size: 12px;
+  background-color: #fff;
+  position: absolute;
+  left: 10px;
+  top: -10px;
+  padding: 2px 10px;
+  z-index: 1;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .ddl-select {
+  visibility: hidden;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .ddl {
+  position: relative;
+  height: 60px;
+  width: 100%;
+  text-align: initial;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .ddl::after {
+  content: "";
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  width: 12px;
+  height: 2px;
+  background: #555;
+  z-index: 99;
+  transform: rotate(-40deg);
+  transition: 0.5s;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .ddl::before {
+  content: "";
+  position: absolute;
+  top: 30px;
+  right: 28px;
+  width: 12px;
+  height: 2px;
+  background: #555;
+  z-index: 99;
+  transform: rotate(40deg);
+  transition: 0.5s;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .ddl.active::after {
+  right: 28px;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .ddl.active::before {
+  right: 20px;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .ddl-input {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  cursor: pointer;
+  padding: 10px 20px;
+  outline: none;
+  background: #fff;
+  border: 1px solid #393E52;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .ddl.active .ddl-options {
+  visibility: visible;
+  opacity: 1;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .ddl .ddl-options {
+  position: absolute;
+  width: 100%;
+  top: 55px;
+  background: #fff;
+  overflow: hidden;
+  visibility: hidden;
+  opacity: 0;
+  transition: 0.25s;
+  z-index: 999;
+  border: 1px solid #393E52;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .ddl .ddl-options > div {
+  padding: 10px 20px;
+  cursor: pointer;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .ddl .ddl-options > div:hover {
+  background: #fafafa;
+  color: #118BDD;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .file-upload {
+  display: block;
+  text-align: center;
+  font-size: 12px;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .file-upload .file-select {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border: 1px solid #000000;
+  color: #34495e;
+  cursor: pointer;
+  height: 60px;
+  line-height: 40px;
+  text-align: left;
+  background: #FFFFFF;
+  overflow: hidden;
+  position: relative;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .file-upload .file-select .file-select-button {
+  padding: 0 10px;
+  display: inline-block;
+  color: #000000;
+  font-size: 16px;
+  height: 40px;
+  line-height: 40px;
+  margin-right: 20px;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .file-upload .file-select .file-select-name {
+  line-height: 20px;
+  display: inline-block;
+  padding: 0 20px;
+  color: #7580a1;
+  font-size: 16px;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .file-upload .file-select:hover {
+  border-color: #34495e;
+  transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .file-upload .file-select:hover .file-select-button {
+  color: #118BDD;
+  transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .file-upload.active .file-select {
+  border-color: #000000;
+  transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .file-upload.active .file-select .file-select-button {
+  background: #118BDD;
+  color: #FFFFFF;
+  transition: all 0.2s ease-in-out;
+  -moz-transition: all 0.2s ease-in-out;
+  -webkit-transition: all 0.2s ease-in-out;
+  -o-transition: all 0.2s ease-in-out;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .file-upload .file-select input[type=file] {
+  z-index: 100;
+  cursor: pointer;
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  filter: alpha(opacity=0);
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .file-upload .file-select.file-select-disabled:hover {
+  cursor: default;
+  display: block;
+  border: 2px solid #dce4ec;
+  color: #000000;
+  cursor: pointer;
+  height: 40px;
+  line-height: 40px;
+  margin-top: 5px;
+  text-align: left;
+  background: #FFFFFF;
+  overflow: hidden;
+  position: relative;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .file-upload .file-select.file-select-disabled:hover .file-select-button {
+  background: #dce4ec;
+  color: #666666;
+  padding: 0 10px;
+  display: inline-block;
+  height: 40px;
+  line-height: 40px;
+}
+.vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .file-upload .file-select.file-select-disabled:hover .file-select-name {
+  line-height: 40px;
+  display: inline-block;
+  padding: 0 10px;
+}
+.vacancy_content .form_vacancy .col-7 {
   height: 520px;
   background-image: url(../img/vacancy_bg.jpg);
   background-size: cover;
