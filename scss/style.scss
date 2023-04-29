@@ -2226,10 +2226,11 @@ footer{
                         background-position: center;
                         // border: 1px solid red;
                     }
-                    .ad01{
+                    .img_ad01{
                         background-image: url(../img/catalog/ad/ad01.png);
                     }
-                    .ad02{
+                    .img_ad02{
+                        display: block !important;
                         background-image: url(../img/catalog/ad/ad02.png);
                     }
                     .services_caption{

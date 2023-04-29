@@ -2317,10 +2317,11 @@ footer .subFooter a {
   background-size: cover;
   background-position: center;
 }
-.services_content .services_table .accordion .accordion-content .services_card .ad01 {
+.services_content .services_table .accordion .accordion-content .services_card .img_ad01 {
   background-image: url(../img/catalog/ad/ad01.png);
 }
-.services_content .services_table .accordion .accordion-content .services_card .ad02 {
+.services_content .services_table .accordion .accordion-content .services_card .img_ad02 {
+  display: block !important;
   background-image: url(../img/catalog/ad/ad02.png);
 }
 .services_content .services_table .accordion .accordion-content .services_card .services_caption {
