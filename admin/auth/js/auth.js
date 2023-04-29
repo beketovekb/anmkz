@@ -45,6 +45,7 @@ if (window.location.href.indexOf("adminp.html") === -1) {
     // Авторизация пользователя
     const promise = auth.signInWithEmailAndPassword(email, password);
     promise.catch(e => console.log(e.message));
+    window.location.replace("../index.html");
   });
 }
 
