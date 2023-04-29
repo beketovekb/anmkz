@@ -1629,7 +1629,6 @@ footer{
     }
     
 }
-
 .vacancy_content{
     background-color: #FAFAFA;
     .page_title{
@@ -1708,6 +1707,7 @@ footer{
                 top: 28px;
                 right: 25px;
                 width: 25px;
+                
                 &::before {
                     display: block;
                     position: absolute;
@@ -1732,6 +1732,7 @@ footer{
             }
             svg {
                 transition: 0.15s all ease;
+                transform: scale(-1);
                 path{
                     stroke: #000;
                     stroke-width: 2px;
@@ -1748,7 +1749,7 @@ footer{
                     color: #fff;
                 }
                 svg{
-                    transform: scale(-1);
+                    transform: scale(1);
                     transition: 0.15s all ease;
                 }
                 path{
@@ -1798,7 +1799,7 @@ footer{
             }
             form{
                 margin-top: 20px;
-                .submit_btn{
+                .submit_vac_btn{
                     display: block;
                     width: 100%;
                     height: 60px;
@@ -1807,6 +1808,11 @@ footer{
                     margin-top: 10px;
                     font-size: 16px;
                     font-family: $bold;
+                    cursor: pointer;
+                    transition: 0.15s all ease;
+                    &:hover{
+                        background-color: #006BB2;
+                    }
                 }
                 .form_shell{
                     display: flex;
@@ -1824,7 +1830,7 @@ footer{
                                 padding: 18px 20px;
                                 border: 1px solid #393E52;
                                 background-color: transparent;
-                                color: #fff;
+                                color: #000;
                                 font-size: 16px;
                                 // &:focus{
                                 //     border: 1px solid #fff; 
@@ -2073,6 +2079,323 @@ footer{
             background-image: url(../img/vacancy_bg.jpg);
             background-size: cover;
             background-position: center;
+        }
+    }
+}
+.services_content{
+    background-color: #FAFAFA;
+    .page_title{
+        font-size: 46px;
+        font-family: $bold;
+        line-height: 150%;
+    }
+    .service_list{
+        margin-top: 20px;
+        ul{
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            position: sticky;
+            top: 40px;
+            li{
+                display: flex;
+                align-items: center;
+                
+                &:hover a {
+                    color: #118BDD;
+                }
+                .vert_line{
+                    height: 30px;
+                    width: 8px;
+                    background-color: #118BDD;
+                    margin-right: 20px;
+                    display: none;
+                }
+                a{
+                    display: block;
+                    color: #000;
+                    font-size: 18px;
+                    font-family: $bold;
+                }
+            }
+        }
+    }
+    .services_table{
+        margin-top: 20px;
+        margin-bottom: 100px;
+        display: flex;
+        flex-direction: column;
+        gap: 50px;
+        .production_type{
+
+            &>span{
+                display: block;
+                font-family: $bold;
+                font-size: 18px;
+                line-height: 150%;
+                margin-bottom: 20px;
+                text-transform: uppercase;
+            }
+        }
+        @import url('https://fonts.googleapis.com/css?family=Hind:300,400&display=swap');
+
+        $bg: #fff;
+        $text: #7288a2;
+        $gray: #4d5974;
+        $lightgray: #e5e5e5;
+        $blue: #03b5d2;
+        .accordion {
+
+            button {
+                background-color: #fff;
+                position: relative;
+                display: block;
+                text-align: left;
+                width: 100%;
+                padding: 25px;
+                color: $text;
+                font-size: 1.15rem;
+                font-weight: 400;
+                border: none;
+                outline: none;
+                transition: 0.15s all ease;
+                &:hover, &:focus {
+                cursor: pointer;
+                color: $blue;
+                &::after {
+                    cursor: pointer;
+                    color: $blue;
+                    border: 1px solid $blue;
+                }
+                }
+                .accordion-title {
+                padding: 1em 1.5em 1em 0;
+                color: #000;
+                font-family: $medium;
+                font-size: 18px;
+                }
+                .icon {
+                display: inline-block;
+                position: absolute;
+                top: 28px;
+                right: 25px;
+                width: 25px;
+                &::before {
+                    display: block;
+                    position: absolute;
+                    content: '';
+                    top: 9px;
+                    left: 5px;
+                    width: 10px;
+                    height: 2px;
+                    background: currentColor;
+                }
+                &::after {
+                    display: block;
+                    position: absolute;
+                    content: '';
+                    top: 5px;
+                    left: 9px;
+                    width: 2px;
+                    height: 10px;
+                    background: currentColor;
+                }
+                }
+            }
+            svg {
+                transition: 0.15s all ease;
+                transform: scale(-1);
+                path{
+                    stroke: #000;
+                    stroke-width: 2px;
+                }
+            }
+            .accordion-content {
+                padding: 10px 20px;
+                margin-bottom: 10px;
+                height: 0;
+                .services_card{
+                    display: flex;
+                    padding: 10px;
+                    background-color: #fff;
+                    .services_img{
+                        width: 245px;
+                        height: 160px;
+                        background-size: cover;
+                        background-position: center;
+                        // border: 1px solid red;
+                    }
+                    .ad01{
+                        background-image: url(../img/catalog/ad/ad01.png);
+                    }
+                    .ad02{
+                        background-image: url(../img/catalog/ad/ad02.png);
+                    }
+                    .services_caption{
+                        width: calc(100% - 255px);
+                        margin-left: 10px;
+                        .services_card_title{
+                            font-size: 16px;
+                            font-family: $medium;
+                            margin-bottom: 10px;
+                            display: block;
+                            line-height: 150%;
+                        }
+                        .services_card_caption{
+                            font-size: 16px;
+                            font-family: $regular;
+                            line-height: 150%;
+                        }
+                        .serv_detailed_btn{
+                            background-color: #118BDD;
+                            color: #fff;
+                            padding: 10px 12px;
+                            font-size: 16px;
+                            font-family: $bold;
+                            display: block;
+                            width: fit-content;
+                            margin-top: 15px;
+                            text-transform: uppercase;
+                        }
+                    }
+                }
+            }
+            button[aria-expanded='true'] {
+                background-color: #118BDD;
+                .accordion-title{
+                    color: #fff;
+                }
+                svg{
+                    transform: scale(1);
+                    transition: 0.15s all ease;
+                }
+                path{
+                    stroke: #fff;
+                }
+                .icon {
+                &::after {
+                    width: 0;
+                }
+                }
+                + .accordion-content {
+                opacity: 1;
+                height: auto;
+                transition: all 200ms linear;
+                will-change: opacity, max-height;
+                background-color: #F6F6F6;
+                padding: 10px 20px;
+                display: flex;
+                flex-direction: column;
+                gap: 10px;
+                }
+            }
+            .accordion-content {
+                opacity: 0;
+                overflow: hidden;
+                // transition: opacity 200ms linear, max-height 200ms linear;
+                will-change: opacity, max-height;
+                p {
+                font-size: 1rem;
+                font-weight: 300;
+                }
+            }
+        }
+    }
+}
+
+.services_content_more{
+    background-color: #FAFAFA;
+    .page_title{
+        font-size: 46px;
+        font-family: $bold;
+        line-height: 150%;
+    }
+    .services_list_more{
+        margin-top: 20px;
+        ul{
+            display: flex;
+            flex-direction: column;
+            gap: 13px;
+            position: sticky;
+            top: 40px;
+            li{
+                display: flex;
+                align-items: center;
+                
+                &:hover a {
+                    color: #118BDD;
+                }
+                .vert_line{
+                    height: 30px;
+                    width: 8px;
+                    background-color: #118BDD;
+                    margin-right: 20px;
+                    display: block;
+                    ~ a{
+                        color: #1188dd;
+                    }
+                }
+                a{
+                    display: block;
+                    color: #000;
+                    font-size: 18px;
+                    font-family: $bold;
+                }
+            }
+        }
+    }
+    .services_content_caption{
+        background-color: #F6F6F6;
+        padding: 20px 20px 50px;
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
+        .paragraph{
+
+            .scc_title{
+                font-size: 18px;
+                font-family: $bold;
+                line-height: 150%;
+                margin-bottom: 10px;
+                display: block;
+            }
+            .scc_caption{
+                font-size: 16px;
+                line-height: 150%;
+            }
+        }
+        table{
+            
+            tr{
+                background-color: #D9EBF5;
+                td{
+                    padding: 10px 20px;
+
+                }
+            }
+            td:nth-child(1){
+                font-size: 18px;
+                font-family: $medium;
+            }
+            td:nth-child(2){
+                background-color: #CAE3F1;
+            }
+        }
+    }
+    .services_products{
+
+        .right_list {
+            font-size: 18px;
+            font-family: $bold;
+            padding-left: 10px;
+        }
+        ul{
+            li{
+                text-align: right;
+                a{
+                    color: #000;
+                }
+            }
         }
     }
 }

@@ -16,8 +16,10 @@ ol, ul {
 *::after {
   box-sizing: border-box;
   -webkit-touch-callout: none; /* iOS Safari */
-  -webkit-user-select: none; /* Safari */ /* Konqueror HTML */
-  -moz-user-select: none; /* Old versions of Firefox */ /* Internet Explorer/Edge */
+  -webkit-user-select: none; /* Safari */
+  -khtml-user-select: none; /* Konqueror HTML */
+  -moz-user-select: none; /* Old versions of Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
   user-select: none;
 }
 
@@ -88,61 +90,73 @@ html:root {
 }
 
 .col-1 {
+  -ms-flex: 0 0 8.333333%;
   flex: 0 0 8.333333%;
   max-width: 8.333333%;
 }
 
 .col-2 {
+  -ms-flex: 0 0 16.666667%;
   flex: 0 0 16.666667%;
   max-width: 16.666667%;
 }
 
 .col-3 {
+  -ms-flex: 0 0 25%;
   flex: 0 0 25%;
   max-width: 25%;
 }
 
 .col-4 {
+  -ms-flex: 0 0 33.333333%;
   flex: 0 0 33.333333%;
   max-width: 33.333333%;
 }
 
 .col-5 {
+  -ms-flex: 0 0 41.666667%;
   flex: 0 0 41.666667%;
   max-width: 41.666667%;
 }
 
 .col-6 {
+  -ms-flex: 0 0 50%;
   flex: 0 0 50%;
   max-width: 50%;
 }
 
 .col-7 {
+  -ms-flex: 0 0 58.333333%;
   flex: 0 0 58.333333%;
   max-width: 58.333333%;
 }
 
 .col-8 {
+  -ms-flex: 0 0 66.666667%;
   flex: 0 0 66.666667%;
   max-width: 66.666667%;
 }
 
 .col-9 {
+  -ms-flex: 0 0 75%;
   flex: 0 0 75%;
   max-width: 75%;
 }
 
 .col-10 {
+  -ms-flex: 0 0 83.333333%;
   flex: 0 0 83.333333%;
   max-width: 83.333333%;
 }
 
 .col-11 {
+  -ms-flex: 0 0 91.666667%;
   flex: 0 0 91.666667%;
   max-width: 91.666667%;
 }
 
 .col-12 {
+  -ms-flex: 0 0 100%;
   flex: 0 0 100%;
   max-width: 100%;
 }
@@ -299,8 +313,7 @@ header {
   align-items: center;
   justify-content: space-between;
   gap: 20px;
-  -webkit-clip-path: inset(-10px);
-          clip-path: inset(-10px);
+  clip-path: inset(-10px);
 }
 .addition .addition-card {
   display: flex;
@@ -424,10 +437,8 @@ header {
   left: 0;
   width: 100%;
   height: 100vh;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: 50% 50%;
-     object-position: 50% 50%;
+  object-fit: cover;
+  object-position: 50% 50%;
   display: block;
 }
 
@@ -593,8 +604,7 @@ header {
   display: block;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .chronology .swiper-slide {
   padding: 50px 20px;
@@ -918,8 +928,7 @@ header {
   display: block;
   width: 100%;
   height: 100%;
-  -o-object-fit: cover;
-     object-fit: cover;
+  object-fit: cover;
 }
 .partners .autoplay-progress {
   position: absolute;
@@ -1557,7 +1566,6 @@ footer .subFooter a {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: -moz-fit-content;
   width: fit-content;
 }
 .detail_nc .detail_news_content .left_block_dn {
@@ -1592,8 +1600,7 @@ footer .subFooter a {
 }
 .certificate_content .page_certificate_cards {
   display: grid;
-  -moz-column-gap: 20px;
-       column-gap: 20px;
+  column-gap: 20px;
   row-gap: 40px;
   grid-template-columns: repeat(4, 1fr);
   margin-top: 20px;
@@ -1609,10 +1616,8 @@ footer .subFooter a {
 }
 .certificate_content .page_certificate_cards .gallery-img {
   height: 480px;
-  -o-object-fit: cover;
-     object-fit: cover;
-  -o-object-position: center;
-     object-position: center;
+  object-fit: cover;
+  object-position: center;
   background: #fff;
 }
 
@@ -1682,7 +1687,6 @@ footer .subFooter a {
   display: flex;
   flex-direction: column;
   gap: 10px;
-  width: -moz-fit-content;
   width: fit-content;
 }
 .page_contacts .contacts_form .form .form_shell .left_form .input_shell {
@@ -1863,6 +1867,7 @@ footer .subFooter a {
 }
 .vacancy_content .vacancy_table .accordion svg {
   transition: 0.15s all ease;
+  transform: scale(-1);
 }
 .vacancy_content .vacancy_table .accordion svg path {
   stroke: #000;
@@ -1880,7 +1885,7 @@ footer .subFooter a {
   color: #fff;
 }
 .vacancy_content .vacancy_table .accordion button[aria-expanded=true] svg {
-  transform: scale(-1);
+  transform: scale(1);
   transition: 0.15s all ease;
 }
 .vacancy_content .vacancy_table .accordion button[aria-expanded=true] path {
@@ -1927,7 +1932,7 @@ footer .subFooter a {
 .vacancy_content .form_vacancy .col-4 form {
   margin-top: 20px;
 }
-.vacancy_content .form_vacancy .col-4 form .submit_btn {
+.vacancy_content .form_vacancy .col-4 form .submit_vac_btn {
   display: block;
   width: 100%;
   height: 60px;
@@ -1936,6 +1941,11 @@ footer .subFooter a {
   margin-top: 10px;
   font-size: 16px;
   font-family: "TTNorms-Bold";
+  cursor: pointer;
+  transition: 0.15s all ease;
+}
+.vacancy_content .form_vacancy .col-4 form .submit_vac_btn:hover {
+  background-color: #006BB2;
 }
 .vacancy_content .form_vacancy .col-4 form .form_shell {
   display: flex;
@@ -1957,7 +1967,7 @@ footer .subFooter a {
   padding: 18px 20px;
   border: 1px solid #393E52;
   background-color: transparent;
-  color: #fff;
+  color: #000;
   font-size: 16px;
 }
 .vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .error_notification {
@@ -2169,4 +2179,292 @@ footer .subFooter a {
   background-image: url(../img/vacancy_bg.jpg);
   background-size: cover;
   background-position: center;
-}/*# sourceMappingURL=style.css.map */
+}
+
+.services_content {
+  background-color: #FAFAFA;
+}
+.services_content .page_title {
+  font-size: 46px;
+  font-family: "TTNorms-Bold";
+  line-height: 150%;
+}
+.services_content .service_list {
+  margin-top: 20px;
+}
+.services_content .service_list ul {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  position: sticky;
+  top: 40px;
+}
+.services_content .service_list ul li {
+  display: flex;
+  align-items: center;
+}
+.services_content .service_list ul li:hover a {
+  color: #118BDD;
+}
+.services_content .service_list ul li .vert_line {
+  height: 30px;
+  width: 8px;
+  background-color: #118BDD;
+  margin-right: 20px;
+  display: none;
+}
+.services_content .service_list ul li a {
+  display: block;
+  color: #000;
+  font-size: 18px;
+  font-family: "TTNorms-Bold";
+}
+.services_content .services_table {
+  margin-top: 20px;
+  margin-bottom: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  @import url("https://fonts.googleapis.com/css?family=Hind:300,400&display=swap");
+}
+.services_content .services_table .production_type > span {
+  display: block;
+  font-family: "TTNorms-Bold";
+  font-size: 18px;
+  line-height: 150%;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+}
+.services_content .services_table .accordion button {
+  background-color: #fff;
+  position: relative;
+  display: block;
+  text-align: left;
+  width: 100%;
+  padding: 25px;
+  color: #7288a2;
+  font-size: 1.15rem;
+  font-weight: 400;
+  border: none;
+  outline: none;
+  transition: 0.15s all ease;
+}
+.services_content .services_table .accordion button:hover, .services_content .services_table .accordion button:focus {
+  cursor: pointer;
+  color: #03b5d2;
+}
+.services_content .services_table .accordion button:hover::after, .services_content .services_table .accordion button:focus::after {
+  cursor: pointer;
+  color: #03b5d2;
+  border: 1px solid #03b5d2;
+}
+.services_content .services_table .accordion button .accordion-title {
+  padding: 1em 1.5em 1em 0;
+  color: #000;
+  font-family: "TTNorms-Medium";
+  font-size: 18px;
+}
+.services_content .services_table .accordion button .icon {
+  display: inline-block;
+  position: absolute;
+  top: 28px;
+  right: 25px;
+  width: 25px;
+}
+.services_content .services_table .accordion button .icon::before {
+  display: block;
+  position: absolute;
+  content: "";
+  top: 9px;
+  left: 5px;
+  width: 10px;
+  height: 2px;
+  background: currentColor;
+}
+.services_content .services_table .accordion button .icon::after {
+  display: block;
+  position: absolute;
+  content: "";
+  top: 5px;
+  left: 9px;
+  width: 2px;
+  height: 10px;
+  background: currentColor;
+}
+.services_content .services_table .accordion svg {
+  transition: 0.15s all ease;
+  transform: scale(-1);
+}
+.services_content .services_table .accordion svg path {
+  stroke: #000;
+  stroke-width: 2px;
+}
+.services_content .services_table .accordion .accordion-content {
+  padding: 10px 20px;
+  margin-bottom: 10px;
+  height: 0;
+}
+.services_content .services_table .accordion .accordion-content .services_card {
+  display: flex;
+  padding: 10px;
+  background-color: #fff;
+}
+.services_content .services_table .accordion .accordion-content .services_card .services_img {
+  width: 245px;
+  height: 160px;
+  background-size: cover;
+  background-position: center;
+}
+.services_content .services_table .accordion .accordion-content .services_card .ad01 {
+  background-image: url(../img/catalog/ad/ad01.png);
+}
+.services_content .services_table .accordion .accordion-content .services_card .ad02 {
+  background-image: url(../img/catalog/ad/ad02.png);
+}
+.services_content .services_table .accordion .accordion-content .services_card .services_caption {
+  width: calc(100% - 255px);
+  margin-left: 10px;
+}
+.services_content .services_table .accordion .accordion-content .services_card .services_caption .services_card_title {
+  font-size: 16px;
+  font-family: "TTNorms-Medium";
+  margin-bottom: 10px;
+  display: block;
+  line-height: 150%;
+}
+.services_content .services_table .accordion .accordion-content .services_card .services_caption .services_card_caption {
+  font-size: 16px;
+  font-family: "TTNorms-Regular";
+  line-height: 150%;
+}
+.services_content .services_table .accordion .accordion-content .services_card .services_caption .serv_detailed_btn {
+  background-color: #118BDD;
+  color: #fff;
+  padding: 10px 12px;
+  font-size: 16px;
+  font-family: "TTNorms-Bold";
+  display: block;
+  width: fit-content;
+  margin-top: 15px;
+  text-transform: uppercase;
+}
+.services_content .services_table .accordion button[aria-expanded=true] {
+  background-color: #118BDD;
+}
+.services_content .services_table .accordion button[aria-expanded=true] .accordion-title {
+  color: #fff;
+}
+.services_content .services_table .accordion button[aria-expanded=true] svg {
+  transform: scale(1);
+  transition: 0.15s all ease;
+}
+.services_content .services_table .accordion button[aria-expanded=true] path {
+  stroke: #fff;
+}
+.services_content .services_table .accordion button[aria-expanded=true] .icon::after {
+  width: 0;
+}
+.services_content .services_table .accordion button[aria-expanded=true] + .accordion-content {
+  opacity: 1;
+  height: auto;
+  transition: all 200ms linear;
+  will-change: opacity, max-height;
+  background-color: #F6F6F6;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.services_content .services_table .accordion .accordion-content {
+  opacity: 0;
+  overflow: hidden;
+  will-change: opacity, max-height;
+}
+.services_content .services_table .accordion .accordion-content p {
+  font-size: 1rem;
+  font-weight: 300;
+}
+
+.services_content_more {
+  background-color: #FAFAFA;
+}
+.services_content_more .page_title {
+  font-size: 46px;
+  font-family: "TTNorms-Bold";
+  line-height: 150%;
+}
+.services_content_more .services_list_more {
+  margin-top: 20px;
+}
+.services_content_more .services_list_more ul {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+  position: sticky;
+  top: 40px;
+}
+.services_content_more .services_list_more ul li {
+  display: flex;
+  align-items: center;
+}
+.services_content_more .services_list_more ul li:hover a {
+  color: #118BDD;
+}
+.services_content_more .services_list_more ul li .vert_line {
+  height: 30px;
+  width: 8px;
+  background-color: #118BDD;
+  margin-right: 20px;
+  display: block;
+}
+.services_content_more .services_list_more ul li .vert_line ~ a {
+  color: #1188dd;
+}
+.services_content_more .services_list_more ul li a {
+  display: block;
+  color: #000;
+  font-size: 18px;
+  font-family: "TTNorms-Bold";
+}
+.services_content_more .services_content_caption {
+  background-color: #F6F6F6;
+  padding: 20px 20px 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.services_content_more .services_content_caption .paragraph .scc_title {
+  font-size: 18px;
+  font-family: "TTNorms-Bold";
+  line-height: 150%;
+  margin-bottom: 10px;
+  display: block;
+}
+.services_content_more .services_content_caption .paragraph .scc_caption {
+  font-size: 16px;
+  line-height: 150%;
+}
+.services_content_more .services_content_caption table tr {
+  background-color: #D9EBF5;
+}
+.services_content_more .services_content_caption table tr td {
+  padding: 10px 20px;
+}
+.services_content_more .services_content_caption table td:nth-child(1) {
+  font-size: 18px;
+  font-family: "TTNorms-Medium";
+}
+.services_content_more .services_content_caption table td:nth-child(2) {
+  background-color: #CAE3F1;
+}
+.services_content_more .services_products .right_list {
+  font-size: 18px;
+  font-family: "TTNorms-Bold";
+  padding-left: 10px;
+}
+.services_content_more .services_products ul li {
+  text-align: right;
+}
+.services_content_more .services_products ul li a {
+  color: #000;
+}
