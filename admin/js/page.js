@@ -6,5 +6,5 @@ document.getElementById('genpage').addEventListener('click', function(event) {
         document.getElementById('pagediv').innerHTML = data;
       });
 
-      loadAdminGen('ru','#geneditoropsinieru','#geneditorru');
+      loadAdminGen('ru','#genTextRu','#capTextRu');
   });
