@@ -318,3 +318,15 @@ body {
 .sample_view-footer_text {
     padding: 10px 0 0 0;
 }
+.w100{
+    width: 100% !important;
+}
+.gap20{
+    gap: 20px;
+}
+.align-top{
+    align-items: flex-start;
+}
+.fd-column{
+    flex-direction: column;
+}
