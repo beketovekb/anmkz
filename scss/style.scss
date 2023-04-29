@@ -7,7 +7,7 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
-    font-family: 'TTNorms-Regular';
+    font-family: $regular;
 }
 header {
     position: relative;
@@ -26,7 +26,7 @@ header {
         h1{
             font-size: 54px;
             color: #fff;
-            font-family: 'TTNorms-extrabold';
+            font-family: $bold;
             line-height: 68px;
         }
         span{
@@ -361,7 +361,7 @@ header {
 .text_caption{
     color: #434343;
     line-height: 180%;
-    font-size: 18px;
+    font-size: 16px;
     display: block;
     margin-bottom: 20px;
 }
@@ -457,13 +457,13 @@ header {
     }
     .age{
       height: 50px;
-      font-family: $medium;
-      font-size: 28px;
+      font-family: $semiBold;
+      font-size: 24px;
     }
     .age_desc{
       height: 100px;
       margin-top: 130px;
-      font-size: 18px;
+      font-size: 14px;
     }
   
     /* @keyframes svg {
@@ -1176,14 +1176,14 @@ footer{
             }
             .manager_name{
                 color: #000;
-                font-size: 24px;
+                font-size: 22px;
                 font-family: $bold;
                 line-height: 180%;
                 margin-top: 10px;
                 display: block;
             }
             .manager_post{
-                font-size: 18px;
+                font-size: 16px;
                 color: #434343;
                 margin-bottom: 20px;
                 line-height: 180%;
@@ -1194,6 +1194,7 @@ footer{
                 color: #878787;
                 line-height: 180%;
                 display: block;
+                text-decoration: underline;
             }
             .manager_phone{
                 font-size: 18px;
@@ -2368,7 +2369,7 @@ footer{
                 }
             }
         }
-        table{
+        .servce_table_01{
             
             tr{
                 background-color: #D9EBF5;
@@ -2383,6 +2384,24 @@ footer{
             }
             td:nth-child(2){
                 background-color: #CAE3F1;
+            }
+        }
+        .servce_table_02{
+            border-collapse: collapse; 
+            th{ 
+                font-weight: bold;
+                padding: 5px 10px;
+                background: #1188dd;
+                color: #fff;
+                border: 1px solid #dddddd;
+            }
+            tr{
+                border: 1px solid #f6f6f6;
+                td{
+                    border: 1px solid #dddddd;
+                    background-color: #fff;
+	                padding: 5px 10px;
+                }
             }
         }
     }
@@ -2405,6 +2424,10 @@ footer{
                 display: flex;
                 justify-content: flex-end;
                 padding: 5px 0;
+                margin-top: 10px;
+                &:nth-child(1){
+                    margin-top: 0px;
+                }
                 &::after{
                     content: '•';
                     font-size: 26px;
@@ -2412,6 +2435,7 @@ footer{
                     color: #1188dd;
                     position: relative;
                     top: -8px;
+                    height: 10px;
                 }
                 a{
                     color: #000;
@@ -2423,6 +2447,7 @@ footer{
             }
             .rhomb{
                 margin-right: 20px;
+                margin-top: 0px;
                 a{
                     font-family: $regular;
                 }

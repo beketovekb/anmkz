@@ -51,40 +51,40 @@ html:root {
 }
 
 @font-face {
-  font-family: TTNorms-Thin;
-  src: url(../source/TTNorms-Thin.ttf);
+  font-family: Montserrat-Thin;
+  src: url(../source/Montserrat-Thin.ttf);
 }
 @font-face {
-  font-family: TTNorms-ExtraLight;
-  src: url(../source/TTNorms-ExtraLight.ttf);
+  font-family: Montserrat-ExtraLight;
+  src: url(../source/Montserrat-ExtraLight.ttf);
 }
 @font-face {
-  font-family: TTNorms-Light;
-  src: url(../source/TTNorms-Light.ttf);
+  font-family: Montserrat-Light;
+  src: url(../source/Montserrat-Light.ttf);
 }
 @font-face {
-  font-family: TTNorms-Regular;
-  src: url(../source/TTNorms-Regular.ttf);
+  font-family: Montserrat-Regular;
+  src: url(../source/Montserrat-Regular.ttf);
 }
 @font-face {
-  font-family: TTNorms-Medium;
-  src: url(../source/TTNorms-Medium.ttf);
+  font-family: Montserrat-Medium;
+  src: url(../source/Montserrat-Medium.ttf);
 }
 @font-face {
-  font-family: TTNorms-Bold;
-  src: url(../source/TTNorms-Bold.ttf);
+  font-family: Montserrat-SemiBold;
+  src: url(../source/Montserrat-SemiBold.ttf);
 }
 @font-face {
-  font-family: TTNorms-ExtraBold;
-  src: url(../source/TTNorms-ExtraBold.ttf);
+  font-family: Montserrat-Bold;
+  src: url(../source/Montserrat-Bold.ttf);
 }
 @font-face {
-  font-family: TTNorms-Heavy;
-  src: url(../source/TTNorms-Heavy.ttf);
+  font-family: Montserrat-ExtraBold;
+  src: url(../source/Montserrat-ExtraBold.ttf);
 }
 @font-face {
-  font-family: TTNorms-Black;
-  src: url(../source/TTNorms-Black.ttf);
+  font-family: Montserrat-Black;
+  src: url(../source/Montserrat-Black.ttf);
 }
 .row {
   display: flex;
@@ -166,7 +166,7 @@ html:root {
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: "TTNorms-Regular";
+  font-family: "Montserrat-Regular";
 }
 
 header {
@@ -189,7 +189,7 @@ header {
 .content_general .general_block h1 {
   font-size: 54px;
   color: #fff;
-  font-family: "TTNorms-extrabold";
+  font-family: "Montserrat-Bold";
   line-height: 68px;
 }
 .content_general .general_block span {
@@ -197,7 +197,7 @@ header {
   font-size: 26px;
   display: block;
   max-width: 700px;
-  font-family: "TTNorms-Regular";
+  font-family: "Montserrat-Regular";
   line-height: 40px;
 }
 
@@ -217,7 +217,7 @@ header {
 }
 .header_nav ul a {
   font-size: 14px;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   text-transform: uppercase;
 }
 .header_nav ul a li {
@@ -279,11 +279,11 @@ header {
   gap: 10px;
   color: #fff;
   font-size: 14px;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
 }
 .lang a:hover {
   color: #118BDD;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
 }
 
 .location_info {
@@ -358,13 +358,13 @@ header {
 }
 .addition .addition-card .addition-content .addition-title {
   color: #fff;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 24px;
   margin-bottom: 5px;
 }
 .addition .addition-card .addition-content .addition-caption {
   color: #C9C9C9;
-  font-family: "TTNorms-Regular";
+  font-family: "Montserrat-Regular";
   font-size: 16px;
   line-height: 19px;
   display: block;
@@ -402,7 +402,7 @@ header {
   text-align: center;
   padding: 8px 15px;
   font-size: 12px;
-  font-family: "TTNorms-Medium";
+  font-family: "Montserrat-Medium";
   position: relative;
   right: 10px;
   opacity: 0;
@@ -416,7 +416,7 @@ header {
   border-left: 15px solid #118bdd;
 }
 .navigation .nav_list .nav_num {
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 16px;
   width: 20px;
   color: #7B7B7B;
@@ -456,17 +456,17 @@ header {
 }
 .page_title_component .page_number_title .page_number {
   color: #118BDD;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 20px;
 }
 .page_title_component .page_number_title .page_title {
-  color: "TTNorms-Black";
-  font-family: "TTNorms-Bold";
+  color: "Montserrat-Black";
+  font-family: "Montserrat-Bold";
   font-size: 40px;
 }
 .page_title_component .more a {
   color: #000;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 15px;
   text-transform: uppercase;
   transition: 0.15s all ease;
@@ -510,7 +510,7 @@ header {
 }
 .product .product_cards .product_title {
   display: block;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 22px;
   max-width: 250px;
   margin-top: 10px;
@@ -519,13 +519,13 @@ header {
 .text_caption {
   color: #434343;
   line-height: 180%;
-  font-size: 18px;
+  font-size: 16px;
   display: block;
   margin-bottom: 20px;
 }
 
 .center_title {
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 28px;
   text-align: center;
   display: block;
@@ -565,7 +565,7 @@ header {
   display: block;
   color: #32A1DF;
   font-size: 22px;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
 }
 .about_us .attachment .attachment_cards .attachment_card .attachment_caption {
   display: block;
@@ -619,13 +619,13 @@ header {
 }
 .chronology .age {
   height: 50px;
-  font-family: "TTNorms-Medium";
-  font-size: 28px;
+  font-family: "Montserrat-SemiBold";
+  font-size: 24px;
 }
 .chronology .age_desc {
   height: 100px;
   margin-top: 130px;
-  font-size: 18px;
+  font-size: 14px;
 }
 .chronology .swiper-pagination {
   top: 210px !important;
@@ -714,7 +714,7 @@ header {
 }
 .news .news_cards a .news_card .news_card-desc .news_title {
   color: #000000;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 22px;
   display: block;
   line-height: 150%;
@@ -730,7 +730,7 @@ header {
 }
 .news .news_cards a .news_card .news_card-desc .more_detail {
   display: block;
-  font-family: "TTNorms-Medium";
+  font-family: "Montserrat-Medium";
   font-size: 15px;
   margin-top: 10px;
   display: flex;
@@ -754,7 +754,7 @@ header {
   justify-content: center;
 }
 .news .news_cards a .news_card .news_card-date .news_date {
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 16px;
 }
 
@@ -967,21 +967,21 @@ header {
   margin-bottom: 20px;
 }
 .contacts .contact_info .info_title {
-  font-family: "TTNorms-Medium";
+  font-family: "Montserrat-Medium";
   font-size: 14px;
   color: #606269;
   display: block;
   margin-bottom: 5px;
 }
 .contacts .contact_info .info_desc01 {
-  font-family: "TTNorms-Medium";
+  font-family: "Montserrat-Medium";
   font-size: 24px;
   color: #000;
   display: block;
   line-height: 150%;
 }
 .contacts .contact_info .info_desc02 {
-  font-family: "TTNorms-Regular";
+  font-family: "Montserrat-Regular";
   font-size: 16px;
   color: #000;
   display: block;
@@ -1044,7 +1044,7 @@ header {
   padding: 20px;
 }
 .map_container .map .aty_card .aty_info .aty_title {
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 24px;
   line-height: 150%;
   display: block;
@@ -1052,7 +1052,7 @@ header {
 }
 .map_container .map .aty_card .aty_info .aty_location {
   display: flex;
-  font-family: "TTNorms-Medium";
+  font-family: "Montserrat-Medium";
   font-size: 14px;
   line-height: 150%;
   color: #000;
@@ -1067,27 +1067,27 @@ header {
 }
 .map_container .map .aty_card .aty_info .aty_social .aty_inst_card .aty_inst_title {
   display: block;
-  font-family: "TTNorms-Regular";
+  font-family: "Montserrat-Regular";
   font-size: 14px;
   color: #8B8B8B;
   margin-bottom: 5px;
 }
 .map_container .map .aty_card .aty_info .aty_social .aty_inst_card .aty_inst {
   display: block;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 20px;
   color: #000;
 }
 .map_container .map .aty_card .aty_info .aty_social .aty_card_info .aty_card_title {
   display: block;
-  font-family: "TTNorms-Regular";
+  font-family: "Montserrat-Regular";
   font-size: 14px;
   color: #8B8B8B;
   margin-bottom: 5px;
 }
 .map_container .map .aty_card .aty_info .aty_social .aty_card_info .aty_card_desc {
   display: block;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 20px;
   color: #000;
 }
@@ -1101,14 +1101,14 @@ footer .footerLogo {
 }
 footer .too {
   color: #fff;
-  font-family: "TTNorms-Medium";
+  font-family: "Montserrat-Medium";
   font-size: 12px;
   margin-top: 10px;
   display: block;
 }
 footer .footerCol_title {
   color: #606269;
-  font-family: "TTNorms-Medium";
+  font-family: "Montserrat-Medium";
   font-size: 14px;
   line-height: 150%;
   margin-bottom: 5px;
@@ -1116,7 +1116,7 @@ footer .footerCol_title {
 }
 footer .footer_main ul {
   color: #fff;
-  font-family: "TTNorms-Regular";
+  font-family: "Montserrat-Regular";
   font-size: 16px;
   line-height: 150%;
   display: flex;
@@ -1125,7 +1125,7 @@ footer .footer_main ul {
 }
 footer .recv ul {
   color: #fff;
-  font-family: "TTNorms-Regular";
+  font-family: "Montserrat-Regular";
   font-size: 16px;
   line-height: 150%;
   display: flex;
@@ -1135,7 +1135,7 @@ footer .f_info .footerCol_desc01 {
   display: block;
   margin-bottom: 20px;
   color: #fff;
-  font-family: "TTNorms-Medium";
+  font-family: "Montserrat-Medium";
   font-size: 24px;
   line-height: 150%;
 }
@@ -1143,7 +1143,7 @@ footer .f_info .footerCol_desc02 {
   display: block;
   margin-bottom: 16px;
   color: #fff;
-  font-family: "TTNorms-Regular";
+  font-family: "Montserrat-Regular";
   font-size: 16px;
   line-height: 150%;
 }
@@ -1213,7 +1213,7 @@ footer .subFooter a {
 }
 .bredcrumbs_grey .bc_link a {
   color: #BABABA;
-  font-family: "TTNorms-Regular";
+  font-family: "Montserrat-Regular";
   font-size: 14px;
 }
 .bredcrumbs_grey .bc_link a:nth-last-child(1) {
@@ -1240,7 +1240,7 @@ footer .subFooter a {
 .about-left_content h2 {
   color: #fff;
   font-size: 46px;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   text-transform: uppercase;
   margin-bottom: 10px;
   line-height: 150%;
@@ -1250,7 +1250,7 @@ footer .subFooter a {
 }
 .about-left_content .about_location span {
   color: #fff;
-  font-family: "TTNorms-Regular";
+  font-family: "Montserrat-Regular";
   font-size: 14px;
   margin-left: 10px;
 }
@@ -1270,12 +1270,12 @@ footer .subFooter a {
 }
 .about-left_content .about_additional .about_ad1 .about_desc h3 {
   font-size: 32px;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   line-height: 150%;
 }
 .about-left_content .about_additional .about_ad1 .about_desc span {
   font-size: 18px;
-  font-family: "TTNorms-Regular";
+  font-family: "Montserrat-Regular";
 }
 
 .about_content {
@@ -1287,7 +1287,7 @@ footer .subFooter a {
 }
 .about_content .about-right_content h2 {
   margin-bottom: 20px;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 28px;
 }
 
@@ -1295,7 +1295,7 @@ footer .subFooter a {
   background-color: #FAFAFA;
 }
 .managers h2 {
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 46px;
   line-height: 150%;
 }
@@ -1327,14 +1327,14 @@ footer .subFooter a {
 }
 .managers .managers_cards .manager .manager_name {
   color: #000;
-  font-size: 24px;
-  font-family: "TTNorms-Bold";
+  font-size: 22px;
+  font-family: "Montserrat-Bold";
   line-height: 180%;
   margin-top: 10px;
   display: block;
 }
 .managers .managers_cards .manager .manager_post {
-  font-size: 18px;
+  font-size: 16px;
   color: #434343;
   margin-bottom: 20px;
   line-height: 180%;
@@ -1345,6 +1345,7 @@ footer .subFooter a {
   color: #878787;
   line-height: 180%;
   display: block;
+  text-decoration: underline;
 }
 .managers .managers_cards .manager .manager_phone {
   font-size: 18px;
@@ -1367,7 +1368,7 @@ footer .subFooter a {
 }
 .news_content .page_title {
   font-size: 46px;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   line-height: 150%;
 }
 .news_content .page_news_cards {
@@ -1416,7 +1417,7 @@ footer .subFooter a {
 }
 .news_content .page_news_cards a .news_card .news_card-desc .news_title {
   color: #000000;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 22px;
   display: block;
   line-height: 150%;
@@ -1432,7 +1433,7 @@ footer .subFooter a {
 }
 .news_content .page_news_cards a .news_card .news_card-desc .more_detail {
   display: block;
-  font-family: "TTNorms-Medium";
+  font-family: "Montserrat-Medium";
   font-size: 15px;
   margin-top: 10px;
   display: flex;
@@ -1456,7 +1457,7 @@ footer .subFooter a {
   justify-content: center;
 }
 .news_content .page_news_cards a .news_card .news_card-date .news_date {
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 16px;
 }
 
@@ -1474,7 +1475,7 @@ footer .subFooter a {
   justify-content: center;
   margin-right: 5px;
   font-size: 18px;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
 }
 .pagination .prev_page path {
   stroke: #118BDD;
@@ -1573,7 +1574,7 @@ footer .subFooter a {
   padding-left: 20px;
 }
 .detail_nc .detail_news_content .left_block_dn .detail_news_title {
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 46px;
   line-height: 150%;
   margin-bottom: 20px;
@@ -1596,7 +1597,7 @@ footer .subFooter a {
 }
 .certificate_content .page_title {
   font-size: 46px;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   line-height: 150%;
 }
 .certificate_content .page_certificate_cards {
@@ -1612,7 +1613,7 @@ footer .subFooter a {
   display: block;
   text-align: center;
   margin-top: 10px;
-  font-family: "TTNorms-Medium";
+  font-family: "Montserrat-Medium";
   font-size: 18px;
 }
 .certificate_content .page_certificate_cards .gallery-img {
@@ -1627,12 +1628,12 @@ footer .subFooter a {
 }
 .page_contacts .page_title {
   font-size: 46px;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   line-height: 150%;
 }
 .page_contacts .city_company span {
   font-size: 26px;
-  font-family: "TTNorms-Medium";
+  font-family: "Montserrat-Medium";
   line-height: 150%;
 }
 .page_contacts .location_company, .page_contacts .number_company, .page_contacts .email_company {
@@ -1643,19 +1644,19 @@ footer .subFooter a {
 }
 .page_contacts .location_company span {
   font-size: 16px;
-  font-family: "TTNorms-Regular";
+  font-family: "Montserrat-Regular";
   line-height: 150%;
 }
 .page_contacts .number_company .info_title, .page_contacts .email_company .info_title {
   color: #A4A4A4;
   font-size: 14px;
-  font-family: "TTNorms-Medium";
+  font-family: "Montserrat-Medium";
   line-height: 150%;
   display: block;
 }
 .page_contacts .number_company .info_caption, .page_contacts .email_company .info_caption {
   font-size: 24px;
-  font-family: "TTNorms-Medium";
+  font-family: "Montserrat-Medium";
   line-height: 150%;
 }
 .page_contacts .map {
@@ -1678,7 +1679,7 @@ footer .subFooter a {
   color: #fff;
   font-size: 28px;
   line-height: 150%;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
 }
 .page_contacts .contacts_form .form .form_shell {
   display: flex;
@@ -1715,7 +1716,7 @@ footer .subFooter a {
   top: 24px;
   color: #EB2020;
   font-size: 12px;
-  font-family: "TTNorms-Light";
+  font-family: "Montserrat-Light";
 }
 .page_contacts .contacts_form .form .form_shell .left_form .input_shell .error_notification hr {
   height: 1px;
@@ -1763,7 +1764,7 @@ footer .subFooter a {
   padding: 20px 54px;
   background-color: #118BDD;
   font-size: 14px;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   color: #fff;
   margin-top: 10px;
   float: right;
@@ -1778,7 +1779,7 @@ footer .subFooter a {
 }
 .vacancy_content .page_title {
   font-size: 46px;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   line-height: 150%;
 }
 .vacancy_content .vacancy_table {
@@ -1788,7 +1789,7 @@ footer .subFooter a {
 }
 .vacancy_content .vacancy_table > span {
   display: block;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 18px;
   line-height: 150%;
   margin-bottom: 20px;
@@ -1796,7 +1797,7 @@ footer .subFooter a {
 .vacancy_content .vacancy_table .accordion .list_work span {
   display: block;
   font-size: 16px;
-  font-family: "TTNorms-Medium";
+  font-family: "Montserrat-Medium";
   line-height: 150%;
   margin-bottom: 10px;
 }
@@ -1836,7 +1837,7 @@ footer .subFooter a {
 .vacancy_content .vacancy_table .accordion button .accordion-title {
   padding: 1em 1.5em 1em 0;
   color: #000;
-  font-family: "TTNorms-Medium";
+  font-family: "Montserrat-Medium";
   font-size: 18px;
 }
 .vacancy_content .vacancy_table .accordion button .icon {
@@ -1926,7 +1927,7 @@ footer .subFooter a {
 }
 .vacancy_content .form_vacancy .col-4 span {
   font-size: 28px;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   margin-bottom: 20px;
   line-height: 150%;
 }
@@ -1941,7 +1942,7 @@ footer .subFooter a {
   color: #fff;
   margin-top: 10px;
   font-size: 16px;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   cursor: pointer;
   transition: 0.15s all ease;
 }
@@ -1981,7 +1982,7 @@ footer .subFooter a {
   top: 24px;
   color: #EB2020;
   font-size: 12px;
-  font-family: "TTNorms-Light";
+  font-family: "Montserrat-Light";
 }
 .vacancy_content .form_vacancy .col-4 form .form_shell .left_form .input_shell .error_notification hr {
   height: 1px;
@@ -2187,7 +2188,7 @@ footer .subFooter a {
 }
 .services_content .page_title {
   font-size: 46px;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   line-height: 150%;
 }
 .services_content .service_list {
@@ -2218,7 +2219,7 @@ footer .subFooter a {
   display: block;
   color: #000;
   font-size: 18px;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
 }
 .services_content .services_table {
   margin-top: 20px;
@@ -2230,7 +2231,7 @@ footer .subFooter a {
 }
 .services_content .services_table .production_type > span {
   display: block;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   font-size: 18px;
   line-height: 150%;
   margin-bottom: 20px;
@@ -2262,7 +2263,7 @@ footer .subFooter a {
 .services_content .services_table .accordion button .accordion-title {
   padding: 1em 1.5em 1em 0;
   color: #000;
-  font-family: "TTNorms-Medium";
+  font-family: "Montserrat-Medium";
   font-size: 18px;
 }
 .services_content .services_table .accordion button .icon {
@@ -2328,14 +2329,14 @@ footer .subFooter a {
 }
 .services_content .services_table .accordion .accordion-content .services_card .services_caption .services_card_title {
   font-size: 16px;
-  font-family: "TTNorms-Medium";
+  font-family: "Montserrat-Medium";
   margin-bottom: 10px;
   display: block;
   line-height: 150%;
 }
 .services_content .services_table .accordion .accordion-content .services_card .services_caption .services_card_caption {
   font-size: 16px;
-  font-family: "TTNorms-Regular";
+  font-family: "Montserrat-Regular";
   line-height: 150%;
 }
 .services_content .services_table .accordion .accordion-content .services_card .services_caption .serv_detailed_btn {
@@ -2343,7 +2344,7 @@ footer .subFooter a {
   color: #fff;
   padding: 10px 12px;
   font-size: 16px;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   display: block;
   width: fit-content;
   margin-top: 15px;
@@ -2391,7 +2392,7 @@ footer .subFooter a {
 }
 .services_content_more .page_title {
   font-size: 46px;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   line-height: 150%;
 }
 .services_content_more .services_list_more {
@@ -2425,7 +2426,7 @@ footer .subFooter a {
   display: block;
   color: #000;
   font-size: 18px;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
 }
 .services_content_more .services_content_caption {
   background-color: #F6F6F6;
@@ -2436,7 +2437,7 @@ footer .subFooter a {
 }
 .services_content_more .services_content_caption .paragraph .scc_title {
   font-size: 18px;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   line-height: 150%;
   margin-bottom: 10px;
   display: block;
@@ -2449,18 +2450,36 @@ footer .subFooter a {
   list-style: disc;
   margin-left: 20px;
 }
-.services_content_more .services_content_caption table tr {
+.services_content_more .services_content_caption .servce_table_01 tr {
   background-color: #D9EBF5;
 }
-.services_content_more .services_content_caption table tr td {
+.services_content_more .services_content_caption .servce_table_01 tr td {
   padding: 10px 20px;
 }
-.services_content_more .services_content_caption table td:nth-child(1) {
+.services_content_more .services_content_caption .servce_table_01 td:nth-child(1) {
   font-size: 18px;
-  font-family: "TTNorms-Medium";
+  font-family: "Montserrat-Medium";
 }
-.services_content_more .services_content_caption table td:nth-child(2) {
+.services_content_more .services_content_caption .servce_table_01 td:nth-child(2) {
   background-color: #CAE3F1;
+}
+.services_content_more .services_content_caption .servce_table_02 {
+  border-collapse: collapse;
+}
+.services_content_more .services_content_caption .servce_table_02 th {
+  font-weight: bold;
+  padding: 5px 10px;
+  background: #1188dd;
+  color: #fff;
+  border: 1px solid #dddddd;
+}
+.services_content_more .services_content_caption .servce_table_02 tr {
+  border: 1px solid #f6f6f6;
+}
+.services_content_more .services_content_caption .servce_table_02 tr td {
+  border: 1px solid #dddddd;
+  background-color: #fff;
+  padding: 5px 10px;
 }
 .services_content_more .services_products {
   padding-bottom: 50px;
@@ -2470,7 +2489,7 @@ footer .subFooter a {
 }
 .services_content_more .services_products .right_list {
   font-size: 18px;
-  font-family: "TTNorms-Bold";
+  font-family: "Montserrat-Bold";
   padding-left: 10px;
   text-align: right;
   margin-bottom: 10px;
@@ -2480,6 +2499,10 @@ footer .subFooter a {
   display: flex;
   justify-content: flex-end;
   padding: 5px 0;
+  margin-top: 10px;
+}
+.services_content_more .services_products ul li:nth-child(1) {
+  margin-top: 0px;
 }
 .services_content_more .services_products ul li::after {
   content: "•";
@@ -2488,19 +2511,21 @@ footer .subFooter a {
   color: #1188dd;
   position: relative;
   top: -8px;
+  height: 10px;
 }
 .services_content_more .services_products ul li a {
   color: #000;
-  font-family: "TTNorms-Medium";
+  font-family: "Montserrat-Medium";
 }
 .services_content_more .services_products ul li a:hover {
   color: #1188dd;
 }
 .services_content_more .services_products ul .rhomb {
   margin-right: 20px;
+  margin-top: 0px;
 }
 .services_content_more .services_products ul .rhomb a {
-  font-family: "TTNorms-Regular";
+  font-family: "Montserrat-Regular";
 }
 .services_content_more .services_products ul .rhomb::after {
   content: "◆";
