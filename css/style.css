@@ -1,3 +1,4 @@
+@charset "UTF-8";
 a img, :link img, :visited img {
   border: 0;
 }
@@ -2444,6 +2445,10 @@ footer .subFooter a {
   font-size: 16px;
   line-height: 150%;
 }
+.services_content_more .services_content_caption .paragraph .scc_caption ul {
+  list-style: disc;
+  margin-left: 20px;
+}
 .services_content_more .services_content_caption table tr {
   background-color: #D9EBF5;
 }
@@ -2457,14 +2462,51 @@ footer .subFooter a {
 .services_content_more .services_content_caption table td:nth-child(2) {
   background-color: #CAE3F1;
 }
+.services_content_more .services_products {
+  padding-bottom: 50px;
+  padding-left: 5px;
+  display: flex;
+  flex-direction: column;
+}
 .services_content_more .services_products .right_list {
   font-size: 18px;
   font-family: "TTNorms-Bold";
   padding-left: 10px;
+  text-align: right;
+  margin-bottom: 10px;
 }
 .services_content_more .services_products ul li {
   text-align: right;
+  display: flex;
+  justify-content: flex-end;
+  padding: 5px 0;
+}
+.services_content_more .services_products ul li::after {
+  content: "•";
+  font-size: 26px;
+  margin-left: 10px;
+  color: #1188dd;
+  position: relative;
+  top: -8px;
 }
 .services_content_more .services_products ul li a {
   color: #000;
+  font-family: "TTNorms-Medium";
+}
+.services_content_more .services_products ul li a:hover {
+  color: #1188dd;
+}
+.services_content_more .services_products ul .rhomb {
+  margin-right: 20px;
+}
+.services_content_more .services_products ul .rhomb a {
+  font-family: "TTNorms-Regular";
+}
+.services_content_more .services_products ul .rhomb::after {
+  content: "◆";
+  font-size: 10px;
+  margin-left: 10px;
+  color: #1188dd;
+  position: relative;
+  top: 3px;
 }
