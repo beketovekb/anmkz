@@ -1059,6 +1059,7 @@ header {
 }
 .map_container .map .aty_card .aty_info .aty_location {
   display: flex;
+  align-items: center;
   font-family: "Montserrat-Medium";
   font-size: 14px;
   line-height: 150%;
@@ -2839,7 +2840,7 @@ footer .subFooter a {
     transform: translateX(-400px);
   }
   .product .product_cards {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
   .header_nav {
     height: auto;
@@ -2872,5 +2873,104 @@ footer .subFooter a {
   .contacts .row .col-2 {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
+  }
+  .page_title_component .page_number_title .page_title {
+    font-size: 26px;
+  }
+  .page_title_component {
+    flex-direction: column;
+  }
+  .partners .partners_button .swiper-button-next, .partners .partners_button .swiper-button-prev {
+    height: 34px;
+    width: 59px;
+    background-color: #118BDD;
+    color: #fff;
+    transition: 0.15s all ease;
+    top: 18px;
+  }
+  .partners .partners_button .swiper-button-next, .partners .partners_button .swiper-button-prev {
+    height: 34px;
+    width: 59px;
+    background-color: #118BDD;
+    color: #fff;
+    transition: 0.15s all ease;
+    top: 0px;
+  }
+  .page_title_component .page_number_title {
+    margin-bottom: 40px;
+  }
+  footer .row {
+    flex-direction: column;
+  }
+  footer .row div {
+    max-width: 100%;
+    width: 100%;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  .map_container .map .aty_card {
+    filter: unset;
+  }
+  .map_container .map .aty_card .aty_photo {
+    height: 217px;
+    background-size: cover;
+    background-position: center;
+  }
+  .map {
+    flex-direction: column;
+  }
+  .map svg {
+    display: none;
+  }
+  .map .aty_card {
+    position: relative !important;
+    width: 100% !important;
+    height: auto;
+  }
+  .map .aty_social {
+    flex-direction: column;
+  }
+  .map .aty_social .aty_card_info {
+    margin-bottom: 20px;
+  }
+  .about_us .about_us-content {
+    flex-direction: column;
+  }
+  .about_us div {
+    max-width: 100%;
+    width: 100%;
+  }
+  .about_us .text_caption, .about_us .more {
+    text-align: center;
+  }
+  .page_title_component .page_number_title {
+    justify-content: center;
+  }
+  .news .news_cards a .news_card .news_card-date {
+    width: 35%;
+    height: 50px;
+  }
+  .news .news_cards a .news_card .news_card-desc .news_title {
+    color: #000000;
+    font-family: "Montserrat-Bold";
+    font-size: 16px;
+  }
+  .news .news_cards a .news_card .news_card-desc .news_caption {
+    color: #434343;
+    font-size: 12px;
+  }
+  .certificate .certificate_block {
+    padding: 50px 20px;
+  }
+  .content_general .general_block span {
+    font-size: 16px;
+    line-height: 140%;
+  }
+  .content_general .general_block h1 {
+    font-size: 28px;
+    line-height: 120%;
   }
 }
