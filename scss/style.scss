@@ -50,7 +50,7 @@ header {
         
         padding-top: 10px;
     }
-    ul{
+    &>ul{
         display: flex;
         gap: 30px;
         a{
@@ -98,6 +98,10 @@ header {
                 }
             }
         }
+    }
+    .bar{
+        display: none;
+        
     }
 }
 .container {
@@ -233,8 +237,9 @@ header {
         align-items: center;
         gap: 10px;
         margin-right: 75px;
+        height: 20px;
         &:hover .nav_name{
-            opacity: 1;
+            display: block;
         }
         &:hover .nav_num{
             color: #118BDD;
@@ -243,18 +248,18 @@ header {
         .nav_name {
             background-color: #118BDD;
             color: #fff;
-            width: 100px;
+            width: 120px;
             text-align: center;
             padding: 8px 15px;
             font-size: 12px;
             font-family: $medium;
             position: relative;
             right: 10px;
-            opacity: 0;
+            display: none;
             &::before{
                 content: "";
                 position: absolute;
-                left: 100px;
+                left: 120px;
                 top: 0px;
                 border: 15px solid transparent;
                 border-left: 15px solid #118bdd;
@@ -354,7 +359,8 @@ header {
             font-family: $bold;
             font-size: 22px;
             max-width: 250px;
-            margin-top: 10px;
+            color: #000;
+    margin: 10px auto;
         }
     }
 }
@@ -535,6 +541,7 @@ header {
                 background-size: cover;
                 display: flex;
                 align-items: flex-end;
+                background-position: center;
                 &:hover .news_title{
                     color: #118BDD !important;
                     transition: 0.25s all ease;
@@ -548,11 +555,15 @@ header {
                     transition: 0.25s all ease;
                 }
                 .news_card-desc{
-                    width: 500px;
+                    width: 75%;
                     height: 248px;
                     background-color: #FAFAFA;
                     color: #000;
                     padding: 20px 30px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
+                    
                     .news_title{
                         color: #000000;
                         font-family: $bold;
@@ -588,7 +599,7 @@ header {
                     }
                 }
                 .news_card-date{
-                    width: calc(100% - 500px);
+                    width: 25%;
                     height: 80px;
                     background-color: #118BDD;
                     display: flex;
@@ -622,6 +633,7 @@ header {
             display: flex;
             justify-content: space-between;
             width: 100%;
+            gap: 20px;
             .cert_card{
                 width: 330px;
                 &:nth-child(1) .cert_photo{
@@ -634,9 +646,6 @@ header {
                     background-image: url(../img/certificates/003.jpeg);
                 }
                 .cert_photo {
-                    background-size: contain;
-                    background-position: center;
-                    height: 442px;
                     border: 1px solid #118BDD;
                     margin-bottom: 20px;
                 }
@@ -1241,6 +1250,7 @@ footer{
                 width: 100%;
                 background-size: cover;
                 display: flex;
+                background-position: center;
                 align-items: flex-end;
                 &:hover .news_title{
                     color: #118BDD !important;
@@ -1256,10 +1266,13 @@ footer{
                 }
                 .news_card-desc{
                     width: 500px;
-                    height: 248px;
+                    height: 270px;
                     background-color: #fff;
                     color: #000;
                     padding: 20px 30px;
+                    display: flex;
+                    flex-direction: column;
+                    justify-content: space-between;
                     .news_title{
                         color: #000000;
                         font-family: $bold;
@@ -2571,3 +2584,6 @@ footer{
         }
     }
 }
+
+
+@import './media';

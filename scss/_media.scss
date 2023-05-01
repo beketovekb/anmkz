@@ -1,0 +1,237 @@
+
+@media  (max-width:1800px) {
+    .container{
+        max-width: 1080px;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+    }
+    .location_info{
+        display: none;
+    }
+    .product_svg svg {
+        width: 100%;
+    }
+    .content_general .general_block h1 {
+        font-size: 40px;
+        line-height: 140%;
+    }
+    .content_general .general_block span {
+        font-size: 22px;
+        line-height: 140%;
+    }
+    .news_card{
+        align-items: flex-start !important;
+        flex-direction: column-reverse;
+    }
+    .news .news_cards a .news_card .news_card-desc {
+        width: 100%;
+    }
+    .news .news_cards a .news_card .news_card-desc {
+        height: 275px;
+    }
+    .partners .swiper-slide{
+        padding: 5px;
+        .slide_partner{
+            height: 65px;
+        }
+    }
+    .contacts .row {
+        flex-direction: column;
+        .col-2{
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+        }
+        .col-2, .col-10{
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+    .map_container .map{
+        width: 100%;
+    }
+    .map_container .map .logo_min {
+        left: 150px;
+        top: 30px;
+    }
+    footer .f_info .footerCol_desc02, footer .f_info .footerCol_desc01, footer .footerCol_title, footer .recv ul{
+        font-size: 14px;
+    }
+}
+
+@media  (max-width:1300px) {
+    .container{
+        max-width: 920px;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+    }
+    .partners{
+        margin: 0 60px;
+    }
+    .header_nav ul a {
+        font-size: 12px;
+    }
+    .lang {
+        font-size: 12px;
+    }
+    .header_nav {
+        &>ul, .lang{
+            display: none;
+        }
+        .bar{
+            display: block;
+            position: relative;
+            &>svg{
+                width: 50px;
+                height: 20px;
+                transition: 0.15s all ease;
+                cursor: pointer;
+                path{
+                    fill:#fff;
+                }
+                &:hover {
+                    path{
+                        fill:#1188dd !important;
+                    }
+                }
+            }
+            .sub_bar{
+                min-width: 200px;
+                height: auto;
+                background-color: #fff;
+                position: absolute;
+                right: 0;
+                text-align: right;
+                
+                ul{
+                    li{
+                        padding: 10px 20px;
+                        position: relative;
+                        a{
+                            color: #000;
+                            font-size: 14px;
+                            font-weight: 900;
+                            &:hover{
+                                color: #1188dd;
+                            }
+                        }
+                        &:hover{
+                            background-color: #F9F9F9;
+                        }
+                        .submenu{
+                            opacity: 0;
+                            height: 0;
+                            display: none;
+                            transition: 0.5s all ease;
+                            ul{
+                                background-color: #f1f1f1 !important;
+                                li{
+                                    &:hover {
+                                        background-color: #e1e1e1 !important;
+                                    } 
+                                }
+                            }
+                        }
+                    }
+                    .sub_hover {
+                        padding: 0;
+                        &>a{
+                            display: block;
+                            padding: 10px 20px;
+                        }
+                    }
+                    .sub_hover:hover .submenu{
+                       height: auto;
+                       opacity: 1;
+                       display: block;
+                    }
+                }
+            }
+        }
+    }
+    .product .product_cards .product_title, .contacts .contact_info .info_desc01{
+        font-size: 18px;
+    }
+    footer .subFooter a, .about_us .attachment .attachment_cards .attachment_card .attachment_caption, .text_caption{
+        font-size: 14px;
+    }
+    .navigation {
+        display: none;
+    }
+    .chronology {
+        margin: 0 60px;
+    }
+    .none{
+        display: none;
+    }
+}
+
+@media (max-width:1000px){
+    .container{
+        max-width: 720px;
+        width: 100%;
+        height: 100%;
+        margin: 0 auto;
+        padding: 20px;
+    }
+    .content_general .general_block{
+        justify-content: unset;
+        position: relative;
+        top: 100px;
+    }
+    .content_general .general_block h1 {
+        font-size: 30px;
+    }
+    .addition .addition-card_shell{
+        flex-direction: column;
+        align-items: unset;
+    }
+    .addition .addition-card:nth-child(1){
+        transform: translateX(-400px);
+    }
+    .addition .addition-card:nth-child(2){
+        transform: translateX(-400px);
+    }
+    .addition .addition-card:nth-child(3){
+        transform: translateX(-400px);
+    }
+    .addition .addition-card:nth-child(4){
+        transform: translateX(-400px);
+    }
+    .product .product_cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .header_nav {
+        height: auto;
+        margin: 0;
+    }
+    .about_us .attachment .attachment_cards{
+        flex-direction: column;
+        margin-top: 0;
+    }
+    .about_us .attachment .attachment_cards .attachment_card{
+        max-width: 100%;
+        margin: 0;
+    }
+    .chronology .age{
+        font-size: 16px;
+    }
+    .news .news_cards{
+        flex-direction: column;
+    }
+    .news .news_cards a .news_card .news_card-desc {
+        height: 220px;
+    }
+    .certificate .certificate_block .certificates {
+        flex-direction: column;
+    }
+    .certificate .certificate_block .certificates .cert_card {
+        width: 70%;
+        margin: 0 auto;
+    }
+    .contacts .row .col-2 {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+    }
+}

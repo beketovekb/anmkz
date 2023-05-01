@@ -1,12 +1,14 @@
 var $header = $('.double_header, .double_header .header_nav ul');
 var $submenu = $('.double_header .point_menu .submenu_list');
-var $headerlink = $('.double_header .header_nav a, .double_header .location_place');
+var $headerlink = $('.double_header .header_nav>ul>li>a, .double_header .location_place, .lang a');
 var $logo = $('.double_header .logo svg .logo_anm, .double_header .logo svg .caption_logo_anm')
+var $bar = $('.header_nav .bar svg path')
 $(document).scroll(function () {
   $header.css({ "background-color": $(this).scrollTop() < 10 ? "transparent" : "#fff" });
   $submenu.css({ "background-color": $(this).scrollTop() < 10 ? "#0C0E16" : "#fff" });
   $headerlink.css({ "color": $(this).scrollTop() < 10 ? "#fff" : "#000" });
   $logo.css({ "fill": $(this).scrollTop() < 10 ? "#fff" : "#000" });
+  $bar.css({ "fill": $(this).scrollTop() < 10 ? "#fff" : "#000" });
 
 });
 
@@ -237,4 +239,11 @@ $('#chooseFile').bind('change', function () {
     $(".file-upload").addClass('active');
     $("#noFile").text(filename.replace("C:\\fakepath\\", "")); 
   }
+});
+
+$(".bar").click(function () {
+  $('.sub_bar').toggleClass("none");
+});
+window.addEventListener('scroll', function() {
+    $('.sub_bar').addClass("none");
 });
