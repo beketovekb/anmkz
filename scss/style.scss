@@ -883,7 +883,7 @@ header {
             filter: grayscale(0.5) blur(2px);
             position: absolute;
             width: 410px;
-            height: 400px;
+            height: auto;
             background-color: #fff;
             transition: 0.15s all ease;
             box-shadow: none;
@@ -2565,7 +2565,6 @@ footer{
             }
         }
     }
-    
     .servce_table_02{
         border-collapse: collapse; 
         th{ 

@@ -1036,7 +1036,7 @@ header {
   filter: grayscale(0.5) blur(2px);
   position: absolute;
   width: 410px;
-  height: 400px;
+  height: auto;
   background-color: #fff;
   transition: 0.15s all ease;
   box-shadow: none;
@@ -2818,7 +2818,7 @@ footer .subFooter a {
   .content_general .general_block {
     justify-content: unset;
     position: relative;
-    top: 100px;
+    top: 140px;
   }
   .content_general .general_block h1 {
     font-size: 30px;
@@ -2972,5 +2972,40 @@ footer .subFooter a {
   .content_general .general_block h1 {
     font-size: 28px;
     line-height: 120%;
+  }
+}
+@media (max-width: 375px) and (max-height: 670px) {
+  .content_general .general_block h1 {
+    font-size: 24px;
+    line-height: 120%;
+  }
+  .product .product_cards .produbct_card:hover {
+    background-color: #2E99E0;
+    transform: scale(1);
+  }
+  .news .news_cards a .news_card .news_card-desc {
+    padding: 20px 15px;
+  }
+  .map_container .map .aty_card {
+    height: auto;
+  }
+  .content_general .general_block h1 {
+    font-size: 22px;
+    line-height: 120%;
+  }
+  .content_general .general_block span {
+    font-size: 14px;
+    line-height: 140%;
+  }
+  .addition {
+    display: none;
+  }
+  .content_general .general_block {
+    justify-content: center;
+    position: relative;
+    top: 0px;
+  }
+  .product .product_cards .product_title, .contacts .contact_info .info_desc01 {
+    font-size: 16px;
   }
 }
