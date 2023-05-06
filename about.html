@@ -13,8 +13,8 @@
     <section class="header single_header-light" id="num01">
         <div class="header_content">
             <div class="container">
-                <nav class="header_nav">
-                    <div class="logo">
+                <n15a20v class="header_nav">
+                    <a href="index.html" class="logo">
                         <svg version="1.0" id="Слой_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="0 0 9430.83 3508.49" style="enable-background:new 0 0 9430.83 3508.49;" xml:space="preserve">
                             <style type="text/css">
@@ -77,8 +77,7 @@
                                 <path class="caption_logo_anm" d="M9334.77,3169.28v333.5h-77.18v-136.73h-151.5v136.73h-77.19v-333.5h77.19v131.49h151.5v-131.49H9334.77z"/>
                             </g>
                         </svg>
-
-                    </div>
+                    </a>
                     <ul>
                         <li><a href="index.html">Главная</a></li>
                         <li class="point_menu"><a href="about.html">О компании</a></li>
@@ -99,8 +98,8 @@
                                 <div class="submenu_list">
                                     <ul>
                                         <li><a href="services.html">Производство и продукция</a></li>
-                                        <li><a href="">Услуги и сервис</a> </li>
-                                        <li><a href="">Инспекция и контроль</a></li>
+                                        <li><a href="servs.html">Услуги и сервис</a> </li>
+                                        <li><a href="lab.html">Лаборатория</a></li>
                                     </ul>
                                 </div>
                             </div>
@@ -108,6 +107,30 @@
                         <li><a href="vacancy.html">Вакансии</a></li>
                         <li><a href="contacts.html">Контакты</a></li>
                     </ul>
+                    <div class="bar">
+                        <svg id="Capa_1" enable-background="new 0 0 464.205 464.205" height="512" viewBox="0 0 464.205 464.205" width="512" xmlns="http://www.w3.org/2000/svg"><g><g id="grip-solid-horizontal_1_"><path d="m435.192 406.18h-406.179c-16.024 0-29.013-12.99-29.013-29.013s12.989-29.013 29.013-29.013h406.18c16.023 0 29.013 12.99 29.013 29.013-.001 16.023-12.99 29.013-29.014 29.013z"/><path d="m435.192 261.115h-406.179c-16.024 0-29.013-12.989-29.013-29.012s12.989-29.013 29.013-29.013h406.18c16.023 0 29.013 12.989 29.013 29.013s-12.99 29.012-29.014 29.012z"/><path d="m435.192 116.051h-406.179c-16.024 0-29.013-12.989-29.013-29.013s12.989-29.013 29.013-29.013h406.18c16.023 0 29.013 12.989 29.013 29.013s-12.99 29.013-29.014 29.013z"/></g></g></svg>
+                        <div class="sub_bar none">
+                            <ul>
+                                <li><a href="index.html">Главная</a></li>
+                                <li class="point_menu"><a href="about.html">О компании</a></li>
+                                <li><a href="news.html">Новости</a></li>
+                                <li class="point_menu sub_hover">
+                                    <a href="services.html">Продукция и услуги</a>
+                                    <div class="submenu">
+                                        <div class="submenu_list">
+                                            <ul>
+                                                <li><a href="services.html">Производство и продукция</a></li>
+                                                <li><a href="servs.html">Услуги и сервис</a> </li>
+                                                <li><a href="lab.html">Лаборатория</a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li><a href="vacancy.html">Вакансии</a></li>
+                                <li><a href="contacts.html">Контакты</a></li>
+                            </ul>
+                        </div>
+                    </div>
                     <div class="lang">
                         <div class="kz"><a href="">KZ</a></div>
                         <div class="ru"><a href="">RU</a></div>
@@ -254,19 +277,19 @@
     <footer>
         <div class="container">
             <div class="row">
-                <div class="col-4">
+                <a href="index.html" class="col-4">
                     <img class="footerLogo" src="img/logo_white.png" alt="">
                     <span class="too">ТОО «АТЫРАУНЕФТЕМАШ»</span>
-                </div>
+                </a>
                 <div class="col-3 footer_main">
                     <span class="footerCol_title">Разделы сайта</span>
                     <ul>
                         <li><a href="index.html">Главная</a></li>
                         <li><a href="about.html">О компании</a></li>
                         <li><a href="news.html">Новости</a></li>
-                        <li><a href="">Продукция и услуги</a></li>
-                        <li><a href="">Карьера</a></li>
-                        <li><a href="">Контакты</a></li>
+                        <li><a href="services.html">Продукция и услуги</a></li>
+                        <li><a href="vacancy.html   ">Вакансии</a></li>
+                        <li><a href="contacts.html">Контакты</a></li>
                     </ul>
                 </div>
                 <div class="col-3 recv">
@@ -331,6 +354,17 @@
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev"
         },
+        breakpoints: {
+            300: {
+                slidesPerView: 2,
+            },
+            768: {
+                slidesPerView: 5,
+            },
+            1024: {
+                slidesPerView: 8.5,
+            },
+        }
         //   on: {
         //     autoplayTimeLeft(s, time, progress) {
         //       progressCircle.style.setProperty("--progress", 1 - progress);
