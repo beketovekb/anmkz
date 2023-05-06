@@ -155,7 +155,7 @@ function loadAdminGenProductName(lng, dv, pr) {
 	});
 }
 function loadAdminGenProductName(lng, dv, pr, ful) {
-	for (let i = 1; i <= 6; i++) {
+	for (let i = 1; i <= 8; i++) {
 		database.ref(lng + '/page/genproduct/' + i + '/nazvanie/').on('value', (snapshot) => {
 			const value = snapshot.val().replace(/<br>/g, "\n");
 			// console.log(value);
