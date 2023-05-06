@@ -6,6 +6,7 @@ const database = firebase.database();
 //   });
 
 function loadLng() {
+  myValue='ru';
   if (localStorage.getItem("glblng") != null) { myValue = localStorage.getItem("glblng"); }
   //alert(myValue);
   gentt();
