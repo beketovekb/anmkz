@@ -2743,6 +2743,12 @@ footer .subFooter a {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
   }
+  .news_card .news_card-desc {
+    width: 100% !important;
+  }
+  .news_card .news_card-date {
+    width: 40% !important;
+  }
 }
 @media (max-width: 1300px) {
   .container {
