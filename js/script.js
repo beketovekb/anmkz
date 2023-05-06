@@ -1,8 +1,8 @@
 var $header = $('.double_header, .double_header .header_nav ul');
 var $submenu = $('.double_header .point_menu .submenu_list');
-var $headerlink = $('.double_header .header_nav>ul>li>a, .double_header .location_place, .lang a');
+var $headerlink = $('.double_header .submenu_list>ul>li>a, .double_header .header_nav>ul>li>a, .double_header .location_place, .double_header .lang a');
 var $logo = $('.double_header .logo svg .logo_anm, .double_header .logo svg .caption_logo_anm')
-var $bar = $('.header_nav .bar svg path')
+var $bar = $('.double_header .header_nav .bar svg path')
 $(document).scroll(function () {
   $header.css({ "background-color": $(this).scrollTop() < 10 ? "transparent" : "#fff" });
   $submenu.css({ "background-color": $(this).scrollTop() < 10 ? "#0C0E16" : "#fff" });

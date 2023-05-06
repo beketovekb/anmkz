@@ -40,6 +40,10 @@ header {
     }
 
 }
+
+.adapt_more{
+    display: none;
+}
 .header_nav{
     height: auto;
     margin: 30px 0;
@@ -57,6 +61,7 @@ header {
             font-size: 14px;
             font-family: $bold;
             text-transform: uppercase;
+            // color: #000;
             // transition: 0.5s all ease;
             li{
                 color: #fff;
@@ -339,28 +344,42 @@ header {
             display: flex;
             flex-direction: column;
             align-items: center;
+            justify-content: center;
             text-transform: uppercase;
             transition: 0.25s all ease;
             padding: 10px;
+            height: 280px;
+            svg{
+                height: 172px;
+                width: 100%;
+            }
             &:hover{
                 background-color: #2E99E0;
                 transform: scale(1.1);
             }
-            &:hover svg path{
+            &:hover svg path, &:hover polyline, &:hover line, &:hover circle, &:hover polygon,  &:hover rect{
                 stroke: #fff;
                 fill: transparent;
             }
             &:hover span{
                 color: #fff;
             }
+            &:nth-child(7){
+
+                &:hover svg path, &:hover polyline, &:hover line, &:hover circle, &:hover polygon{
+                stroke: #fff;
+                fill: transparent;
+                stroke-width: 2px;
+            } 
+            }
         }
         .product_title{
             display: block;
             font-family: $bold;
-            font-size: 22px;
+            font-size: 18px;
             max-width: 250px;
             color: #000;
-    margin: 10px auto;
+            margin: 10px auto;
         }
     }
 }
@@ -483,7 +502,7 @@ header {
     }
     .car{
       width: 100%;
-      height: 100px;
+      width: 151px;
       display: inline-block;
       transition: 2s all ease-out;
     }
@@ -1110,6 +1129,7 @@ footer{
     }
     .about_location{
         display: flex;
+        align-items: center;
         span{
             color: #fff;
             font-family: $regular;
@@ -1168,6 +1188,9 @@ footer{
         .manager{
             padding: 30px 65px;
             background-color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             &:hover {
                 box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
                 .manager_photo{
