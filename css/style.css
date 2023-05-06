@@ -2751,6 +2751,15 @@ footer .subFooter a {
   }
 }
 @media (max-width: 1300px) {
+  .sub_bar .lang {
+    display: flex !important;
+    justify-content: flex-end;
+    padding: 10px 20px;
+  }
+  .sub_bar .lang a {
+    color: #000;
+    font-size: 16px;
+  }
   .container {
     max-width: 920px;
     width: 100%;
@@ -2914,7 +2923,7 @@ footer .subFooter a {
   .content_general .general_block {
     justify-content: unset;
     position: relative;
-    top: 140px;
+    top: 100px;
   }
   .content_general .general_block h1 {
     font-size: 30px;
