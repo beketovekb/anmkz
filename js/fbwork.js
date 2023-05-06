@@ -139,23 +139,28 @@ function loadHistoryAdmin(lng, dv) {
   document.getElementById(dv).innerHTML='';
   ln = 'Ru';
   yr = 'год';
+  ttl='История компании';
   switch (lng) {
     case 'ru':
       ln = 'Ru';
       yr = 'год';
+      ttl='История компании';
       break;
     case 'en':
       ln = 'En';
       yr = 'year';
+      ttl='Company history';
       break;
     case 'kz':
       ln = 'Kz';
       yr = 'жыл';
+      ttl='Компания тарихы';
       break;
 
     default:
       break;
   }
+  document.getElementById('historytt').innerHTML=ttl;
   database.ref(lng + '/page/history/').once('value', (snapshot) => {
     const data = snapshot.val();
     for (const key in data) {
