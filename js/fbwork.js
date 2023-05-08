@@ -6,13 +6,14 @@ const database = firebase.database();
 //   });
 
 function loadLng() {
+  myValue='ru';
   if (localStorage.getItem("glblng") != null) { myValue = localStorage.getItem("glblng"); }
   //alert(myValue);
   gentt();
   readico(myValue);
   loadAdminGenProduct(myValue, 'titleProduct');
   loadAdminGenAbout(myValue, 'aboutTitle', 'aboutDescription')
-  loadAdminGenProductName(myValue, 'genProductNameEn', '1', '+');
+  loadAdminGenProductName(myValue, 'genProductName', '1', '+');
   database.ref('aboutImg/').on('value', (snapshot) => {
     const value = snapshot.val();
     // console.log(value);
@@ -111,7 +112,7 @@ function loadAdminGenAbout(lng, dv, dv2) {
 }
 
 function loadAdminGenProductName(lng, dv, pr, ful) {
-  for (let i = 1; i <= 6; i++) {
+  for (let i = 1; i <= 8; i++) {
     database.ref(lng + '/page/genproduct/' + i + '/nazvanie/').on('value', (snapshot) => {
       const value = snapshot.val().replace(/<br>/g, "\n");
       // console.log(value);
