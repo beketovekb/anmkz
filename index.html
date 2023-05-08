@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>ТЕСТ ANM (АтырауНефтеМаш)</title>
+    <link rel="icon" href="img/logo_white.svg">
     <!-- Link Swiper's CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/style.css">  
@@ -4953,7 +4954,8 @@
             </div>
         </div>
         <div class="swiper mySwiper2">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper" id="part">
+              <!-- <div class="swiper-slide"><div class="slide_partner"></div></div>
               <div class="swiper-slide"><div class="slide_partner"></div></div>
               <div class="swiper-slide"><div class="slide_partner"></div></div>
               <div class="swiper-slide"><div class="slide_partner"></div></div>
@@ -4969,8 +4971,7 @@
               <div class="swiper-slide"><div class="slide_partner"></div></div>
               <div class="swiper-slide"><div class="slide_partner"></div></div>
               <div class="swiper-slide"><div class="slide_partner"></div></div>
-              <div class="swiper-slide"><div class="slide_partner"></div></div>
-              <div class="swiper-slide"><div class="slide_partner"></div></div>
+              <div class="swiper-slide"><div class="slide_partner"></div></div> -->
             </div>
             <div class="swiper-pagination"></div>
             <div class="autoplay-progress">
@@ -4990,7 +4991,7 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-2">
+                <div class="col-2" id="cardContact">
                     <div class="contact_info">
                         <span class="info_title">Приемная</span>
                         <span class="info_desc01">+7 7122 76 27 01</span>
@@ -5043,18 +5044,18 @@
                             <path d="M389.068 377.446L388.62 379.393V381.634L388.466 384.029L391.155 387.321L394.894 387.167L399.082 387.909L400.581 386.704L401.631 386.859L401.715 389.212L401.267 393.848L399.558 396.761L396.897 398.344L394.362 399.296L392.401 401.075L389.544 401.579L387.009 403.932L386.561 405.641L385.609 406.972L383.452 407.42L381.743 407.924L381.421 409.283L380.847 410.039L380.469 412.196L380.091 414.031L378.69 414.984L378.816 416.188L378.886 417.715L380.217 419.171L380.791 421.399L381.239 423.233L381.113 425.516L380.091 427.87L379.768 429.27L381.043 430.223L381.673 432.506L381.743 437.646L381.043 439.229V440.882L381.743 443.235L382.948 444.257L383.522 446.036L385.175 446.162L386.253 447.493L387.401 451.232L388.032 454.146L387.654 456.877L386.701 459.608L385.875 460.056L385.245 460.687L384.516 461.261L374.488 454.02H374.46V454.006L351.127 437.156L351.099 437.17L351.057 436.091L350.609 434.887L349.783 434.06L348.76 433.43L348.438 432.352L348.186 431.203L347.36 429.494L348.06 428.612L348.186 427.211L347.934 425.054L348.256 423.78L347.682 422.701H346.407L345.525 422.379L345.021 421.805L344.068 421.3L343.564 421.931L343.116 422.953L342.164 423.654L341.393 424.088L340.259 424.046L339.503 423.668H338.62L338.298 424.298V425.628L337.724 426.007L337.584 427.393L330.847 422.533L328.34 423.499L328.41 422.323L329.307 420.824L330.511 420.222L330.665 417.533L331.716 414.535L333.06 411.692L334.251 410.039L335.595 409.143L338.438 408.541L340.721 407.322L340.763 407.308V407.434L341.267 407.518L342.024 408.148L343.676 408.4L345.385 408.274L345.959 407.77L346.842 406.818L348.046 406.117L349.377 406.818L350.525 407.644L350.021 408.793L348.872 410.067L348.046 411.272L347.29 412.476L346.968 414.003L346.898 415.334L347.094 416.356H348.55L350.077 415.782L351.603 415.656L352.808 416.104L353.816 415.278L354.391 413.751L354.965 411.916L355.917 412.42L356.799 411.972L357.556 410.698L357.878 408.793L357.626 406.187L357.304 405.109L357.248 403.96L357.752 402.126L357.052 400.543L355.021 397.181L354.068 395.781L353.998 394.254L354.881 394.058L357.542 393.988L359.447 394.058L361.099 394.38L362.178 395.711L362.108 397.812L362.304 399.52L362.878 400.473L362.682 402.056L362.36 403.134L363.242 403.638L365.147 403.512L366.225 402.434L367.626 401.229L368.83 400.529L370.987 400.781L373.844 401.355L375.301 401.677L376.757 402.504L378.34 404.213L380.049 404.787L383.662 404.087H385.189L386.519 403.204L388.102 402.252L388.676 400.221L388.732 397.433L387.906 395.851L386.575 393.82L386.379 392.615L386.309 391.341L385.105 391.593L384.082 392.867L381.981 394.324L380.329 393.75L379.124 392.797L378.368 391.341H376.785L375.007 391.593L373.424 392.041L372.149 392.671H370.623L368.718 391.845L368.088 390.892L367.136 388.791L366.323 387.783L366.491 384.982L367.612 383.483L373.788 379.365H375.665L376.981 380.682L377.724 382.18L377.542 385.92L377.92 387.237L378.928 386.522V382.18L381.029 382.783L382.822 383.679L384.32 382.937L385.371 381.732L386.421 381.13V379.393L384.628 378.048L383.284 377.894L381.785 377.152L381.939 375.807L384.334 375.653H385.679L387.023 376.844L389.068 377.446ZM367.318 422.113L368.662 421.244L370.007 420.67L371.169 419.998H378.41L378.018 419.326L375.217 419.228L372.612 418.751L371.939 417.309L368.466 416.916L366.155 417.113L363.942 417.211L361.631 417.785L361.533 419.816L361.435 422.715H364.334L367.318 422.113Z" fill="#F2F2F2" stroke="#CDCDCD" stroke-width="2.28486" stroke-linecap="round" stroke-linejoin="round" stroke-dasharray="11.42 11.42"/>
                         </svg>
                         <div class="aty_card">
-                            <div class="aty_photo"></div>
+                            <div class="aty_photo" id="photoCardContact"></div>
                             <div class="aty_info">
-                                <span class="aty_title">АтырауНефтеМаш</span>
-                                <span class="aty_location"><img src="img/location.png" alt=""> Казахстан, Атырау, ул. Куттыгай Батыр, 44</span>
+                                <span class="aty_title" id="titleCardContact">АтырауНефтеМаш</span>
+                                <span class="aty_location" id="adresCardContact"><img src="img/location.png" alt=""> Казахстан, Атырау, ул. Куттыгай Батыр, 44</span>
                                 <div class="aty_social">
                                     <div class="aty_card_info">
                                         <span class="aty_card_title">Instagram</span>
-                                        <span class="aty_card_desc">@atyramneftemash</span>
+                                        <span class="aty_card_desc" id="instaCardContact">@atyramneftemash</span>
                                     </div>
                                     <div class="aty_card_info">
-                                        <span class="aty_card_title">Вэб-сайт</span>
-                                        <span class="aty_card_desc">https://anm.kz/</span>
+                                        <span class="aty_card_title" id="webCardContactTitle">Вэб-сайт</span>
+                                        <span class="aty_card_desc" id="webCardContact">https://anm.kz/</span>
                                     </div>
                                 </div>
 

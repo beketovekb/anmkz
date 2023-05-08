@@ -6,7 +6,7 @@ const database = firebase.database();
 //   });
 
 function loadLng() {
-  myValue='ru';
+  myValue = 'ru';
   if (localStorage.getItem("glblng") != null) { myValue = localStorage.getItem("glblng"); }
   //alert(myValue);
   gentt();
@@ -17,10 +17,21 @@ function loadLng() {
   database.ref('aboutImg/').on('value', (snapshot) => {
     const value = snapshot.val();
     // console.log(value);
-    document.getElementById('imgAbout').style.backgroundImage = "url(" + value + ")";
+    if (!value)
+      document.getElementById('imgAbout').style.backgroundImage = "url(" + value + ")";
   });
   loadAdminGenPlus(myValue, 'plusTitle', 'plusDesc1', 'pos', 'pls');
-  loadHistoryAdmin(myValue,'history');
+  loadHistoryAdmin(myValue, 'history');
+  loadPartners('part');
+  clearContact('cardContact');
+  loadContact(myValue, 'cardContact', 'number');
+  loadContact(myValue, 'cardContact', 'other');
+  loadImgCardContact('photoCardContact');
+  loadCardDate('instaCardContact', 'insta');
+  loadCardDate('webCardContact', 'web');
+  loadCardDate2(myValue, 'titleCardContact', 'zagolovok');
+  loadCardDate2(myValue, 'adresCardContact', 'adres');
+  translateTitle(myValue,'webCardContactTitle',['Вэб-сайт','Website','Вэб-сайт']);
 }
 
 function gentt() {
@@ -74,7 +85,7 @@ function readico(lng) {
 function loadAdminGenProduct(lng, dv) {
   database.ref(lng + '/page/genproduct/zagolovok').on('value', (snapshot) => {
     const value = snapshot.val().replace(/<br>/g, "\n");
-    console.log(value);
+    // console.log(value);
     document.getElementById(dv).innerHTML = value;
 
   });
@@ -126,51 +137,155 @@ function loadAdminGenPlus(lng, dv, dv2, pos, pls) {
     database.ref(lng + '/page/genplus/' + i + '/zagolovok').on('value', (snapshot) => {
       const value = snapshot.val().replace(/<br>/g, "\n");
       // console.log(value);
-      document.getElementById(dv + i).innerHTML = value;
+      if (!value)
+        document.getElementById(dv + i).innerHTML = value;
     });
     database.ref(lng + '/page/genplus/' + i + '/opisanie').on('value', (snapshot) => {
       const value = snapshot.val().replace(/<br>/g, "\n");
       // console.log(value);
-      document.getElementById(dv2 + i).innerHTML = value;
+      if (!value) {
+        document.getElementById(dv2 + i).innerHTML = value;
+      }
     });
   }
 }
 
 function loadHistoryAdmin(lng, dv) {
-  document.getElementById(dv).innerHTML='';
+  document.getElementById(dv).innerHTML = '';
   ln = 'Ru';
   yr = 'год';
-  ttl='История компании';
+  ttl = 'История компании';
   switch (lng) {
     case 'ru':
       ln = 'Ru';
       yr = 'год';
-      ttl='История компании';
+      ttl = 'История компании';
       break;
     case 'en':
       ln = 'En';
       yr = 'year';
-      ttl='Company history';
+      ttl = 'Company history';
       break;
     case 'kz':
       ln = 'Kz';
       yr = 'жыл';
-      ttl='Компания тарихы';
+      ttl = 'Компания тарихы';
       break;
 
     default:
       break;
   }
-  document.getElementById('historytt').innerHTML=ttl;
+  document.getElementById('historytt').innerHTML = ttl;
   database.ref(lng + '/page/history/').once('value', (snapshot) => {
     const data = snapshot.val();
     for (const key in data) {
       const item = data[key];
-      console.log(item.zagolovok, item.opisanie);
-      document.getElementById(dv).insertAdjacentHTML('beforeend','<div class="swiper-slide">' +
-        '<span class="age">'+item.zagolovok+' '+yr+'</span>' +
-        '<span class="age_desc">'+item.opisanie+'</span>' +
+      // console.log(item.zagolovok, item.opisanie);
+      document.getElementById(dv).insertAdjacentHTML('beforeend', '<div class="swiper-slide">' +
+        '<span class="age">' + item.zagolovok + ' ' + yr + '</span>' +
+        '<span class="age_desc">' + item.opisanie + '</span>' +
         '</div>');
     }
   });
+}
+
+function loadPartners(dv) {
+  document.getElementById(dv).innerHTML = '';
+  database.ref('partners').once('value', (snapshot) => {
+    const data = snapshot.val();
+    for (const key in data) {
+      const item = data[key];
+      // console.log(key);
+      // console.log(item.imageUrl);
+      document.getElementById(dv).insertAdjacentHTML('beforeend', '<div class="swiper-slide"><div class="slide_partner" style="background-image: url(' + item.imageUrl + ')"></div></div>');
+    }
+  });
+}
+
+function loadContact(lng, dv, block) {
+  $(dv).html('');
+  ln = 'Ru';
+  switch (lng) {
+    case 'ru':
+      ln = 'Ru';
+      break;
+    case 'en':
+      ln = 'En';
+      break;
+    case 'kz':
+      ln = 'Kz';
+      break;
+
+    default:
+      break;
+  }
+  database.ref(lng + '/page/contact/' + block + '/').once('value', (snapshot) => {
+    const data = snapshot.val();
+    for (const key in data) {
+      const item = data[key];
+      // console.log(item.zagolovok, item.opisanie);
+      if (block == 'number') {
+        const parts = item.opisanie.split("<br>").filter(part => part !== "");
+        nmr = "";
+        for (let i = 0; i < parts.length; i++) {
+          nmr += "<span class=\"info_desc01\">" + parts[i] + "</span>";
+        }
+        document.getElementById(dv).insertAdjacentHTML('beforeend', '<div class="contact_info">' +
+          '<span class="info_title">' + item.zagolovok + '</span>' +
+          nmr +
+          '</div>');
+      }
+      else if (block == 'other') {
+        document.getElementById(dv).insertAdjacentHTML('beforeend', '<div class="contact_info">' +
+          '<span class="info_title">' + item.zagolovok + '</span>' +
+          '<span class="info_desc02">' + item.opisanie + '</span>' +
+          '</div>');
+      }
+
+    }
+  });
+}
+function clearContact(dv) {
+  document.getElementById(dv).innerHTML = "";
+}
+function loadImgCardContact(dv) {
+  database.ref('contact/imageUrl').on('value', (snapshot) => {
+    const value = snapshot.val();
+    // console.log(value);
+
+    document.getElementById(dv).style.backgroundImage = "url(" + value + ")";;
+  });
+}
+function loadCardDate(dv, block) {
+  database.ref('contact/' + block).on('value', (snapshot) => {
+    const value = snapshot.val();
+    // console.log(value);
+    document.getElementById(dv).innerHTML = value;
+  });
+}
+function loadCardDate2(lng, dv, block) {
+  database.ref(lng + '/page/contact/' + block).on('value', (snapshot) => {
+    value = snapshot.val();
+    // console.log(value);
+    if (block == 'adres') { value = '<img src="img/location.png" alt="">' + value; }
+    document.getElementById(dv).innerHTML = value;
+  });
+}
+function translateTitle(lng, dv, tr) {
+  txt = '';
+  switch (lng) {
+    case 'ru':
+      txt = tr[0];
+      break;
+    case 'en':
+      txt = tr[1];
+      break;
+    case 'kz':
+      txt = tr[2];
+      break;
+
+    default:
+      break;
+  }
+  document.getElementById(dv).innerHTML = txt;
 }

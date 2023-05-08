@@ -44,8 +44,9 @@ if (window.location.href.indexOf("adminp.html") === -1) {
 
     // Авторизация пользователя
     const promise = auth.signInWithEmailAndPassword(email, password);
-    promise.catch(e => console.log(e.message));
-    window.location.replace("../index.html");
+    promise.catch(e => alert(e.message));
+    
+    // window.location.replace("../index.html");
   });
 }
 
@@ -58,7 +59,7 @@ firebase.auth().onAuthStateChanged(user => {
 
     if (window.location.href.indexOf("adminp.html") === -1) {
       console.log("User is logged in");
-      window.location.href = "adminp.html";
+      window.location.href = "../index.html";
     } // перенаправление на страницу после авторизации
   } else {
     // Пользователь не авторизован

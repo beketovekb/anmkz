@@ -42,6 +42,42 @@ document.getElementById('genpage').addEventListener('click', function(event) {
         document.getElementById('pagediv').innerHTML = data;
       });
       loadHistoryAdmin('ru','#custom-nav-home2');
-      // loadAdminGenAbout('ru','#genAboutTitleRu','#genAboutTextRu');
-      // loadAdminGenPlus('ru','#genCompanyPlusTitleRu','#genCompanyPlusDescriptionRu','1','+');
+  });
+
+  document.getElementById('partners').addEventListener('click', function(event) {
+    event.preventDefault(); // предотвращаем переход по ссылке
+    fetch(this.href)
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('pagediv').innerHTML = data;
+      });
+      loadPartners('#custom-nav-home2');
+  });
+
+  function checkAuth() {
+    firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        // Пользователь авторизован
+        console.log('Пользователь авторизован');
+      } else {
+        // Пользователь не авторизован
+        console.log('Пользователь не авторизован');
+        window.location.replace("auth/auth.html");
+      }
+    });
+  }
+
+  document.getElementById('contact').addEventListener('click', function(event) {
+    event.preventDefault(); // предотвращаем переход по ссылке
+    fetch(this.href)
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('pagediv').innerHTML = data;
+      });
+      // loadPartners('#custom-nav-home2'); 
+      loadContact('ru', '#cardPhoneRu','number');
+      loadContact('ru', '#cardOtherRu','other');
+      loadCardTitle('#TitleCardRu','#TitleCardEn','#TitleCardKz');
+      loadCardAdres('#adressCardDownRu','#adressCardDownEn','#adressCardDownKz');
+      loadCardSsil('#instaCard','#webCard');
   });
