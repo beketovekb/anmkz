@@ -1194,6 +1194,9 @@ footer .subFooter a {
 .single_header-light .header_content .header_nav .logo_anm {
   fill: #000;
 }
+.single_header-light .header_content .header_nav ul .lang {
+  display: none;
+}
 .single_header-light .header_content .header_nav ul a {
   color: #000;
 }
@@ -1837,6 +1840,7 @@ footer .subFooter a {
   position: relative;
   left: 30px;
   margin-bottom: 20px;
+  padding-right: 30px;
 }
 .vacancy_content .vacancy_table .accordion .list_work ul li {
   font-size: 16px;
@@ -2749,6 +2753,9 @@ footer .subFooter a {
   .news_card .news_card-date {
     width: 40% !important;
   }
+  .vacancy_content .form_vacancy .col-4 {
+    margin-left: calc((100% - 1080px) / 2);
+  }
 }
 @media (max-width: 1300px) {
   .sub_bar .lang {
@@ -2891,6 +2898,30 @@ footer .subFooter a {
     width: 100%;
     max-width: 100%;
     text-align: center;
+  }
+  .vacancy_content .form_vacancy .col-4 {
+    margin-left: calc((100% - 920px) / 2);
+  }
+  .page_contacts > .container .page_title {
+    text-align: center;
+    display: block;
+    width: 100%;
+  }
+  .page_contacts > .container .row {
+    flex-direction: column;
+    text-align: center;
+  }
+  .page_contacts > .container .row .city_company {
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 30px;
+  }
+  .page_contacts > .container .row .location_company, .page_contacts > .container .row .number_company, .page_contacts > .container .row .email_company {
+    width: 100%;
+    max-width: 100%;
+    justify-content: center;
+    flex-direction: column;
+    margin-bottom: 80px;
   }
 }
 @media (max-width: 1000px) {
@@ -3095,6 +3126,14 @@ footer .subFooter a {
   }
   .news_content .page_news_cards .news_card-desc {
     height: auto !important;
+  }
+  .form_vacancy .row {
+    flex-direction: column;
+  }
+  .form_vacancy .row .col-4 {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
   }
 }
 @media (max-width: 375px) and (max-height: 670px) {

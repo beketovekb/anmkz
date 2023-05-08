@@ -1053,7 +1053,13 @@ footer{
         .header_nav{
             .logo_anm {
                     fill:#000;
+            }
+            ul{
+
+                .lang{
+                    display: none;
                 }
+            }
         }
         .header_nav ul a{
             color: #000;
@@ -1705,6 +1711,7 @@ footer{
                     position: relative;
                     left: 30px;
                     margin-bottom: 20px;
+                    padding-right: 30px;
                     li{
                         font-size: 16px;
                         line-height: 150%;

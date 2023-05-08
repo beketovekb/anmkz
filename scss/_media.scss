@@ -91,10 +91,17 @@
             width: 40% !important;
         }
     }
+    .vacancy_content .form_vacancy .col-4 {
+        margin-left: calc((100% - 1080px) / 2);
+    }
 }
 
 @media  (max-width:1300px) {
-    
+    .page_contacts{
+        .row{
+            
+        }
+    }
     .sub_bar{
         .lang{
             display: flex !important;
@@ -255,6 +262,35 @@
                 width: 100%;
                 max-width: 100%;
                 text-align: center;
+            }
+        }
+    }
+    .vacancy_content .form_vacancy .col-4 {
+        margin-left: calc((100% - 920px) / 2);
+    }
+    
+    .page_contacts{
+        &>.container{
+            .page_title{
+                text-align: center;
+                display: block;
+                width: 100%;
+            }
+            .row{
+                flex-direction: column;
+                text-align: center;
+                .city_company{
+                    width: 100%;
+                    max-width: 100%;
+                    margin-bottom: 30px;
+                }
+                .location_company, .number_company, .email_company{
+                    width: 100%;
+                    max-width: 100%;
+                    justify-content: center;
+                    flex-direction: column;
+                    margin-bottom: 80px;
+                }
             }
         }
     }
@@ -469,6 +505,16 @@
         grid-template-columns: repeat(1, 1fr);
         .news_card-desc{
             height: auto !important;
+        }
+    }
+    .form_vacancy {
+        .row {
+            flex-direction: column;
+            .col-4{
+                width: 100%;
+                max-width: 100%;
+                margin: 0 auto;
+            }
         }
     }
 }
