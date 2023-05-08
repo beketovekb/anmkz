@@ -187,31 +187,31 @@
         </div>
         <div class="navigation">
             <a href="#num01"  class="nav_list">
-                <div class="nav_name">Главная</div>
+                <div class="nav_name" id="genMenuNav">Главная</div>
                 <div class="nav_num num01">01</div>
             </a>
             <a href="#num02"  class="nav_list">
-                <div class="nav_name">Продукция</div>
+                <div class="nav_name" id="productMenuNav">Продукция</div>
                 <div class="nav_num num02">02</div>
             </a>
             <a href="#num03" class="nav_list">
-                <div class="nav_name">О компании</div>
+                <div class="nav_name" id="aboutMenuNav">О компании</div>
                 <div class="nav_num num03">03</div>
             </a>
             <a href="#num04"  class="nav_list">
-                <div class="nav_name">Новости</div>
+                <div class="nav_name" id="newsMenuNav">Новости</div>
                 <div class="nav_num num04">04</div>
             </a>
             <a href="#num05"  class="nav_list">
-                <div class="nav_name">Сертификаты</div>
+                <div class="nav_name" id="certifMenuNav">Сертификаты</div>
                 <div class="nav_num num05">05</div>
             </a>
             <a href="#num06"  class="nav_list">
-                <div class="nav_name">Партнеры</div>
+                <div class="nav_name" id="partMenuNav">Партнеры</div>
                 <div class="nav_num num06">06</div>
             </a>
             <a href="#num07"  class="nav_list">
-                <div class="nav_name">Контакты</div>
+                <div class="nav_name" id="contactMenuNav">Контакты</div>
                 <div class="nav_num num07">07</div>
             </a>
         </div>
@@ -4867,10 +4867,10 @@
             <div class="page_title_component">
                 <div class="page_number_title">
                     <span class="page_number">04</span>
-                    <h2 class="page_title">Новости</h2>
+                    <h2 class="page_title" id="newsBlock">Новости</h2>
                 </div>
                 <div class="more">
-                    <a href="">Все новости</a>
+                    <a href="" id="fNewsBlock">Все новости</a>
                 </div>
             </div>
             <div class="news_cards">
@@ -4919,7 +4919,7 @@
                 <div class="page_title_component">
                     <div class="page_number_title">
                         <span class="page_number">05</span>
-                        <h2 class="page_title">Сертификаты</h2>
+                        <h2 class="page_title" id="certBlock">Сертификаты</h2>
                     </div>
                 </div>
                 <div class="certificates">
@@ -4936,7 +4936,7 @@
                         <span class="cert_caption">Машиностроительный завод «АтырауНефтеМаш» имеет собственные аккредитованные испытательную и химическую лаборатории.</span>
                     </div>
                 </div>
-                <a href="certificate.html" class="all_cert">Все сертификаты</a>
+                <a href="certificate.html" class="all_cert" id="allCertif">Все сертификаты</a>
             </div>
         </div>
     </section>
@@ -4945,7 +4945,7 @@
             <div class="page_title_component">
                 <div class="page_number_title">
                     <span class="page_number">06</span>
-                    <h2 class="page_title">Партнеры</h2>
+                    <h2 class="page_title" id="partnerBlock">Партнеры</h2>
                 </div>
                 <div class="partners_button">
                     <div class="swiper-button-next"></div>
@@ -4987,7 +4987,7 @@
             <div class="page_title_component">
                 <div class="page_number_title">
                     <span class="page_number">07</span>
-                    <h2 class="page_title">Контакты</h2>
+                    <h2 class="page_title" id="contactBlock">Контакты</h2>
                 </div>
             </div>
             <div class="row">
@@ -5072,10 +5072,10 @@
             <div class="row">
                 <div class="col-4">
                     <img class="footerLogo" src="img/logo_white.png" alt="">
-                    <span class="too">ТОО «АТЫРАУНЕФТЕМАШ»</span>
+                    <span class="too" id="too">ТОО «АТЫРАУНЕФТЕМАШ»</span>
                 </div>
                 <div class="col-3 footer_main">
-                    <span class="footerCol_title">Разделы сайта</span>
+                    <span class="footerCol_title" id="titleMenuFooter">Разделы сайта</span>
                     <ul>
                         <li><a href="index.html" id="genMenuFooter">Главная</a></li>
                         <li><a href="about.html" id="aboutMenuFooter">О компании</a></li>
@@ -5086,8 +5086,8 @@
                     </ul>
                 </div>
                 <div class="col-3 recv">
-                    <span class="footerCol_title">Реквизиты</span>
-                    <ul>
+                    <span class="footerCol_title" id="titleMenuFooter2">Реквизиты</span>
+                    <ul id="rekvizitText">
                         <li>ТОО «АТЫРАУНЕФТЕМАШ»</li>
                         <li>ОГРН: xxxxxxxxx</li>
                         <li>ИНН: xxxxxxxxx</li>
@@ -5097,7 +5097,7 @@
                     </ul>
 
                 </div>
-                <div class="col-2 f_info">
+                <div class="col-2 f_info" id="footerContactCard">
                     <span class="footerCol_title">Тел./факс:</span>
                     <span class="footerCol_desc01">+7 7122 76 27 01</span>
                     <span class="footerCol_title">Адрес:</span>
@@ -5113,16 +5113,16 @@
         <div class="container">
             <div class="row subFooter">
                 <div class="col-4">
-                    <a href="">Панель администратора</a>
+                    <a href="" id="adminp">Панель администратора</a>
                 </div>
                 <div class="col-3">
-                    <a href="">Обработка персональных данных</a>
+                    <a href="" id="perdate">Обработка персональных данных</a>
                 </div>
                 <div class="col-3">
-                    <a href="">Политика конфиденциальности</a>
+                    <a href="" id="polit">Политика конфиденциальности</a>
                 </div>
                 <div class="col-2">
-                    <a href=""><b>Разработчик:</b> Oner</a>
+                    <a href=""><b id="razrab">Разработчик:</b> Oner</a>
                 </div>
             </div>
         </div>
@@ -5196,6 +5196,7 @@
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
     <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
     <script src="js/initfb.js"></script>
+    <script src="js/translate.js"></script>
     <script src="js/fbwork.js"></script>
 </body>
 </html>

@@ -696,3 +696,36 @@ function loadCardSsil(dv, dv2) {
 	});
 
 }
+function saveRekvizidCardAdres(dv, dv2, dv3) {
+	const textToSave = $(dv).val().replace(/\n/g, "<br>");
+	console.log(textToSave);
+	database.ref('ru/page/rekvizit').set(textToSave);
+	const textToSave2 = $(dv2).val().replace(/\n/g, "<br>");
+	console.log(textToSave2);
+	database.ref('en/page/rekvizit').set(textToSave2);
+	const textToSave3 = $(dv3).val().replace(/\n/g, "<br>");
+	console.log(textToSave3);
+	database.ref('kz/page/rekvizit').set(textToSave3);
+	alert("Данные изменен");
+
+}
+function loadRekvizidCardTitle(dv, dv2, dv3) {
+	database.ref('ru/page/rekvizit').on('value', (snapshot) => {
+		const value = snapshot.val().replace(/<br>/g, "\n");
+		// console.log(value);
+		// if(!value)
+		$(dv).val(value);
+	});
+	database.ref('en/page/rekvizit').on('value', (snapshot) => {
+		const value = snapshot.val().replace(/<br>/g, "\n");
+		// console.log(value);
+		// if(!value)
+		$(dv2).html(value);
+	});
+	database.ref('kz/page/rekvizit').on('value', (snapshot) => {
+		const value = snapshot.val().replace(/<br>/g, "\n");
+		// console.log(value);
+		// if(!value)
+		$(dv3).html(value);
+	});
+}

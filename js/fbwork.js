@@ -4,41 +4,7 @@ const database = firebase.database();
 // 	console.log(value);
 // 	$('#geneditoropsinie').text(value);
 //   });
-let menuRu, menuEn, menuKz;
-menuRu = {
-  gen: 'Главная',
-  about: 'О компании',
-  news: 'Новости',
-  product: 'Продукция и услуги',
-  carer: 'Вакансии',
-  contact: 'Контакты',
-  product1: 'Производство и продукция',
-  product2: 'Услуги и сервис',
-  product3: 'Лаборотория'
-};
-menuEn =
-{
-  gen: 'Home page',
-  about: 'About the company',
-  news: 'News',
-  product: 'Products and services',
-  carer: 'Vacancy',
-  contact: 'Contacts',
-  product1: 'Production and products',
-  product2: 'Services and Service',
-  product3: 'Laboratory'
-};
-menuKz = {
-  gen: 'Басты бет',
-  about: 'Компания туралы',
-  news: 'Жаңалықтар',
-  product: 'Өнімдер мен қызметтер',
-  carer: 'Жұмыс',
-  contact: 'Байланыстар',
-  product1: 'Өндіріс және өнім',
-  product2: 'Қызметтер және қызмет',
-  product3: 'Зертхана'
-};
+
 
 function loadLng() {
   myValue = 'ru';
@@ -68,6 +34,10 @@ function loadLng() {
   loadCardDate2(myValue, 'adresCardContact', 'adres');
   translateTitle(myValue, 'webCardContactTitle', ['Вэб-сайт', 'Website', 'Вэб-сайт']);
   menuPage(myValue);
+  loadRekvizit(myValue,'rekvizitText');
+  clearContact('footerContactCard');
+  loadFooterContact(myValue, 'footerContactCard', 'number');
+  loadFooterContact(myValue, 'footerContactCard', 'other');
 }
 
 function gentt() {
@@ -366,4 +336,93 @@ function menuPage(lng) {
   document.getElementById('productMenuFooter').innerHTML = txt.product;
   document.getElementById('carerMenuFooter').innerHTML = txt.carer;
   document.getElementById('contactMenuFooter').innerHTML = txt.contact;
+  // Навигация
+  document.getElementById('genMenuNav').innerHTML = txt.gen;
+  document.getElementById('aboutMenuNav').innerHTML = txt.about;
+  document.getElementById('newsMenuNav').innerHTML = txt.news;
+  document.getElementById('productMenuNav').innerHTML = txt.product;
+  document.getElementById('certifMenuNav').innerHTML = txt.certif;
+  document.getElementById('partMenuNav').innerHTML = txt.partner;
+  document.getElementById('contactMenuNav').innerHTML = txt.contact;
+
+  document.getElementById('newsBlock').innerHTML = txt.news;
+  document.getElementById('fNewsBlock').innerHTML = txt.fnews;
+  document.getElementById('certBlock').innerHTML = txt.certif;
+  document.getElementById('allCertif').innerHTML = txt.fcertif;
+  document.getElementById('partnerBlock').innerHTML = txt.partner;
+  document.getElementById('contactBlock').innerHTML = txt.contact;
+  document.getElementById('too').innerHTML = txt.too;
+  document.getElementById('titleMenuFooter').innerHTML = txt.titleMenuFuter;
+  document.getElementById('titleMenuFooter2').innerHTML = txt.titleMenuFuter2;
+
+  document.getElementById('adminp').innerHTML = txt.adminp;
+  document.getElementById('perdate').innerHTML = txt.perdate;
+  document.getElementById('polit').innerHTML = txt.polit;
+  document.getElementById('razrab').innerHTML = txt.razrab;
+}
+function loadRekvizit(lng, dv) {
+  document.getElementById(dv).innerHTML='';
+  nmr1 = "";
+  database.ref(lng + '/page/rekvizit').once('value', (snapshot) => {
+    data = snapshot.val();
+        const parts = data.split("<br>").filter(part => part !== "");
+        
+        for (let i = 0; i < parts.length; i++) {
+          nmr1 += "<li>" + parts[i] + "</li>";
+        }
+        document.getElementById(dv).innerHTML=(nmr1);
+  });
+}
+function loadFooterContact(lng, dv, block) {
+  $(dv).html('');
+  ln = 'Ru';
+  zgl='Тел./факс'
+  switch (lng) {
+    case 'ru':
+      ln = 'Ru';
+      zgl='Тел./факс'
+      break;
+    case 'en':
+      ln = 'En';
+      zgl='Phon./fax'
+      break;
+    case 'kz':
+      ln = 'Kz';
+      zgl='Тел./факс'
+      break;
+
+    default:
+      break;
+  }
+  col=1;
+  database.ref(lng + '/page/contact/' + block + '/').once('value', (snapshot) => {
+    const data = snapshot.val();
+    for (const key in data) {
+      const item = data[key];
+      // console.log(item.zagolovok, item.opisanie);
+      if (block == 'number') {
+        if(col<2)
+        {
+          const parts = item.opisanie.split("<br>").filter(part => part !== "");
+        nmr = "";
+        for (let i = 0; i < 1; i++) {
+          nmr += "<span class=\"footerCol_desc01\">" + parts[i] + "</span>";
+        }
+        document.getElementById(dv).insertAdjacentHTML('beforeend', '<div class="contact_info">' +
+          '<span class="footerCol_title">' + zgl + ':</span>' +
+          nmr +
+          '</div>');
+          col++;
+        }
+        
+      }
+      else if (block == 'other') {
+        document.getElementById(dv).insertAdjacentHTML('beforeend', '<div class="contact_info">' +
+          '<span class="footerCol_title">' + item.zagolovok + '</span>' +
+          '<span class="footerCol_desc02">' + item.opisanie + '</span>' +
+          '</div>');
+      }
+
+    }
+  });
 }
