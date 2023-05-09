@@ -458,8 +458,8 @@ function saveContact(lng, dv, dv2, pos) {
 	const textToSave2 = $(dv2).val().replace(/\n/g, "<br>");
 	// console.log(textToSave);
 	// console.log(textToSave2);
-	database.ref(lng + '/page/contact/' + pos + '/' + randomKey+'/zagolovok').set(textToSave);
-	database.ref(lng + '/page/contact/' + pos + '/' + randomKey+'/opisanie').set(textToSave2);
+	database.ref(lng + '/page/contact/' + pos + '/' + randomKey + '/zagolovok').set(textToSave);
+	database.ref(lng + '/page/contact/' + pos + '/' + randomKey + '/opisanie').set(textToSave2);
 	switch (lng) {
 		case 'ru': alert("Данные добавлены"); break;
 		case 'en': alert("Add date"); break;
@@ -478,8 +478,8 @@ function saveContact2(lng, dv, dv2, pos, randomKey) {
 	const textToSave2 = $(dv2).val().replace(/\n/g, "<br>");
 	// console.log(textToSave);
 	// console.log(textToSave2);
-	database.ref(lng + '/page/contact/' + pos + '/' + randomKey+'/zagolovok').set(textToSave);
-	database.ref(lng + '/page/contact/' + pos + '/' + randomKey+'/opisanie').set(textToSave2);
+	database.ref(lng + '/page/contact/' + pos + '/' + randomKey + '/zagolovok').set(textToSave);
+	database.ref(lng + '/page/contact/' + pos + '/' + randomKey + '/opisanie').set(textToSave2);
 
 	switch (lng) {
 		case 'ru': alert("Данные добавлены"); break;
@@ -730,7 +730,7 @@ function loadRekvizidCardTitle(dv, dv2, dv3) {
 	});
 }
 
-function addCertifacate(dv,dv2,dv3) {
+function addCertifacate(dv, dv2, dv3) {
 	const textToSave = $(dv).val().replace(/\n/g, "<br>");
 	const textToSave2 = $(dv2).val().replace(/\n/g, "<br>");
 	const textToSave3 = $(dv3).val().replace(/\n/g, "<br>");
@@ -776,52 +776,52 @@ function loadCert(dv) {
 			const item = data[key];
 			// console.log(key);
 			// console.log(item.imageUrl);
-			$(dv).append('<div class="card">'+
-			'<div class="card-header">'+
-				'<strong>Cертификат</strong> '+
-			'</div>'+
-			'<div class="card-body card-block">'+
-				'<div class="form-group" style="width: 50%;"><label for="exampleInputEmail2"'+
-						'class="px-1  form-control-label">Фотография</label><img src="' + item.imageUrl + '" alt="">'+
-				'</div>'+
-			'</div>'+
-			'<div class="card-body card-block">'+
-				'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"'+
-						'class="pr-1  form-control-label">Русский</label><textarea id="Title'+key+'Ru"'+
-						'class="form-control w100">'+item.ru+' </textarea>'+
-				'</div>'+
-				'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"'+
-						'class="pr-1  form-control-label">English</label><textarea id="Title'+key+'En"'+
-						'class="form-control w100">'+item.en+' </textarea>'+
-				'</div>'+
-				'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"'+
-						'class="pr-1  form-control-label">Қазақша</label><textarea id="Title'+key+'Kz"'+
-						'class="form-control w100">'+item.kz+' </textarea>'+
-				'</div>'+
-			'</div>'+
-			'<div class="card-footer">'+
-				'<button type="submit" class="btn btn-primary btn-sm"'+
-					'onclick="updateCert(\''+key+'\',\'#Title'+key+'Ru\',\'#Title'+key+'En\',\'#Title'+key+'Kz\')">'+
-					'<i class="fa fa-dot-circle-o"></i> Сохранить'+
-				'</button>'+
-				'<button type="submit" class="btn btn-primary btn-sm"'+
-					'onclick="delCert(\''+key+'\')">'+
-					'<i class="fa fa-dot-circle-o"></i> Удалить'+
-				'</button>'+
-			'</div>'+
-		'</div>');
+			$(dv).append('<div class="card">' +
+				'<div class="card-header">' +
+				'<strong>Cертификат</strong> ' +
+				'</div>' +
+				'<div class="card-body card-block">' +
+				'<div class="form-group" style="width: 50%;"><label for="exampleInputEmail2"' +
+				'class="px-1  form-control-label">Фотография</label><img src="' + item.imageUrl + '" alt="">' +
+				'</div>' +
+				'</div>' +
+				'<div class="card-body card-block">' +
+				'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">Русский</label><textarea id="Title' + key + 'Ru"' +
+				'class="form-control w100">' + item.ru + ' </textarea>' +
+				'</div>' +
+				'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">English</label><textarea id="Title' + key + 'En"' +
+				'class="form-control w100">' + item.en + ' </textarea>' +
+				'</div>' +
+				'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">Қазақша</label><textarea id="Title' + key + 'Kz"' +
+				'class="form-control w100">' + item.kz + ' </textarea>' +
+				'</div>' +
+				'</div>' +
+				'<div class="card-footer">' +
+				'<button type="submit" class="btn btn-primary btn-sm"' +
+				'onclick="updateCert(\'' + key + '\',\'#Title' + key + 'Ru\',\'#Title' + key + 'En\',\'#Title' + key + 'Kz\')">' +
+				'<i class="fa fa-dot-circle-o"></i> Сохранить' +
+				'</button>' +
+				'<button type="submit" class="btn btn-primary btn-sm"' +
+				'onclick="delCert(\'' + key + '\')">' +
+				'<i class="fa fa-dot-circle-o"></i> Удалить' +
+				'</button>' +
+				'</div>' +
+				'</div>');
 		}
 	});
 }
-function updateCert(kk, dv,dv2,dv3) {
+function updateCert(kk, dv, dv2, dv3) {
 	const textToSave = $(dv).val().replace(/\n/g, "<br>");
 	const textToSave2 = $(dv2).val().replace(/\n/g, "<br>");
 	const textToSave3 = $(dv3).val().replace(/\n/g, "<br>");
 	// console.log(textToSave);
 	// console.log(textToSave2);
-	database.ref('certifacate/' + kk+'/ru').set(textToSave);
-	database.ref('certifacate/' + kk+'/en').set(textToSave2);
-	database.ref('certifacate/' + kk+'/kz').set(textToSave3);
+	database.ref('certifacate/' + kk + '/ru').set(textToSave);
+	database.ref('certifacate/' + kk + '/en').set(textToSave2);
+	database.ref('certifacate/' + kk + '/kz').set(textToSave3);
 	alert("Данные обновлены");
 	loadCert('#certCard');
 
@@ -830,5 +830,221 @@ function delCert(id) {
 	firebase.database().ref('certifacate/' + id).remove();
 	loadCert('#certCard');
 	alert("Данные удалены");
+
+}
+
+function addNews(dv, dv2, dv3, dv4, dv5, dv6) {
+	const titleRu = $(dv).val().replace(/\n/g, "<br>");
+	const titleEn = $(dv2).val().replace(/\n/g, "<br>");
+	const titlekz = $(dv3).val().replace(/\n/g, "<br>");
+
+	const opisanieRu = $(dv4).html();
+	console.log(opisanieRu);
+	const opisanieEn = $(dv5).html();
+	const opisanieKz = $(dv6).html();
+	var databaseRef = firebase.database().ref("news");
+	var storageRef = firebase.storage().ref();
+	var fileInput = document.getElementById("imageAbout");
+	var file = fileInput.files[0];
+	if (file) {
+		// генерируем случайный ключ для пути в базе данных
+		var randomKey = databaseRef.push().key;
+		var imageRef = storageRef.child("news/" + randomKey + "/" + file.name);
+		// загружаем файл в Storage
+		imageRef.put(file).then(function (snapshot) {
+			// получаем URL файла
+			snapshot.ref.getDownloadURL().then(function (url) {
+				// сохраняем путь в базе данных
+				databaseRef.child(randomKey).set({
+					imageUrl: url,
+					Titleru: titleRu,
+					Titleen: titleEn,
+					Titlekz: titlekz,
+					Opisanieru: opisanieRu,
+					Opisanieen: opisanieEn,
+					Opisaniekz: opisanieKz,
+
+				}).then(function () {
+					// loadCert('#certCard');
+					alert("File uploaded and saved to database!");
+				}).catch(function (error) {
+					alert("Error saving to database: " + error.message);
+				});
+			}).catch(function (error) {
+				alert("Error getting download URL: " + error.message);
+			});
+		}).catch(function (error) {
+			alert("Error uploading file: " + error.message);
+		});
+	}
+
+}
+function loadNews(dv) {
+	$(dv).html('');
+	database.ref('news').once('value', (snapshot) => {
+		const data = snapshot.val();
+		for (const key in data) {
+			const item = data[key];
+			// console.log(key);
+			// console.log(item.imageUrl);
+			$(dv).append('<div class="card">' +
+				'<div class="card-header">' +
+				'<strong>Новость</strong> компании' +
+				' </div>' +
+				'<div class="card-body card-block">' +
+				'<form action="#" method="post" class="form-inline gap20 align-top fd-column">' +
+				'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">Заголовок на русском</label>' +
+				'<textarea id="' + key + 'NewsTitleRu" class="form-control w100"' +
+				'style="width: 90%;">' + item.Titleru + ' </textarea>' +
+				'</div>' +
+				'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">Заголовок на англиском</label>' +
+				'<textarea id="' + key + 'NewsTitleEn" class="form-control w100"' +
+				'style="width: 90%;">' + item.Titleen + ' </textarea>' +
+				'</div>' +
+				'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">Заголовок на казахском</label>' +
+				'<textarea id="' + key + 'NewsTitleKz" class="form-control w100"' +
+				'style="width: 90%;">' + item.Titlekz + ' </textarea>' +
+				'</div>' +
+				'<div class="form-group" style="width: 50%;">' +
+				'<div class="form-group" style="width: 50%;">' +
+				'<label for="exampleInputEmail2"' +
+				'class="px-1  form-control-label">Обложка</label>' +
+				'<input type="file" id="' + key + 'imageAbout" accept="image/*">' +
+				'</div>' +
+				'</div>' +
+				'' +
+				'</form>' +
+				'<br>' +
+				'<div class="toolbar">' +
+				'<a href="#" class="toolbar-b fas fa-bold" title="Жирный"></a>' +
+				'<a href="#" class="toolbar-i fas fa-italic" title="Курсив"></a>' +
+				'<a href="#" class="toolbar-u fas fa-underline" title="Подчёркнутый"></a>' +
+				'<a href="#" class="toolbar-s fas fa-strikethrough" title="Зачёркнутый"></a>' +
+				'<a href="#" class="toolbar-sup fas fa-superscript" title="Верхний индекс"></a>' +
+				'<a href="#" class="toolbar-sub fas fa-subscript" title="Нижний индекс"></a>' +
+				'<a href="#" class="toolbar-ul fas fa-list-ul" title="Маркированный список"></a>' +
+				'<a href="#" class="toolbar-ol fas fa-list-ol" title="Нумерованный список"></a>' +
+				'<a href="#" class="toolbar-p" title="Параграф">p</a>' +
+				'<a href="#" class="toolbar-h1" title="Заголовок">H1</a>' +
+				'<a href="#" class="toolbar-hr" title="Горизонтальная линия">hr</a>' +
+				'<a href="#" class="toolbar-blockquote fas fa-quote-right" title="Цитата"></a>' +
+				'<a href="#" class="toolbar-img far fa-image" title="Изображение"></a>' +
+				'<a href="#" class="toolbar-a fas fa-link" title="Ссылка"></a>' +
+				'<a href="#" class="toolbar-unlink fas fa-unlink" title="Удаление ссылки"></a>' +
+				'<a href="#" class="toolbar-html" title="Вставить html">HTML</a>' +
+				'<a href="#" class="toolbar-text" title="Вставить текст">Text</a>' +
+				'<br>' +
+				'<a href="#" class="toolbar-left fas fa-align-left" title="по левому краю"></a>' +
+				'<a href="#" class="toolbar-center fas fa-align-center" title="по центру"></a>' +
+				'<a href="#" class="toolbar-right fas fa-align-right" title="по правому краю"></a>' +
+				'<a href="#" class="toolbar-justify fas fa-align-justify" title="по ширине"></a>' +
+				'<select class="toolbar-font">' +
+				'<option selected="selected" disabled="disabled">Шрифт</option>' +
+				'<option value="arial">Arial</option>' +
+				'<option value="Courier New">Courier New</option>' +
+				'<option value="georgia">Georgia</option>' +
+				'<option value="impact">Impact</option>' +
+				' <option value="roboto">Tahoma</option>' +
+				' <option value="Times New Roman">Times New Roman</option>' +
+				' <option value="verdana">Verdana</option>' +
+				' </select>' +
+				' <select class="toolbar-size">' +
+				' <option selected="selected" disabled="disabled">Размер</option>' +
+				' <option value="1">10px</option>' +
+				' <option value="2">12px</option>' +
+				' <option value="3">14px</option>' +
+				' <option value="4">16px</option>' +
+				' <option value="5">18px</option>' +
+				' <option value="6">21px</option>' +
+				' <option value="7">26px</option>' +
+				' </select>' +
+				' <span>Цвет</span> <input class="toolbar-color" type="color" value="#ff0000">' +
+				' <span>Фон</span> <input class="toolbar-bg" type="color" value="#ffff00">' +
+				' <br>' +
+				' <a href="#" class="toolbar-undo fas fa-undo" title="Отмена"></a>' +
+				' <a href="#" class="toolbar-redo fas fa-redo" title="Повтор"></a>' +
+				' <a href="#" class="toolbar-delete far fa-trash-alt" title="Удалить"></a>' +
+				' <a href="#" class="toolbar-selectAll">Выделить всё</a>' +
+				' <a href="#" class="toolbar-removeFormat">Очистить стили</a>' +
+				' <a href="#" class="toolbar-cut fas fa-cut" title="Вырезать"></a>' +
+				' <a href="#" class="toolbar-copy fas fa-copy" title="Копировать"></a>' +
+				' </div>' +
+				'' +
+				' <div class="editor" contenteditable="true" id="' + key + 'newsTextRu">' + item.Opisanieru + '</div>' +
+				' <div class="editor2" contenteditable="true" id="' + key + 'newsTextEn">' + item.Opisanieen + '</div>' +
+				' <div class="editor3" contenteditable="true" id="' + key + 'newsTextKz">' + item.Opisaniekz + '</div>' +
+				' </div>' +
+				' <div class="card-footer">' +
+				' <button type="submit" class="btn btn-primary btn-sm"' +
+				' onclick="updateNews(\'' + key + '\',\'#' + key + 'NewsTitleRu\',\'#' + key + 'NewsTitleEn\',\'#' + key + 'NewsTitleKz\',\'#' + key + 'newsTextRu\',\'#' + key + 'newsTextEn\',\'#' + key + 'newsTextKz\')">' +
+				' <i class="fa fa-dot-circle-o"></i> Сохранить' +
+				' </button>' +
+				' <button type="reset" class="btn btn-danger btn-sm"' +
+				' onclick="loadAdminGenAbout(\'ru\',\'#genAboutTitleRu\',\'#genAboutTextRu\')">' +
+				' <i class="fa fa-ban"></i> Отменить' +
+				' </button>' +
+				' </div>' +
+				' </div>'
+			);
+		}
+	});
+}
+function updateNews(kk, dv, dv2, dv3, dv4, dv5, dv6, img) {
+	const titleRu = $(dv).val().replace(/\n/g, "<br>");
+	const titleEn = $(dv2).val().replace(/\n/g, "<br>");
+	const titlekz = $(dv3).val().replace(/\n/g, "<br>");
+
+	const opisanieRu = $(dv4).html();
+	console.log(opisanieRu);
+	const opisanieEn = $(dv5).html();
+	const opisanieKz = $(dv6).html();
+	var databaseRef = firebase.database().ref("news");
+	var storageRef = firebase.storage().ref();
+	var fileInput = document.getElementById(kk + "imageAbout");
+	var file = fileInput.files[0];
+
+	if (file) {
+		// генерируем случайный ключ для пути в базе данных
+		var randomKey = databaseRef.push().key;
+		var imageRef = storageRef.child("news/" + kk + "/" + file.name);
+		// загружаем файл в Storage
+		imageRef.put(file).then(function (snapshot) {
+			// получаем URL файла
+			snapshot.ref.getDownloadURL().then(function (url) {
+				// сохраняем путь в базе данных
+				databaseRef.child(kk).set({
+					imageUrl: url,
+					Titleru: titleRu,
+					Titleen: titleEn,
+					Titlekz: titlekz,
+					Opisanieru: opisanieRu,
+					Opisanieen: opisanieEn,
+					Opisaniekz: opisanieKz,
+
+				}).then(function () {
+					// loadCert('#certCard');
+					alert("File uploaded and saved to database!");
+				}).catch(function (error) {
+					alert("Error saving to database: " + error.message);
+				});
+			}).catch(function (error) {
+				alert("Error getting download URL: " + error.message);
+			});
+		}).catch(function (error) {
+			alert("Error uploading file: " + error.message);
+		});
+	}
+	else {
+		database.ref('news/' + kk + '/Titleru').set(titleRu);
+		database.ref('news/' + kk + '/Titleen').set(titleEn);
+		database.ref('news/' + kk + '/Titlekz').set(titlekz);
+		database.ref('news/' + kk + '/Opisanieru').set(opisanieRu);
+		database.ref('news/' + kk + '/Opisanieen').set(opisanieEn);
+		database.ref('news/' + kk + '/Opisaniekz').set(opisanieKz);
+		alert('Данные обновлены');
+	}
 
 }

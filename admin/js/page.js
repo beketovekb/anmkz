@@ -100,3 +100,14 @@ document.getElementById('genpage').addEventListener('click', function(event) {
       loadCert('#certCard');
       // loadRekvizidCardTitle('#RekvizidCardRu','#RekvizidCardEn','#RekvizidCardKz');
   });
+  document.getElementById('news').addEventListener('click', function(event) {
+    event.preventDefault(); // предотвращаем переход по ссылке
+    fetch(this.href)
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('pagediv').innerHTML = data;
+      });
+      loadNews('#fullNews');
+      // loadCert('#certCard');
+      // loadRekvizidCardTitle('#RekvizidCardRu','#RekvizidCardEn','#RekvizidCardKz');
+  });
