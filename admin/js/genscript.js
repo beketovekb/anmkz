@@ -729,3 +729,106 @@ function loadRekvizidCardTitle(dv, dv2, dv3) {
 		$(dv3).html(value);
 	});
 }
+
+function addCertifacate(dv,dv2,dv3) {
+	const textToSave = $(dv).val().replace(/\n/g, "<br>");
+	const textToSave2 = $(dv2).val().replace(/\n/g, "<br>");
+	const textToSave3 = $(dv3).val().replace(/\n/g, "<br>");
+	var databaseRef = firebase.database().ref("certifacate");
+	var storageRef = firebase.storage().ref();
+	var fileInput = document.getElementById("imageAbout");
+	var file = fileInput.files[0];
+	if (file) {
+		// генерируем случайный ключ для пути в базе данных
+		var randomKey = databaseRef.push().key;
+		var imageRef = storageRef.child("certifacate/" + randomKey + "/" + file.name);
+		// загружаем файл в Storage
+		imageRef.put(file).then(function (snapshot) {
+			// получаем URL файла
+			snapshot.ref.getDownloadURL().then(function (url) {
+				// сохраняем путь в базе данных
+				databaseRef.child(randomKey).set({
+					imageUrl: url,
+					ru: textToSave,
+					en: textToSave2,
+					kz: textToSave3
+				}).then(function () {
+					// loadPartners('#custom-nav-home2');
+					loadCert('#certCard');
+					alert("File uploaded and saved to database!");
+				}).catch(function (error) {
+					alert("Error saving to database: " + error.message);
+				});
+			}).catch(function (error) {
+				alert("Error getting download URL: " + error.message);
+			});
+		}).catch(function (error) {
+			alert("Error uploading file: " + error.message);
+		});
+	}
+
+}
+function loadCert(dv) {
+	$(dv).html('');
+	database.ref('certifacate').once('value', (snapshot) => {
+		const data = snapshot.val();
+		for (const key in data) {
+			const item = data[key];
+			// console.log(key);
+			// console.log(item.imageUrl);
+			$(dv).append('<div class="card">'+
+			'<div class="card-header">'+
+				'<strong>Cертификат</strong> '+
+			'</div>'+
+			'<div class="card-body card-block">'+
+				'<div class="form-group" style="width: 50%;"><label for="exampleInputEmail2"'+
+						'class="px-1  form-control-label">Фотография</label><img src="' + item.imageUrl + '" alt="">'+
+				'</div>'+
+			'</div>'+
+			'<div class="card-body card-block">'+
+				'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"'+
+						'class="pr-1  form-control-label">Русский</label><textarea id="Title'+key+'Ru"'+
+						'class="form-control w100">'+item.ru+' </textarea>'+
+				'</div>'+
+				'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"'+
+						'class="pr-1  form-control-label">English</label><textarea id="Title'+key+'En"'+
+						'class="form-control w100">'+item.en+' </textarea>'+
+				'</div>'+
+				'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"'+
+						'class="pr-1  form-control-label">Қазақша</label><textarea id="Title'+key+'Kz"'+
+						'class="form-control w100">'+item.kz+' </textarea>'+
+				'</div>'+
+			'</div>'+
+			'<div class="card-footer">'+
+				'<button type="submit" class="btn btn-primary btn-sm"'+
+					'onclick="updateCert(\''+key+'\',\'#Title'+key+'Ru\',\'#Title'+key+'En\',\'#Title'+key+'Kz\')">'+
+					'<i class="fa fa-dot-circle-o"></i> Сохранить'+
+				'</button>'+
+				'<button type="submit" class="btn btn-primary btn-sm"'+
+					'onclick="delCert(\''+key+'\')">'+
+					'<i class="fa fa-dot-circle-o"></i> Удалить'+
+				'</button>'+
+			'</div>'+
+		'</div>');
+		}
+	});
+}
+function updateCert(kk, dv,dv2,dv3) {
+	const textToSave = $(dv).val().replace(/\n/g, "<br>");
+	const textToSave2 = $(dv2).val().replace(/\n/g, "<br>");
+	const textToSave3 = $(dv3).val().replace(/\n/g, "<br>");
+	// console.log(textToSave);
+	// console.log(textToSave2);
+	database.ref('certifacate/' + kk+'/ru').set(textToSave);
+	database.ref('certifacate/' + kk+'/en').set(textToSave2);
+	database.ref('certifacate/' + kk+'/kz').set(textToSave3);
+	alert("Данные обновлены");
+	loadCert('#certCard');
+
+}
+function delCert(id) {
+	firebase.database().ref('certifacate/' + id).remove();
+	loadCert('#certCard');
+	alert("Данные удалены");
+
+}

@@ -33,11 +33,14 @@ function loadLng() {
   loadCardDate2(myValue, 'titleCardContact', 'zagolovok');
   loadCardDate2(myValue, 'adresCardContact', 'adres');
   translateTitle(myValue, 'webCardContactTitle', ['Вэб-сайт', 'Website', 'Вэб-сайт']);
+
   menuPage(myValue);
-  loadRekvizit(myValue,'rekvizitText');
+  loadRekvizit(myValue, 'rekvizitText');
   clearContact('footerContactCard');
   loadFooterContact(myValue, 'footerContactCard', 'number');
   loadFooterContact(myValue, 'footerContactCard', 'other');
+
+  loadCert('certCard', myValue);
 }
 
 function gentt() {
@@ -313,7 +316,7 @@ function menuPage(lng) {
   document.getElementById('genMenu').innerHTML = txt.gen;
   document.getElementById('aboutMenu').innerHTML = txt.about;
   document.getElementById('newsMenu').innerHTML = txt.news;
-  document.getElementById('productMenu').innerHTML = txt.product+'<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  width="10px" height="10px"  viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;"  xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0  c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>  </g></svg>';
+  document.getElementById('productMenu').innerHTML = txt.product + '<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  width="10px" height="10px"  viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;"  xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0  c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>  </g></svg>';
   document.getElementById('product1Menu').innerHTML = txt.product1;
   document.getElementById('product2Menu').innerHTML = txt.product2;
   document.getElementById('product3Menu').innerHTML = txt.product3;
@@ -361,60 +364,59 @@ function menuPage(lng) {
   document.getElementById('razrab').innerHTML = txt.razrab;
 }
 function loadRekvizit(lng, dv) {
-  document.getElementById(dv).innerHTML='';
+  document.getElementById(dv).innerHTML = '';
   nmr1 = "";
   database.ref(lng + '/page/rekvizit').once('value', (snapshot) => {
     data = snapshot.val();
-        const parts = data.split("<br>").filter(part => part !== "");
-        
-        for (let i = 0; i < parts.length; i++) {
-          nmr1 += "<li>" + parts[i] + "</li>";
-        }
-        document.getElementById(dv).innerHTML=(nmr1);
+    const parts = data.split("<br>").filter(part => part !== "");
+
+    for (let i = 0; i < parts.length; i++) {
+      nmr1 += "<li>" + parts[i] + "</li>";
+    }
+    document.getElementById(dv).innerHTML = (nmr1);
   });
 }
 function loadFooterContact(lng, dv, block) {
-  $(dv).html('');
+  document.getElementById(dv).innerHTML = "";
   ln = 'Ru';
-  zgl='Тел./факс'
+  zgl = 'Тел./факс'
   switch (lng) {
     case 'ru':
       ln = 'Ru';
-      zgl='Тел./факс'
+      zgl = 'Тел./факс'
       break;
     case 'en':
       ln = 'En';
-      zgl='Phon./fax'
+      zgl = 'Phon./fax'
       break;
     case 'kz':
       ln = 'Kz';
-      zgl='Тел./факс'
+      zgl = 'Тел./факс'
       break;
 
     default:
       break;
   }
-  col=1;
+  col = 1;
   database.ref(lng + '/page/contact/' + block + '/').once('value', (snapshot) => {
     const data = snapshot.val();
     for (const key in data) {
       const item = data[key];
       // console.log(item.zagolovok, item.opisanie);
       if (block == 'number') {
-        if(col<2)
-        {
+        if (col < 2) {
           const parts = item.opisanie.split("<br>").filter(part => part !== "");
-        nmr = "";
-        for (let i = 0; i < 1; i++) {
-          nmr += "<span class=\"footerCol_desc01\">" + parts[i] + "</span>";
-        }
-        document.getElementById(dv).insertAdjacentHTML('beforeend', '<div class="contact_info">' +
-          '<span class="footerCol_title">' + zgl + ':</span>' +
-          nmr +
-          '</div>');
+          nmr = "";
+          for (let i = 0; i < 1; i++) {
+            nmr += "<span class=\"footerCol_desc01\">" + parts[i] + "</span>";
+          }
+          document.getElementById(dv).insertAdjacentHTML('beforeend', '<div class="contact_info">' +
+            '<span class="footerCol_title">' + zgl + ':</span>' +
+            nmr +
+            '</div>');
           col++;
         }
-        
+
       }
       else if (block == 'other') {
         document.getElementById(dv).insertAdjacentHTML('beforeend', '<div class="contact_info">' +
@@ -425,4 +427,165 @@ function loadFooterContact(lng, dv, block) {
 
     }
   });
+}
+function loadCert(dv, lng) {
+  document.getElementById(dv).innerHTML = "";
+  col=1;
+  database.ref('certifacate').once('value', (snapshot) => {
+    const data = snapshot.val();
+    for (const key in data) {
+      const item = data[key];
+      // console.log(key);
+      // console.log(item.imageUrl);
+      txt = "";
+      switch (lng) {
+        case 'ru':
+          txt = item.ru;
+          break;
+        case 'en':
+          txt = item.en;
+          break;
+        case 'kz':
+          txt = item.kz;
+          break;
+        default:
+          break;
+      }
+      if(col<5)
+      {
+        document.getElementById(dv).insertAdjacentHTML('beforeend', '<div class="card">' +
+        '<div class="cert_card">' +
+        '<img src="'+item.imageUrl+'" class="cert_photo">' +
+        '<span class="cert_caption">'+txt+'</span>' +
+        '</div>'); 
+      }
+      col++;
+    }
+  });
+}
+
+// Страница все сертификаты
+function loadCertPage() {
+  myValue = 'ru';
+  if (localStorage.getItem("glblng") != null) { myValue = localStorage.getItem("glblng"); }
+  trasnlCertPage(myValue);
+}
+
+function trasnlCertPage(lng) {
+  let txt;
+  switch (lng) {
+    case 'ru':
+      txt = menuRu;
+      break;
+    case 'en':
+      txt = menuEn;
+      break;
+    case 'kz':
+      txt = menuKz;
+      break;
+  }
+  document.getElementById('genSsil').innerHTML = txt.gen;
+  document.getElementById('sertSsil').innerHTML = txt.certif;
+  document.getElementById('sertTitle').innerHTML = txt.certif;
+  loadCertFull('sertFullCard', myValue);
+}
+function loadCertFull(dv, lng) {
+  console.log('no');
+  document.getElementById(dv).innerHTML = "";
+  col=1;
+  database.ref('certifacate').once('value', (snapshot) => {
+    const data = snapshot.val();
+    for (const key in data) {
+      const item = data[key];
+      // console.log(key);
+      // console.log(item.imageUrl);
+      txt = "";
+      switch (lng) {
+        case 'ru':
+          txt = item.ru;
+          break;
+        case 'en':
+          txt = item.en;
+          break;
+        case 'kz':
+          txt = item.kz;
+          break;
+        default:
+          break;
+      }
+      if(col<9)
+      {
+        document.getElementById(dv).insertAdjacentHTML('beforeend', '<a href="'+item.imageUrl+'" data-fancybox="gallery-a" data-fancybox data-caption="'+txt+'">'+
+        '<img src="'+item.imageUrl+'" class="gallery-img"/>'+
+        '<span class="gallery_caption">'+txt+'</span>'+
+        '</a>');
+        col++;
+      }
+      
+    }
+    //console.log(Math.ceil(col/8));
+    bk='';
+    // bk='<div class="prev_page"> <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7.98926 1.34985L2.48926 6.84985L7.98926 12.3499" stroke="#DBDBDB" stroke-width="3"/> </svg></div>';
+    nx='<div class="next_page" onclick="loadCertFullPage(\'sertFullCard\', \''+lng+'\',2);"> <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M9.32324 17.3499L14.8232 11.8499L9.32324 6.34985" stroke="#DBDBDB" stroke-width="3"/> </svg></div>';
+    clpg='<div class="current_page active_page" onclick="loadCertFullPage(\'sertFullCard\', \''+lng+'\',1);">1</div>';
+    for (let i = 1; i < Math.ceil(col/8); i++) {
+      clpg +='<div class="current_page" onclick="loadCertFullPage(\'sertFullCard\', \''+lng+'\','+(i+1)+');">'+(i+1)+'</div>';
+      
+    }
+    document.getElementById('navCer').innerHTML = bk+clpg+nx;
+  });
+  
+}
+function loadCertFullPage(dv, lng, pg) {
+  // console.log(pg);
+  document.getElementById(dv).innerHTML = "";
+  col=1;
+  database.ref('certifacate').once('value', (snapshot) => {
+    const data = snapshot.val();
+    for (const key in data) {
+      const item = data[key];
+      // console.log(key);
+      // console.log(item.imageUrl);
+      txt = "";
+      switch (lng) {
+        case 'ru':
+          txt = item.ru;
+          break;
+        case 'en':
+          txt = item.en;
+          break;
+        case 'kz':
+          txt = item.kz;
+          break;
+        default:
+          break;
+      }
+      st = 8*(pg-1);
+      ed = 9*pg;
+      console.log(st +' | '+ed);
+      if(col>st && col<ed)
+      {
+        document.getElementById(dv).insertAdjacentHTML('beforeend', '<a href="'+item.imageUrl+'" data-fancybox="gallery-a" data-fancybox data-caption="'+txt+'">'+
+        '<img src="'+item.imageUrl+'" class="gallery-img"/>'+
+        '<span class="gallery_caption">'+txt+'</span>'+
+        '</a>');
+      }
+      col++;
+      
+      
+    }
+    console.log(Math.ceil(col/8));
+    bk='';
+    nx='';
+    if(pg!=1)
+    {bk='<div class="prev_page" onclick="loadCertFullPage(\'sertFullCard\', \''+lng+'\','+(pg-1)+');"> <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7.98926 1.34985L2.48926 6.84985L7.98926 12.3499" stroke="#DBDBDB" stroke-width="3"/> </svg></div>';}
+    if(pg!=Math.ceil(col/8))nx='<div class="next_page" onclick="loadCertFullPage(\'sertFullCard\', \''+lng+'\','+(pg+1)+');"> <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M9.32324 17.3499L14.8232 11.8499L9.32324 6.34985" stroke="#DBDBDB" stroke-width="3"/> </svg></div>';
+    clpg='';
+    for (let i = 1; i < Math.ceil(col/8)+1; i++) {
+      if(i==pg)clpg+='<div class="current_page active_page" onclick="loadCertFullPage(\'sertFullCard\', \''+lng+'\','+(i)+');">'+(i)+'</div>';
+      else clpg +='<div class="current_page" onclick="loadCertFullPage(\'sertFullCard\', \''+lng+'\','+(i)+');">'+i+'</div>';
+    }
+    document.getElementById('navCer').innerHTML = bk+clpg+nx;
+  });
+  
 }
