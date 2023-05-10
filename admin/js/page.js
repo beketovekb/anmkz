@@ -81,3 +81,33 @@ document.getElementById('genpage').addEventListener('click', function(event) {
       loadCardAdres('#adressCardDownRu','#adressCardDownEn','#adressCardDownKz');
       loadCardSsil('#instaCard','#webCard');
   });
+  document.getElementById('footer').addEventListener('click', function(event) {
+    event.preventDefault(); // предотвращаем переход по ссылке
+    fetch(this.href)
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('pagediv').innerHTML = data;
+      });
+      loadRekvizidCardTitle('#RekvizidCardRu','#RekvizidCardEn','#RekvizidCardKz');
+  });
+  document.getElementById('certifacate').addEventListener('click', function(event) {
+    event.preventDefault(); // предотвращаем переход по ссылке
+    fetch(this.href)
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('pagediv').innerHTML = data;
+      });
+      loadCert('#certCard');
+      // loadRekvizidCardTitle('#RekvizidCardRu','#RekvizidCardEn','#RekvizidCardKz');
+  });
+  document.getElementById('news').addEventListener('click', function(event) {
+    event.preventDefault(); // предотвращаем переход по ссылке
+    fetch(this.href)
+      .then(response => response.text())
+      .then(data => {
+        document.getElementById('pagediv').innerHTML = data;
+      });
+      loadNews('#fullNews');
+      // loadCert('#certCard');
+      // loadRekvizidCardTitle('#RekvizidCardRu','#RekvizidCardEn','#RekvizidCardKz');
+  });
