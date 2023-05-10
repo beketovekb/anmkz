@@ -2692,6 +2692,10 @@ footer .subFooter a {
   padding: 5px 10px;
 }
 
+.swiper-lazy-preloader {
+  border: none !important;
+}
+
 @media (max-width: 1800px) {
   .container {
     max-width: 1200px;
