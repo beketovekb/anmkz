@@ -65,30 +65,30 @@ $(document).on('click', 'a[href^="#"]', function (event) {
   }, 500);
 });
 
-
-jQuery(".chronology").mousemove(function(){    
-  var style_var = jQuery(this).find(".swiper-wrapper").attr("style").match(/translate3d\(([^,]+),/);   
-  jQuery(this).find(".svg").each(function(){    
-      jQuery(this).attr("style","transition-duration: 2s; transform: translate3d("+parseInt(style_var[1])*(-1)+"px, 0px, 0px);");    
-  }); 
-  jQuery(this).find(".car").each(function(){    
-      jQuery(this).attr("style","transition-duration: 2s; transform: translate3d("+parseInt(style_var[1])/6+"px, 0px, 0px);");    
-  }); 
-  console.log(style_var[1])
-});
-jQuery("section").click(function(){    
-  var style_var = jQuery(this).find(".swiper-wrapper").attr("style").match(/translate3d\(([^,]+),/);   
-  jQuery(this).find(".svg").each(function(){    
-      
-      jQuery(this).attr("style","transition-duration: 2s; transform: translate3d("+parseInt(style_var[1])*(-1)+"px, 0px, 0px);");    
-  });
-  jQuery(this).find(".car").each(function(){ 
-      col =    $('.swiper-slide').length/100
-      jQuery(this).attr("style","transition-duration: 2s; transform: translate3d("+parseInt(style_var[1])/6+"px, 0px, 0px);");    
-  });  
-  console.log($('.swiper-slide').length/10)
-});
-
+  if($(window).width() > 960){
+    jQuery(".chronology").mousemove(function(){    
+      var style_var = jQuery(this).find(".swiper-wrapper").attr("style").match(/translate3d\(([^,]+),/);   
+      jQuery(this).find(".svg").each(function(){    
+          jQuery(this).attr("style","transition-duration: 2s; transform: translate3d("+parseInt(style_var[1])*(-1)+"px, 0px, 0px);");    
+      }); 
+      jQuery(this).find(".car").each(function(){    
+          jQuery(this).attr("style","transition-duration: 2s; transform: translate3d("+parseInt(style_var[1])/6+"px, 0px, 0px);");    
+      }); 
+      console.log(style_var[1])
+    });
+    jQuery("section").click(function(){    
+      var style_var = jQuery(this).find(".swiper-wrapper").attr("style").match(/translate3d\(([^,]+),/);   
+      jQuery(this).find(".svg").each(function(){    
+          
+          jQuery(this).attr("style","transition-duration: 2s; transform: translate3d("+parseInt(style_var[1])*(-1)+"px, 0px, 0px);");    
+      });
+      jQuery(this).find(".car").each(function(){ 
+          col =    $('.swiper-slide').length/100
+          jQuery(this).attr("style","transition-duration: 2s; transform: translate3d("+parseInt(style_var[1])/6+"px, 0px, 0px);");    
+      });  
+      console.log($('.swiper-slide').length/10)
+    });
+  }
 
 if($(".current_page:first").hasClass("active_page")) {
   $('.prev_page').addClass('default');

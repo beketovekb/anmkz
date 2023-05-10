@@ -965,6 +965,7 @@ header {
   justify-content: center;
   font-weight: bold;
   color: var(--swiper-theme-color);
+  display: none;
 }
 .partners .autoplay-progress svg {
   --progress: 0;
@@ -3035,6 +3036,9 @@ footer .subFooter a {
     margin-top: 15px;
     margin-bottom: 10px !important;
   }
+  .certificate .certificate_block .certificates .cert_card {
+    width: 230px;
+  }
 }
 @media (max-width: 1000px) {
   .container {
@@ -3382,5 +3386,70 @@ footer .subFooter a {
   }
   .product .product_cards .product_title, .contacts .contact_info .info_desc01 {
     font-size: 16px;
+  }
+}
+.div_svg {
+  width: 100%;
+  height: 100vh;
+  clip-path: inset(0);
+  overflow: hidden;
+}
+
+.preloader {
+  transform: translateY(-70px);
+}
+.preloader > g {
+  transform: translateY(5px) translateX(-70px);
+}
+.preloader #liner01 {
+  transform: rotate(-7deg);
+  transform-origin: 52% 39%;
+  animation: liner01 2s infinite;
+}
+.preloader #linera02 {
+  transform: translateY(-22px) translateX(-7px);
+  animation: liner02 2s infinite;
+}
+.preloader #Linear03 {
+  transform: translateY(-22px);
+  animation: liner03 2s infinite;
+  animation-delay: 1s;
+}
+.preloader #Linear04 {
+  transform: rotate(-12deg);
+  transform-origin: 44.4% 52%;
+  animation: liner04 2s infinite;
+  animation-delay: 1s;
+}
+.preloader #Circle01 {
+  transform: rotate(0deg);
+  transform-origin: 44.555% 52.695%;
+  animation: circle01 2s infinite;
+  animation-delay: 1s;
+}
+
+@keyframes liner01 {
+  50% {
+    transform: rotate(8deg);
+  }
+}
+@keyframes liner02 {
+  50% {
+    transform: translateY(7px) translateX(-7px);
+  }
+}
+@keyframes liner03 {
+  50% {
+    transform: translateY(7px);
+  }
+}
+@keyframes liner04 {
+  50% {
+    transform: rotate(25deg);
+  }
+}
+@keyframes circle01 {
+  100% {
+    transform: rotate(360deg);
   }
 }
