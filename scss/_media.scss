@@ -393,6 +393,7 @@
         margin-top: 15px;
         margin-bottom: 10px !important;
     }
+    
 }
 
 @media (max-width:1000px){
@@ -427,10 +428,14 @@
     .content_general .general_block{
         justify-content: unset;
         position: relative;
-        top: 100px;
+        top: 70px;
     }
     .content_general .general_block h1 {
-        font-size: 30px;
+        font-size: 24px !important;
+    }
+    .addition {
+        position: absolute;
+        top: 250px;
     }
     .addition .addition-card_shell{
         flex-direction: column;
@@ -591,6 +596,9 @@
     .content_general .general_block span {
         font-size: 16px;
         line-height: 140%;
+        br{
+            display: none;
+        }
     }
     .content_general .general_block h1 {
         font-size: 28px;
@@ -727,7 +735,7 @@
     }
 }
 
-@media (max-width:375px) and (max-height: 670px){
+@media (max-width:375px) and (max-height: 620px){
     .content_general .general_block h1 {
         font-size: 24px;
         line-height: 120%;

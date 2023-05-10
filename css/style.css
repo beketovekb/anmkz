@@ -3062,10 +3062,14 @@ footer .subFooter a {
   .content_general .general_block {
     justify-content: unset;
     position: relative;
-    top: 100px;
+    top: 70px;
   }
   .content_general .general_block h1 {
-    font-size: 30px;
+    font-size: 24px !important;
+  }
+  .addition {
+    position: absolute;
+    top: 250px;
   }
   .addition .addition-card_shell {
     flex-direction: column;
@@ -3222,6 +3226,9 @@ footer .subFooter a {
     font-size: 16px;
     line-height: 140%;
   }
+  .content_general .general_block span br {
+    display: none;
+  }
   .content_general .general_block h1 {
     font-size: 28px;
     line-height: 120%;
@@ -3316,7 +3323,7 @@ footer .subFooter a {
     display: none;
   }
 }
-@media (max-width: 375px) and (max-height: 670px) {
+@media (max-width: 375px) and (max-height: 620px) {
   .content_general .general_block h1 {
     font-size: 24px;
     line-height: 120%;
