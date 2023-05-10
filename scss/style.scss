@@ -1428,6 +1428,7 @@ footer{
     height: 800px;
     background-image: url(../img/news_card1.png);
     background-size: cover;
+    position: relative;
     &:after {
         content: "";
         display: block;    
@@ -1438,6 +1439,21 @@ footer{
         left: 0;   
         background: transparent;
         background-image: linear-gradient(to bottom, #000000, #00000000 60%);
+    }
+    .news_date_title{
+        height: 100px;
+        width: 100%;
+        background-color: #1188dd;
+        position: absolute;
+        bottom: 0;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        span{
+            color: #fff;
+            position: relative;
+            right: 50px;
+        }
     }
 }
 .detail_nc{
@@ -1473,6 +1489,9 @@ footer{
                 background-size: cover;
                 background-position: center;
                 margin-bottom: 50px;
+            }
+            .news_date_capt{
+                display: none;
             }
         }
     }

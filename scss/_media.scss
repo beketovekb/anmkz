@@ -94,6 +94,16 @@
     .vacancy_content .form_vacancy .col-4 {
         margin-left: calc((100% - 1200px) / 2);
     }
+    
+    .news_date_capt{
+        color: #939393;
+        display: block;
+        margin-bottom: 30px;
+        display: block !important;
+    }
+    .news_date_title{
+        display: none !important;
+    }
 }
 
 @media  (max-width:1300px) {
@@ -268,7 +278,6 @@
     .vacancy_content .form_vacancy .col-4 {
         margin-left: calc((100% - 920px) / 2);
     }
-    
     .page_contacts{
         &>.container{
             .page_title{
@@ -293,6 +302,96 @@
                 }
             }
         }
+        .contacts_form{
+            .row{
+                flex-direction: column;
+                .col-4 {
+                    width: 100%;
+                    max-width: 100%;
+                    .contacts_forms_title{
+                        width: 100%;
+                        display: block;
+                        text-align: center;
+                        margin-bottom: 20px;
+                    }
+                }
+                .col-8{
+                    width: 100%;
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+    .services_content{
+        .row{
+            flex-direction: column;
+            .service_list , .services_table{
+                width: 100%;
+                max-width: 100%;
+                ul{
+                    flex-direction: row;
+                    li{
+                        a{
+                            font-size: 16px;
+                        }
+                    }
+                }
+                .accordion-item{
+                    width: 100%;
+                    max-width: 100%;
+                }
+            }
+        }
+    }
+    .services_content_more{
+        &>.container{
+            &>.row{
+                display: flex;
+                flex-wrap: wrap;
+                flex-direction: row;
+                .services_content_caption {
+                    max-width: 75%;
+                    flex: 0 0 75%;
+                }
+                .services_products{
+                    order: 1;
+                    flex: 1 0 100%;
+                    width: 100%;
+                    max-width: 100%;
+                    .right_list{
+                        text-align: center;
+                    }
+                    ul{
+                        display: grid;
+                        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+                        li{
+                            margin-top: 10px;
+                            justify-content: flex-start;
+                            text-align: left;
+                            &::before {
+                                content: "•";
+                                font-size: 26px;
+                                margin-right: 10px;
+                                color: #1188dd;
+                                position: relative;
+                                top: -8px;
+                                height: 10px;
+                            }
+                            &::after{
+                                content: '';
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    .detail_news_title{
+        font-size: 22px !important;
+        display: block;
+        line-height: 150% !important;
+        margin-top: 15px;
+        margin-bottom: 10px !important;
     }
 }
 
@@ -497,7 +596,6 @@
         font-size: 28px;
         line-height: 120%;
     }
-    
     .managers_cards{
         grid-template-columns: repeat(1, 1fr) !important;
     }
@@ -514,6 +612,116 @@
                 width: 100%;
                 max-width: 100%;
                 margin: 0 auto;
+            }
+        }
+    }
+    .page_contacts .contacts_form .form .form_shell {
+        flex-direction: column;
+        .left_form{
+            width: 100%;
+            .input_shell{
+                input{
+                    width: 100% !important;
+                }
+            }
+        }
+        .right_form{
+            width: 100%;
+            .input_shell{
+                textarea{
+                    width: 100% !important;
+                    max-width: 100% !important;
+                }
+            }
+
+        }
+    }
+    .submit_btn{
+        width: 100%;
+    }
+    .services_content{
+        .page_title{
+            display: block;
+            // text-align: center;
+        }
+        .row{
+            ul{
+                flex-direction: column !important;
+                li{
+                    // justify-content: center;
+                    a{
+                        // text-align: center;
+                        font-size: 18px !important;
+                    }
+                }
+            }
+        }
+        .services_table {
+            margin-top: 50px;
+            .services_tilte{
+                display: block;
+                // text-align: center;
+            }
+            .services_card{
+                flex-direction: column;
+                align-items: center; 
+                .services_caption{
+                    text-align: center;
+                    width: 100% !important;
+                }
+                .serv_detailed_btn{
+                    margin: 20px auto;
+                }
+            }
+        }
+    }
+    .services_content_more{
+        &>.container{
+            .page_title {
+                display: block;
+                // text-align: center;
+                font-size: 28px;
+            }
+            &>.row{
+                flex-direction: column !important;
+                .services_list_more, .services_content_caption, .services_products {
+                    width: 100%;
+                    max-width: 100%;
+                }
+                .services_list_more{
+
+                    ul{
+                        li{
+                            // justify-content: center;
+                            a{
+                                // text-align: center;
+                                font-size: 18px !important;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        .services_content_caption {
+            .servce_table_01, .servce_table_02{
+                tr{
+                    td, th{
+
+                        font-size: 8px !important;
+                    }
+                }
+            }
+        }
+    }
+    .page_title {
+        font-size: 28px !important;
+    }
+    .detail_nc .detail_news_content{
+        margin-top: 0px !important;
+        padding: 20px;
+        .left_block_dn{
+            &:nth-child(1){
+                display: none;
             }
         }
     }
