@@ -430,7 +430,7 @@ function loadFooterContact(lng, dv, block) {
 }
 function loadCert(dv, lng) {
   document.getElementById(dv).innerHTML = "";
-  col=1;
+  coli=1;
   database.ref('certifacate').once('value', (snapshot) => {
     const data = snapshot.val();
     for (const key in data) {
@@ -451,15 +451,18 @@ function loadCert(dv, lng) {
         default:
           break;
       }
-      if(col<5)
+      console.log(coli);
+      if(coli<4)
       {
         document.getElementById(dv).insertAdjacentHTML('beforeend', '<div class="card">' +
         '<div class="cert_card">' +
         '<img src="'+item.imageUrl+'" class="cert_photo">' +
         '<span class="cert_caption">'+txt+'</span>' +
-        '</div>'); 
+        '</div>');
+        
+        coli++; 
       }
-      col++;
+      
     }
   });
 }

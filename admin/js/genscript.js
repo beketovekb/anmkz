@@ -833,11 +833,23 @@ function delCert(id) {
 
 }
 
-function addNews(dv, dv2, dv3, dv4, dv5, dv6) {
+function addNews(dv, dv2, dv3, dv4, dv5, dv6, dt) {
 	const titleRu = $(dv).val().replace(/\n/g, "<br>");
 	const titleEn = $(dv2).val().replace(/\n/g, "<br>");
 	const titlekz = $(dv3).val().replace(/\n/g, "<br>");
+	var dateValue  = $(dt).val();
+	console.log(dateValue);
+	var dateObject = new Date(dateValue);
+	// Получаем день, месяц и год из объекта Date
+	var day = dateObject.getDate();
+	var month = dateObject.getMonth() + 1; // Месяцы в JavaScript начинаются с 0, поэтому добавляем 1
+	var year = dateObject.getFullYear();
+	// Форматируем день и месяц для вывода с ведущими нулями (если необходимо)
+	var formattedDay = day < 10 ? "0" + day : day;
+	var formattedMonth = month < 10 ? "0" + month : month;
 
+	// Формируем отформатированную строку даты в формате "dd.mm.yyyy"
+	const formattedDate = formattedDay + "." + formattedMonth + "." + year;
 	const opisanieRu = $(dv4).html();
 	console.log(opisanieRu);
 	const opisanieEn = $(dv5).html();
@@ -863,6 +875,7 @@ function addNews(dv, dv2, dv3, dv4, dv5, dv6) {
 					Opisanieru: opisanieRu,
 					Opisanieen: opisanieEn,
 					Opisaniekz: opisanieKz,
+					dateNews: formattedDate,
 
 				}).then(function () {
 					// loadCert('#certCard');
