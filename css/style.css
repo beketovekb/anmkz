@@ -725,6 +725,7 @@ header {
   display: flex;
   align-items: flex-end;
   position: absolute;
+  width: 100%;
 }
 .news .news_cards a .news_card .news_card-img {
   background-image: url(../img/news_card1.png);
@@ -1443,6 +1444,7 @@ footer .subFooter a {
   display: flex;
   align-items: flex-end;
   position: absolute;
+  width: 100%;
 }
 .news_content .page_news_cards a .news_card .news_card-img {
   background-image: url(../img/news_card1.png);
