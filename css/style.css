@@ -652,7 +652,7 @@ header {
 }
 .chronology .car {
   width: 100%;
-  width: 151px;
+  width: 150px;
   display: inline-block;
   transition: 2s all ease-out;
 }
@@ -660,7 +660,7 @@ header {
   display: block;
 }
 .chronology .car {
-  width: 100px;
+  width: 150px;
   position: absolute;
   top: 180px;
 }
