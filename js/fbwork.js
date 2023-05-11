@@ -41,6 +41,7 @@ function loadLng() {
   loadFooterContact(myValue, 'footerContactCard', 'other');
 
   loadCert('certCard', myValue);
+  loadNewsGenPage(myValue,'news_cards');
 }
 
 function gentt() {
@@ -430,7 +431,7 @@ function loadFooterContact(lng, dv, block) {
 }
 function loadCert(dv, lng) {
   document.getElementById(dv).innerHTML = "";
-  coli=1;
+  coli = 1;
   database.ref('certifacate').once('value', (snapshot) => {
     const data = snapshot.val();
     for (const key in data) {
@@ -451,18 +452,17 @@ function loadCert(dv, lng) {
         default:
           break;
       }
-      console.log(coli);
-      if(coli<4)
-      {
+      // console.log(coli);
+      if (coli < 4) {
         document.getElementById(dv).insertAdjacentHTML('beforeend', '<div class="card">' +
-        '<div class="cert_card">' +
-        '<img src="'+item.imageUrl+'" class="cert_photo">' +
-        '<span class="cert_caption">'+txt+'</span>' +
-        '</div>');
-        
-        coli++; 
+          '<div class="cert_card">' +
+          '<img src="' + item.imageUrl + '" class="cert_photo">' +
+          '<span class="cert_caption">' + txt + '</span>' +
+          '</div>');
+
+        coli++;
       }
-      
+
     }
   });
 }
@@ -493,9 +493,9 @@ function trasnlCertPage(lng) {
   loadCertFull('sertFullCard', myValue);
 }
 function loadCertFull(dv, lng) {
-  console.log('no');
+  //console.log('no');
   document.getElementById(dv).innerHTML = "";
-  col=1;
+  col = 1;
   database.ref('certifacate').once('value', (snapshot) => {
     const data = snapshot.val();
     for (const key in data) {
@@ -516,33 +516,32 @@ function loadCertFull(dv, lng) {
         default:
           break;
       }
-      if(col<9)
-      {
-        document.getElementById(dv).insertAdjacentHTML('beforeend', '<a href="'+item.imageUrl+'" data-fancybox="gallery-a" data-fancybox data-caption="'+txt+'">'+
-        '<img src="'+item.imageUrl+'" class="gallery-img"/>'+
-        '<span class="gallery_caption">'+txt+'</span>'+
-        '</a>');
+      if (col < 9) {
+        document.getElementById(dv).insertAdjacentHTML('beforeend', '<a href="' + item.imageUrl + '" data-fancybox="gallery-a" data-fancybox data-caption="' + txt + '">' +
+          '<img src="' + item.imageUrl + '" class="gallery-img"/>' +
+          '<span class="gallery_caption">' + txt + '</span>' +
+          '</a>');
         col++;
       }
-      
+
     }
     //console.log(Math.ceil(col/8));
-    bk='';
+    bk = '';
     // bk='<div class="prev_page"> <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7.98926 1.34985L2.48926 6.84985L7.98926 12.3499" stroke="#DBDBDB" stroke-width="3"/> </svg></div>';
-    nx='<div class="next_page" onclick="loadCertFullPage(\'sertFullCard\', \''+lng+'\',2);"> <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M9.32324 17.3499L14.8232 11.8499L9.32324 6.34985" stroke="#DBDBDB" stroke-width="3"/> </svg></div>';
-    clpg='<div class="current_page active_page" onclick="loadCertFullPage(\'sertFullCard\', \''+lng+'\',1);">1</div>';
-    for (let i = 1; i < Math.ceil(col/8); i++) {
-      clpg +='<div class="current_page" onclick="loadCertFullPage(\'sertFullCard\', \''+lng+'\','+(i+1)+');">'+(i+1)+'</div>';
-      
+    nx = '<div class="next_page" onclick="loadCertFullPage(\'sertFullCard\', \'' + lng + '\',2);"> <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M9.32324 17.3499L14.8232 11.8499L9.32324 6.34985" stroke="#DBDBDB" stroke-width="3"/> </svg></div>';
+    clpg = '<div class="current_page active_page" onclick="loadCertFullPage(\'sertFullCard\', \'' + lng + '\',1);">1</div>';
+    for (let i = 1; i < Math.ceil(col / 8); i++) {
+      clpg += '<div class="current_page" onclick="loadCertFullPage(\'sertFullCard\', \'' + lng + '\',' + (i + 1) + ');">' + (i + 1) + '</div>';
+
     }
-    document.getElementById('navCer').innerHTML = bk+clpg+nx;
+    document.getElementById('navCer').innerHTML = bk + clpg + nx;
   });
-  
+
 }
 function loadCertFullPage(dv, lng, pg) {
   // console.log(pg);
   document.getElementById(dv).innerHTML = "";
-  col=1;
+  col = 1;
   database.ref('certifacate').once('value', (snapshot) => {
     const data = snapshot.val();
     for (const key in data) {
@@ -563,32 +562,102 @@ function loadCertFullPage(dv, lng, pg) {
         default:
           break;
       }
-      st = 8*(pg-1);
-      ed = 9*pg;
-      console.log(st +' | '+ed);
-      if(col>st && col<ed)
-      {
-        document.getElementById(dv).insertAdjacentHTML('beforeend', '<a href="'+item.imageUrl+'" data-fancybox="gallery-a" data-fancybox data-caption="'+txt+'">'+
-        '<img src="'+item.imageUrl+'" class="gallery-img"/>'+
-        '<span class="gallery_caption">'+txt+'</span>'+
-        '</a>');
+      st = 8 * (pg - 1);
+      ed = 9 * pg;
+      console.log(st + ' | ' + ed);
+      if (col > st && col < ed) {
+        document.getElementById(dv).insertAdjacentHTML('beforeend', '<a href="' + item.imageUrl + '" data-fancybox="gallery-a" data-fancybox data-caption="' + txt + '">' +
+          '<img src="' + item.imageUrl + '" class="gallery-img"/>' +
+          '<span class="gallery_caption">' + txt + '</span>' +
+          '</a>');
       }
       col++;
-      
-      
+
+
     }
-    console.log(Math.ceil(col/8));
-    bk='';
-    nx='';
-    if(pg!=1)
-    {bk='<div class="prev_page" onclick="loadCertFullPage(\'sertFullCard\', \''+lng+'\','+(pg-1)+');"> <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7.98926 1.34985L2.48926 6.84985L7.98926 12.3499" stroke="#DBDBDB" stroke-width="3"/> </svg></div>';}
-    if(pg!=Math.ceil(col/8))nx='<div class="next_page" onclick="loadCertFullPage(\'sertFullCard\', \''+lng+'\','+(pg+1)+');"> <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M9.32324 17.3499L14.8232 11.8499L9.32324 6.34985" stroke="#DBDBDB" stroke-width="3"/> </svg></div>';
-    clpg='';
-    for (let i = 1; i < Math.ceil(col/8)+1; i++) {
-      if(i==pg)clpg+='<div class="current_page active_page" onclick="loadCertFullPage(\'sertFullCard\', \''+lng+'\','+(i)+');">'+(i)+'</div>';
-      else clpg +='<div class="current_page" onclick="loadCertFullPage(\'sertFullCard\', \''+lng+'\','+(i)+');">'+i+'</div>';
+    console.log(Math.ceil(col / 8));
+    bk = '';
+    nx = '';
+    if (pg != 1) { bk = '<div class="prev_page" onclick="loadCertFullPage(\'sertFullCard\', \'' + lng + '\',' + (pg - 1) + ');"> <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7.98926 1.34985L2.48926 6.84985L7.98926 12.3499" stroke="#DBDBDB" stroke-width="3"/> </svg></div>'; }
+    if (pg != Math.ceil(col / 8)) nx = '<div class="next_page" onclick="loadCertFullPage(\'sertFullCard\', \'' + lng + '\',' + (pg + 1) + ');"> <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M9.32324 17.3499L14.8232 11.8499L9.32324 6.34985" stroke="#DBDBDB" stroke-width="3"/> </svg></div>';
+    clpg = '';
+    for (let i = 1; i < Math.ceil(col / 8) + 1; i++) {
+      if (i == pg) clpg += '<div class="current_page active_page" onclick="loadCertFullPage(\'sertFullCard\', \'' + lng + '\',' + (i) + ');">' + (i) + '</div>';
+      else clpg += '<div class="current_page" onclick="loadCertFullPage(\'sertFullCard\', \'' + lng + '\',' + (i) + ');">' + i + '</div>';
     }
-    document.getElementById('navCer').innerHTML = bk+clpg+nx;
+    document.getElementById('navCer').innerHTML = bk + clpg + nx;
   });
-  
+
+}
+
+function loadNewsGenPage(lng, dv) {
+  // document.getElementById(dv).innerHTML = "";
+  document.getElementById(dv).innerHTML = "";
+  coln = 1;
+  var key = [];
+  database.ref('news').once('value', (snapshot) => {
+    const data = snapshot.val();
+    var dataArray = Object.entries(data);
+
+    // Сортируем массив по полю "dateNews"
+    dataArray.sort(function (a, b) {
+      var dateA = new Date(b[1].dateNews.split('.').reverse().join('.'));
+      var dateB = new Date(a[1].dateNews.split('.').reverse().join('.'));
+      return dateA - dateB;
+    });
+    it = 0;
+    // Выводим отсортированные данные
+    dataArray.forEach(function (item) {
+      var value = item[1];
+      if (it < 2) {
+        opis = '';
+        tit = '';
+        switch (lng) {
+          case 'ru':
+            opis = value.Opisanieru;
+            tit = value.Titleru;
+            break;
+          case 'en':
+            opis = value.Opisanieen;
+            tit = value.Titleen;
+            break;
+          case 'kz':
+            opis = value.Opisaniekz;
+            tit = value.Titlekz;
+            break;
+
+          default:
+            break;
+        }
+        console.log(value.dateNews,tit,' : ',opis);
+        document.getElementById(dv).insertAdjacentHTML('beforeend', '<a href="detailedNews.html">'+
+        '<div class="news_card">'+
+        '<div class="news_card-img"></div>'+
+        '<div class="news_card-content">'+
+        '<div class="news_card-desc">'+
+        '<div>'+
+        '<span class="news_title">'+tit+'</span>'+
+        '<span class="news_caption">'+opis+'</span>'+
+        '</div>'+
+        '<span class="more_detail">Читать полностью'+
+        '<svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">'+
+        '<path d="M8.25 0.790283L4.5 4.54028L0.75 0.790283" stroke="black" stroke-width="2"/>'+
+        '</svg>'+
+        '</span>'+
+        '</div>'+
+        '<div class="news_card-date">'+
+        '<span class="news_date">'+value.dateNews+'</span>'+
+        '</div>'+
+        '</div>'+
+        '</div>'+
+        '</a>'
+        );
+      }
+      it++;
+
+    });
+    // console.log(key);
+    //  console.log(data[key]); 
+  });
+
 }
