@@ -735,7 +735,7 @@ header {
 }
 .news .news_cards a .news_card .news_card-desc {
   width: 75%;
-  height: 248px;
+  height: auto;
   background-color: #FAFAFA;
   color: #000;
   padding: 20px 30px;
@@ -1454,7 +1454,7 @@ footer .subFooter a {
 }
 .news_content .page_news_cards a .news_card .news_card-desc {
   width: 500px;
-  height: 270px;
+  height: auto;
   background-color: #fff;
   color: #000;
   padding: 20px 30px;
