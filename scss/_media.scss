@@ -408,6 +408,9 @@
 
 @media (max-width:1000px){
     
+    .preloader{
+        transform: scale(2) !important;
+    }
     .container{
         max-width: 720px;
         width: 100%;

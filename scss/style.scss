@@ -40,7 +40,6 @@ header {
     }
 
 }
-
 .adapt_more{
     display: none;
 }
@@ -2402,7 +2401,6 @@ footer{
         }
     }
 }
-
 .services_content_more{
     background-color: #FAFAFA;
     .page_title{
@@ -2565,7 +2563,6 @@ footer{
         }
     }
 }
-
 .serv_content{
     background-color: #FAFAFA;
     .page_title{
@@ -2671,7 +2668,6 @@ footer{
 .swiper-lazy-preloader{
     border: none !important;
 }
-
 @import './media';
 
 
@@ -2681,10 +2677,17 @@ footer{
     height: 100vh;
     clip-path: inset(0);
     overflow: hidden;
+    position: fixed;
+    z-index: 9999;
+    background-color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .preloader{
-    transform: translateY(-70px);
+    transform: scale(0.7) translateY(-70px);
+    fill:#fff;
     &>g{
         
         transform: translateY(5px) translateX(-70px);

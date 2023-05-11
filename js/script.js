@@ -247,3 +247,11 @@ $(".bar").click(function () {
 window.addEventListener('scroll', function() {
     $('.sub_bar').addClass("none");
 });
+
+
+$(window).on('load', function () {
+  $preloader = $('.loader'),
+    $loader = $preloader.find('.loader');
+  $loader.fadeOut();
+  $preloader.delay(1400).fadeOut('slow');
+});

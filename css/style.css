@@ -3063,6 +3063,9 @@ footer .subFooter a {
   }
 }
 @media (max-width: 1000px) {
+  .preloader {
+    transform: scale(2) !important;
+  }
   .container {
     max-width: 720px;
     width: 100%;
@@ -3424,10 +3427,17 @@ footer .subFooter a {
   height: 100vh;
   clip-path: inset(0);
   overflow: hidden;
+  position: fixed;
+  z-index: 9999;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .preloader {
-  transform: translateY(-70px);
+  transform: scale(0.7) translateY(-70px);
+  fill: #fff;
 }
 .preloader > g {
   transform: translateY(5px) translateX(-70px);
