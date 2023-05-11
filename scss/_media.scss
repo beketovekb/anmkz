@@ -20,7 +20,7 @@
         font-size: 22px;
         line-height: 140%;
     }
-    .news_card{
+    .news_card-content{
         align-items: flex-start !important;
         flex-direction: column-reverse;
     }
@@ -583,12 +583,14 @@
         width: 40%;
         height: 50px;
     }
-    .news .news_cards a .news_card .news_card-desc .news_title {
+    .news .news_cards a .news_card .news_card-desc .news_title,
+    .news_content .page_news_cards a .news_card .news_card-desc .news_title {
         color: #000000;
         font-family: "Montserrat-Bold";
         font-size: 16px;
     }
-    .news .news_cards a .news_card .news_card-desc .news_caption {
+    .news .news_cards a .news_card .news_card-desc .news_caption,
+    .news_content .page_news_cards a .news_card .news_card-desc .news_caption {
         color: #434343;
         font-size: 12px;
     }
@@ -793,5 +795,8 @@
     
     .product .product_cards .product_title, .contacts .contact_info .info_desc01 {
         font-size: 16px;
+    }
+    .detail_content .container, .detail_nc .detail_news_content .left_block_dn {
+        padding: 0;
     }
 }
