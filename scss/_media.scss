@@ -94,7 +94,6 @@
     .vacancy_content .form_vacancy .col-4 {
         margin-left: calc((100% - 1200px) / 2);
     }
-    
     .news_date_capt{
         color: #939393;
         display: block;
@@ -103,6 +102,10 @@
     }
     .news_date_title{
         display: none !important;
+    }
+    .certificate_content .page_certificate_cards {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -395,6 +398,11 @@
     }
     .certificate .certificate_block .certificates .cert_card {
         width: 230px;
+    }
+    
+    .certificate_content .page_certificate_cards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
     }
 }
 
@@ -736,6 +744,11 @@
                 display: none;
             }
         }
+    }
+    
+    .certificate_content .page_certificate_cards {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
     }
 }
 
