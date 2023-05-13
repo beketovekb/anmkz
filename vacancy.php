@@ -3,7 +3,7 @@ if (isset ($_POST['contactFF'])) {
   $to = "beketovekb@gmail.com";
   $from = 'info@anm.kz';
   $subject = "Заполнена контактная форма с ".$_SERVER['HTTP_REFERER'];
-  $message = "Имя: ".$_POST['nameFF']."\nEmail: ".$from."\nIP: ".$_SERVER['REMOTE_ADDR']."\nСообщение: ".$_POST['messageFF'];
+  $message = "Имя: ".$_POST['nameFF']."\nEmail: ".$from."\nIP: ".$_SERVER['REMOTE_ADDR'];
   $boundary = md5(date('r', time()));
   $filesize = '';
   $headers = "MIME-Version: 1.0\r\n";
@@ -599,7 +599,8 @@ $attachment";
                                             <div class="file-select">
                                               <div class="file-select-name" id="noFile">Выберите файл</div> 
                                               <div class="file-select-button" id="fileName">Выбрать</div>
-                                              <input type="file" name="chooseFile[]" id="chooseFile" accept=".doc,.docx, .pdf, .jpg, .jpeg, .png">
+                                              <!-- <input type="file" name="chooseFile[]" id="chooseFile" accept=".doc,.docx, .pdf, .jpg, .jpeg, .png"> -->
+                                              <input type="file" name="fileFF[]" multiple id="fileFF" class="w100">
                                             </div>
                                           </div>
                                           
