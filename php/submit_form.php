@@ -7,7 +7,7 @@ $file = $_FILES['chooseFile'];
 $to = 'beketovekb@gmail.com';
 $subject = 'Feedback Form Submission';
 $headers = 'From: beketovekb@gmail.com' . "\r\n" .
-           'Reply-To: ' . 'beketovekb@gmail.com' . "\r\n" .
+           'Reply-To: ' . 'skimaksss@gmail.com' . "\r\n" .
            'Content-Type: text/plain; charset=utf-8' . "\r\n";
 
 $fileContent = file_get_contents($file['tmp_name']);
