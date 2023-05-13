@@ -598,7 +598,7 @@ $attachment";
                                             <div class="file-select">
                                               <div class="file-select-name" id="noFile">Выберите файл</div> 
                                               <div class="file-select-button" id="fileName">Выбрать</div>
-                                              <input type="file" name="chooseFile" id="chooseFile" accept=".doc,.docx, .pdf, .jpg, .jpeg, .png">
+                                              <input type="file" name="chooseFile[]" id="chooseFile" accept=".doc,.docx, .pdf, .jpg, .jpeg, .png">
                                             </div>
                                           </div>
                                           
