@@ -8,10 +8,10 @@ document.getElementById('applicationForm').addEventListener('submit', function(e
   xhr.onreadystatechange = function() {
       if (xhr.readyState === 4) {
           if (xhr.status === 200) {
-              document.getElementById('response').textContent = 'Application submitted successfully';
+              alert( 'Application submitted successfully');
               form.reset();
           } else {
-              document.getElementById('response').textContent = 'An error occurred while submitting the application.';
+              alert('An error occurred while submitting the application.');
           }
       }
   };
