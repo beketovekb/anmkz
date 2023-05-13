@@ -562,57 +562,17 @@ $attachment";
                     <div class="col-4">
                         <span>Отправьте резюме</span>
                         <form enctype="multipart/form-data" method="post" id="feedback-form">
-                            <div class="form_shell">
-                                <div class="left_form">
-                                    <div class="input_shell">
-                                        <span>Имя Фамилия</span>
-                                        <!-- <input type="text" placeholder="Введите имя" class="input_name" id="name" name="name">
-                                        <div class="error_notification">
-                                            <span>Заполните поле</span>
-                                            <hr>
-                                        </div> -->
-                                        <input type="text" name="nameFF" id="nameFF" required placeholder="например, Иван Иванович Иванов" x-autocompletetype="name" class="w100 border">
-                                    </div>
-                                    <div class="input_shell">
-                                        <span>Должность</span>
-                                        <div class="m-5 text-center body">
-                                            <div class="col-12 mx-auto">
-                                                
-                                              <select class="ddl-select" id="list" name="list">
-                                                <option>Зав.складом</option>
-                                                <option value="1">Технический директор</option>
-                                                <option value="2">Повар</option>
-                                                <option value="3">Спрей - маляр</option>
-                                                <option value="4">Сварьщики</option>
-                                                <option value="5">Плотником</option>
-                                                <option value="6">Трубомонтажник</option>
-                                                <option value="7">Крановщик РДК</option>
-                                              </select>
-                                              
-                                            </div>
-                                          </div>
-                                          
-                                    </div>
-                                    <div class="input_shell">
-                                        <span>Резюме</span>
-                                        <div class="file-upload">
-                                            <div class="file-select">
-                                              <div class="file-select-name" id="noFile">Выберите файл</div> 
-                                              <!-- <div class="file-select-button" id="fileName">Выбрать</div> -->
-                                              <!-- <input type="file" name="chooseFile[]" id="chooseFile" accept=".doc,.docx, .pdf, .jpg, .jpeg, .png"> -->
-                                              <input type="file" name="fileFF[]" multiple id="fileFF" class="w100">
-                                            </div>
-                                          </div>
-                                          
-                                        <div class="error_notification">
-                                            <span>Заполните поле</span>
-                                            <hr>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <input class="submit_vac_btn" value="Отправить" type="submit" id="submitFF">Отправить</button>
-                        </form>
+<label for="nameFF">Имя:</label>
+<input type="text" name="nameFF" id="nameFF" required placeholder="например, Иван Иванович Иванов" x-autocompletetype="name" class="w100 border">
+<label for="contactFF">Email:</label>
+<input type="email" name="contactFF" id="contactFF" required placeholder="например, ivan@yandex.ru" x-autocompletetype="email" class="w100 border">
+<label for="fileFF">Прикрепить файл:</label>
+<input type="file" name="fileFF[]" multiple id="fileFF" class="w100">
+<label for="messageFF">Сообщение:</label>
+<textarea name="messageFF" id="messageFF" required rows="5" placeholder="Детали заявки…" class="w100 border"></textarea>
+<br>
+<input value="Отправить" type="submit" id="submitFF">
+</form>
                     </div>
                     <div class="col-1"></div>
                     <div class="col-7" id="imgVacan"></div>
@@ -692,18 +652,7 @@ $attachment";
     <!-- <script src="php/script.js"></script> -->
 
     <?php echo $output; ?>
-<form enctype="multipart/form-data" method="post" id="feedback-form">
-<label for="nameFF">Имя:</label>
-<input type="text" name="nameFF" id="nameFF" required placeholder="например, Иван Иванович Иванов" x-autocompletetype="name" class="w100 border">
-<label for="contactFF">Email:</label>
-<input type="email" name="contactFF" id="contactFF" required placeholder="например, ivan@yandex.ru" x-autocompletetype="email" class="w100 border">
-<label for="fileFF">Прикрепить файл:</label>
-<input type="file" name="fileFF[]" multiple id="fileFF" class="w100">
-<label for="messageFF">Сообщение:</label>
-<textarea name="messageFF" id="messageFF" required rows="5" placeholder="Детали заявки…" class="w100 border"></textarea>
-<br>
-<input value="Отправить" type="submit" id="submitFF">
-</form>
+
 
 </body>
 </html>
