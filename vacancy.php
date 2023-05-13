@@ -561,7 +561,7 @@ $attachment";
 
                     <div class="col-4">
                         <span>Отправьте резюме</span>
-                        <form id="applicationForm" action="contact.php" method="post" enctype="multipart/form-data">
+                        <form enctype="multipart/form-data" method="post" id="feedback-form">
                             <div class="form_shell">
                                 <div class="left_form">
                                     <div class="input_shell">
