@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">  
 </head>
 <body>
-    <body onload="loadLng()">
+    <body onload="loadNewsPage()">
         <!-- <div class="div_svg loader">
            
             <svg class="preloader loader_inner" version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080" xml:space="preserve">
@@ -204,11 +204,11 @@
 
                     </div>
                     <ul>
-                        <li><a href="index.html">Главная</a></li>
-                        <li class="point_menu"><a href="about.html">О компании</a></li>
-                        <li><a href="news.html">Новости</a></li>
+                        <li><a href="index.html" id="genMenu">Главная</a></li>
+                        <li class="point_menu"><a href="about.html" id="aboutMenu">О компании</a></li>
+                        <li><a href="news.html" id="newsMenu">Новости</a></li>
                         <li class="point_menu">
-                            <a href="services.html">Продукция и услуги
+                            <a href="services.html" id="productMenu">Продукция и услуги
                                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 width="10px" height="10px"  viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;"
                                 xml:space="preserve">
@@ -222,37 +222,37 @@
                             <div class="submenu">
                                 <div class="submenu_list">
                                     <ul>
-                                        <li><a href="services.html">Производство и продукция</a></li>
-                                        <li><a href="servs.html">Услуги и сервис</a> </li>
-                                        <li><a href="lab.html">Лаборатория</a></li>
+                                        <li><a href="services.html" id="product1Menu">Производство и продукция</a></li>
+                                        <li><a href="servs.html" id="product2Menu">Услуги и сервис</a> </li>
+                                        <li><a href="lab.html" id="product3Menu">Лаборатория</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </li>
-                        <li><a href="vacancy.html">Вакансии</a></li>
-                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="vacancy.html" id="carerMenu">Вакансии</a></li>
+                        <li><a href="contacts.html" id="contactMenu">Контакты</a></li>
                     </ul>
                     <div class="bar">
                         <svg id="Capa_1" enable-background="new 0 0 464.205 464.205" height="512" viewBox="0 0 464.205 464.205" width="512" xmlns="http://www.w3.org/2000/svg"><g><g id="grip-solid-horizontal_1_"><path d="m435.192 406.18h-406.179c-16.024 0-29.013-12.99-29.013-29.013s12.989-29.013 29.013-29.013h406.18c16.023 0 29.013 12.99 29.013 29.013-.001 16.023-12.99 29.013-29.014 29.013z"/><path d="m435.192 261.115h-406.179c-16.024 0-29.013-12.989-29.013-29.012s12.989-29.013 29.013-29.013h406.18c16.023 0 29.013 12.989 29.013 29.013s-12.99 29.012-29.014 29.012z"/><path d="m435.192 116.051h-406.179c-16.024 0-29.013-12.989-29.013-29.013s12.989-29.013 29.013-29.013h406.18c16.023 0 29.013 12.989 29.013 29.013s-12.99 29.013-29.014 29.013z"/></g></g></svg>
                         <div class="sub_bar none">
                             <ul>
-                                <li><a href="index.html">Главная</a></li>
-                                <li class="point_menu"><a href="about.html">О компании</a></li>
-                                <li><a href="news.html">Новости</a></li>
+                                <li><a href="index.html" id="genMenuMobile">Главная</a></li>
+                                <li class="point_menu"><a href="about.html" id="aboutMenuMobile">О компании</a></li>
+                                <li><a href="news.html" id="newsMenuMobile">Новости</a></li>
                                 <li class="point_menu sub_hover">
-                                    <a href="services.html">Продукция и услуги</a>
+                                    <a href="services.html" id="productMenuMobile">Продукция и услуги</a>
                                     <div class="submenu">
                                         <div class="submenu_list">
                                             <ul>
-                                                <li><a href="services.html">Производство и продукция</a></li>
-                                                <li><a href="servs.html">Услуги и сервис</a> </li>
-                                                <li><a href="lab.html">Лаборатория</a></li>
+                                                <li><a href="services.html" id="product1MenuMobile">Производство и продукция</a></li>
+                                                <li><a href="servs.html" id="product2MenuMobile">Услуги и сервис</a> </li>
+                                                <li><a href="lab.html" id="product3MenuMobile">Лаборатория</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="vacancy.html">Вакансии</a></li>
-                                <li><a href="contacts.html">Контакты</a></li>
+                                <li><a href="vacancy.html" id="carerMenuMobile">Вакансии</a></li>
+                                <li><a href="contacts.html" id="contactMenuMobile">Контакты</a></li>
                                 <div class="lang">
                                     <div class="kz"><a onclick="lngsel('kz')">KZ</a></div>
                                     <div class="ru"><a href="" onclick="lngsel('ru');">RU</a></div>
@@ -262,9 +262,9 @@
                         </div>
                     </div>
                     <div class="lang">
-                        <div class="kz"><a href="">KZ</a></div>
-                        <div class="ru"><a href="">RU</a></div>
-                        <div class="en"><a href="">EN</a></div>
+                        <div class="kz"><a onclick="lngselNews('kz');">KZ</a></div>
+                        <div class="ru"><a onclick="lngselNews('ru');">RU</a></div>
+                        <div class="en"><a onclick="lngselNews('en');">EN</a></div>
                     </div>
                     <div class="location_info">
                         <span class="location_place">
@@ -285,7 +285,7 @@
         <div class="bredcrumbs_grey bg_transparent">
             <div class="container">
                 <div class="bc_link">
-                    <a href="index.html">Главная </a>/ <a href="news.html">Новости </a>/ <a href="detailedNews.html">Приступил к работе Международный центр развития нефтегазового машиностроения</a>
+                    <a href="index.html" id="genTit"> </a>/ <a href="news.html" id="newsTit"> </a>/ <a href="detailedNews.html" id="nameNewsTit"> </a>
                 </div>
             </div>
         </div>
@@ -293,16 +293,16 @@
             <div class="container">
                 <div class="detail_news_content">
                     <div class="left_block_dn">
-                        <a href="" class="back_page_btn">
+                        <a href="news.html" class="back_page_btn">
                             <svg width="25" height="24" viewBox="0 0 25 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M21.4844 12L3.48438 12" stroke="white" stroke-width="2"/>
                                 <path d="M9.48438 6L3.48437 12L9.48437 18" stroke="white" stroke-width="2"/>
                             </svg>
                         </a>
                     </div>
-                    <div class="left_block_dn">
-                        <h2 class="detail_news_title">Приступил к работе Международный центр развития нефтегазового машиностроения</h2>
-                        <span class="news_date_capt">Опубликовано: <span class="date_date">26.03.2023</span></span>
+                    <div class="left_block_dn" id="blockNews">
+                        <!-- <h2 class="detail_news_title" id="detailNewsTitle">Приступил к работе Международный центр развития нефтегазового машиностроения</h2>
+                        <span class="news_date_capt">Опубликовано: <span class="date_date" id="dateNews">26.03.2023</span></span>
                         <span class="text_caption"><b>Приступил к работе Международный центр развития нефтегазового машиностроения, созданный в рамках</b></span>
                         <span class="text_caption">Плана мероприятий по развитию нефтегазового машиностроения РК, утвержденного МЭ РК и МИИР РК.</span>
                         <span class="text_caption">Генеральным директором центра назначен - Каримов Марат Шайдоллаевич, ранее занимавший должность заместителя генерального директора КПО.Заместителем Генерального директора назначен - Абишев Дастан Бахытович, Экс-директор департамента методологии закупок и развития местного содержания PSA.</span>
@@ -321,7 +321,7 @@
                         <span class="text_caption">Плана мероприятий по развитию нефтегазового машиностроения РК, утвержденного МЭ РК и МИИР РК.</span>
                         <span class="text_caption">Генеральным директором центра назначен - Каримов Марат Шайдоллаевич, ранее занимавший должность заместителя генерального директора КПО.Заместителем Генерального директора назначен - Абишев Дастан Бахытович, Экс-директор департамента методологии закупок и развития местного содержания PSA.</span>
                         <span class="text_caption">Основная цель работы Центра – локализация производства товаров для нефтегазовой отрасли РК, в частности для нужд трех Операторов (КПО, ТШО, НКОК) путем открытия новых производств, а также расширения возможностей существующих отечественных товаропроизводителей.</span>
-                        <span class="text_caption">Кроме того, Центр будет проводить экспертно-аналитическую работу по определению среднесрочной и долгосрочной потребности Операторов с целью максимального содействия ОТП в организации новых или модернизации существующих производств нефтегазовых товаров на территории РК.</span>
+                        <span class="text_caption">Кроме того, Центр будет проводить экспертно-аналитическую работу по определению среднесрочной и долгосрочной потребности Операторов с целью максимального содействия ОТП в организации новых или модернизации существующих производств нефтегазовых товаров на территории РК.</span> -->
                     </div>
                 </div>
             </div>
@@ -331,22 +331,22 @@
                 <div class="row">
                     <div class="col-4">
                         <img class="footerLogo" src="img/logo_white.png" alt="">
-                        <span class="too">ТОО «АТЫРАУНЕФТЕМАШ»</span>
+                        <span class="too" id="too">ТОО «АТЫРАУНЕФТЕМАШ»</span>
                     </div>
                     <div class="col-3 footer_main">
-                        <span class="footerCol_title">Разделы сайта</span>
+                        <span class="footerCol_title" id="titleMenuFooter">Разделы сайта</span>
                         <ul>
-                            <li><a href="index.html">Главная</a></li>
-                            <li><a href="about.html">О компании</a></li>
-                            <li><a href="news.html">Новости</a></li>
-                            <li><a href="services.html">Продукция и услуги</a></li>
-                            <li><a href="vacancy.html ">Вакансии</a></li>
-                            <li><a href="contacts.html">Контакты</a></li>
+                            <li><a href="index.html" id="genMenuFooter">Главная</a></li>
+                            <li><a href="about.html" id="aboutMenuFooter">О компании</a></li>
+                            <li><a href="news.html" id="newsMenuFooter">Новости</a></li>
+                            <li><a href="" id="productMenuFooter">Продукция и услуги</a></li>
+                            <li><a href="" id="carerMenuFooter">Карьера</a></li>
+                            <li><a href="" id="contactMenuFooter">Контакты</a></li>
                         </ul>
                     </div>
                     <div class="col-3 recv">
-                        <span class="footerCol_title">Реквизиты</span>
-                        <ul>
+                        <span class="footerCol_title" id="titleMenuFooter2">Реквизиты</span>
+                        <ul id="rekvizitText">
                             <li>ТОО «АТЫРАУНЕФТЕМАШ»</li>
                             <li>ОГРН: xxxxxxxxx</li>
                             <li>ИНН: xxxxxxxxx</li>
@@ -356,7 +356,7 @@
                         </ul>
     
                     </div>
-                    <div class="col-2 f_info">
+                    <div class="col-2 f_info" id="footerContactCardNews">
                         <span class="footerCol_title">Тел./факс:</span>
                         <span class="footerCol_desc01">+7 7122 76 27 01</span>
                         <span class="footerCol_title">Адрес:</span>
@@ -372,16 +372,16 @@
             <div class="container">
                 <div class="row subFooter">
                     <div class="col-4">
-                        <a href="">Панель администратора</a>
+                        <a href="" id="adminp">Панель администратора</a>
                     </div>
                     <div class="col-3">
-                        <a href="">Обработка персональных данных</a>
+                        <a href="" id="perdate">Обработка персональных данных</a>
                     </div>
                     <div class="col-3">
-                        <a href="">Политика конфиденциальности</a>
+                        <a href="" id="polit">Политика конфиденциальности</a>
                     </div>
                     <div class="col-2">
-                        <a href=""><b>Разработчик:</b> Oner</a>
+                        <a href=""><b id="razrab">Разработчик:</b> Oner</a>
                     </div>
                 </div>
             </div>
@@ -390,6 +390,12 @@
 
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+    <script src="js/initfb.js"></script>
+    <script src="js/translate.js"></script>
+    <script src="js/fbwork.js"></script>
 
 </body>
 </html>

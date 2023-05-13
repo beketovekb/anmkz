@@ -76,7 +76,9 @@ $(document).on('click', 'a[href^="#"]', function (event) {
       }); 
       console.log(style_var[1])
     });
-    jQuery("section").click(function(){    
+    jQuery("section").click(function(){
+      if (window.location.href.endsWith("index.html"))
+      {    
       var style_var = jQuery(this).find(".swiper-wrapper").attr("style").match(/translate3d\(([^,]+),/);   
       jQuery(this).find(".svg").each(function(){    
           
@@ -87,7 +89,9 @@ $(document).on('click', 'a[href^="#"]', function (event) {
           jQuery(this).attr("style","transition-duration: 2s; transform: translate3d("+parseInt(style_var[1])/6+"px, 0px, 0px);");    
       });  
       console.log($('.swiper-slide').length/10)
+    }
     });
+    
   }
 
 if($(".current_page:first").hasClass("active_page")) {

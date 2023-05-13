@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">  
 </head>
 <body>
-    <body onload="loadLng()">
+    <body onload="lodaMoreVacan()">
         <!-- <div class="div_svg loader">
            
             <svg class="preloader loader_inner" version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080" xml:space="preserve">
@@ -261,9 +261,9 @@
                         </div>
                     </div>
                     <div class="lang">
-                        <div class="kz"><a href="">KZ</a></div>
-                        <div class="ru"><a href="">RU</a></div>
-                        <div class="en"><a href="">EN</a></div>
+                        <div class="kz"><a href="" onclick="lngsel('kz')">KZ</a></div>
+                        <div class="ru"><a href="" onclick="lngsel('ru');">RU</a></div>
+                        <div class="en"><a href="" onclick="lngsel('en');">EN</a></div>
                     </div>
                     <div class="location_info">
                         <span class="location_place">
@@ -287,7 +287,7 @@
             <span class="page_title">Вакансии</span>
             <div class="vacancy_table">
                 <span class="vacancy_tilte">«АтырауНефтеМаш» требуются следующии специалисты:</span>
-                <div class="accordion">
+                <div class="accordion" id="fullVacan">
                     <div class="accordion-item">
                         <button id="accordion-button-1" aria-expanded="false">
                             <span class="accordion-title">Зав складом</span>
@@ -424,7 +424,7 @@
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <button id="accordion-button-1" aria-expanded="false">
+                        <button id="accordion-button-1" aria-expanded="false" >
                             <span class="accordion-title">Плотником</span>
                             <svg class="icon" aria-hidden="true" width="29" height="17" viewBox="0 0 29 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M27 14.7501L14.5001 2.24993L2 14.7501" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
@@ -513,12 +513,12 @@
 
                     <div class="col-4">
                         <span>Отправьте резюме</span>
-                        <form action="post">
+                        <form id="feedbackForm" action="php/submit_form.php" method="post" enctype="multipart/form-data">
                             <div class="form_shell">
                                 <div class="left_form">
                                     <div class="input_shell">
                                         <span>Имя Фамилия</span>
-                                        <input type="text" placeholder="Введите имя" class="input_name">
+                                        <input type="text" placeholder="Введите имя" class="input_name" id="name">
                                         <div class="error_notification">
                                             <span>Заполните поле</span>
                                             <hr>
@@ -565,7 +565,7 @@
                         </form>
                     </div>
                     <div class="col-1"></div>
-                    <div class="col-7"></div>
+                    <div class="col-7" id="imgVacan"></div>
                 </div>
             </div>
         </div>
@@ -633,6 +633,13 @@
 
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+    <script src="js/initfb.js"></script>
+    <script src="js/translate.js"></script>
+    <script src="js/fbwork.js"></script>
+    <script src="js/sendmail.js"></script>
 
 </body>
 </html>

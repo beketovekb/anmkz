@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="css/style.css">  
 </head>
 <body>
-    <body onload="loadLng()">
+    <body onload="lodaMoreNews()">
         <!-- <div class="div_svg loader">
            
             <svg class="preloader loader_inner" version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080" xml:space="preserve">
@@ -258,17 +258,17 @@
                                 <li><a href="vacancy.html">Вакансии</a></li>
                                 <li><a href="contacts.html">Контакты</a></li>
                                 <div class="lang">
-                                    <div class="kz"><a onclick="lngsel('kz')">KZ</a></div>
-                                    <div class="ru"><a href="" onclick="lngsel('ru');">RU</a></div>
-                                    <div class="en"><a href="" onclick="lngsel('en');">EN</a></div>
+                                    <div class="kz"><a onclick="lngselNewsMore('kz')">KZ</a></div>
+                                    <div class="ru"><a onclick="lngselNewsMore('ru');">RU</a></div>
+                                    <div class="en"><a onclick="lngselNewsMore('en');">EN</a></div>
                                 </div>
                             </ul>
                         </div>
                     </div>
                     <div class="lang">
-                        <div class="kz"><a href="">KZ</a></div>
-                        <div class="ru"><a href="">RU</a></div>
-                        <div class="en"><a href="">EN</a></div>
+                        <div class="kz"><a onclick="lngselNewsMore('kz')">KZ</a></div>
+                        <div class="ru"><a onclick="lngselNewsMore('ru');">RU</a></div>
+                        <div class="en"><a onclick="lngselNewsMore('en');">EN</a></div>
                     </div>
                     <div class="location_info">
                         <span class="location_place">
@@ -290,10 +290,10 @@
     <section class="news_content">
         <div class="container">
             <span class="page_title">Новости</span>
-            <div class="page_news_cards">
-                <a href="detailedNews.html">
+            <div class="page_news_cards" id="page_news_cards" >
+                <!-- <a href="detailedNews.html">
                     <div class="news_card">
-                        <div class="news_card-img"></div>
+                        <div class="news_card-img" ></div>
                         <div class="news_card-content">
                             <div class="news_card-desc">
                                 <div>
@@ -416,10 +416,10 @@
                             </div>
                         </div>
                     </div>
-                </a>
+                </a> -->
             </div>
-            <div class="pagination">
-                <div class="prev_page">
+            <div class="pagination"id="navNewsMore">
+                <div class="prev_page" >
                     <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg">
                         <path d="M7.98926 1.34985L2.48926 6.84985L7.98926 12.3499" stroke="#DBDBDB" stroke-width="3"/>
                     </svg>
@@ -500,6 +500,12 @@
 
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+    <script src="js/initfb.js"></script>
+    <script src="js/translate.js"></script>
+    <script src="js/fbwork.js"></script>
 
 </body>
 </html>

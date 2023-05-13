@@ -837,7 +837,7 @@ function addNews(dv, dv2, dv3, dv4, dv5, dv6, dt) {
 	const titleRu = $(dv).val().replace(/\n/g, "<br>");
 	const titleEn = $(dv2).val().replace(/\n/g, "<br>");
 	const titlekz = $(dv3).val().replace(/\n/g, "<br>");
-	var dateValue  = $(dt).val();
+	var dateValue = $(dt).val();
 	console.log(dateValue);
 	var dateObject = new Date(dateValue);
 	// Получаем день, месяц и год из объекта Date
@@ -1059,5 +1059,65 @@ function updateNews(kk, dv, dv2, dv3, dv4, dv5, dv6, img) {
 		database.ref('news/' + kk + '/Opisaniekz').set(opisanieKz);
 		alert('Данные обновлены');
 	}
+
+}
+
+function addVacan(dv, dv2, dv3, dv4, dv5, dv6) {
+	const titleRu = $(dv).val().replace(/\n/g, "<br>");
+	const titleEn = $(dv2).val().replace(/\n/g, "<br>");
+	const titlekz = $(dv3).val().replace(/\n/g, "<br>");
+	const opisanieRu = $(dv4).html();
+	const opisanieEn = $(dv5).html();
+	const opisanieKz = $(dv6).html();
+	var databaseRef = firebase.database().ref("vacans");
+	var randomKey = databaseRef.push().key;
+	databaseRef.child(randomKey).set({
+		Titleru: titleRu,
+		Titleen: titleEn,
+		Titlekz: titlekz,
+		Opisanieru: opisanieRu,
+		Opisanieen: opisanieEn,
+		Opisaniekz: opisanieKz,
+
+	}).then(function () {
+		// loadCert('#certCard');
+		alert("File uploaded and saved to database!");
+	}).catch(function (error) {
+		alert("Error saving to database: " + error.message);
+	});
+}
+
+function loadVacanPage() {
+	
+}
+function saveImgVacan() {
+
+	const imageInput = document.getElementById('imageVacan');
+	const reader = new FileReader();
+
+	if (imageInput.files.length > 0) {
+		const file = imageInput.files[0];
+		reader.onload = function (event) {
+			const fileData = event.target.result;
+			const storageRef = firebase.storage().ref();
+			const fileRef = storageRef.child('Imgvacan/');
+			fileRef.put(fileData).then(function (snapshot) {
+
+				const storageRef = firebase.storage().ref();
+				const fileRef = storageRef.child('Imgvacan/');
+				fileRef.getDownloadURL().then(function (url) {
+					console.log("URL-адрес загруженного файла: " + url);
+					database.ref('Imgvacan/').set(url);
+					alert("Загрузка файла успешно завершена");
+				});
+			});
+		}
+
+		reader.readAsArrayBuffer(file);
+
+	} else {
+		// Файл не был выбран
+	}
+
 
 }
