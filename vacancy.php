@@ -609,7 +609,7 @@ $attachment";
                                     </div>
                                 </div>
                             </div>
-                            <button type="submit" class="submit_vac_btn" value="Submit">Отправить</button>
+                            <button type="submit" class="submit_vac_btn" value="Submit" id="submitFF">Отправить</button>
                         </form>
                     </div>
                     <div class="col-1"></div>
