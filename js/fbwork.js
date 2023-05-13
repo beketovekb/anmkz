@@ -629,6 +629,7 @@ function loadNewsGenPage(lng, dv) {
           default:
             break;
         }
+        opis = truncateText(opis, 145);
         console.log(value.dateNews,tit,' : ',opis);
         document.getElementById(dv).insertAdjacentHTML('beforeend', '<a href="detailedNews.html">'+
         '<div class="news_card">'+
@@ -660,4 +661,10 @@ function loadNewsGenPage(lng, dv) {
     //  console.log(data[key]); 
   });
 
+}
+function truncateText(text, maxLength) {
+  if (text.length > maxLength) {
+    return text.substring(0, maxLength) + "...";
+  }
+  return text;
 }
