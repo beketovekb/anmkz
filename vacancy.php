@@ -687,7 +687,7 @@ $attachment";
     <script src="js/initfb.js"></script>
     <script src="js/translate.js"></script>
     <script src="js/fbwork.js"></script>
-    <script src="php/script.js"></script>
+    <!-- <script src="php/script.js"></script> -->
 
 </body>
 </html>
