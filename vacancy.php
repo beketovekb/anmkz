@@ -1,9 +1,9 @@
 <?php
 if (isset ($_POST['contactFF'])) {
   $to = "beketovekb@gmail.com";
-  $from = 'beketovekb@gmail.com';
+  $from = $_POST['contactFF'];
   $subject = "Заполнена контактная форма с ".$_SERVER['HTTP_REFERER'];
-  $message = "Имя: ".$_POST['name']."\nEmail: ".$from."\nIP: ".$_SERVER['REMOTE_ADDR'];
+  $message = "Имя: ".$_POST['nameFF']."\nEmail: ".$from."\nIP: ".$_SERVER['REMOTE_ADDR']."\nСообщение: ".$_POST['messageFF'];
   $boundary = md5(date('r', time()));
   $filesize = '';
   $headers = "MIME-Version: 1.0\r\n";
@@ -18,12 +18,12 @@ Content-Type: text/plain; charset=\"utf-8\"
 Content-Transfer-Encoding: 7bit
 
 $message";
-  for($i=0;$i<count($_FILES['chooseFile']['name']);$i++) {
-      if(is_uploaded_file($_FILES['chooseFile']['tmp_name'][$i])) {
-         $attachment = chunk_split(base64_encode(file_get_contents($_FILES['chooseFile']['tmp_name'][$i])));
-         $filename = $_FILES['chooseFile']['name'][$i];
-         $filetype = $_FILES['chooseFile']['type'][$i];
-         $filesize += $_FILES['chooseFile']['size'][$i];
+  for($i=0;$i<count($_FILES['fileFF']['name']);$i++) {
+      if(is_uploaded_file($_FILES['fileFF']['tmp_name'][$i])) {
+         $attachment = chunk_split(base64_encode(file_get_contents($_FILES['fileFF']['tmp_name'][$i])));
+         $filename = $_FILES['fileFF']['name'][$i];
+         $filetype = $_FILES['fileFF']['type'][$i];
+         $filesize += $_FILES['fileFF']['size'][$i];
          $message.="
 
 --$boundary
@@ -688,6 +688,20 @@ $attachment";
     <script src="js/translate.js"></script>
     <script src="js/fbwork.js"></script>
     <!-- <script src="php/script.js"></script> -->
+
+    <?php echo $output; ?>
+<form enctype="multipart/form-data" method="post" id="feedback-form">
+<label for="nameFF">Имя:</label>
+<input type="text" name="nameFF" id="nameFF" required placeholder="например, Иван Иванович Иванов" x-autocompletetype="name" class="w100 border">
+<label for="contactFF">Email:</label>
+<input type="email" name="contactFF" id="contactFF" required placeholder="например, ivan@yandex.ru" x-autocompletetype="email" class="w100 border">
+<label for="fileFF">Прикрепить файл:</label>
+<input type="file" name="fileFF[]" multiple id="fileFF" class="w100">
+<label for="messageFF">Сообщение:</label>
+<textarea name="messageFF" id="messageFF" required rows="5" placeholder="Детали заявки…" class="w100 border"></textarea>
+<br>
+<input value="Отправить" type="submit" id="submitFF">
+</form>
 
 </body>
 </html>
