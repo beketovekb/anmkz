@@ -625,7 +625,7 @@ $attachment";
                         <form enctype="multipart/form-data" method="post" id="feedback-form">
 <label for="nameFF">Имя:</label>
 <input type="text" name="nameFF" id="nameFF" required placeholder="например, Иван Иванович Иванов" x-autocompletetype="name" class="w100 border">
-<input type="text" class="ddl-input" id="ddl_list" name = "ddl_list" readonly="readonly" placeholder="Зав.складом">
+<input type="text" class="ddl-input" id="ddl_list" name = "ddl_list"  placeholder="Наименование должности">
 <label for="contactFF">Email:</label>
 <input type="email" name="contactFF" id="contactFF" required placeholder="например, ivan@yandex.ru" x-autocompletetype="email" class="w100 border">
 <label for="fileFF">Прикрепить файл:</label>
