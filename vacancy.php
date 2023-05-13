@@ -1,7 +1,7 @@
 <?php
 if (isset ($_POST['contactFF'])) {
   $to = "beketovekb@gmail.com";
-  $from = $_POST['contactFF'];
+  $from = 'info@anm.kz';
   $subject = "Заполнена контактная форма с ".$_SERVER['HTTP_REFERER'];
   $message = "Имя: ".$_POST['nameFF']."\nEmail: ".$from."\nIP: ".$_SERVER['REMOTE_ADDR']."\nСообщение: ".$_POST['messageFF'];
   $boundary = md5(date('r', time()));
@@ -566,11 +566,12 @@ $attachment";
                                 <div class="left_form">
                                     <div class="input_shell">
                                         <span>Имя Фамилия</span>
-                                        <input type="text" placeholder="Введите имя" class="input_name" id="name" name="name">
+                                        <!-- <input type="text" placeholder="Введите имя" class="input_name" id="name" name="name">
                                         <div class="error_notification">
                                             <span>Заполните поле</span>
                                             <hr>
-                                        </div>
+                                        </div> -->
+                                        <input type="text" name="nameFF" id="nameFF" required placeholder="например, Иван Иванович Иванов" x-autocompletetype="name" class="w100 border">
                                     </div>
                                     <div class="input_shell">
                                         <span>Должность</span>
