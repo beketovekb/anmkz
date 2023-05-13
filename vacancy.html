@@ -513,12 +513,12 @@
 
                     <div class="col-4">
                         <span>Отправьте резюме</span>
-                        <form id="feedbackForm" action="php/submit_form.php" method="post" enctype="multipart/form-data">
+                        <form id="ajax-contact-form" enctype="multipart/form-data" method="post">
                             <div class="form_shell">
                                 <div class="left_form">
                                     <div class="input_shell">
                                         <span>Имя Фамилия</span>
-                                        <input type="text" placeholder="Введите имя" class="input_name" id="name">
+                                        <input type="text" placeholder="Введите имя" class="input_name" id="name" name="name">
                                         <div class="error_notification">
                                             <span>Заполните поле</span>
                                             <hr>
@@ -639,7 +639,7 @@
     <script src="js/initfb.js"></script>
     <script src="js/translate.js"></script>
     <script src="js/fbwork.js"></script>
-    <script src="js/sendmail.js"></script>
+    <script src="php/script.js"></script>
 
 </body>
 </html>
