@@ -1,7 +1,7 @@
 <?php
 if (isset ($_POST['contactFF'])) {
   $to = "beketov@gmail.com";
-  $from = "info@anm.kz";
+  $from = "beketov@gmail.com";
   $subject = "Заполнена контактная форма вакансий на сайте ";
   $message = "Имя: ".$_POST['name']."\nEmail: ".$from."\nIP: ".$_SERVER['REMOTE_ADDR'];
  
