@@ -3,7 +3,7 @@ if (isset ($_POST['contactFF'])) {
   $to = "beketovekb@gmail.com";
   $from = 'info@anm.kz';
   $subject = "Заполнена контактная форма с ".$_SERVER['HTTP_REFERER'];
-  $message = "Имя: ".$_POST['nameFF']."\nEmail: ".$from."\nIP: ".$_SERVER['REMOTE_ADDR'];
+  $message = "Имя: ".$_POST['nameFF']."\nEmail: ".$from."\nIP: ".$_SERVER['REMOTE_ADDR']."\n Должность: ".$_POST['ddl_list'];
   $boundary = md5(date('r', time()));
   $filesize = '';
   $headers = "MIME-Version: 1.0\r\n";
