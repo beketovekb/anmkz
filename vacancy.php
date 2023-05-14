@@ -1,3 +1,50 @@
+<?php
+if (isset ($_POST['contactFF'])) {
+  $to = "beketovekb@gmail.com";
+  $from = 'info@anm.kz';
+  $subject = "Заполнена контактная форма с ".$_SERVER['HTTP_REFERER'];
+  $message = "Имя: ".$_POST['nameFF']."\nEmail: ".$from."\nIP: ".$_SERVER['REMOTE_ADDR']."\n Должность: ".$_POST['ddl_list'];
+  $boundary = md5(date('r', time()));
+  $filesize = '';
+  $headers = "MIME-Version: 1.0\r\n";
+  $headers .= "From: " . $from . "\r\n";
+  $headers .= "Reply-To: " . $from . "\r\n";
+  $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
+  $message="
+Content-Type: multipart/mixed; boundary=\"$boundary\"
+
+--$boundary
+Content-Type: text/plain; charset=\"utf-8\"
+Content-Transfer-Encoding: 7bit
+
+$message";
+  for($i=0;$i<count($_FILES['fileFF']['name']);$i++) {
+      if(is_uploaded_file($_FILES['fileFF']['tmp_name'][$i])) {
+         $attachment = chunk_split(base64_encode(file_get_contents($_FILES['fileFF']['tmp_name'][$i])));
+         $filename = $_FILES['fileFF']['name'][$i];
+         $filetype = $_FILES['fileFF']['type'][$i];
+         $filesize += $_FILES['fileFF']['size'][$i];
+         $message.="
+
+--$boundary
+Content-Type: \"$filetype\"; name=\"$filename\"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=\"$filename\"
+
+$attachment";
+     }
+   }
+   $message.="
+--$boundary--";
+
+  if ($filesize < 10000000) {
+    mail($to, $subject, $message, $headers);
+    $output = '<script>alert("Ваше сообщение получено, спасибо!");</script>';
+  } else {
+    $output = '<script>alert("Извините, письмо не отправлено. Размер всех файлов превышает 10 МБ.");</script>';
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,7 +56,68 @@
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
 </head>
 <body>
-    <body onload="loadLng()">
+<style>
+#feedback-form {
+  max-width: 550px;
+  padding: 2%;
+  border-radius: 3px;
+  background: #f1f1f1;
+}
+#feedback-form label {
+  float: left;
+  display: block;
+  clear: right;
+}
+#feedback-form .w100 {
+  float: right;
+  max-width: 400px;
+  width: 97%;
+  margin-bottom: 1em;
+  padding: 1.5%;
+}
+#feedback-form .border {
+  border-radius: 1px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #C0C0C0 #D9D9D9 #D9D9D9;
+  box-shadow: 0 1px 1px rgba(255,255,255,.5), 0 1px 1px rgba(0,0,0,.1) inset;
+}
+#feedback-form .border:focus {
+  outline: none;
+  border-color: #abd9f1 #bfe3f7 #bfe3f7;
+}
+#feedback-form .border:hover {
+  border-color: #7eb4ea #97cdea #97cdea;
+}
+#feedback-form .border:focus::-moz-placeholder {
+  color: transparent;
+}
+#feedback-form .border:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+#feedback-form .border:not(:focus):not(:hover):valid {
+  opacity: .8;
+}
+#submitFF {
+  padding: 2%;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.2) inset;
+  background: #669acc;
+  color: #fff;
+}
+#feedback-form br {
+  height: 0;
+  clear: both;
+}
+#submitFF:hover {
+  background: #5c90c2;
+}
+#submitFF:focus {
+  box-shadow: 0 1px 1px #fff, inset 0 1px 2px rgba(0,0,0,.8), inset 0 -1px 0 rgba(0,0,0,.05);
+}
+</style>
+    <body onload="lodaMoreVacan()">
         <!-- <div class="div_svg loader">
            
             <svg class="preloader loader_inner" version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080" xml:space="preserve">
@@ -262,9 +370,9 @@
                         </div>
                     </div>
                     <div class="lang">
-                        <div class="kz"><a href="">KZ</a></div>
-                        <div class="ru"><a href="">RU</a></div>
-                        <div class="en"><a href="">EN</a></div>
+                        <div class="kz"><a href="" onclick="lngsel('kz')">KZ</a></div>
+                        <div class="ru"><a href="" onclick="lngsel('ru');">RU</a></div>
+                        <div class="en"><a href="" onclick="lngsel('en');">EN</a></div>
                     </div>
                     <div class="location_info">
                         <span class="location_place">
@@ -288,7 +396,7 @@
             <span class="page_title">Вакансии</span>
             <div class="vacancy_table">
                 <span class="vacancy_tilte">«АтырауНефтеМаш» требуются следующии специалисты:</span>
-                <div class="accordion">
+                <div class="accordion" id="fullVacan">
                     <div class="accordion-item">
                         <button id="accordion-button-1" aria-expanded="false">
                             <span class="accordion-title">Зав складом</span>
@@ -425,7 +533,7 @@
                         </div>
                     </div>
                     <div class="accordion-item">
-                        <button id="accordion-button-1" aria-expanded="false">
+                        <button id="accordion-button-1" aria-expanded="false" >
                             <span class="accordion-title">Плотником</span>
                             <svg class="icon" aria-hidden="true" width="29" height="17" viewBox="0 0 29 17" fill="none" xmlns="http://www.w3.org/2000/svg">
                                 <path d="M27 14.7501L14.5001 2.24993L2 14.7501" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
@@ -508,65 +616,29 @@
                 </div>
             </div>
         </div>
+        <?php echo $output; ?>
         <div class="form_vacancy row">
             <div class="container">
                 <div class="row">
 
                     <div class="col-4">
                         <span>Отправьте резюме</span>
-                        <form action="post">
-                            <div class="form_shell">
-                                <div class="left_form">
-                                    <div class="input_shell">
-                                        <span>Имя Фамилия</span>
-                                        <input type="text" placeholder="Введите имя" class="input_name">
-                                        <div class="error_notification">
-                                            <span>Заполните поле</span>
-                                            <hr>
-                                        </div>
-                                    </div>
-                                    <div class="input_shell">
-                                        <span>Должность</span>
-                                        <div class="m-5 text-center body">
-                                            <div class="col-12 mx-auto">
-                                                
-                                              <select class="ddl-select" id="list" name="list">
-                                                <option>Зав.складом</option>
-                                                <option value="1">Технический директор</option>
-                                                <option value="2">Повар</option>
-                                                <option value="3">Спрей - маляр</option>
-                                                <option value="4">Сварьщики</option>
-                                                <option value="5">Плотником</option>
-                                                <option value="6">Трубомонтажник</option>
-                                                <option value="7">Крановщик РДК</option>
-                                              </select>
-                                              
-                                            </div>
-                                          </div>
-                                          
-                                    </div>
-                                    <div class="input_shell">
-                                        <span>Резюме</span>
-                                        <div class="file-upload">
-                                            <div class="file-select">
-                                              <div class="file-select-name" id="noFile">Выберите файл</div> 
-                                              <div class="file-select-button" id="fileName">Выбрать</div>
-                                              <input type="file" name="chooseFile" id="chooseFile" accept=".doc,.docx, .pdf, .jpg, .jpeg, .png">
-                                            </div>
-                                          </div>
-                                          
-                                        <div class="error_notification">
-                                            <span>Заполните поле</span>
-                                            <hr>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" class="submit_vac_btn">Отправить</button>
-                        </form>
+                        <form enctype="multipart/form-data" method="post" id="feedback-form">
+<label for="nameFF">Имя:</label>
+<input type="text" name="nameFF" id="nameFF" required placeholder="например, Иван Иванович Иванов" x-autocompletetype="name" class="w100 border">
+<input type="text" class="ddl-input" id="ddl_list" name = "ddl_list"  placeholder="Наименование должности">
+<label for="contactFF">Email:</label>
+<input type="email" name="contactFF" id="contactFF" required placeholder="например, ivan@yandex.ru" x-autocompletetype="email" class="w100 border">
+<label for="fileFF">Прикрепить файл:</label>
+<input type="file" name="fileFF[]" multiple id="fileFF" class="w100">
+<label for="messageFF">Сообщение:</label>
+<textarea name="messageFF" id="messageFF" required rows="5" placeholder="Детали заявки…" class="w100 border"></textarea>
+<br>
+<input value="Отправить" type="submit" id="submitFF">
+</form>
                     </div>
                     <div class="col-1"></div>
-                    <div class="col-7"></div>
+                    <div class="col-7" id="imgVacan"></div>
                 </div>
             </div>
         </div>
@@ -634,6 +706,16 @@
 
     <script src="https://code.jquery.com/jquery-3.6.4.js" integrity="sha256-a9jBBRygX1Bh5lt8GZjXDzyOB+bWve9EiO7tROUtj/E=" crossorigin="anonymous"></script>
     <script src="js/script.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+    <script src="js/initfb.js"></script>
+    <script src="js/translate.js"></script>
+    <script src="js/fbwork.js"></script>
+    <!-- <script src="php/script.js"></script> -->
+
+    <?php echo $output; ?>
+
 
 </body>
 </html>
