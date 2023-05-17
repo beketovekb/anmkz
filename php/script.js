@@ -1,21 +1,19 @@
-$(function() {
-  document.getElementById('ajax-contact-form').addEventListener('submit', function(evt){
-    var http = new XMLHttpRequest(), f = this;
-    var th = $(this);
-    evt.preventDefault();
-    http.open("POST", "php/contact.php", true);
-    http.onreadystatechange = function() {
-      if (http.readyState == 4 && http.status == 200) {
-        alert(http.responseText);
-        if (http.responseText.indexOf(f.nameFF.value) == 0) { // очистить поля формы, если в ответе первым словом будет имя отправителя (nameFF)
-          th.trigger("reset");
-        }
+document.getElementById('applicationForm').addEventListener('submit', function(event) {
+  event.preventDefault();
+  var form = event.target;
+  var formData = new FormData(form);
+  var xhr = new XMLHttpRequest();
+
+  xhr.open('POST', form.action, true);
+  xhr.onreadystatechange = function() {
+      if (xhr.readyState === 4) {
+          if (xhr.status === 200) {
+              alert( 'Application submitted successfully');
+              form.reset();
+          } else {
+              alert('An error occurred while submitting the application.');
+          }
       }
-    }
-    http.onerror = function() {
-      alert('Ошибка, попробуйте еще раз');
-    }
-    http.send(new FormData(f));
-  }, false);
- 
+  };
+  xhr.send(formData);
 });

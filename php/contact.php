@@ -1,9 +1,9 @@
 <?php
 if (isset ($_POST['contactFF'])) {
   $to = "beketov@gmail.com";
-  $from = "info@anm.kz";
+  $from = "beketov@gmail.com";
   $subject = "Заполнена контактная форма вакансий на сайте ";
-  $message = "Имя пользователя: ".$_POST['name']."\nЖелаемая должность ".$_POST['list']."\n\nАдрес сайта: ".$_SERVER['HTTP_REFERER'];
+  $message = "Имя: ".$_POST['name']."\nEmail: ".$from."\nIP: ".$_SERVER['REMOTE_ADDR'];
  
   $boundary = md5(date('r', time()));
   $filesize = '';
