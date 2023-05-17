@@ -1,3 +1,50 @@
+<?php
+if (isset ($_POST['contactFF'])) {
+  $to = "beketovekb@gmail.com";
+  $from = 'info@anm.kz';
+  $subject = "Заполнена контактная форма с ".$_SERVER['HTTP_REFERER'];
+  $message = "Имя: ".$_POST['nameFF']."\nEmail: ".$from."\nIP: ".$_SERVER['REMOTE_ADDR']."\n Должность: ".$_POST['ddl_list'];
+  $boundary = md5(date('r', time()));
+  $filesize = '';
+  $headers = "MIME-Version: 1.0\r\n";
+  $headers .= "From: " . $from . "\r\n";
+  $headers .= "Reply-To: " . $from . "\r\n";
+  $headers .= "Content-Type: multipart/mixed; boundary=\"$boundary\"\r\n";
+  $message="
+Content-Type: multipart/mixed; boundary=\"$boundary\"
+
+--$boundary
+Content-Type: text/plain; charset=\"utf-8\"
+Content-Transfer-Encoding: 7bit
+
+$message";
+  for($i=0;$i<count($_FILES['fileFF']['name']);$i++) {
+      if(is_uploaded_file($_FILES['fileFF']['tmp_name'][$i])) {
+         $attachment = chunk_split(base64_encode(file_get_contents($_FILES['fileFF']['tmp_name'][$i])));
+         $filename = $_FILES['fileFF']['name'][$i];
+         $filetype = $_FILES['fileFF']['type'][$i];
+         $filesize += $_FILES['fileFF']['size'][$i];
+         $message.="
+
+--$boundary
+Content-Type: \"$filetype\"; name=\"$filename\"
+Content-Transfer-Encoding: base64
+Content-Disposition: attachment; filename=\"$filename\"
+
+$attachment";
+     }
+   }
+   $message.="
+--$boundary--";
+
+  if ($filesize < 10000000) {
+    mail($to, $subject, $message, $headers);
+    $output = '<script>alert("Ваше сообщение получено, спасибо!");</script>';
+  } else {
+    $output = '<script>alert("Извините, письмо не отправлено. Размер всех файлов превышает 10 МБ.");</script>';
+  }
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,6 +55,67 @@
     <link rel="stylesheet" href="css/style.css">  
 </head>
 <body>
+<style>
+#feedback-form {
+  max-width: 550px;
+  padding: 2%;
+  border-radius: 3px;
+  background: #f1f1f1;
+}
+#feedback-form label {
+  float: left;
+  display: block;
+  clear: right;
+}
+#feedback-form .w100 {
+  float: right;
+  max-width: 400px;
+  width: 97%;
+  margin-bottom: 1em;
+  padding: 1.5%;
+}
+#feedback-form .border {
+  border-radius: 1px;
+  border-width: 1px;
+  border-style: solid;
+  border-color: #C0C0C0 #D9D9D9 #D9D9D9;
+  box-shadow: 0 1px 1px rgba(255,255,255,.5), 0 1px 1px rgba(0,0,0,.1) inset;
+}
+#feedback-form .border:focus {
+  outline: none;
+  border-color: #abd9f1 #bfe3f7 #bfe3f7;
+}
+#feedback-form .border:hover {
+  border-color: #7eb4ea #97cdea #97cdea;
+}
+#feedback-form .border:focus::-moz-placeholder {
+  color: transparent;
+}
+#feedback-form .border:focus::-webkit-input-placeholder {
+  color: transparent;
+}
+#feedback-form .border:not(:focus):not(:hover):valid {
+  opacity: .8;
+}
+#submitFF {
+  padding: 2%;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 0 0 1px rgba(0,0,0,.2) inset;
+  background: #669acc;
+  color: #fff;
+}
+#feedback-form br {
+  height: 0;
+  clear: both;
+}
+#submitFF:hover {
+  background: #5c90c2;
+}
+#submitFF:focus {
+  box-shadow: 0 1px 1px #fff, inset 0 1px 2px rgba(0,0,0,.8), inset 0 -1px 0 rgba(0,0,0,.05);
+}
+</style>
     <body onload="lodaMoreVacan()">
         <!-- <div class="div_svg loader">
            
@@ -507,62 +615,26 @@
                 </div>
             </div>
         </div>
+        <?php echo $output; ?>
         <div class="form_vacancy row">
             <div class="container">
                 <div class="row">
 
                     <div class="col-4">
                         <span>Отправьте резюме</span>
-                        <form id="ajax-contact-form" enctype="multipart/form-data" method="post">
-                            <div class="form_shell">
-                                <div class="left_form">
-                                    <div class="input_shell">
-                                        <span>Имя Фамилия</span>
-                                        <input type="text" placeholder="Введите имя" class="input_name" id="name" name="name">
-                                        <div class="error_notification">
-                                            <span>Заполните поле</span>
-                                            <hr>
-                                        </div>
-                                    </div>
-                                    <div class="input_shell">
-                                        <span>Должность</span>
-                                        <div class="m-5 text-center body">
-                                            <div class="col-12 mx-auto">
-                                                
-                                              <select class="ddl-select" id="list" name="list">
-                                                <option>Зав.складом</option>
-                                                <option value="1">Технический директор</option>
-                                                <option value="2">Повар</option>
-                                                <option value="3">Спрей - маляр</option>
-                                                <option value="4">Сварьщики</option>
-                                                <option value="5">Плотником</option>
-                                                <option value="6">Трубомонтажник</option>
-                                                <option value="7">Крановщик РДК</option>
-                                              </select>
-                                              
-                                            </div>
-                                          </div>
-                                          
-                                    </div>
-                                    <div class="input_shell">
-                                        <span>Резюме</span>
-                                        <div class="file-upload">
-                                            <div class="file-select">
-                                              <div class="file-select-name" id="noFile">Выберите файл</div> 
-                                              <div class="file-select-button" id="fileName">Выбрать</div>
-                                              <input type="file" name="chooseFile" id="chooseFile" accept=".doc,.docx, .pdf, .jpg, .jpeg, .png">
-                                            </div>
-                                          </div>
-                                          
-                                        <div class="error_notification">
-                                            <span>Заполните поле</span>
-                                            <hr>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <button type="submit" class="submit_vac_btn">Отправить</button>
-                        </form>
+                        <form enctype="multipart/form-data" method="post" id="feedback-form">
+<label for="nameFF">Имя:</label>
+<input type="text" name="nameFF" id="nameFF" required placeholder="например, Иван Иванович Иванов" x-autocompletetype="name" class="w100 border">
+<input type="text" class="ddl-input" id="ddl_list" name = "ddl_list"  placeholder="Наименование должности">
+<label for="contactFF">Email:</label>
+<input type="email" name="contactFF" id="contactFF" required placeholder="например, ivan@yandex.ru" x-autocompletetype="email" class="w100 border">
+<label for="fileFF">Прикрепить файл:</label>
+<input type="file" name="fileFF[]" multiple id="fileFF" class="w100">
+<label for="messageFF">Сообщение:</label>
+<textarea name="messageFF" id="messageFF" required rows="5" placeholder="Детали заявки…" class="w100 border"></textarea>
+<br>
+<input value="Отправить" type="submit" id="submitFF">
+</form>
                     </div>
                     <div class="col-1"></div>
                     <div class="col-7" id="imgVacan"></div>
@@ -639,7 +711,10 @@
     <script src="js/initfb.js"></script>
     <script src="js/translate.js"></script>
     <script src="js/fbwork.js"></script>
-    <script src="php/script.js"></script>
+    <!-- <script src="php/script.js"></script> -->
+
+    <?php echo $output; ?>
+
 
 </body>
 </html>

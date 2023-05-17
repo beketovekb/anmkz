@@ -970,4 +970,42 @@ function btnAccrd(key) {
       button.setAttribute("aria-expanded", !expanded);
     }
 }
+
+function loadServiMore() {
+  myValue = 'ru';
+  if (localStorage.getItem("glblng") != null) { myValue = localStorage.getItem("glblng"); }
+  loadTitleServiMore('nameCatTitle',myValue);
+}
+
+function loadTitleServiMore(dv,lng) {
+  document.getElementById(dv).innerHTML='';
+	database.ref('typeproduct').once('value', (snapshot) => {
+		const data = snapshot.val();
+		for (const key in data) {
+			const item = data[key];
+			// console.log(key);
+			// console.log(item.imageUrl);
+			title = '';
+			opis = '';
+			switch (lng) {
+				case 'ru':
+					title = item.Titleru;
+					opis = item.Opisanieru;
+					break;
+				case 'en':
+					title = item.Titleen;
+					opis = item.Opisanieen;
+					break;
+				case 'kz':
+					title = item.Titlekz;
+					opis = item.Opisaniekz;
+					break;
+
+				default:
+					break;
+			}
+			document.getElementById(dv).insertAdjacentHTML('beforeend','<li><div class="vert_line"></div><a href="service01.html">'+title+'</a></li>' );
+		}
+	});
+}
   
