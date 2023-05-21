@@ -1364,7 +1364,7 @@ function addProduct(dv, dv2, dv3, dv4, dv5, dv6,kk,ig) {
 		imageRef.put(file2).then(function (snapshot) {
 			// получаем URL файла
 			snapshot.ref.getDownloadURL().then(function (url) {
-				alert(url);
+				// alert(url);
 				// сохраняем путь в базе данных
 				if(kl2!==null)
 				{
@@ -1419,7 +1419,9 @@ function addType2Product(dv, dv2, dv3,kk) {
 	const titleEn = $(dv2).val().replace(/\n/g, "<br>");
 	const titlekz = $(dv3).val().replace(/\n/g, "<br>");
 	const typeProduct = $(kk).val();
-	var databaseRef = firebase.database().ref("typeproduct/"+typeProduct+"/podtype/");
+	kl=null,kl2=null;
+	if(localStorage.getItem('typeProductCash')!==null){kl=localStorage.getItem('typeProductCash');}
+	var databaseRef = firebase.database().ref("typeproduct/"+kl+"/podtype/");
 	var randomKey = databaseRef.push().key;
 	databaseRef.child(randomKey).set({
 		Titleru: titleRu,
@@ -1458,6 +1460,56 @@ function toggleDropdown(dd) {
 	if(localStorage.getItem('type2ProductCash')!==null){kl2 = localStorage.getItem('type2ProductCash');}
 	console.log(kl+' | '+kl2);
 
+  }
+
+  function addDirector(fio1,fio2,fio3,post1,post2,post3,email,num,img) {
+	const fioRu = $(fio1).val().replace(/\n/g, "<br>");
+	const fioEn = $(fio2).val().replace(/\n/g, "<br>");
+	const fioKz = $(fio3).val().replace(/\n/g, "<br>");
+
+	const postRu = $(post1).val().replace(/\n/g, "<br>");
+	const postEn = $(post2).val().replace(/\n/g, "<br>");
+	const postKz = $(post3).val().replace(/\n/g, "<br>");
+
+	const emailTxt = $(email).val().replace(/\n/g, "<br>");
+	const number = $(num).val().replace(/\n/g, "<br>");
+	var databaseRef = firebase.database().ref("worker");
+	var storageRef = firebase.storage().ref();
+	var fileInput = document.getElementById(img);
+	var file = fileInput.files[0];
+	if (file) {
+		// генерируем случайный ключ для пути в базе данных
+		var randomKey = databaseRef.push().key;
+		var imageRef = storageRef.child("worker/" + randomKey + "/" + file.name);
+		// загружаем файл в Storage
+		imageRef.put(file).then(function (snapshot) {
+			// получаем URL файла
+			snapshot.ref.getDownloadURL().then(function (url) {
+				// сохраняем путь в базе данных
+				databaseRef.child(randomKey).set({
+					imageUrl: url,
+					fioru: fioRu,
+					fioen: fioEn,
+					fiokz: fioKz,
+					postru: postRu,
+					posten: postEn,
+					postkz: postKz,
+					email: emailTxt,
+					numberPhone: number,
+				}).then(function () {
+					// loadPartners('#custom-nav-home2');
+					// loadCert('#certCard');
+					alert("File uploaded and saved to database!");
+				}).catch(function (error) {
+					alert("Error saving to database: " + error.message);
+				});
+			}).catch(function (error) {
+				alert("Error getting download URL: " + error.message);
+			});
+		}).catch(function (error) {
+			alert("Error uploading file: " + error.message);
+		});
+	}
   }
   
 

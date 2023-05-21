@@ -21,7 +21,7 @@ function loadLng() {
     if (!value)
       document.getElementById('imgAbout').style.backgroundImage = "url(" + value + ")";
   });
-  loadAdminGenPlus(myValue, 'plusTitle', 'plusDesc1', 'pos', 'pls');
+  loadAdminGenPlus(myValue, 'plusTitle', 'plusDesc', 'pos', 'pls');
   loadHistoryAdmin(myValue, 'history');
   loadPartners('part');
   clearContact('cardContact');
@@ -147,13 +147,13 @@ function loadAdminGenPlus(lng, dv, dv2, pos, pls) {
     database.ref(lng + '/page/genplus/' + i + '/zagolovok').on('value', (snapshot) => {
       const value = snapshot.val().replace(/<br>/g, "\n");
       // console.log(value);
-      if (!value)
+      
         document.getElementById(dv + i).innerHTML = value;
     });
     database.ref(lng + '/page/genplus/' + i + '/opisanie').on('value', (snapshot) => {
       const value = snapshot.val().replace(/<br>/g, "\n");
       // console.log(value);
-      if (!value) {
+       {
         document.getElementById(dv2 + i).innerHTML = value;
       }
     });
@@ -804,97 +804,97 @@ function lngselNewsMore(lng) {
   localStorage.setItem("glblng", lng);
   window.location.href = "News.html";
 }
-function moreNews(lng,dv,pg) {
-// document.getElementById(dv).innerHTML = "";
-document.getElementById(dv).innerHTML = "";
-document.getElementById('navNewsMore').innerHTML = "";
-coln = 1;
-var key = [];
-database.ref('news').once('value', (snapshot) => {
-  const data = snapshot.val();
-  var dataArray = Object.entries(data);
+function moreNews(lng, dv, pg) {
+  // document.getElementById(dv).innerHTML = "";
+  document.getElementById(dv).innerHTML = "";
+  document.getElementById('navNewsMore').innerHTML = "";
+  coln = 1;
+  var key = [];
+  database.ref('news').once('value', (snapshot) => {
+    const data = snapshot.val();
+    var dataArray = Object.entries(data);
 
-  // Сортируем массив по полю "dateNews"
-  dataArray.sort(function (a, b) {
-    var dateA = new Date(b[1].dateNews.split('.').reverse().join('.'));
-    var dateB = new Date(a[1].dateNews.split('.').reverse().join('.'));
-    return dateA - dateB;
-  });
-  it = 0;
-  // Выводим отсортированные данные
-  dataArray.forEach(function (item) {
-    var value = item[1];
-    st = 6 * (pg - 1);
+    // Сортируем массив по полю "dateNews"
+    dataArray.sort(function (a, b) {
+      var dateA = new Date(b[1].dateNews.split('.').reverse().join('.'));
+      var dateB = new Date(a[1].dateNews.split('.').reverse().join('.'));
+      return dateA - dateB;
+    });
+    it = 0;
+    // Выводим отсортированные данные
+    dataArray.forEach(function (item) {
+      var value = item[1];
+      st = 6 * (pg - 1);
       ed = 7 * pg;
       console.log(st + ' | ' + ed);
       it++;
       if (it > st && it < ed) {
-      opis = '';
-      tit = '';
-      btn = '';
-      switch (lng) {
-        case 'ru':
-          opis = value.Opisanieru;
-          tit = value.Titleru;
-          btn = 'Читать полностью';
-          break;
-        case 'en':
-          opis = value.Opisanieen;
-          tit = value.Titleen;
-          btn = 'More';
-          break;
-        case 'kz':
-          opis = value.Opisaniekz;
-          tit = value.Titlekz;
-          btn = 'Толығырақ';
-          break;
+        opis = '';
+        tit = '';
+        btn = '';
+        switch (lng) {
+          case 'ru':
+            opis = value.Opisanieru;
+            tit = value.Titleru;
+            btn = 'Читать полностью';
+            break;
+          case 'en':
+            opis = value.Opisanieen;
+            tit = value.Titleen;
+            btn = 'More';
+            break;
+          case 'kz':
+            opis = value.Opisaniekz;
+            tit = value.Titlekz;
+            btn = 'Толығырақ';
+            break;
 
-        default:
-          break;
+          default:
+            break;
+        }
+        opis = truncateText(opis, 145);
+        // console.log(value.dateNews, tit, ' : ', opis);
+        document.getElementById(dv).insertAdjacentHTML('beforeend', '<a onclick="clickNews(\'' + item[0] + '\')">' +
+          '<div class="news_card">' +
+          '<div class="news_card-img" style = "background-image: url(' + value.imageUrl + ');"></div>' +
+          '<div class="news_card-content">' +
+          '<div class="news_card-desc">' +
+          '<div>' +
+          '<span class="news_title">' + tit + '</span>' +
+          '<span class="news_caption">' + opis + '</span>' +
+          '</div>' +
+          '<span class="more_detail">' + btn +
+          '<svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+          '<path d="M8.25 0.790283L4.5 4.54028L0.75 0.790283" stroke="black" stroke-width="2"/>' +
+          '</svg>' +
+          '</span>' +
+          '</div>' +
+          '<div class="news_card-date">' +
+          '<span class="news_date">' + value.dateNews + '</span>' +
+          '</div>' +
+          '</div>' +
+          '</div>' +
+          '</a>'
+        );
       }
-      opis = truncateText(opis, 145);
-      // console.log(value.dateNews, tit, ' : ', opis);
-      document.getElementById(dv).insertAdjacentHTML('beforeend', '<a onclick="clickNews(\'' + item[0] + '\')">' +
-        '<div class="news_card">' +
-        '<div class="news_card-img" style = "background-image: url(' + value.imageUrl + ');"></div>' +
-        '<div class="news_card-content">' +
-        '<div class="news_card-desc">' +
-        '<div>' +
-        '<span class="news_title">' + tit + '</span>' +
-        '<span class="news_caption">' + opis + '</span>' +
-        '</div>' +
-        '<span class="more_detail">' + btn +
-        '<svg width="9" height="6" viewBox="0 0 9 6" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-        '<path d="M8.25 0.790283L4.5 4.54028L0.75 0.790283" stroke="black" stroke-width="2"/>' +
-        '</svg>' +
-        '</span>' +
-        '</div>' +
-        '<div class="news_card-date">' +
-        '<span class="news_date">' + value.dateNews + '</span>' +
-        '</div>' +
-        '</div>' +
-        '</div>' +
-        '</a>'
-      );
-    }
-    
 
-  });
-  console.log(it,'|',Math.ceil(it / 6));
+
+    });
+    console.log(it, '|', Math.ceil(it / 6));
     bk = '';
     nx = '';
-    if (pg != 1) { bk = '<div class="prev_page" onclick="moreNews(\'' + lng + '\',\'page_news_cards\',' + (pg-1) + ');"> <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7.98926 1.34985L2.48926 6.84985L7.98926 12.3499" stroke="#DBDBDB" stroke-width="3"/> </svg></div>'; }
-    if (pg != Math.ceil(it / 6)) nx = '<div class="next_page" onclick="moreNews(\'' + lng + '\',\'page_news_cards\',' + (pg+1) + ');"> <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M9.32324 17.3499L14.8232 11.8499L9.32324 6.34985" stroke="#DBDBDB" stroke-width="3"/> </svg></div>';
+    if (pg != 1) { bk = '<div class="prev_page" onclick="moreNews(\'' + lng + '\',\'page_news_cards\',' + (pg - 1) + ');"> <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7.98926 1.34985L2.48926 6.84985L7.98926 12.3499" stroke="#DBDBDB" stroke-width="3"/> </svg></div>'; }
+    if (pg != Math.ceil(it / 6)) nx = '<div class="next_page" onclick="moreNews(\'' + lng + '\',\'page_news_cards\',' + (pg + 1) + ');"> <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M9.32324 17.3499L14.8232 11.8499L9.32324 6.34985" stroke="#DBDBDB" stroke-width="3"/> </svg></div>';
     clpg = '';
     for (let i = 1; i < Math.ceil(it / 6) + 1; i++) {
       if (i == pg) clpg += '<div class="current_page active_page" onclick="moreNews(\'' + lng + '\',\'page_news_cards\',' + (i) + ');">' + (i) + '</div>';
       else clpg += '<div class="current_page" onclick="moreNews(\'' + lng + '\',\'page_news_cards\',' + (i) + ');">' + i + '</div>';
     }
-    
+
     document.getElementById('navNewsMore').innerHTML = bk + clpg + nx;
-  // console.log(key);
-  //  console.log(data[key]); 
-});
+    // console.log(key);
+    //  console.log(data[key]); 
+  });
 
   //   
   // });
@@ -903,109 +903,475 @@ database.ref('news').once('value', (snapshot) => {
 function lodaMoreNews() {
   myValue = 'ru';
   if (localStorage.getItem("glblng") != null) { myValue = localStorage.getItem("glblng"); }
-  moreNews(myValue,'page_news_cards',1);
+  moreNews(myValue, 'page_news_cards', 1);
 }
 function lodaMoreVacan() {
   myValue = 'ru';
   if (localStorage.getItem("glblng") != null) { myValue = localStorage.getItem("glblng"); }
-  loadVacan(myValue,'fullVacan');
+  loadVacan(myValue, 'fullVacan');
 
   database.ref('Imgvacan').on('value', (snapshot) => {
     value = snapshot.val();
     // console.log(value);
-    
-    document.getElementById('imgVacan').style.backgroundImage = "url('"+value+"')";
+
+    document.getElementById('imgVacan').style.backgroundImage = "url('" + value + "')";
   });
 
 }
 function loadVacan(lng, dv) {
-	document.getElementById(dv).innerHTML='';
-	database.ref('vacans').once('value', (snapshot) => {
-		const data = snapshot.val();
-		for (const key in data) {
-			const item = data[key];
-			// console.log(key);
-			// console.log(item.imageUrl);
-			title = '';
-			opis = '';
-			switch (lng) {
-				case 'ru':
-					title = item.Titleru;
-					opis = item.Opisanieru;
-					break;
-				case 'en':
-					title = item.Titleen;
-					opis = item.Opisanieen;
-					break;
-				case 'kz':
-					title = item.Titlekz;
-					opis = item.Opisaniekz;
-					break;
+  document.getElementById(dv).innerHTML = '';
+  database.ref('vacans').once('value', (snapshot) => {
+    const data = snapshot.val();
+    for (const key in data) {
+      const item = data[key];
+      // console.log(key);
+      // console.log(item.imageUrl);
+      title = '';
+      opis = '';
+      switch (lng) {
+        case 'ru':
+          title = item.Titleru;
+          opis = item.Opisanieru;
+          break;
+        case 'en':
+          title = item.Titleen;
+          opis = item.Opisanieen;
+          break;
+        case 'kz':
+          title = item.Titlekz;
+          opis = item.Opisaniekz;
+          break;
 
-				default:
-					break;
-			}
-			document.getElementById(dv).insertAdjacentHTML('beforeend','<div class="accordion-item">' +
-				'<button id="'+key+'" aria-expanded="false"  onclick="btnAccrd(\''+key+'\')">' +
-				'<span class="accordion-title">' + title + '</span>' +
-				'<svg class="icon" aria-hidden="true" width="29" height="17" viewBox="0 0 29 17" fill="none" xmlns="http://www.w3.org/2000/svg">' +
-				'<path d="M27 14.7501L14.5001 2.24993L2 14.7501" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>' +
-				'</svg>    ' +
-				'</button>' +
-				'<div class="accordion-content">' +
-				'<div class="list_work">' + opis +
-				'</div>' +
-				'</div>' +
-				'</div>');
-		}
-	});
+        default:
+          break;
+      }
+      document.getElementById(dv).insertAdjacentHTML('beforeend', '<div class="accordion-item">' +
+        '<button id="' + key + '" aria-expanded="false"  onclick="btnAccrd(\'' + key + '\')">' +
+        '<span class="accordion-title">' + title + '</span>' +
+        '<svg class="icon" aria-hidden="true" width="29" height="17" viewBox="0 0 29 17" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+        '<path d="M27 14.7501L14.5001 2.24993L2 14.7501" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>' +
+        '</svg>    ' +
+        '</button>' +
+        '<div class="accordion-content">' +
+        '<div class="list_work">' + opis +
+        '</div>' +
+        '</div>' +
+        '</div>');
+    }
+  });
 }
 
 
 function btnAccrd(key) {
-  if (window.location.href.endsWith("vacancy.html"))
-  {
-  var button = document.getElementById(key);
-  var expanded = button.getAttribute("aria-expanded") === "true";
-      button.setAttribute("aria-expanded", !expanded);
-    }
+  if (window.location.href.endsWith("vacancy.html")) {
+    var button = document.getElementById(key);
+    var expanded = button.getAttribute("aria-expanded") === "true";
+    button.setAttribute("aria-expanded", !expanded);
+  }
 }
 
 function loadServiMore() {
   myValue = 'ru';
   if (localStorage.getItem("glblng") != null) { myValue = localStorage.getItem("glblng"); }
-  loadTitleServiMore('nameCatTitle',myValue);
+  loadTitleServiMore('nameCatTitle', myValue);
 }
 
-function loadTitleServiMore(dv,lng) {
-  document.getElementById(dv).innerHTML='';
-	database.ref('typeproduct').once('value', (snapshot) => {
-		const data = snapshot.val();
-		for (const key in data) {
-			const item = data[key];
-			// console.log(key);
-			// console.log(item.imageUrl);
-			title = '';
-			opis = '';
-			switch (lng) {
-				case 'ru':
-					title = item.Titleru;
-					opis = item.Opisanieru;
-					break;
-				case 'en':
-					title = item.Titleen;
-					opis = item.Opisanieen;
-					break;
-				case 'kz':
-					title = item.Titlekz;
-					opis = item.Opisaniekz;
-					break;
+function loadTitleServiMore(dv, lng) {
+  document.getElementById(dv).innerHTML = '';
+  document.getElementById('vseproduct').innerHTML = '';
+  database.ref('typeproduct').once('value', (snapshot) => {
+    const data = snapshot.val();
+    for (const key in data) {
+      const item = data[key];
+      // console.log(key);
+      // console.log(item.imageUrl);
+      title = '';
+      opis = '';
+      switch (lng) {
+        case 'ru':
+          title = item.Titleru;
+          opis = item.Opisanieru;
+          break;
+        case 'en':
+          title = item.Titleen;
+          opis = item.Opisanieen;
+          break;
+        case 'kz':
+          title = item.Titlekz;
+          opis = item.Opisaniekz;
+          break;
 
-				default:
-					break;
-			}
-			document.getElementById(dv).insertAdjacentHTML('beforeend','<li><div class="vert_line"></div><a href="service01.html">'+title+'</a></li>' );
-		}
-	});
+        default:
+          break;
+      }
+      document.getElementById(dv).insertAdjacentHTML('afterbegin', '<li><div class="vert_line"></div><a href="service01.html">' + title + '</a></li>');
+      creatProductCard('vseproduct', key, title, lng);
+
+    }
+  });
 }
+
+function creatProductCard(dv, id, title, lng) {
+  txt = '';
+  t2p = [];
+  t2pdate = [];
+  kl = '';
+  database.ref('product').once('value', (snapshot) => {
+    const data = snapshot.val();
+    for (const key in data) {
+      const item = data[key];
+      // console.log(key);
+      // console.log(item.imageUrl);
+      if (item.typeProduct === id) {
+        title2 = '';
+        opis = '';
+        var hasPotType = 'type2Product' in item;
+        if (hasPotType) {
+          kl = key;
+          switch (lng) {
+            case 'ru':
+              title2 = item.Titleru;
+              opis = item.Opisanieru;
+              break;
+            case 'en':
+              title2 = item.Titleen;
+              opis = item.Opisanieen;
+              break;
+            case 'kz':
+              title2 = item.Titlekz;
+              opis = item.Opisaniekz;
+              break;
+
+            default:
+              break;
+          }
+          opis = truncateText(opis, 145);
+          if (!t2p.includes(item.type2Product)) {
+            txt += '<div class="accordion-item">' +
+              '<button id="accordion-button-1" aria-expanded="false">' +
+              '<span class="accordion-title" id="' + item.type2Product + 'title">' + item.type2Product + '</span>' +
+              '<svg class="icon" aria-hidden="true" width="29" height="17" viewBox="0 0 29 17" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+              '<path d="M27 14.7501L14.5001 2.24993L2 14.7501" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>' +
+              '</svg>    ' +
+              '</button>' +
+              '' +
+              '<div class="accordion-content" id="' + item.type2Product + 'productlist">' +
+              '</div>' +
+              '</div>';
+            t2p.push(item.type2Product);
+          }
+          t2pdate.push(
+            item,
+          );
+
+        }
+        else {
+          switch (lng) {
+            case 'ru':
+              title2 = item.Titleru;
+              opis = item.Opisanieru;
+              break;
+            case 'en':
+              title2 = item.Titleen;
+              opis = item.Opisanieen;
+              break;
+            case 'kz':
+              title2 = item.Titlekz;
+              opis = item.Opisaniekz;
+              break;
+
+            default:
+              break;
+          }
+          opis = truncateText(opis, 145);
+          txt += '<div class="accordion-item">' +
+            '<button id="' + key + 'acard" aria-expanded="false" onclick="btnAccrdProduct(\'' + key + '\')">' +
+            '<span class="accordion-title">' + title2 + '</span>' +
+            '<svg class="icon" aria-hidden="true" width="29" height="17" viewBox="0 0 29 17" fill="none" xmlns="http://www.w3.org/2000/svg">' +
+            '<path d="M27 14.7501L14.5001 2.24993L2 14.7501" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>' +
+            '</svg>    ' +
+            '</button>' +
+            '' +
+            '<div class="accordion-content" >' +
+            '<div class="services_card">' +
+            '<div class="services_img img_ad02" style="background-image:url(' + item.imageUrl + ')"></div>' +
+            '<div class="services_caption">' +
+            '<span class="services_card_title">' + title2 + '</span>' +
+            '<div class="services_card_caption">' + opis + '</div>' +
+            '<a href="" class="serv_detailed_btn">Подробнее</a>' +
+            '</div>' +
+            '</div>' +
+            '</div>' +
+            '</div>';
+        }
+
+        // console.log(title+' | '+hasPotType);  // true
+
+      }
+
+
+
+    }
+    // console.log(txt);
+    document.getElementById(dv).insertAdjacentHTML('beforeend',
+      '<div class="production_type">' +
+      '<span class="services_tilte">' + title + '</span>' +
+      '<div class="accordion" id="' + id + 'card">' +
+      txt +
+      '' +
+      '</div>' +
+      '</div>'
+    );
+
+    txt = '';
+    console.log(t2p);
+    console.log(t2pdate);
+    typeProductTitle(kl, t2p, lng);
+    console.log(kl);
+
+  });
+
+
+
+
+}
+
+function typeProductTitle(kk, kk2, lng) {
+  database.ref('typeproduct/-NVLmXHFXxOOGn4i3eSP/podtype/').once('value', (snapshot) => {
+    const data = snapshot.val();
+    for (const key in data) {
+      const item = data[key];
+      // console.log(key);
+      // console.log(item.imageUrl);
+      title = '';
+      opis = '';
+      var hasPotType = key in kk2;
+      if (hasPotType) {
+        switch (lng) {
+          case 'ru':
+            title = item.Titleru;
+            opis = item.Opisanieru;
+            break;
+          case 'en':
+            title = item.Titleen;
+            opis = item.Opisanieen;
+            break;
+          case 'kz':
+            title = item.Titlekz;
+            opis = item.Opisaniekz;
+            break;
+
+          default:
+            break;
+        }
+        // document.getElementById(dv).insertAdjacentHTML('afterbegin','<li><div class="vert_line"></div><a href="service01.html">'+title+'</a></li>' );
+        // creatProductCard('vseproduct',key,title,lng);
+        document.getElementById('-NVLmXHFXxOOGn4i3eSPtitle').innerHTML = title;
+        console.log(title);
+      }
+
+    }
+  });
+}
+
+function btnAccrdProduct(key) {
+  if (window.location.href.endsWith("services.html")) {
+    var button = document.getElementById(key + 'acard');
+    var expanded = button.getAttribute("aria-expanded") === "true";
+    button.setAttribute("aria-expanded", !expanded);
+  }
+}
+
+function pageAbout() {
+  myValue = 'ru';
+  if (localStorage.getItem("glblng") != null) { myValue = localStorage.getItem("glblng"); }
+  transPageAbout(myValue);
+  pageAboutInfo(myValue);
+  loadRekvizit(myValue, 'rekvizitText');
+  clearContact('footerContactCard');
+  loadFooterContact(myValue, 'footerContactCard', 'number');
+  loadFooterContact(myValue, 'footerContactCard', 'other');
+  loadDirector(myValue);
+}
+function pageAboutInfo(lng) {
+  database.ref(lng+'/page/genabout/opisanie').on('value', (snapshot) => {
+    value = snapshot.val();
+    // console.log(value);
+    tt='';
+    partTitle='';
+  switch (lng) {
+    case 'ru':
+      tt='АтырауНефтеМаш';
+      partTitle='Партнеры';
+      break;
+    case 'en':
+      tt='AtyrauNefteMash';
+      partTitle='Partners';
+      break;
+    case 'kz':
+      tt='АтырауНефтеМаш';
+      partTitle='Серіктестер';
+      break;
+
+    default:
+      break;
+  }
+  document.getElementById('partnerTitle').innerHTML = partTitle;
+  op='<h2>'+tt+'</h2>'+value;
+    document.getElementById('titleAbout').innerHTML = op;
+  });
+  database.ref(lng+'/page/genabout/zagolovokabout').on('value', (snapshot) => {
+    value = snapshot.val();
+    // console.log(value);
+
+    document.getElementById('zagolovok').innerHTML = value;
+  });
+  database.ref(lng+'/page/contact/adres').on('value', (snapshot) => {
+    value = snapshot.val();
+    // console.log(value);
+
+    document.getElementById('adres').innerHTML = value;
+    document.getElementById('adresMenu').innerHTML = value.substring(0, 19) + "<br>" + value.substring(19);
+  });
+
+  for (let i = 1; i <= 3; i++) {
+    database.ref(lng + '/page/genplus/' + i + '/zagolovok').on('value', (snapshot) => {
+      const value = snapshot.val().replace(/<br>/g, "\n");
+      // console.log(value);
+      
+        document.getElementById('title' + i).innerHTML = value;
+    });
+    database.ref(lng + '/page/genplus/' + i + '/opisanie').on('value', (snapshot) => {
+      const value = snapshot.val().replace(/<br>/g, "\n");
+      // console.log(value);
+       {
+        document.getElementById('opisanie' + i).innerHTML = value;
+      }
+    });
+  }
+  document.getElementById('part').innerHTML = '';
+  database.ref('partners').once('value', (snapshot) => {
+    const data = snapshot.val();
+    for (const key in data) {
+      const item = data[key];
+      // console.log(key);
+      // console.log(item.imageUrl);
+      document.getElementById('part').insertAdjacentHTML('beforeend', '<div class="swiper-slide"><div class="slide_partner" style="background-image: url(' + item.imageUrl + ')"></div></div>');
+    }
+  });
   
+}
+function lngselAbout(lng) {
+  localStorage.setItem("glblng", lng);
+  window.location.href = "about.html";
+}
+function transPageAbout(lng) {
+  let txt;
+  switch (lng) {
+    case 'ru':
+      txt = menuRu;
+      break;
+    case 'en':
+      txt = menuEn;
+      break;
+    case 'kz':
+      txt = menuKz;
+      break;
+  }
+  // Меню десктоп
+  document.getElementById('genMenu').innerHTML = txt.gen;
+  document.getElementById('aboutMenu').innerHTML = txt.about;
+  document.getElementById('newsMenu').innerHTML = txt.news;
+  document.getElementById('productMenu').innerHTML = txt.product + '<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  width="10px" height="10px"  viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;"  xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0  c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>  </g></svg>';
+  document.getElementById('product1Menu').innerHTML = txt.product1;
+  document.getElementById('product2Menu').innerHTML = txt.product2;
+  document.getElementById('product3Menu').innerHTML = txt.product3;
+  document.getElementById('carerMenu').innerHTML = txt.carer;
+  document.getElementById('contactMenu').innerHTML = txt.contact;
+  // Меню мобильная
+  document.getElementById('genMenuMobile').innerHTML = txt.gen;
+  document.getElementById('aboutMenuMobile').innerHTML = txt.about;
+  document.getElementById('newsMenuMobile').innerHTML = txt.news;
+  document.getElementById('productMenuMobile').innerHTML = txt.product;
+  document.getElementById('product1MenuMobile').innerHTML = txt.product1;
+  document.getElementById('product2MenuMobile').innerHTML = txt.product2;
+  document.getElementById('product3MenuMobile').innerHTML = txt.product3;
+  document.getElementById('carerMenuMobile').innerHTML = txt.carer;
+  document.getElementById('contactMenuMobile').innerHTML = txt.contact;
+  // футер
+  document.getElementById('genMenuFooter').innerHTML = txt.gen;
+  document.getElementById('aboutMenuFooter').innerHTML = txt.about;
+  document.getElementById('newsMenuFooter').innerHTML = txt.news;
+  document.getElementById('productMenuFooter').innerHTML = txt.product;
+  document.getElementById('carerMenuFooter').innerHTML = txt.carer;
+  document.getElementById('contactMenuFooter').innerHTML = txt.contact;
+
+  document.getElementById('adminp').innerHTML = txt.adminp;
+  document.getElementById('perdate').innerHTML = txt.perdate;
+  document.getElementById('polit').innerHTML = txt.polit;
+  document.getElementById('razrab').innerHTML = txt.razrab;
+
+  // Навигация
+    document.getElementById('genMenuNav').innerHTML = txt.gen;
+    document.getElementById('aboutMenuNav').innerHTML = txt.about;
+  // document.getElementById('newsMenuNav').innerHTML = txt.news;
+  // document.getElementById('productMenuNav').innerHTML = txt.product;
+  // document.getElementById('certifMenuNav').innerHTML = txt.certif;
+  // document.getElementById('partMenuNav').innerHTML = txt.partner;
+  // document.getElementById('contactMenuNav').innerHTML = txt.contact;
+
+  // document.getElementById('newsBlock').innerHTML = txt.news;
+  // document.getElementById('fNewsBlock').innerHTML = txt.fnews;
+  // document.getElementById('certBlock').innerHTML = txt.certif;
+  // document.getElementById('allCertif').innerHTML = txt.fcertif;
+  // document.getElementById('partnerBlock').innerHTML = txt.partner;
+  // document.getElementById('contactBlock').innerHTML = txt.contact;
+  document.getElementById('too').innerHTML = txt.too;
+  document.getElementById('titleMenuFooter').innerHTML = txt.titleMenuFuter;
+  document.getElementById('titleMenuFooter2').innerHTML = txt.titleMenuFuter2;
+  document.getElementById('titleDirector').innerHTML = txt.titledirector;
+}
+function loadDirector(lng) {
+  document.getElementById('directorCard').innerHTML='';
+  database.ref('worker').once('value', (snapshot) => {
+    const data = snapshot.val();
+    for (const key in data) {
+      const item = data[key];
+      // console.log(key);
+      // console.log(item.imageUrl);
+      fio = '';
+      post = '';
+ {
+        switch (lng) {
+          case 'ru':
+            fio = item.fioru;
+            post = item.postru;
+            break;
+          case 'en':
+            fio = item.fioen;
+            post = item.posten;
+            break;
+          case 'kz':
+            fio = item.fiokz;
+            post = item.postkz;
+            break;
+
+          default:
+            break;
+        }
+        // document.getElementById(dv).insertAdjacentHTML('afterbegin','<li><div class="vert_line"></div><a href="service01.html">'+title+'</a></li>' );
+        // creatProductCard('vseproduct',key,title,lng);
+        document.getElementById('directorCard').insertAdjacentHTML('beforeend',
+        '<div class="manager">'+
+'                    <div class="manager_photo" style="background-image: url('+item.imageUrl+')"></div>'+
+'                    <span class="manager_name">'+fio+'</span>'+
+'                    <span class="manager_post">'+post+'</span>'+
+'                    <span class="manager_mail">'+item.email+'</span>'+
+'                    <span class="manager_phone">'+item.numberPhone+'</span>'+
+'                </div>'
+        );
+      }
+
+    }
+  });
+}

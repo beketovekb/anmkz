@@ -84,6 +84,59 @@
         box-shadow: 1px 1px 2px #ddd;
         background: #fff;
     }
+    .dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown2 {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-toggle2 {
+  cursor: pointer;
+}
+
+.dropdown-menu2 {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  padding: 0;
+  list-style-type: none;
+  border: 1px solid #ccc;
+  min-width: 120px;
+}
+
+.dropdown-menu2 li {
+  padding: 8px 12px;
+}
+
+.dropdown-menu2 li:hover {
+  background-color: #e5e5e5;
+}
+
+.dropdown-toggle3 {
+  cursor: pointer;
+}
+
+.dropdown-menu3 {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  padding: 0;
+  list-style-type: none;
+  border: 1px solid #ccc;
+  min-width: 120px;
+}
+
+.dropdown-menu3 li {
+  padding: 8px 12px;
+}
+
+.dropdown-menu3 li:hover {
+  background-color: #e5e5e5;
+}
+
 </style>
 
 
@@ -109,10 +162,12 @@
                                     <div class="row form-group">
                                         <div class="col col-md-3"><label for="select" class=" form-control-label">Тип продукта</label></div>
                                         <div class="col-12 col-md-9">
-                                            <select name="select" id="select" class="form-control">
-                                                <option value="0">Выберите тип продукта</option>
-                                                
-                                            </select>
+                                            <div class="dropdown">
+                                                <div class="dropdown-toggle2" onclick="toggleDropdown('.dropdown-menu2')" >Выберите элемент</div>
+                                                <ul class="dropdown-menu2" id="select">
+                                                  
+                                                </ul>
+                                              </div>
                                         </div>
                                     </div>
                                     <div class="form-group" style="width: 100%;"><label for="exampleInputName2"

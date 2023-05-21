@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="img/favicon.png" type="image/x-icon">
 </head>
 <body>
-    <body onload="loadLng()">
+    <body onload="pageAbout()">
         <!-- <div class="div_svg loader">
            
             <svg class="preloader loader_inner" version="1.1" id="Слой_1" xmlns="http://www.w3.org/2000/svg" x="0" y="0" viewBox="0 0 1920 1080" style="enable-background:new 0 0 1920 1080" xml:space="preserve">
@@ -206,11 +206,11 @@
                         </svg>
                     </a>
                     <ul>
-                        <li><a href="index.html">Главная</a></li>
-                        <li class="point_menu"><a href="about.html">О компании</a></li>
-                        <li><a href="news.html">Новости</a></li>
+                        <li><a href="index.html" id="genMenu">Главная</a></li>
+                        <li class="point_menu"><a href="about.html" id="aboutMenu">О компании</a></li>
+                        <li><a href="news.html" id="newsMenu">Новости</a></li>
                         <li class="point_menu">
-                            <a href="services.html">Продукция и услуги
+                            <a href="services.html" id="productMenu">Продукция и услуги
                                 <svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                 width="10px" height="10px"  viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;"
                                 xml:space="preserve">
@@ -224,57 +224,57 @@
                             <div class="submenu">
                                 <div class="submenu_list">
                                     <ul>
-                                        <li><a href="services.html">Производство и продукция</a></li>
-                                        <li><a href="servs.html">Услуги и сервис</a> </li>
-                                        <li><a href="lab.html">Лаборатория</a></li>
+                                        <li><a href="services.html" id="product1Menu">Производство и продукция</a></li>
+                                        <li><a href="servs.html" id="product2Menu">Услуги и сервис</a> </li>
+                                        <li><a href="lab.html" id="product3Menu">Лаборатория</a></li>
                                     </ul>
                                 </div>
                             </div>
                         </li>
-                        <li><a href="vacancy.html">Вакансии</a></li>
-                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="vacancy.html" id="carerMenu">Вакансии</a></li>
+                        <li><a href="contacts.html" id="contactMenu">Контакты</a></li>
                         <div class="lang">
-                            <div class="kz"><a onclick="lngsel('kz')">KZ</a></div>
-                            <div class="ru"><a href="" onclick="lngsel('ru');">RU</a></div>
-                            <div class="en"><a href="" onclick="lngsel('en');">EN</a></div>
+                            <div class="kz"><a onclick="lngselAbout('kz')">KZ</a></div>
+                            <div class="ru"><a onclick="lngselAbout('ru');">RU</a></div>
+                            <div class="en"><a onclick="lngselAbout('en');">EN</a></div>
                         </div>
                     </ul>
                     <div class="bar">
                         <svg id="Capa_1" enable-background="new 0 0 464.205 464.205" height="512" viewBox="0 0 464.205 464.205" width="512" xmlns="http://www.w3.org/2000/svg"><g><g id="grip-solid-horizontal_1_"><path d="m435.192 406.18h-406.179c-16.024 0-29.013-12.99-29.013-29.013s12.989-29.013 29.013-29.013h406.18c16.023 0 29.013 12.99 29.013 29.013-.001 16.023-12.99 29.013-29.014 29.013z"/><path d="m435.192 261.115h-406.179c-16.024 0-29.013-12.989-29.013-29.012s12.989-29.013 29.013-29.013h406.18c16.023 0 29.013 12.989 29.013 29.013s-12.99 29.012-29.014 29.012z"/><path d="m435.192 116.051h-406.179c-16.024 0-29.013-12.989-29.013-29.013s12.989-29.013 29.013-29.013h406.18c16.023 0 29.013 12.989 29.013 29.013s-12.99 29.013-29.014 29.013z"/></g></g></svg>
                         <div class="sub_bar none">
                             <ul>
-                                <li><a href="index.html">Главная</a></li>
-                                <li class="point_menu"><a href="about.html">О компании</a></li>
-                                <li><a href="news.html">Новости</a></li>
+                                <li><a href="index.html" id="genMenuMobile">Главная</a></li>
+                                <li class="point_menu"><a href="about.html" id="aboutMenuMobile">О компании</a></li>
+                                <li><a href="news.html" id="newsMenuMobile">Новости</a></li>
                                 <li class="point_menu sub_hover">
-                                    <a href="services.html">Продукция и услуги</a>
+                                    <a href="services.html" id="productMenuMobile">Продукция и услуги</a>
                                     <div class="submenu">
                                         <div class="submenu_list">
                                             <ul>
-                                                <li><a href="services.html">Производство и продукция</a></li>
-                                                <li><a href="servs.html">Услуги и сервис</a> </li>
-                                                <li><a href="lab.html">Лаборатория</a></li>
+                                                <li><a href="services.html" id="product1MenuMobile">Производство и продукция</a></li>
+                                                <li><a href="servs.html" id="product2MenuMobile">Услуги и сервис</a> </li>
+                                                <li><a href="lab.html" id="product3MenuMobile">Лаборатория</a></li>
                                             </ul>
                                         </div>
                                     </div>
                                 </li>
-                                <li><a href="vacancy.html">Вакансии</a></li>
-                                <li><a href="contacts.html">Контакты</a></li>
+                                <li><a href="vacancy.html" id="carerMenuMobile">Вакансии</a></li>
+                                <li><a href="contacts.html" id="contactMenuMobile">Контакты</a></li>
                                 <div class="lang">
-                                    <div class="kz"><a onclick="lngsel('kz')">KZ</a></div>
-                                    <div class="ru"><a href="" onclick="lngsel('ru');">RU</a></div>
-                                    <div class="en"><a href="" onclick="lngsel('en');">EN</a></div>
+                                    <div class="kz"><a onclick="lngselAbout('kz')">KZ</a></div>
+                                    <div class="ru"><a onclick="lngselAbout('ru');">RU</a></div>
+                                    <div class="en"><a onclick="lngselAbout('en');">EN</a></div>
                                 </div>
                             </ul>
                         </div>
                     </div>
                     <div class="lang">
-                        <div class="kz"><a href="">KZ</a></div>
-                        <div class="ru"><a href="">RU</a></div>
-                        <div class="en"><a href="">EN</a></div>
+                        <div class="kz"><a onclick="lngselAbout('kz')">KZ</a></div>
+                        <div class="ru"><a onclick="lngselAbout('ru');">RU</a></div>
+                        <div class="en"><a onclick="lngselAbout('en');">EN</a></div>
                     </div>
                     <div class="location_info">
-                        <span class="location_place">
+                        <span class="location_place" id="adresMenu">
                             Казахстан, Атырау,<br> ул. Куттыгай Батыр, 44
                         </span>
                         <span class="location_mail">info@anm.kz</span>
@@ -286,7 +286,7 @@
     <section class="bredcrumbs_grey" style="padding-bottom: 20px;">
         <div class="container">
             <div class="bc_link">
-                <a href="index.html">Главная </a>/ <a href="about.html">О компании</a>
+                <a href="index.html" id="genMenuNav">Главная </a>/ <a href="about.html" id="aboutMenuNav">О компании</a>
             </div>
         </div>
     </section>
@@ -295,36 +295,36 @@
         <div class="container">
             <div class="row">
                 <div class="col-4 about-left_content">
-                    <h2>О компании</h2>
+                    <h2 id="zagolovok">О компании</h2>
                     <div class="about_location">
                         <img src="img/location_white.png" alt="">
-                        <span>Казахстан, Атырау, ул. Куттыгай Батыр, 44</span>
+                        <span id="adres">Казахстан, Атырау, ул. Куттыгай Батыр, 44</span>
                     </div>
                     <div class="about_additional">
                         <div class="about_ad1">
                             <img src="img/about_v1.png" alt="">
                             <div class="about_desc">
-                                <h3>Качество продукции</h3>
-                                <span>Вся производимая нами продукция имеет сертификаты и паспорта.</span>
+                                <h3 id="title1">Качество продукции</h3>
+                                <span id="opisanie1">Вся производимая нами продукция имеет сертификаты и паспорта.</span>
                             </div>
                         </div>
                         <div class="about_ad1">
                             <img src="img/about_v2.png" alt="">
                             <div class="about_desc">
-                                <h3>Честность</h3>
-                                <span>Мы гарантируем соблюдение договорных отношений.</span>
+                                <h3 id="title2">Честность</h3>
+                                <span id="opisanie2">Мы гарантируем соблюдение договорных отношений.</span>
                             </div>
                         </div>
                         <div class="about_ad1">
                             <img src="img/about_v3.png" alt="">
                             <div class="about_desc">
-                                <h3>Профессионализм</h3>
-                                <span>Все сотрудники предприятия профессионалы своего дела.</span>
+                                <h3 id="title3">Профессионализм</h3>
+                                <span id="opisanie3">Все сотрудники предприятия профессионалы своего дела.</span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="col-8 about-right_content">
+                <div class="col-8 about-right_content" id="titleAbout">
                     <h2>АтырауНефтеМаш</h2>
                     <span class="text_caption"><b>АтырауНефтеМаш</b> — производит и выпускает сложное крупногабаритное оборудование для нефтегазовой, нефтехимической, горнорудной и энергетической отраслей.</span>
                     <span class="text_caption"><b>Основная специализация</b> — изготовление и поставка сосудов работающих под давлением, емкостного оборудования, нагревательного оборудования, сепарационного оборудования, блочно-модульных строений и станций, аппаратов емкостных, аппаратов теплообменных, ресиверов и воздухосборников, а также решетчатых настилов.</span>
@@ -337,8 +337,8 @@
     </div>
     <section class="managers">
         <div class="container">
-            <h2>Руководители компании</h2>
-            <div class="managers_cards">
+            <h2 id="titleDirector">Руководители компании</h2>
+            <div class="managers_cards" id="directorCard">
                 <div class="manager">
                     <div class="manager_photo"></div>
                     <span class="manager_name">Сабитов Арман</span>
@@ -374,7 +374,7 @@
         <div class="partner_container">
             <div class="page_title_component">
                 <div class="page_number_title">
-                    <h2 class="page_title">Партнеры</h2>
+                    <h2 class="page_title" id="partnerTitle">Партнеры</h2>
                 </div>
                 <div class="partners_button">
                     <div class="swiper-button-next"></div>
@@ -383,7 +383,8 @@
             </div>
         </div>
         <div class="swiper mySwiper2">
-            <div class="swiper-wrapper">
+            <div class="swiper-wrapper" id="part">
+              <!-- <div class="swiper-slide"><div class="slide_partner"></div></div>
               <div class="swiper-slide"><div class="slide_partner"></div></div>
               <div class="swiper-slide"><div class="slide_partner"></div></div>
               <div class="swiper-slide"><div class="slide_partner"></div></div>
@@ -399,8 +400,7 @@
               <div class="swiper-slide"><div class="slide_partner"></div></div>
               <div class="swiper-slide"><div class="slide_partner"></div></div>
               <div class="swiper-slide"><div class="slide_partner"></div></div>
-              <div class="swiper-slide"><div class="slide_partner"></div></div>
-              <div class="swiper-slide"><div class="slide_partner"></div></div>
+              <div class="swiper-slide"><div class="slide_partner"></div></div> -->
             </div>
             <div class="swiper-pagination"></div>
             <div class="autoplay-progress">
@@ -414,24 +414,24 @@
     <footer>
         <div class="container">
             <div class="row">
-                <a href="index.html" class="col-4">
+                <div class="col-4">
                     <img class="footerLogo" src="img/logo_white.png" alt="">
-                    <span class="too">ТОО «АТЫРАУНЕФТЕМАШ»</span>
-                </a>
+                    <span class="too" id="too">ТОО «АТЫРАУНЕФТЕМАШ»</span>
+                </div>
                 <div class="col-3 footer_main">
-                    <span class="footerCol_title">Разделы сайта</span>
+                    <span class="footerCol_title" id="titleMenuFooter">Разделы сайта</span>
                     <ul>
-                        <li><a href="index.html">Главная</a></li>
-                        <li><a href="about.html">О компании</a></li>
-                        <li><a href="news.html">Новости</a></li>
-                        <li><a href="services.html">Продукция и услуги</a></li>
-                        <li><a href="vacancy.html   ">Вакансии</a></li>
-                        <li><a href="contacts.html">Контакты</a></li>
+                        <li><a href="index.html" id="genMenuFooter">Главная</a></li>
+                        <li><a href="about.html" id="aboutMenuFooter">О компании</a></li>
+                        <li><a href="news.html" id="newsMenuFooter">Новости</a></li>
+                        <li><a href="" id="productMenuFooter">Продукция и услуги</a></li>
+                        <li><a href="" id="carerMenuFooter">Карьера</a></li>
+                        <li><a href="" id="contactMenuFooter">Контакты</a></li>
                     </ul>
                 </div>
                 <div class="col-3 recv">
-                    <span class="footerCol_title">Реквизиты</span>
-                    <ul>
+                    <span class="footerCol_title" id="titleMenuFooter2">Реквизиты</span>
+                    <ul id="rekvizitText">
                         <li>ТОО «АТЫРАУНЕФТЕМАШ»</li>
                         <li>ОГРН: xxxxxxxxx</li>
                         <li>ИНН: xxxxxxxxx</li>
@@ -441,7 +441,7 @@
                     </ul>
 
                 </div>
-                <div class="col-2 f_info">
+                <div class="col-2 f_info" id="footerContactCard">
                     <span class="footerCol_title">Тел./факс:</span>
                     <span class="footerCol_desc01">+7 7122 76 27 01</span>
                     <span class="footerCol_title">Адрес:</span>
@@ -457,16 +457,16 @@
         <div class="container">
             <div class="row subFooter">
                 <div class="col-4">
-                    <a href="">Панель администратора</a>
+                    <a href="" id="adminp">Панель администратора</a>
                 </div>
                 <div class="col-3">
-                    <a href="">Обработка персональных данных</a>
+                    <a href="" id="perdate">Обработка персональных данных</a>
                 </div>
                 <div class="col-3">
-                    <a href="">Политика конфиденциальности</a>
+                    <a href="" id="polit">Политика конфиденциальности</a>
                 </div>
                 <div class="col-2">
-                    <a href=""><b>Разработчик:</b> Oner</a>
+                    <a href=""><b id="razrab">Разработчик:</b> Oner</a>
                 </div>
             </div>
         </div>
@@ -510,5 +510,11 @@
         //   }
         });
     </script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
+    <script src="js/initfb.js"></script>
+    <script src="js/translate.js"></script>
+    <script src="js/fbwork.js"></script>
 </body>
 </html>

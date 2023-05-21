@@ -19,7 +19,8 @@ menuRu = {
   adminp:'Панель администратора',
   perdate:'Обработка персональных данных',
   polit:'Политика конфиденциальности',
-  razrab:'Разработчик:'
+  razrab:'Разработчик:',
+  titledirector:'Руководители компании',
 };
 menuEn =
 {
@@ -42,7 +43,8 @@ menuEn =
   adminp:'Admin Panel',
   perdate:'Processing of personal data',
   polit:'Privacy Policy',
-  razrab:'Developer:'
+  razrab:'Developer:',
+  titledirector:'Company managers',
 };
 menuKz = {
   gen: 'Басты бет',
@@ -64,5 +66,6 @@ menuKz = {
   adminp: 'Әкімші тақтасы',
   perdate: 'Жеке деректерді өңдеу',
   polit:'Құпиялылық саясаты',
-  razrab:'Әзірлеуші:'
+  razrab:'Әзірлеуші:',
+  titledirector:'Компания басшылары',
 };
