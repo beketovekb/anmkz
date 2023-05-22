@@ -363,6 +363,13 @@ function menuPage(lng) {
   document.getElementById('perdate').innerHTML = txt.perdate;
   document.getElementById('polit').innerHTML = txt.polit;
   document.getElementById('razrab').innerHTML = txt.razrab;
+  database.ref(lng + '/page/contact/adres').on('value', (snapshot) => {
+    value = snapshot.val();
+    // console.log(value);
+
+    // document.getElementById('adres').innerHTML = value.substring(0, 19) + "<br>" + value.substring(19);
+    document.getElementById('adresMenu').innerHTML = value.substring(0, 19) + "<br>" + value.substring(19);
+  });
 }
 function loadRekvizit(lng, dv) {
   document.getElementById(dv).innerHTML = '';
