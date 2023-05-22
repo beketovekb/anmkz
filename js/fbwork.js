@@ -147,13 +147,13 @@ function loadAdminGenPlus(lng, dv, dv2, pos, pls) {
     database.ref(lng + '/page/genplus/' + i + '/zagolovok').on('value', (snapshot) => {
       const value = snapshot.val().replace(/<br>/g, "\n");
       // console.log(value);
-      
-        document.getElementById(dv + i).innerHTML = value;
+
+      document.getElementById(dv + i).innerHTML = value;
     });
     database.ref(lng + '/page/genplus/' + i + '/opisanie').on('value', (snapshot) => {
       const value = snapshot.val().replace(/<br>/g, "\n");
       // console.log(value);
-       {
+      {
         document.getElementById(dv2 + i).innerHTML = value;
       }
     });
@@ -416,6 +416,9 @@ function loadFooterContact(lng, dv, block) {
             '<span class="footerCol_title">' + zgl + ':</span>' +
             nmr +
             '</div>');
+          if (window.location.toString().indexOf('contacts.htm') > 0) {
+            document.getElementById('tel').innerHTML = nmr;
+          }
           cols++;
         }
 
@@ -425,7 +428,11 @@ function loadFooterContact(lng, dv, block) {
           '<span class="footerCol_title">' + item.zagolovok + '</span>' +
           '<span class="footerCol_desc02">' + item.opisanie + '</span>' +
           '</div>');
+        if (window.location.toString().indexOf('contacts.htm') > 0 && item.zagolovok === 'Email:') {
+          document.getElementById('emailCont').innerHTML = item.opisanie;
+        }
       }
+
 
     }
   });
@@ -798,6 +805,13 @@ function translateNews(lng) {
   document.getElementById('product3MenuMobile').innerHTML = txt.product3;
   document.getElementById('carerMenuMobile').innerHTML = txt.carer;
   document.getElementById('contactMenuMobile').innerHTML = txt.contact;
+  database.ref(lng + '/page/contact/adres').on('value', (snapshot) => {
+    value = snapshot.val();
+    // console.log(value);
+
+    // document.getElementById('adres').innerHTML = value.substring(0, 19) + "<br>" + value.substring(19);
+    document.getElementById('adresMenu').innerHTML = value.substring(0, 19) + "<br>" + value.substring(19);
+  });
 
 }
 function lngselNewsMore(lng) {
@@ -904,6 +918,11 @@ function lodaMoreNews() {
   myValue = 'ru';
   if (localStorage.getItem("glblng") != null) { myValue = localStorage.getItem("glblng"); }
   moreNews(myValue, 'page_news_cards', 1);
+  transPageNews(myValue);
+  loadRekvizit(myValue, 'rekvizitText');
+  clearContact('footerContactCard');
+  loadFooterContact(myValue, 'footerContactCard', 'number');
+  loadFooterContact(myValue, 'footerContactCard', 'other');
 }
 function lodaMoreVacan() {
   myValue = 'ru';
@@ -974,6 +993,11 @@ function loadServiMore() {
   myValue = 'ru';
   if (localStorage.getItem("glblng") != null) { myValue = localStorage.getItem("glblng"); }
   loadTitleServiMore('nameCatTitle', myValue);
+  transPageServices(myValue);
+  loadRekvizit(myValue, 'rekvizitText');
+  clearContact('footerContactCard');
+  loadFooterContact(myValue, 'footerContactCard', 'number');
+  loadFooterContact(myValue, 'footerContactCard', 'other');
 }
 
 function loadTitleServiMore(dv, lng) {
@@ -1045,6 +1069,7 @@ function creatProductCard(dv, id, title, lng) {
             default:
               break;
           }
+          opis = opis.replace(/(<([^>]+)>)/gi, "");
           opis = truncateText(opis, 145);
           if (!t2p.includes(item.type2Product)) {
             txt += '<div class="accordion-item">' +
@@ -1083,6 +1108,7 @@ function creatProductCard(dv, id, title, lng) {
             default:
               break;
           }
+          opis = opis.replace(/(<([^>]+)>)/gi, "");
           opis = truncateText(opis, 145);
           txt += '<div class="accordion-item">' +
             '<button id="' + key + 'acard" aria-expanded="false" onclick="btnAccrdProduct(\'' + key + '\')">' +
@@ -1193,40 +1219,41 @@ function pageAbout() {
   loadFooterContact(myValue, 'footerContactCard', 'other');
   loadDirector(myValue);
 }
+
 function pageAboutInfo(lng) {
-  database.ref(lng+'/page/genabout/opisanie').on('value', (snapshot) => {
+  database.ref(lng + '/page/genabout/opisanie').on('value', (snapshot) => {
     value = snapshot.val();
     // console.log(value);
-    tt='';
-    partTitle='';
-  switch (lng) {
-    case 'ru':
-      tt='АтырауНефтеМаш';
-      partTitle='Партнеры';
-      break;
-    case 'en':
-      tt='AtyrauNefteMash';
-      partTitle='Partners';
-      break;
-    case 'kz':
-      tt='АтырауНефтеМаш';
-      partTitle='Серіктестер';
-      break;
+    tt = '';
+    partTitle = '';
+    switch (lng) {
+      case 'ru':
+        tt = 'АтырауНефтеМаш';
+        partTitle = 'Партнеры';
+        break;
+      case 'en':
+        tt = 'AtyrauNefteMash';
+        partTitle = 'Partners';
+        break;
+      case 'kz':
+        tt = 'АтырауНефтеМаш';
+        partTitle = 'Серіктестер';
+        break;
 
-    default:
-      break;
-  }
-  document.getElementById('partnerTitle').innerHTML = partTitle;
-  op='<h2>'+tt+'</h2>'+value;
+      default:
+        break;
+    }
+    document.getElementById('partnerTitle').innerHTML = partTitle;
+    op = '<h2>' + tt + '</h2>' + value;
     document.getElementById('titleAbout').innerHTML = op;
   });
-  database.ref(lng+'/page/genabout/zagolovokabout').on('value', (snapshot) => {
+  database.ref(lng + '/page/genabout/zagolovokabout').on('value', (snapshot) => {
     value = snapshot.val();
     // console.log(value);
 
     document.getElementById('zagolovok').innerHTML = value;
   });
-  database.ref(lng+'/page/contact/adres').on('value', (snapshot) => {
+  database.ref(lng + '/page/contact/adres').on('value', (snapshot) => {
     value = snapshot.val();
     // console.log(value);
 
@@ -1238,13 +1265,13 @@ function pageAboutInfo(lng) {
     database.ref(lng + '/page/genplus/' + i + '/zagolovok').on('value', (snapshot) => {
       const value = snapshot.val().replace(/<br>/g, "\n");
       // console.log(value);
-      
-        document.getElementById('title' + i).innerHTML = value;
+
+      document.getElementById('title' + i).innerHTML = value;
     });
     database.ref(lng + '/page/genplus/' + i + '/opisanie').on('value', (snapshot) => {
       const value = snapshot.val().replace(/<br>/g, "\n");
       // console.log(value);
-       {
+      {
         document.getElementById('opisanie' + i).innerHTML = value;
       }
     });
@@ -1259,7 +1286,7 @@ function pageAboutInfo(lng) {
       document.getElementById('part').insertAdjacentHTML('beforeend', '<div class="swiper-slide"><div class="slide_partner" style="background-image: url(' + item.imageUrl + ')"></div></div>');
     }
   });
-  
+
 }
 function lngselAbout(lng) {
   localStorage.setItem("glblng", lng);
@@ -1312,27 +1339,15 @@ function transPageAbout(lng) {
   document.getElementById('razrab').innerHTML = txt.razrab;
 
   // Навигация
-    document.getElementById('genMenuNav').innerHTML = txt.gen;
-    document.getElementById('aboutMenuNav').innerHTML = txt.about;
-  // document.getElementById('newsMenuNav').innerHTML = txt.news;
-  // document.getElementById('productMenuNav').innerHTML = txt.product;
-  // document.getElementById('certifMenuNav').innerHTML = txt.certif;
-  // document.getElementById('partMenuNav').innerHTML = txt.partner;
-  // document.getElementById('contactMenuNav').innerHTML = txt.contact;
-
-  // document.getElementById('newsBlock').innerHTML = txt.news;
-  // document.getElementById('fNewsBlock').innerHTML = txt.fnews;
-  // document.getElementById('certBlock').innerHTML = txt.certif;
-  // document.getElementById('allCertif').innerHTML = txt.fcertif;
-  // document.getElementById('partnerBlock').innerHTML = txt.partner;
-  // document.getElementById('contactBlock').innerHTML = txt.contact;
+  document.getElementById('genMenuNav').innerHTML = txt.gen;
+  document.getElementById('aboutMenuNav').innerHTML = txt.about;
   document.getElementById('too').innerHTML = txt.too;
   document.getElementById('titleMenuFooter').innerHTML = txt.titleMenuFuter;
   document.getElementById('titleMenuFooter2').innerHTML = txt.titleMenuFuter2;
   document.getElementById('titleDirector').innerHTML = txt.titledirector;
 }
 function loadDirector(lng) {
-  document.getElementById('directorCard').innerHTML='';
+  document.getElementById('directorCard').innerHTML = '';
   database.ref('worker').once('value', (snapshot) => {
     const data = snapshot.val();
     for (const key in data) {
@@ -1341,7 +1356,7 @@ function loadDirector(lng) {
       // console.log(item.imageUrl);
       fio = '';
       post = '';
- {
+      {
         switch (lng) {
           case 'ru':
             fio = item.fioru;
@@ -1362,16 +1377,289 @@ function loadDirector(lng) {
         // document.getElementById(dv).insertAdjacentHTML('afterbegin','<li><div class="vert_line"></div><a href="service01.html">'+title+'</a></li>' );
         // creatProductCard('vseproduct',key,title,lng);
         document.getElementById('directorCard').insertAdjacentHTML('beforeend',
-        '<div class="manager">'+
-'                    <div class="manager_photo" style="background-image: url('+item.imageUrl+')"></div>'+
-'                    <span class="manager_name">'+fio+'</span>'+
-'                    <span class="manager_post">'+post+'</span>'+
-'                    <span class="manager_mail">'+item.email+'</span>'+
-'                    <span class="manager_phone">'+item.numberPhone+'</span>'+
-'                </div>'
+          '<div class="manager">' +
+          '                    <div class="manager_photo" style="background-image: url(' + item.imageUrl + ')"></div>' +
+          '                    <span class="manager_name">' + fio + '</span>' +
+          '                    <span class="manager_post">' + post + '</span>' +
+          '                    <span class="manager_mail">' + item.email + '</span>' +
+          '                    <span class="manager_phone">' + item.numberPhone + '</span>' +
+          '                </div>'
         );
       }
 
     }
   });
+}
+
+function loadContacts() {
+  myValue = 'ru';
+  if (localStorage.getItem("glblng") != null) { myValue = localStorage.getItem("glblng"); }
+  transPageContats(myValue);
+  // pageAboutInfo(myValue);
+  loadRekvizit(myValue, 'rekvizitText');
+  clearContact('footerContactCard');
+  loadFooterContact(myValue, 'footerContactCard', 'number');
+  loadFooterContact(myValue, 'footerContactCard', 'other');
+}
+function transPageContats(lng) {
+  let txt;
+  telTitle = 'Тел./факс';
+  ttMes = '';
+  flName = '';
+  num = '';
+  Question = '';
+  inName = '';
+  inQues = '';
+  ctTitle='';
+  btnQues='';
+  inEmail='';
+  switch (lng) {
+    case 'ru':
+      txt = menuRu;
+      telTitle = 'Тел./факс';
+      ttMes = 'Для получения детальной<br>' +
+        'информации воспользуйтесь<br>' +
+        'формой обратной связи';
+      flName = 'Имя Фамилия';
+      num = 'Номер телефона';
+      Question = 'Вопрос';
+      inName = 'Введите имя';
+      inQues = 'Ваш вопрос';
+      ctTitle='Атырау';
+      btnQues='Задать вопрос';
+      inEmail='Введите эл.почту';
+      break;
+    case 'en':
+      txt = menuEn;
+      telTitle = 'Pho./fax';
+      ttMes = 'For detailed information, <br> use the feedback form';
+      flName = 'Full name';
+      num = 'Phone number';
+      Question = 'Question';
+      inName = 'Enter a name';
+      inQues = 'Your question';
+      ctTitle='Atyrau';
+      btnQues='Ask a question';
+      inEmail='Enter your email';
+      break;
+    case 'kz':
+      txt = menuKz;
+      telTitle = 'Тел./факс';
+      ttMes = 'Толық ақпарат алу үшін <br> кері байланыс <br> нысанын пайдаланыңыз';
+      flName = 'Аты Тегі';
+      num = 'Телефон нөмірі';
+      Question = 'Сұрақ';
+      inName = 'Атын енгізіңіз';
+      inQues = 'Сіздің сұрағыңыз';
+      ctTitle='Атырау';
+      btnQues='Сұрақ қою';
+      inEmail='Электрондық поштаны енгізіңіз';
+      break;
+  }
+  // Меню десктоп
+  document.getElementById('genMenu').innerHTML = txt.gen;
+  document.getElementById('aboutMenu').innerHTML = txt.about;
+  document.getElementById('newsMenu').innerHTML = txt.news;
+  document.getElementById('productMenu').innerHTML = txt.product + '<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  width="10px" height="10px"  viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;"  xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0  c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>  </g></svg>';
+  document.getElementById('product1Menu').innerHTML = txt.product1;
+  document.getElementById('product2Menu').innerHTML = txt.product2;
+  document.getElementById('product3Menu').innerHTML = txt.product3;
+  document.getElementById('carerMenu').innerHTML = txt.carer;
+  document.getElementById('contactMenu').innerHTML = txt.contact;
+  // Меню мобильная
+  document.getElementById('genMenuMobile').innerHTML = txt.gen;
+  document.getElementById('aboutMenuMobile').innerHTML = txt.about;
+  document.getElementById('newsMenuMobile').innerHTML = txt.news;
+  document.getElementById('productMenuMobile').innerHTML = txt.product;
+  document.getElementById('product1MenuMobile').innerHTML = txt.product1;
+  document.getElementById('product2MenuMobile').innerHTML = txt.product2;
+  document.getElementById('product3MenuMobile').innerHTML = txt.product3;
+  document.getElementById('carerMenuMobile').innerHTML = txt.carer;
+  document.getElementById('contactMenuMobile').innerHTML = txt.contact;
+  // футер
+  document.getElementById('genMenuFooter').innerHTML = txt.gen;
+  document.getElementById('aboutMenuFooter').innerHTML = txt.about;
+  document.getElementById('newsMenuFooter').innerHTML = txt.news;
+  document.getElementById('productMenuFooter').innerHTML = txt.product;
+  document.getElementById('carerMenuFooter').innerHTML = txt.carer;
+  document.getElementById('contactMenuFooter').innerHTML = txt.contact;
+
+  document.getElementById('adminp').innerHTML = txt.adminp;
+  document.getElementById('perdate').innerHTML = txt.perdate;
+  document.getElementById('polit').innerHTML = txt.polit;
+  document.getElementById('razrab').innerHTML = txt.razrab;
+
+  // Навигация
+  document.getElementById('genMenuNav').innerHTML = txt.gen;
+  document.getElementById('contacts').innerHTML = txt.contact;
+  document.getElementById('too').innerHTML = txt.too;
+  document.getElementById('titleMenuFooter').innerHTML = txt.titleMenuFuter;
+  document.getElementById('titleMenuFooter2').innerHTML = txt.titleMenuFuter2;
+
+  document.getElementById('contactsTitle').innerHTML = txt.contact;
+  document.getElementById('tooTitle').innerHTML = txt.too;
+  document.getElementById('tleTitle').innerHTML = telTitle;
+
+  database.ref(lng + '/page/contact/adres').on('value', (snapshot) => {
+    value = snapshot.val();
+    // console.log(value);
+
+    document.getElementById('adres').innerHTML = value.substring(0, 19) + "<br>" + value.substring(19);
+    document.getElementById('adresMenu').innerHTML = value.substring(0, 19) + "<br>" + value.substring(19);
+  });
+  // Блок орбатной связи
+  document.getElementById('titleMessage').innerHTML = ttMes;
+  document.getElementById('fulName').innerHTML = flName;
+  document.getElementById('numTitle').innerHTML = num;
+  document.getElementById('Question').innerHTML = Question;
+  document.getElementById('plhName').placeholder = inName;
+  document.getElementById('plhQues').placeholder = inQues;
+  document.getElementById('cityTitle').innerHTML = ctTitle;
+  document.getElementById('btnQues').innerHTML = btnQues;
+  document.getElementById('inEmail').placeholder = inEmail;
+
+}
+function lngselContacts(lng) {
+  localStorage.setItem("glblng", lng);
+  window.location.href = "contacts.html";
+}
+function transPageServices(lng) {
+  let txt;
+  switch (lng) {
+    case 'ru':
+      txt = menuRu;
+
+      break;
+    case 'en':
+      txt = menuEn;
+
+      break;
+    case 'kz':
+      txt = menuKz;
+
+      break;
+  }
+  // Меню десктоп
+  document.getElementById('genMenu').innerHTML = txt.gen;
+  document.getElementById('aboutMenu').innerHTML = txt.about;
+  document.getElementById('newsMenu').innerHTML = txt.news;
+  document.getElementById('productMenu').innerHTML = txt.product + '<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  width="10px" height="10px"  viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;"  xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0  c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>  </g></svg>';
+  document.getElementById('product1Menu').innerHTML = txt.product1;
+  document.getElementById('product2Menu').innerHTML = txt.product2;
+  document.getElementById('product3Menu').innerHTML = txt.product3;
+  document.getElementById('carerMenu').innerHTML = txt.carer;
+  document.getElementById('contactMenu').innerHTML = txt.contact;
+  // Меню мобильная
+  document.getElementById('genMenuMobile').innerHTML = txt.gen;
+  document.getElementById('aboutMenuMobile').innerHTML = txt.about;
+  document.getElementById('newsMenuMobile').innerHTML = txt.news;
+  document.getElementById('productMenuMobile').innerHTML = txt.product;
+  document.getElementById('product1MenuMobile').innerHTML = txt.product1;
+  document.getElementById('product2MenuMobile').innerHTML = txt.product2;
+  document.getElementById('product3MenuMobile').innerHTML = txt.product3;
+  document.getElementById('carerMenuMobile').innerHTML = txt.carer;
+  document.getElementById('contactMenuMobile').innerHTML = txt.contact;
+  // футер
+  document.getElementById('genMenuFooter').innerHTML = txt.gen;
+  document.getElementById('aboutMenuFooter').innerHTML = txt.about;
+  document.getElementById('newsMenuFooter').innerHTML = txt.news;
+  document.getElementById('productMenuFooter').innerHTML = txt.product;
+  document.getElementById('carerMenuFooter').innerHTML = txt.carer;
+  document.getElementById('contactMenuFooter').innerHTML = txt.contact;
+
+  document.getElementById('adminp').innerHTML = txt.adminp;
+  document.getElementById('perdate').innerHTML = txt.perdate;
+  document.getElementById('polit').innerHTML = txt.polit;
+  document.getElementById('razrab').innerHTML = txt.razrab;
+
+  // Навигация
+  document.getElementById('genMenuNav').innerHTML = txt.gen;
+  document.getElementById('product').innerHTML = txt.product;
+  document.getElementById('too').innerHTML = txt.too;
+  document.getElementById('titleMenuFooter').innerHTML = txt.titleMenuFuter;
+  document.getElementById('titleMenuFooter2').innerHTML = txt.titleMenuFuter2;
+
+  document.getElementById('prdTitle').innerHTML = txt.product;
+  // document.getElementById('tooTitle').innerHTML = txt.too;
+  // document.getElementById('tleTitle').innerHTML = telTitle;
+
+  database.ref(lng + '/page/contact/adres').on('value', (snapshot) => {
+    value = snapshot.val();
+    // console.log(value);
+
+    // document.getElementById('adres').innerHTML = value.substring(0, 19) + "<br>" + value.substring(19);
+    document.getElementById('adresMenu').innerHTML = value.substring(0, 19) + "<br>" + value.substring(19);
+  });
+
+
+}
+function transPageNews(lng) {
+  let txt;
+  switch (lng) {
+    case 'ru':
+      txt = menuRu;
+
+      break;
+    case 'en':
+      txt = menuEn;
+
+      break;
+    case 'kz':
+      txt = menuKz;
+
+      break;
+  }
+  // Меню десктоп
+  document.getElementById('genMenu').innerHTML = txt.gen;
+  document.getElementById('aboutMenu').innerHTML = txt.about;
+  document.getElementById('newsMenu').innerHTML = txt.news;
+  document.getElementById('productMenu').innerHTML = txt.product + '<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  width="10px" height="10px"  viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;"  xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0  c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>  </g></svg>';
+  document.getElementById('product1Menu').innerHTML = txt.product1;
+  document.getElementById('product2Menu').innerHTML = txt.product2;
+  document.getElementById('product3Menu').innerHTML = txt.product3;
+  document.getElementById('carerMenu').innerHTML = txt.carer;
+  document.getElementById('contactMenu').innerHTML = txt.contact;
+  // Меню мобильная
+  document.getElementById('genMenuMobile').innerHTML = txt.gen;
+  document.getElementById('aboutMenuMobile').innerHTML = txt.about;
+  document.getElementById('newsMenuMobile').innerHTML = txt.news;
+  document.getElementById('productMenuMobile').innerHTML = txt.product;
+  document.getElementById('product1MenuMobile').innerHTML = txt.product1;
+  document.getElementById('product2MenuMobile').innerHTML = txt.product2;
+  document.getElementById('product3MenuMobile').innerHTML = txt.product3;
+  document.getElementById('carerMenuMobile').innerHTML = txt.carer;
+  document.getElementById('contactMenuMobile').innerHTML = txt.contact;
+  // футер
+  document.getElementById('genMenuFooter').innerHTML = txt.gen;
+  document.getElementById('aboutMenuFooter').innerHTML = txt.about;
+  document.getElementById('newsMenuFooter').innerHTML = txt.news;
+  document.getElementById('productMenuFooter').innerHTML = txt.product;
+  document.getElementById('carerMenuFooter').innerHTML = txt.carer;
+  document.getElementById('contactMenuFooter').innerHTML = txt.contact;
+
+  document.getElementById('adminp').innerHTML = txt.adminp;
+  document.getElementById('perdate').innerHTML = txt.perdate;
+  document.getElementById('polit').innerHTML = txt.polit;
+  document.getElementById('razrab').innerHTML = txt.razrab;
+
+  // Навигация
+  document.getElementById('genMenuNav').innerHTML = txt.gen;
+  document.getElementById('nwTitle').innerHTML = txt.news;
+  document.getElementById('too').innerHTML = txt.too;
+  document.getElementById('titleMenuFooter').innerHTML = txt.titleMenuFuter;
+  document.getElementById('titleMenuFooter2').innerHTML = txt.titleMenuFuter2;
+
+  document.getElementById('newTitle').innerHTML = txt.news;
+  // document.getElementById('tooTitle').innerHTML = txt.too;
+  // document.getElementById('tleTitle').innerHTML = telTitle;
+
+  database.ref(lng + '/page/contact/adres').on('value', (snapshot) => {
+    value = snapshot.val();
+    // console.log(value);
+
+    // document.getElementById('adres').innerHTML = value.substring(0, 19) + "<br>" + value.substring(19);
+    document.getElementById('adresMenu').innerHTML = value.substring(0, 19) + "<br>" + value.substring(19);
+  });
+
+
 }
