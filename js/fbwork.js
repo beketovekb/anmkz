@@ -1670,18 +1670,19 @@ function transPageNews(lng) {
 
 function transPageVacans(lng) {
   let txt;
+  zag='';
   switch (lng) {
     case 'ru':
       txt = menuRu;
-
+      zag='«АтырауНефтеМаш» требуются следующии специалисты:';
       break;
     case 'en':
       txt = menuEn;
-
+      zag='«AtyrauNefteMash» the following specialists are required:';
       break;
     case 'kz':
       txt = menuKz;
-
+      zag='«АтырауНефтеМаш»-қа келесі мамандар қажет:';
       break;
   }
   // Меню десктоп
@@ -1725,7 +1726,7 @@ function transPageVacans(lng) {
   document.getElementById('titleMenuFooter2').innerHTML = txt.titleMenuFuter2;
 
   document.getElementById('titleVacan').innerHTML = txt.carer;
-  // document.getElementById('tooTitle').innerHTML = txt.too;
+  document.getElementById('titleTxt').innerHTML = zag;
   // document.getElementById('tleTitle').innerHTML = telTitle;
 
   database.ref(lng + '/page/contact/adres').on('value', (snapshot) => {
@@ -1737,4 +1738,9 @@ function transPageVacans(lng) {
   });
 
 
+}
+
+function lngselVacan(lng) {
+  localStorage.setItem("glblng", lng);
+  window.location.href = "vacancy.html";
 }
