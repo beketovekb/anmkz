@@ -935,7 +935,11 @@ function lodaMoreVacan() {
 
     document.getElementById('imgVacan').style.backgroundImage = "url('" + value + "')";
   });
-
+  transPageVacans(myValue);
+  loadRekvizit(myValue, 'rekvizitText');
+  clearContact('footerContactCard');
+  loadFooterContact(myValue, 'footerContactCard', 'number');
+  loadFooterContact(myValue, 'footerContactCard', 'other');
 }
 function loadVacan(lng, dv) {
   document.getElementById(dv).innerHTML = '';
@@ -1650,6 +1654,77 @@ function transPageNews(lng) {
   document.getElementById('titleMenuFooter2').innerHTML = txt.titleMenuFuter2;
 
   document.getElementById('newTitle').innerHTML = txt.news;
+  // document.getElementById('tooTitle').innerHTML = txt.too;
+  // document.getElementById('tleTitle').innerHTML = telTitle;
+
+  database.ref(lng + '/page/contact/adres').on('value', (snapshot) => {
+    value = snapshot.val();
+    // console.log(value);
+
+    // document.getElementById('adres').innerHTML = value.substring(0, 19) + "<br>" + value.substring(19);
+    document.getElementById('adresMenu').innerHTML = value.substring(0, 19) + "<br>" + value.substring(19);
+  });
+
+
+}
+
+function transPageVacans(lng) {
+  let txt;
+  switch (lng) {
+    case 'ru':
+      txt = menuRu;
+
+      break;
+    case 'en':
+      txt = menuEn;
+
+      break;
+    case 'kz':
+      txt = menuKz;
+
+      break;
+  }
+  // Меню десктоп
+  document.getElementById('genMenu').innerHTML = txt.gen;
+  document.getElementById('aboutMenu').innerHTML = txt.about;
+  document.getElementById('newsMenu').innerHTML = txt.news;
+  document.getElementById('productMenu').innerHTML = txt.product + '<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  width="10px" height="10px"  viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;"  xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0  c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>  </g></svg>';
+  document.getElementById('product1Menu').innerHTML = txt.product1;
+  document.getElementById('product2Menu').innerHTML = txt.product2;
+  document.getElementById('product3Menu').innerHTML = txt.product3;
+  document.getElementById('carerMenu').innerHTML = txt.carer;
+  document.getElementById('contactMenu').innerHTML = txt.contact;
+  // Меню мобильная
+  document.getElementById('genMenuMobile').innerHTML = txt.gen;
+  document.getElementById('aboutMenuMobile').innerHTML = txt.about;
+  document.getElementById('newsMenuMobile').innerHTML = txt.news;
+  document.getElementById('productMenuMobile').innerHTML = txt.product;
+  document.getElementById('product1MenuMobile').innerHTML = txt.product1;
+  document.getElementById('product2MenuMobile').innerHTML = txt.product2;
+  document.getElementById('product3MenuMobile').innerHTML = txt.product3;
+  document.getElementById('carerMenuMobile').innerHTML = txt.carer;
+  document.getElementById('contactMenuMobile').innerHTML = txt.contact;
+  // футер
+  document.getElementById('genMenuFooter').innerHTML = txt.gen;
+  document.getElementById('aboutMenuFooter').innerHTML = txt.about;
+  document.getElementById('newsMenuFooter').innerHTML = txt.news;
+  document.getElementById('productMenuFooter').innerHTML = txt.product;
+  document.getElementById('carerMenuFooter').innerHTML = txt.carer;
+  document.getElementById('contactMenuFooter').innerHTML = txt.contact;
+
+  document.getElementById('adminp').innerHTML = txt.adminp;
+  document.getElementById('perdate').innerHTML = txt.perdate;
+  document.getElementById('polit').innerHTML = txt.polit;
+  document.getElementById('razrab').innerHTML = txt.razrab;
+
+  // Навигация
+  document.getElementById('genMenuNav').innerHTML = txt.gen;
+  document.getElementById('ttVacan').innerHTML = txt.carer;
+  document.getElementById('too').innerHTML = txt.too;
+  document.getElementById('titleMenuFooter').innerHTML = txt.titleMenuFuter;
+  document.getElementById('titleMenuFooter2').innerHTML = txt.titleMenuFuter2;
+
+  document.getElementById('titleVacan').innerHTML = txt.carer;
   // document.getElementById('tooTitle').innerHTML = txt.too;
   // document.getElementById('tleTitle').innerHTML = telTitle;
 
