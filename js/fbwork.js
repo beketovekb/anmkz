@@ -2236,3 +2236,4 @@ function lngselSertifi(lng) {
   localStorage.setItem("glblng", lng);
   window.location.href = "certificate.html";
 }
+
