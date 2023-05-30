@@ -1,4 +1,4 @@
-<!-- <?php
+<?php
 if (isset ($_POST['contactFF'])) {
   $to = "beketovekb@gmail.com";
   $from = 'info@anm.kz';
@@ -44,7 +44,7 @@ $attachment";
     $output = '<script>alert("Извините, письмо не отправлено. Размер всех файлов превышает 10 МБ.");</script>';
   }
 }
-?> -->
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -631,21 +631,21 @@ $attachment";
                     <div class="row">
 
                         <div class="col-4">
-                            <span>Отправьте резюме</span>
+                            <span id="titleForm">Отправьте резюме</span>
                             <form enctype="multipart/form-data" method="post" id="feedback-form">
                                 <div class="ilab">
-                                    <label for="nameFF">Имя:</label>
+                                    <label for="nameFF" id="nameForm">Имя:</label>
                                     <input type="text" name="nameFF" id="nameFF" required placeholder="Иван Иванович Иванов" x-autocompletetype="name" class="w100 border">
                                 </div>
                                 <div class="ilab">
-                                    <label for="contactFF">Должность:</label>
+                                    <label for="contactFF" id="specForm">Должность:</label>
                                     <input type="text" class="ddl-input w100 border" id="ddl_list" name="ddl_list" placeholder="Наименование должности">
                                 </div>
                                 <div class="dn_lab">
                                     <input type="email" name="contactFF" id="contactFF" required placeholder="например, ivan@yandex.ru" x-autocompletetype="email" class="w100 border">
                                 </div>
                                 <div class="ilab">
-                                    <label for="fileFF">Прикрепить резюме:</label>
+                                    <label for="fileFF" id="rezumForm">Прикрепить резюме:</label>
                                     <input type="file" name="fileFF[]" style="    padding: 17px;" multiple id="fileFF" class="w100">
                                 </div>
                                 

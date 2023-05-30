@@ -385,7 +385,7 @@ function loadRekvizit(lng, dv) {
   });
 }
 function loadFooterContact(lng, dv, block) {
-  console.log('yes');
+  // console.log('yes');
   document.getElementById(dv).innerHTML = "";
   ln = 'Ru';
   zgl = 'Тел./факс'
@@ -487,6 +487,11 @@ function loadCertPage() {
   myValue = 'ru';
   if (localStorage.getItem("glblng") != null) { myValue = localStorage.getItem("glblng"); }
   trasnlCertPage(myValue);
+  // transPageTovar(myValue);
+  loadRekvizit(myValue, 'rekvizitText');
+  clearContact('footerContactCard');
+  loadFooterContact(myValue, 'footerContactCard', 'number');
+  loadFooterContact(myValue, 'footerContactCard', 'other');
 }
 
 function trasnlCertPage(lng) {
@@ -505,12 +510,73 @@ function trasnlCertPage(lng) {
   document.getElementById('genSsil').innerHTML = txt.gen;
   document.getElementById('sertSsil').innerHTML = txt.certif;
   document.getElementById('sertTitle').innerHTML = txt.certif;
+
+  // Меню десктоп
+  document.getElementById('genMenu').innerHTML = txt.gen;
+  document.getElementById('aboutMenu').innerHTML = txt.about;
+  document.getElementById('newsMenu').innerHTML = txt.news;
+  document.getElementById('productMenu').innerHTML = txt.product + '<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  width="10px" height="10px"  viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;"  xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0  c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>  </g></svg>';
+  document.getElementById('product1Menu').innerHTML = txt.product1;
+  document.getElementById('product2Menu').innerHTML = txt.product2;
+  document.getElementById('product3Menu').innerHTML = txt.product3;
+  document.getElementById('carerMenu').innerHTML = txt.carer;
+  document.getElementById('contactMenu').innerHTML = txt.contact;
+  // Меню мобильная
+  document.getElementById('genMenuMobile').innerHTML = txt.gen;
+  document.getElementById('aboutMenuMobile').innerHTML = txt.about;
+  document.getElementById('newsMenuMobile').innerHTML = txt.news;
+  document.getElementById('productMenuMobile').innerHTML = txt.product;
+  document.getElementById('product1MenuMobile').innerHTML = txt.product1;
+  document.getElementById('product2MenuMobile').innerHTML = txt.product2;
+  document.getElementById('product3MenuMobile').innerHTML = txt.product3;
+  document.getElementById('carerMenuMobile').innerHTML = txt.carer;
+  document.getElementById('contactMenuMobile').innerHTML = txt.contact;
+  // футер
+  document.getElementById('genMenuFooter').innerHTML = txt.gen;
+  document.getElementById('aboutMenuFooter').innerHTML = txt.about;
+  document.getElementById('newsMenuFooter').innerHTML = txt.news;
+  document.getElementById('productMenuFooter').innerHTML = txt.product;
+  document.getElementById('carerMenuFooter').innerHTML = txt.carer;
+  document.getElementById('contactMenuFooter').innerHTML = txt.contact;
+
+  document.getElementById('adminp').innerHTML = txt.adminp;
+  document.getElementById('perdate').innerHTML = txt.perdate;
+  document.getElementById('polit').innerHTML = txt.polit;
+  document.getElementById('razrab').innerHTML = txt.razrab;
+  // Навигация
+  // document.getElementById('genMenuNav').innerHTML = txt.gen;
+  // document.getElementById('product').innerHTML = txt.product;
+  document.getElementById('too').innerHTML = txt.too;
+  document.getElementById('titleMenuFooter').innerHTML = txt.titleMenuFuter;
+  document.getElementById('titleMenuFooter2').innerHTML = txt.titleMenuFuter2;
+
+  // document.getElementById('prdTitle').innerHTML = txt.product;
+  // document.getElementById('tooTitle').innerHTML = txt.too;
+  // document.getElementById('tleTitle').innerHTML = telTitle;
+
+  database.ref(lng + '/page/contact/adres').on('value', (snapshot) => {
+    value = snapshot.val();
+    // console.log(value);
+
+    // document.getElementById('adres').innerHTML = value.substring(0, 19) + "<br>" + value.substring(19);
+    document.getElementById('adresMenu').innerHTML = value.substring(0, 19) + "<br>" + value.substring(19);
+  });
   loadCertFull('sertFullCard', myValue);
 }
 function loadCertFull(dv, lng) {
   //console.log('no');
   document.getElementById(dv).innerHTML = "";
   col = 1;
+  shi=8;
+  if (window.innerWidth > 1800) {
+    // Ваш код, который нужно выполнить, если ширина экрана больше 1800px
+    shi=8;
+    // Другие инструкции...
+  }
+  else
+  {
+    shi = 6;
+  }
   database.ref('certifacate').once('value', (snapshot) => {
     const data = snapshot.val();
     for (const key in data) {
@@ -531,7 +597,7 @@ function loadCertFull(dv, lng) {
         default:
           break;
       }
-      if (col < 9) {
+      if (col <= shi) {
         document.getElementById(dv).insertAdjacentHTML('beforeend', '<a href="' + item.imageUrl + '" data-fancybox="gallery-a" data-fancybox data-caption="' + txt + '">' +
           '<img src="' + item.imageUrl + '" class="gallery-img"/>' +
           '<span class="gallery_caption">' + txt + '</span>' +
@@ -545,7 +611,7 @@ function loadCertFull(dv, lng) {
     // bk='<div class="prev_page"> <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7.98926 1.34985L2.48926 6.84985L7.98926 12.3499" stroke="#DBDBDB" stroke-width="3"/> </svg></div>';
     nx = '<div class="next_page" onclick="loadCertFullPage(\'sertFullCard\', \'' + lng + '\',2);"> <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M9.32324 17.3499L14.8232 11.8499L9.32324 6.34985" stroke="#DBDBDB" stroke-width="3"/> </svg></div>';
     clpg = '<div class="current_page active_page" onclick="loadCertFullPage(\'sertFullCard\', \'' + lng + '\',1);">1</div>';
-    for (let i = 1; i < Math.ceil(col / 8); i++) {
+    for (let i = 1; i < Math.ceil(col / shi); i++) {
       clpg += '<div class="current_page" onclick="loadCertFullPage(\'sertFullCard\', \'' + lng + '\',' + (i + 1) + ');">' + (i + 1) + '</div>';
 
     }
@@ -555,6 +621,16 @@ function loadCertFull(dv, lng) {
 }
 function loadCertFullPage(dv, lng, pg) {
   // console.log(pg);
+  shi=8;
+  if (window.innerWidth > 1800) {
+    // Ваш код, который нужно выполнить, если ширина экрана больше 1800px
+    shi=8;
+    // Другие инструкции...
+  }
+  else
+  {
+    shi = 6;
+  }
   document.getElementById(dv).innerHTML = "";
   col = 1;
   database.ref('certifacate').once('value', (snapshot) => {
@@ -577,8 +653,8 @@ function loadCertFullPage(dv, lng, pg) {
         default:
           break;
       }
-      st = 8 * (pg - 1);
-      ed = 9 * pg;
+      st = shi * (pg - 1);
+      ed = (shi+1) * pg;
       console.log(st + ' | ' + ed);
       if (col > st && col < ed) {
         document.getElementById(dv).insertAdjacentHTML('beforeend', '<a href="' + item.imageUrl + '" data-fancybox="gallery-a" data-fancybox data-caption="' + txt + '">' +
@@ -590,13 +666,13 @@ function loadCertFullPage(dv, lng, pg) {
 
 
     }
-    console.log(Math.ceil(col / 8));
+    console.log(Math.ceil(col / shi));
     bk = '';
     nx = '';
     if (pg != 1) { bk = '<div class="prev_page" onclick="loadCertFullPage(\'sertFullCard\', \'' + lng + '\',' + (pg - 1) + ');"> <svg width="10" height="14" viewBox="0 0 10 14" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M7.98926 1.34985L2.48926 6.84985L7.98926 12.3499" stroke="#DBDBDB" stroke-width="3"/> </svg></div>'; }
-    if (pg != Math.ceil(col / 8)) nx = '<div class="next_page" onclick="loadCertFullPage(\'sertFullCard\', \'' + lng + '\',' + (pg + 1) + ');"> <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M9.32324 17.3499L14.8232 11.8499L9.32324 6.34985" stroke="#DBDBDB" stroke-width="3"/> </svg></div>';
+    if (pg != Math.ceil(col / shi)) nx = '<div class="next_page" onclick="loadCertFullPage(\'sertFullCard\', \'' + lng + '\',' + (pg + 1) + ');"> <svg width="23" height="23" viewBox="0 0 23 23" fill="none" xmlns="http://www.w3.org/2000/svg"> <path d="M9.32324 17.3499L14.8232 11.8499L9.32324 6.34985" stroke="#DBDBDB" stroke-width="3"/> </svg></div>';
     clpg = '';
-    for (let i = 1; i < Math.ceil(col / 8) + 1; i++) {
+    for (let i = 1; i < Math.ceil(col / shi) + 1; i++) {
       if (i == pg) clpg += '<div class="current_page active_page" onclick="loadCertFullPage(\'sertFullCard\', \'' + lng + '\',' + (i) + ');">' + (i) + '</div>';
       else clpg += '<div class="current_page" onclick="loadCertFullPage(\'sertFullCard\', \'' + lng + '\',' + (i) + ');">' + i + '</div>';
     }
@@ -1039,7 +1115,7 @@ function loadTitleServiMore(dv, lng) {
         default:
           break;
       }
-      document.getElementById(dv).insertAdjacentHTML('afterbegin', '<li><div class="vert_line"></div><a href="service01.html">' + title + '</a></li>');
+      document.getElementById(dv).insertAdjacentHTML('afterbegin', '<li><a  onclick="nextTover(\''+key+'\')">' + title + '</a></li>');
       creatProductCard('vseproduct', key, title, lng);
 
     }
@@ -1050,7 +1126,10 @@ function creatProductCard(dv, id, title, lng) {
   txt = '';
   t2p = [];
   t2pdate = [];
-  kl = '';
+  kl = [];
+  kl2 = [];
+  kkl=[];
+  prd='';
   database.ref('product').once('value', (snapshot) => {
     const data = snapshot.val();
     for (const key in data) {
@@ -1062,19 +1141,22 @@ function creatProductCard(dv, id, title, lng) {
         opis = '';
         var hasPotType = 'type2Product' in item;
         if (hasPotType) {
-          kl = key;
+
           switch (lng) {
             case 'ru':
               title2 = item.Titleru;
               opis = item.Opisanieru;
+              prd='Подребнее';
               break;
             case 'en':
               title2 = item.Titleen;
               opis = item.Opisanieen;
+              prd='More';
               break;
             case 'kz':
               title2 = item.Titlekz;
               opis = item.Opisaniekz;
+              prd='Толығырақ';
               break;
 
             default:
@@ -1083,13 +1165,16 @@ function creatProductCard(dv, id, title, lng) {
           opis = opis.replace(/(<([^>]+)>)/gi, "");
           opis = truncateText(opis, 145);
           if (!t2p.includes(item.type2Product)) {
+            kl.push(item.type2Product);
+            kl2.push(item.typeProduct);
             txt += '<div class="accordion-item">' +
-              '<button id="accordion-button-1" aria-expanded="false">' +
+              '<button id="' + key + 'acard" aria-expanded="false" onclick="btnAccrdProduct(\'' + key + '\')">' +
               '<span class="accordion-title" id="' + item.type2Product + 'title">' + item.type2Product + '</span>' +
               '<svg class="icon" aria-hidden="true" width="29" height="17" viewBox="0 0 29 17" fill="none" xmlns="http://www.w3.org/2000/svg">' +
               '<path d="M27 14.7501L14.5001 2.24993L2 14.7501" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>' +
               '</svg>    ' +
               '</button>' +
+
               '' +
               '<div class="accordion-content" id="' + item.type2Product + 'productlist">' +
               '</div>' +
@@ -1099,6 +1184,7 @@ function creatProductCard(dv, id, title, lng) {
           t2pdate.push(
             item,
           );
+          kkl.push(key);
 
         }
         else {
@@ -1106,14 +1192,17 @@ function creatProductCard(dv, id, title, lng) {
             case 'ru':
               title2 = item.Titleru;
               opis = item.Opisanieru;
+              prd='Подребнее';
               break;
             case 'en':
               title2 = item.Titleen;
               opis = item.Opisanieen;
+              prd='More';
               break;
             case 'kz':
               title2 = item.Titlekz;
               opis = item.Opisaniekz;
+              prd='Толығырақ';
               break;
 
             default:
@@ -1135,7 +1224,7 @@ function creatProductCard(dv, id, title, lng) {
             '<div class="services_caption">' +
             '<span class="services_card_title">' + title2 + '</span>' +
             '<div class="services_card_caption">' + opis + '</div>' +
-            '<a href="" class="serv_detailed_btn">Подробнее</a>' +
+            '<a onclick="nextToverDetail(\''+key+'\')" class="serv_detailed_btn">'+prd+'</a>' +
             '</div>' +
             '</div>' +
             '</div>' +
@@ -1161,54 +1250,105 @@ function creatProductCard(dv, id, title, lng) {
     );
 
     txt = '';
-    console.log(t2p);
-    console.log(t2pdate);
-    typeProductTitle(kl, t2p, lng);
-    console.log(kl);
+    ind=0;
+    for (let index = 0; index < t2p.length; index++) {
+      const element = t2p[index];
+      // console.log(element);
+      for (let index = 0; index < t2pdate.length; index++) {
+        const element2 = t2pdate[index];
+        // console.log(element2);
+        if (element === element2.type2Product) {
+          title3 = '', opis3 = '';
+          prd='';
+          switch (lng) {
+            case 'ru':
+              title3 = element2.Titleru;
+              opis3 = element2.Opisanieru;
+              prd='Подробнее';
+              break;
+            case 'en':
+              title3 = element2.Titleen;
+              opis3 = element2.Opisanieen;
+              prd='More';
+              break;
+            case 'kz':
+              title3 = element2.Titlekz;
+              opis3 = element2.Opisaniekz;
+              prd='Толығырақ';
+              break;
 
+            default:
+              break;
+          }
+          opis3 = opis.replace(/(<([^>]+)>)/gi, "");
+          opis3 = truncateText(opis, 145);
+          document.getElementById(element + 'productlist').insertAdjacentHTML('beforeend',
+            '<div class="services_card">' +
+            '<div class="services_img img_ad02" style="background-image:url(' + element2.imageUrl + ')"></div>' +
+            '<div class="services_caption">' +
+            '<span class="services_card_title">' + title3 + '</span>' +
+            '<div class="services_card_caption">' + opis3 + '</div>' +
+            '<a onclick="nextToverDetail(\''+kkl[ind]+'\')" class="serv_detailed_btn">'+prd+'</a>' +
+            '</div>' +
+            '</div>'
+          );
+          ind++;
+        }
+      }
+    }
+    // console.log(kl);
+    localStorage.setItem("tp2", kl);
+    localStorage.setItem("tp", kl2);
   });
 
 
+  // document.getElementById(dv).innerHTML = '';
+  // document.getElementById('vseproduct').innerHTML = '';
+  tp = localStorage.getItem("tp").split(",");
+  tp2 = localStorage.getItem("tp2").split(",");
+  // console.log(localStorage.getItem("tp2"));
+  console.log(tp);
+  for (let index = 0; index < tp.length; index++) {
+    database.ref('typeproduct/' + tp[index] + '/podtype').once('value', (snapshot) => {
+      const data = snapshot.val();
+      for (const key in data) {
+        const item = data[key];
+        if (tp2.includes(key)) {
+
+          if (document.getElementById(key + 'title') !== null) {
+            // console.log(key+' | '+item.Titleen);
+            // var ishod = document.getElementById(key+'title').innerText ;
+            // console.log(ishod);
+            // var newTxt = ishod.replace(key,item.Titleen);
+            switch (lng) {
+              case 'ru':
+                title = item.Titleru;
+                opis = item.Opisanieru;
+                break;
+              case 'en':
+                title = item.Titleen;
+                opis = item.Opisanieen;
+                break;
+              case 'kz':
+                title = item.Titlekz;
+                opis = item.Opisaniekz;
+                break;
+
+              default:
+                break;
+            }
+            document.getElementById(key + 'title').innerText = title;
+          }
+        }
+      }
+    });
+  }
 
 
 }
 
 function typeProductTitle(kk, kk2, lng) {
-  database.ref('typeproduct/-NVLmXHFXxOOGn4i3eSP/podtype/').once('value', (snapshot) => {
-    const data = snapshot.val();
-    for (const key in data) {
-      const item = data[key];
-      // console.log(key);
-      // console.log(item.imageUrl);
-      title = '';
-      opis = '';
-      var hasPotType = key in kk2;
-      if (hasPotType) {
-        switch (lng) {
-          case 'ru':
-            title = item.Titleru;
-            opis = item.Opisanieru;
-            break;
-          case 'en':
-            title = item.Titleen;
-            opis = item.Opisanieen;
-            break;
-          case 'kz':
-            title = item.Titlekz;
-            opis = item.Opisaniekz;
-            break;
 
-          default:
-            break;
-        }
-        // document.getElementById(dv).insertAdjacentHTML('afterbegin','<li><div class="vert_line"></div><a href="service01.html">'+title+'</a></li>' );
-        // creatProductCard('vseproduct',key,title,lng);
-        document.getElementById('-NVLmXHFXxOOGn4i3eSPtitle').innerHTML = title;
-        console.log(title);
-      }
-
-    }
-  });
 }
 
 function btnAccrdProduct(key) {
@@ -1421,9 +1561,9 @@ function transPageContats(lng) {
   Question = '';
   inName = '';
   inQues = '';
-  ctTitle='';
-  btnQues='';
-  inEmail='';
+  ctTitle = '';
+  btnQues = '';
+  inEmail = '';
   switch (lng) {
     case 'ru':
       txt = menuRu;
@@ -1436,9 +1576,9 @@ function transPageContats(lng) {
       Question = 'Вопрос';
       inName = 'Введите имя';
       inQues = 'Ваш вопрос';
-      ctTitle='Атырау';
-      btnQues='Задать вопрос';
-      inEmail='Введите эл.почту';
+      ctTitle = 'Атырау';
+      btnQues = 'Задать вопрос';
+      inEmail = 'Введите эл.почту';
       break;
     case 'en':
       txt = menuEn;
@@ -1449,9 +1589,9 @@ function transPageContats(lng) {
       Question = 'Question';
       inName = 'Enter a name';
       inQues = 'Your question';
-      ctTitle='Atyrau';
-      btnQues='Ask a question';
-      inEmail='Enter your email';
+      ctTitle = 'Atyrau';
+      btnQues = 'Ask a question';
+      inEmail = 'Enter your email';
       break;
     case 'kz':
       txt = menuKz;
@@ -1462,9 +1602,9 @@ function transPageContats(lng) {
       Question = 'Сұрақ';
       inName = 'Атын енгізіңіз';
       inQues = 'Сіздің сұрағыңыз';
-      ctTitle='Атырау';
-      btnQues='Сұрақ қою';
-      inEmail='Электрондық поштаны енгізіңіз';
+      ctTitle = 'Атырау';
+      btnQues = 'Сұрақ қою';
+      inEmail = 'Электрондық поштаны енгізіңіз';
       break;
   }
   // Меню десктоп
@@ -1677,19 +1817,43 @@ function transPageNews(lng) {
 
 function transPageVacans(lng) {
   let txt;
-  zag='';
+  zag = '';
+  frm = [];
   switch (lng) {
     case 'ru':
       txt = menuRu;
-      zag='«АтырауНефтеМаш» требуются следующии специалисты:';
+      zag = '«АтырауНефтеМаш» требуются следующии специалисты:';
+      frm[0] = 'Отправьте резюме';
+      frm[1] = 'Имя:';
+      frm[2] = 'Должность:';
+      frm[3] = 'Прикрепить резюме:';
+
+      frm[4] = 'Иван Иванович Иванов';
+      frm[5] = 'Наименование должности';
+      frm[6] = 'Отправить';
       break;
     case 'en':
       txt = menuEn;
-      zag='«AtyrauNefteMash» the following specialists are required:';
+      zag = '«AtyrauNefteMash» the following specialists are required:';
+      frm[0] = 'Send your resume';
+      frm[1] = 'Name:';
+      frm[2] = 'Position:';
+      frm[3] = 'Attach a resume:';
+      frm[4]='Ivan Ivanovich Ivanov';
+      frm[5]='Name of the position';
+      frm[6]='Send';
       break;
     case 'kz':
       txt = menuKz;
-      zag='«АтырауНефтеМаш»-қа келесі мамандар қажет:';
+      zag = '«АтырауНефтеМаш»-қа келесі мамандар қажет:';
+      frm[0] = 'Түйіндеме жіберіңіз';
+      frm[1] = 'Атыныз:';
+      frm[2] = 'Лауазым:';
+      frm[3] = 'Түйіндемені тіркеу:';
+
+      frm[4] = 'Иван Иванович Иванов';
+      frm[5] = 'Лауазым атауы';
+      frm[6] = 'Жіберу';
       break;
   }
   // Меню десктоп
@@ -1744,10 +1908,331 @@ function transPageVacans(lng) {
     document.getElementById('adresMenu').innerHTML = value.substring(0, 19) + "<br>" + value.substring(19);
   });
 
+  // Форма резюме
+  document.getElementById('titleForm').innerHTML = frm[0];
+  document.getElementById('nameForm').innerHTML = frm[1];
+  document.getElementById('specForm').innerHTML = frm[2];
+  document.getElementById('rezumForm').innerHTML = frm[3];
+
+  document.getElementById('nameFF').placeholder=frm[4];
+  document.getElementById('ddl_list').placeholder=frm[5];
+  document.getElementById('submitFF').value=frm[6];
+
 
 }
 
 function lngselVacan(lng) {
   localStorage.setItem("glblng", lng);
   window.location.href = "vacancy.html";
+}
+function lngselProduct(lng) {
+  localStorage.setItem("glblng", lng);
+  window.location.href = "services.html";
+}
+function lngselTovar(lng) {
+  localStorage.setItem("glblng", lng);
+  window.location.href = "service01.html";
+}
+function nextTover(id) {
+  localStorage.setItem("idTovar",id);
+  window.location.href = "service01.html";
+  loadTovarType();
+}
+
+function loadTovarType() {
+  // localStorage.setItem("idTovar",id);
+  // tvr = localStorage.getItem("idTovar");
+  myValue = 'ru';
+  if (localStorage.getItem("glblng") != null) { myValue = localStorage.getItem("glblng"); }
+  loadTovarTypeDate(myValue);
+  loadSpisokTovar(myValue);
+}
+function loadTovarTypeDate(myValue) {
+  loadTitleProductMore('nameCatTitle', myValue);
+  transPageTovar(myValue);
+  loadRekvizit(myValue, 'rekvizitText');
+  clearContact('footerContactCard');
+  loadFooterContact(myValue, 'footerContactCard', 'number');
+  loadFooterContact(myValue, 'footerContactCard', 'other');
+}
+function loadTitleProductMore(dv, lng) {
+  document.getElementById(dv).innerHTML = '';
+  // document.getElementById('vseproduct').innerHTML = '';
+  tvr = localStorage.getItem("idTovar");
+  database.ref('typeproduct').once('value', (snapshot) => {
+    const data = snapshot.val();
+    for (const key in data) {
+      const item = data[key];
+      // console.log(key);
+      // console.log(item.imageUrl);
+      title = '';
+      opis = '';
+      switch (lng) {
+        case 'ru':
+          title = item.Titleru;
+          opis = item.Opisanieru;
+          break;
+        case 'en':
+          title = item.Titleen;
+          opis = item.Opisanieen;
+          break;
+        case 'kz':
+          title = item.Titlekz;
+          opis = item.Opisaniekz;
+          break;
+
+        default:
+          break;
+      }
+      
+      if(key===tvr)
+      {
+      document.getElementById('product').innerHTML = title;
+      document.getElementById('prdTitle').innerHTML = title;
+      document.getElementById('nameProductType').innerHTML = title;
+      document.getElementById(dv).insertAdjacentHTML('afterbegin', '<li><div class="vert_line"></div><a  onclick="nextTover(\''+key+'\')">' + title + '</a></li>');
+      }
+      else
+      document.getElementById(dv).insertAdjacentHTML('afterbegin', '<li><a  onclick="nextTover(\''+key+'\')">' + title + '</a></li>');
+      // creatProductCard('vseproduct', key, title, lng);
+
+    }
+  });
+}
+function loadSpisokTovar(lng) {
+  tvr = localStorage.getItem("idTovar");
+  document.getElementById('listProduct').innerHTML = '';
+  // document.getElementById('vseproduct').innerHTML = '';
+  console.log(tvr);
+  database.ref('product').once('value', (snapshot) => {
+    const data = snapshot.val();
+    for (const key in data) 
+    {
+      const item = data[key];
+      // console.log(key);
+      
+      if(item.typeProduct===tvr)
+      {
+        console.log(item.typeProduct);
+        title = '';
+      opis = '';
+      switch (lng) {
+        case 'ru':
+          title = item.Titleru;
+          opis = item.Opisanieru;
+          break;
+        case 'en':
+          title = item.Titleen;
+          opis = item.Opisanieen;
+          break;
+        case 'kz':
+          title = item.Titlekz;
+          opis = item.Opisaniekz;
+          break;
+
+        default:
+          break;
+      }
+      // document.getElementById('product').innerHTML = title;
+      // document.getElementById('prdTitle').innerHTML = title;
+      // document.getElementById('nameProductType').innerHTML = title;
+      // if(key===tvr)
+      // document.getElementById(dv).insertAdjacentHTML('afterbegin', '<li><div class="vert_line"></div><a  onclick="nextTover(\''+key+'\')">' + title + '</a></li>');
+      // else
+      document.getElementById('listProduct').insertAdjacentHTML('beforeend', '<li><a onclick="nextToverDetail(\''+key+'\')">'+title+'</a></li>');
+      document.getElementById('opisanieProduct').innerHTML = opis;
+      // creatProductCard('vseproduct', key, title, lng);
+      }
+      
+
+    }
+  });
+
+}
+function transPageTovar(lng) {
+  let txt;
+  switch (lng) {
+    case 'ru':
+      txt = menuRu;
+
+      break;
+    case 'en':
+      txt = menuEn;
+
+      break;
+    case 'kz':
+      txt = menuKz;
+
+      break;
+  }
+  // Меню десктоп
+  document.getElementById('genMenu').innerHTML = txt.gen;
+  document.getElementById('aboutMenu').innerHTML = txt.about;
+  document.getElementById('newsMenu').innerHTML = txt.news;
+  document.getElementById('productMenu').innerHTML = txt.product + '<svg version="1.1" id="Capa_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"  width="10px" height="10px"  viewBox="0 0 451.847 451.847" style="enable-background:new 0 0 451.847 451.847;"  xml:space="preserve"> <g> <path d="M225.923,354.706c-8.098,0-16.195-3.092-22.369-9.263L9.27,151.157c-12.359-12.359-12.359-32.397,0-44.751 c12.354-12.354,32.388-12.354,44.748,0l171.905,171.915l171.906-171.909c12.359-12.354,32.391-12.354,44.744,0  c12.365,12.354,12.365,32.392,0,44.751L248.292,345.449C242.115,351.621,234.018,354.706,225.923,354.706z"/>  </g></svg>';
+  document.getElementById('product1Menu').innerHTML = txt.product1;
+  document.getElementById('product2Menu').innerHTML = txt.product2;
+  document.getElementById('product3Menu').innerHTML = txt.product3;
+  document.getElementById('carerMenu').innerHTML = txt.carer;
+  document.getElementById('contactMenu').innerHTML = txt.contact;
+  // Меню мобильная
+  document.getElementById('genMenuMobile').innerHTML = txt.gen;
+  document.getElementById('aboutMenuMobile').innerHTML = txt.about;
+  document.getElementById('newsMenuMobile').innerHTML = txt.news;
+  document.getElementById('productMenuMobile').innerHTML = txt.product;
+  document.getElementById('product1MenuMobile').innerHTML = txt.product1;
+  document.getElementById('product2MenuMobile').innerHTML = txt.product2;
+  document.getElementById('product3MenuMobile').innerHTML = txt.product3;
+  document.getElementById('carerMenuMobile').innerHTML = txt.carer;
+  document.getElementById('contactMenuMobile').innerHTML = txt.contact;
+  // футер
+  document.getElementById('genMenuFooter').innerHTML = txt.gen;
+  document.getElementById('aboutMenuFooter').innerHTML = txt.about;
+  document.getElementById('newsMenuFooter').innerHTML = txt.news;
+  document.getElementById('productMenuFooter').innerHTML = txt.product;
+  document.getElementById('carerMenuFooter').innerHTML = txt.carer;
+  document.getElementById('contactMenuFooter').innerHTML = txt.contact;
+
+  document.getElementById('adminp').innerHTML = txt.adminp;
+  document.getElementById('perdate').innerHTML = txt.perdate;
+  document.getElementById('polit').innerHTML = txt.polit;
+  document.getElementById('razrab').innerHTML = txt.razrab;
+
+  // Навигация
+  document.getElementById('genMenuNav').innerHTML = txt.gen;
+  // document.getElementById('product').innerHTML = txt.product;
+  document.getElementById('too').innerHTML = txt.too;
+  document.getElementById('titleMenuFooter').innerHTML = txt.titleMenuFuter;
+  document.getElementById('titleMenuFooter2').innerHTML = txt.titleMenuFuter2;
+
+  // document.getElementById('prdTitle').innerHTML = txt.product;
+  // document.getElementById('tooTitle').innerHTML = txt.too;
+  // document.getElementById('tleTitle').innerHTML = telTitle;
+
+  database.ref(lng + '/page/contact/adres').on('value', (snapshot) => {
+    value = snapshot.val();
+    // console.log(value);
+
+    // document.getElementById('adres').innerHTML = value.substring(0, 19) + "<br>" + value.substring(19);
+    document.getElementById('adresMenu').innerHTML = value.substring(0, 19) + "<br>" + value.substring(19);
+  });
+
+
+}
+
+
+function nextToverDetail(id) {
+  localStorage.setItem("idTovarPrd",id);
+  window.location.href = "service_more.html";
+  loadTovar();
+}
+function loadTovar() {
+  // localStorage.setItem("idTovar",id);
+  // tvr = localStorage.getItem("idTovar");
+  myValue = 'ru';
+  if (localStorage.getItem("glblng") != null) { myValue = localStorage.getItem("glblng"); }
+  loadTovarTypeDateMore(myValue);
+  // loadSpisokTovar(myValue);
+}
+function lngselTovarDetail(lng) {
+  localStorage.setItem("glblng", lng);
+  window.location.href = "service_more.html";
+}
+function loadTovarTypeDateMore(myValue) {
+  loadTitleProductMor('nameCatTitle', myValue);
+  transPageTovar(myValue);
+  loadRekvizit(myValue, 'rekvizitText');
+  clearContact('footerContactCard');
+  loadFooterContact(myValue, 'footerContactCard', 'number');
+  loadFooterContact(myValue, 'footerContactCard', 'other');
+}
+function loadTitleProductMor(dv, lng) {
+  document.getElementById(dv).innerHTML = '';
+  // document.getElementById('vseproduct').innerHTML = '';
+  tvr = localStorage.getItem("idTovar");
+  tvr2 = localStorage.getItem("idTovarPrd");
+  // console.log(tvr);
+  database.ref('typeproduct').once('value', (snapshot) => {
+    const data = snapshot.val();
+    for (const key in data) {
+      const item = data[key];
+      // console.log(key);
+      // console.log(item.imageUrl);
+      title = '';
+      opis = '';
+      switch (lng) {
+        case 'ru':
+          title = item.Titleru;
+          opis = item.Opisanieru;
+          break;
+        case 'en':
+          title = item.Titleen;
+          opis = item.Opisanieen;
+          break;
+        case 'kz':
+          title = item.Titlekz;
+          opis = item.Opisaniekz;
+          break;
+
+        default:
+          break;
+      }
+      
+      // document.getElementById('nameProductType').innerHTML = title;
+      if(key===tvr)
+      {document.getElementById('product').innerHTML = title;
+      document.getElementById('prdTitle').innerHTML = title;
+        document.getElementById(dv).insertAdjacentHTML('afterbegin', '<li><div class="vert_line"></div><a  onclick="nextTover(\''+key+'\')">' + title + '</a></li>');}
+      else
+      {document.getElementById(dv).insertAdjacentHTML('afterbegin', '<li><a  onclick="nextTover(\''+key+'\')">' + title + '</a></li>');}
+      // creatProductCard('vseproduct', key, title, lng);
+
+    }
+  });
+  database.ref('product/'+tvr2).once('value', (snapshot) => {
+    const data = snapshot.val();
+    console.log(data.Titleen);
+    // for (const key in data) 
+    {
+      const item = data;
+      // console.log(key);
+      // console.log(item.imageUrl);
+      title = '';
+      opis = '';
+      switch (lng) {
+        case 'ru':
+          title = item.Titleru;
+          opis = item.Opisanieru;
+          break;
+        case 'en':
+          title = item.Titleen;
+          opis = item.Opisanieen;
+          break;
+        case 'kz':
+          title = item.Titlekz;
+          opis = item.Opisaniekz;
+          break;
+
+        default:
+          break;
+      }
+      // console.log(title);
+      // document.getElementById('nameProductType').innerHTML = title;
+      // if(key===tvr)
+      // {document.getElementById('product').innerHTML = title;
+      document.getElementById('nameProductType').innerHTML = title;
+      document.getElementById('prdTitle2').innerHTML = title;
+      document.getElementById('prdOpis').innerHTML = opis;
+      //   document.getElementById(dv).insertAdjacentHTML('afterbegin', '<li><div class="vert_line"></div><a  onclick="nextTover(\''+key+'\')">' + title + '</a></li>');}
+      // else
+      // {document.getElementById(dv).insertAdjacentHTML('afterbegin', '<li><a  onclick="nextTover(\''+key+'\')">' + title + '</a></li>');}
+      // // creatProductCard('vseproduct', key, title, lng);
+
+    }
+  });
+}
+
+function lngselSertifi(lng) {
+  localStorage.setItem("glblng", lng);
+  window.location.href = "certificate.html";
 }

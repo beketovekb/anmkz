@@ -119,7 +119,7 @@ document.getElementById('genpage').addEventListener('click', function(event) {
       .then(data => {
         document.getElementById('pagediv').innerHTML = data;
       });
-
+      loadVacans('#fullVacan');
   });
   document.getElementById('product').addEventListener('click', function(event) {
     event.preventDefault(); // предотвращаем переход по ссылке
@@ -128,7 +128,9 @@ document.getElementById('genpage').addEventListener('click', function(event) {
       .then(data => {
         document.getElementById('pagediv').innerHTML = data;
       });
+      loadFullProduct('#fullPrd');
       loadTypeProductSelect('#select');
+      
       // loadNews('#fullNews');
       // loadCert('#certCard');
       // loadRekvizidCardTitle('#RekvizidCardRu','#RekvizidCardEn','#RekvizidCardKz');
@@ -151,11 +153,10 @@ document.getElementById('genpage').addEventListener('click', function(event) {
       .then(response => response.text())
       .then(data => {
         document.getElementById('pagediv').innerHTML = data;
+        loadTypeProductSelect('#select');
       });
-      loadTypeProductSelect('#select');
-      // loadNews('#fullNews');
-      // loadCert('#certCard');
-      // loadRekvizidCardTitle('#RekvizidCardRu','#RekvizidCardEn','#RekvizidCardKz');
+      
+      loadPodType('#fullPodType');
   });
   document.getElementById('director').addEventListener('click', function(event) {
     event.preventDefault(); // предотвращаем переход по ссылке
@@ -164,6 +165,7 @@ document.getElementById('genpage').addEventListener('click', function(event) {
       .then(data => {
         document.getElementById('pagediv').innerHTML = data;
       });
+      loadDirector('#certCard');
       // loadTypeProductSelect('#select');
       // loadNews('#fullNews');
       // loadCert('#certCard');
