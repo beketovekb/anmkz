@@ -1196,7 +1196,8 @@ header .form-inline {
 .content {
   float: left;
   padding: 1.875em;
-  width: 100%; }
+  width: 100%;
+  min-height: 100vh; }
 
 .card {
   margin-bottom: 1.875em;
@@ -2510,4 +2511,13 @@ footer.site-footer {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+.top-right{
+  display: none !important;
+}
+.right-panel .navbar-brand img{
+  height: 35px;
+}
+.right-panel .navbar-header > a{
+  width: fit-content;
 }
