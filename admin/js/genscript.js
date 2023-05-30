@@ -1299,7 +1299,7 @@ function loadTypeProduct(dv) {
 
 }
 
-function loadTypeProductSelect(dv) {
+function loadTypeProductSelect(dv,dv2) {
 	$(dv).html('');
 	nameType=[];
 nameType2=[];
@@ -1311,7 +1311,7 @@ nameType2=[];
 			var hasPotType = 'podtype' in item;
 			if (hasPotType) {
 				nameType2.push(key);
-				$(dv).append('<li onclick="loadTypeProductSelect2(\'#select2\',\'' + key + '\',\'' + item.Titleru + '\' ")">' + item.Titleru + '</li>');
+				$(dv).append('<li onclick="loadTypeProductSelect2(\'#select2\',\'' + key + '\',\'' + item.Titleru + '\', ")">' + item.Titleru + '</li>');
 			}
 			else { $(dv).append('<li onclick="selectItem(\'' + item.Titleru + '\',\'.dropdown-toggle2\',\'.dropdown-menu2\',0,\'' + key + '\' ")">' + item.Titleru + '</li>'); }
 		}
