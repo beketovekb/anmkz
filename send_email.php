@@ -5,10 +5,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $message = $_POST['plhQues'];
     $num = $_POST['numPhone'];
 
-    $to = 'recipient_email@example.com'; // Укажите адрес получателя
+    $to = 'beketovekb@gmail.com'; // Укажите адрес получателя
     $subject = 'Форма обратной связи';
     $body = "Имя: $name\nEmail: $email\nНомер телефона:$num\nСообщение:\n$message";
-    $headers = "From: your_email@example.com"; // Укажите вашу почту
+    $headers = "From: info@firdaws.kz"; // Укажите вашу почту
 
     if (mail($to, $subject, $body, $headers)) {
         http_response_code(200);
