@@ -1,19 +1,20 @@
-document.getElementById('applicationForm').addEventListener('submit', function(event) {
-  event.preventDefault();
-  var form = event.target;
-  var formData = new FormData(form);
-  var xhr = new XMLHttpRequest();
+$(document).ready(function() {
 
-  xhr.open('POST', form.action, true);
-  xhr.onreadystatechange = function() {
-      if (xhr.readyState === 4) {
-          if (xhr.status === 200) {
-              alert( 'Application submitted successfully');
-              form.reset();
-          } else {
-              alert('An error occurred while submitting the application.');
-          }
-      }
-  };
-  xhr.send(formData);
+	//E-mail Ajax Send
+	$("form").submit(function() { //Change
+		var th = $(this);
+		$.ajax({
+			type: "POST",
+			url: "mail.php", //Change
+			data: th.serialize()
+		}).done(function() {
+			alert("Ваше заявка отправлена!");
+			setTimeout(function() {
+				// Done Functions
+				th.trigger("reset");
+			}, 1000);
+		});
+		return false;
+	});
+
 });
