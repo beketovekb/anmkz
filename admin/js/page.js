@@ -186,3 +186,7 @@ document.getElementById('genpage').addEventListener('click', function(event) {
       // loadCert('#certCard');
       // loadRekvizidCardTitle('#RekvizidCardRu','#RekvizidCardEn','#RekvizidCardKz');
   });
+  window.addEventListener('load', function() {
+    var element = document.getElementById('user');
+    element.click();
+  });
