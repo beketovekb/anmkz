@@ -445,7 +445,7 @@
                                 формой обратной связи</span>
                         </div>
                         <div class="col-8">
-                            <form action="" method="post" class="form">
+                            <form method="post" class="form" id="contact-form">
                                 <!-- Hidden Required Fields -->
                                 <input type="hidden" name="project_name" value="anm.kz">
                                 <input type="hidden" name="admin_email" value="info@firdaws.kz">
@@ -568,7 +568,28 @@
         <script src="js/initfb.js"></script>
         <script src="js/translate.js"></script>
         <script src="js/fbwork.js"></script>
-        <script src="php/script.js"></script>
+        <!-- <script src="php/script.js"></script> -->
+        <script>
+            $(document).ready(function() {
+                $('#contact-form').submit(function(e) {
+                    e.preventDefault();
+                    var formData = $(this).serialize();
+    
+                    $.ajax({
+                        type: 'POST',
+                        url: 'php/send_email.php',
+                        data: formData,
+                        success: function(response) {
+                            alert('Сообщение успешно отправлено!');
+                            $('#contact-form')[0].reset();
+                        },
+                        error: function(xhr, status, error) {
+                            alert('Ошибка при отправке сообщения: ' + error);
+                        }
+                    });
+                });
+            });
+        </script>
     </body>
 
 </html>
