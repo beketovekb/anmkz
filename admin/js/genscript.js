@@ -838,7 +838,7 @@ function addNews(dv, dv2, dv3, dv4, dv5, dv6, dt) {
 	const titleEn = $(dv2).val().replace(/\n/g, "<br>");
 	const titlekz = $(dv3).val().replace(/\n/g, "<br>");
 	var dateValue = $(dt).val();
-	console.log(dateValue);
+	console.log(dt);
 	var dateObject = new Date(dateValue);
 	// Получаем день, месяц и год из объекта Date
 	var day = dateObject.getDate();
@@ -878,7 +878,7 @@ function addNews(dv, dv2, dv3, dv4, dv5, dv6, dt) {
 					dateNews: formattedDate,
 
 				}).then(function () {
-					// loadCert('#certCard');
+					loadNews('#fullNews');
 					alert("File uploaded and saved to database!");
 				}).catch(function (error) {
 					alert("Error saving to database: " + error.message);
@@ -898,15 +898,24 @@ function loadNews(dv) {
 		const data = snapshot.val();
 		for (const key in data) {
 			const item = data[key];
+			date_string = item.dateNews;
+date_parts = date_string.split(".");
+year = date_parts[2];
+month = date_parts[1];
+day = date_parts[0];
 			// console.log(key);
 			// console.log(item.imageUrl);
 			$(dv).append('<div class="card">' +
 				'<div class="card-header">' +
-				'<strong>Редактировать новость: '+item.Titleru+'</strong>' + '<button type="button" class="btn btn-primary" onclick="scrit(\''+key+'crd\')"><i class="fa fa-bars"></i>Скрыть</button>'+
+				'<strong>Редактировать новость: ' + item.Titleru + '</strong>' + '<button type="button" class="btn btn-primary" onclick="scrit(\'' + key + 'crd\')"><i class="fa fa-bars"></i>Скрыть</button>' +
 				' </div>' +
-				'<div id="'+key+'crd" style="display:none">'+
+				'<div id="' + key + 'crd" style="display:none">' +
 				'<div class="card-body card-block">' +
 				'<form action="#" method="post" class="form-inline gap20 align-top fd-column">' +
+				'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">Дата</label>' +
+				'<input type="date" name="" id="' + key + 'NewsDate">' +
+				'</div>' +
 				'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"' +
 				'class="pr-1  form-control-label">Заголовок на русском</label>' +
 				'<textarea id="' + key + 'NewsTitleRu" class="form-control w100"' +
@@ -922,6 +931,7 @@ function loadNews(dv) {
 				'<textarea id="' + key + 'NewsTitleKz" class="form-control w100"' +
 				'style="width: 90%;">' + item.Titlekz + ' </textarea>' +
 				'</div>' +
+				
 				'<div class="form-group" style="width: 50%;">' +
 				'<div class="form-group" style="width: 50%;">' +
 				'<label for="exampleInputEmail2"' +
@@ -987,13 +997,16 @@ function loadNews(dv) {
 				' <a href="#" class="toolbar-copy fas fa-copy" title="Копировать"></a>' +
 				' </div>' +
 				'' +
+				'<p>Описание на русском</p>'+
 				' <div class="editor" contenteditable="true" id="' + key + 'newsTextRu">' + item.Opisanieru + '</div>' +
+				'<br><br><p>Описание на английском</p>'+
 				' <div class="editor2" contenteditable="true" id="' + key + 'newsTextEn">' + item.Opisanieen + '</div>' +
+				'<br><br><p>Описание на казахском</p>'+
 				' <div class="editor3" contenteditable="true" id="' + key + 'newsTextKz">' + item.Opisaniekz + '</div>' +
 				' </div>' +
 				' <div class="card-footer">' +
 				' <button type="submit" class="btn btn-primary btn-sm"' +
-				' onclick="updateNews(\'' + key + '\',\'#' + key + 'NewsTitleRu\',\'#' + key + 'NewsTitleEn\',\'#' + key + 'NewsTitleKz\',\'#' + key + 'newsTextRu\',\'#' + key + 'newsTextEn\',\'#' + key + 'newsTextKz\')">' +
+				' onclick="updateNews(\'' + key + '\',\'#' + key + 'NewsTitleRu\',\'#' + key + 'NewsTitleEn\',\'#' + key + 'NewsTitleKz\',\'#' + key + 'newsTextRu\',\'#' + key + 'newsTextEn\',\'#' + key + 'newsTextKz\',\'#' + key + 'NewsDate\')">' +
 				' <i class="fa fa-dot-circle-o"></i> Сохранить' +
 				' </button>' +
 				' <button type="reset" class="btn btn-danger btn-sm"' +
@@ -1001,25 +1014,42 @@ function loadNews(dv) {
 				' <i class="fa fa-ban"></i> Отменить' +
 				' </button>' +
 				' <button type="reset" class="btn btn-danger btn-sm"' +
-				' onclick="delNews(\''+key+'\')">' +
+				' onclick="delNews(\'' + key + '\')">' +
 				' <i class="fa fa-ban"></i> Удалить' +
 				' </button>' +
 				' </div>' +
 				' </div>' +
 				' </div>'
 			);
+			$('#'+key+'NewsDate').val(year+'-'+month+'-'+day);
 		}
 	});
 }
-function updateNews(kk, dv, dv2, dv3, dv4, dv5, dv6, img) {
+function updateNews(kk, dv, dv2, dv3, dv4, dv5, dv6, img,dt) {
 	const titleRu = $(dv).val().replace(/\n/g, "<br>");
 	const titleEn = $(dv2).val().replace(/\n/g, "<br>");
 	const titlekz = $(dv3).val().replace(/\n/g, "<br>");
 
 	const opisanieRu = $(dv4).html();
-	console.log(opisanieRu);
+	// console.log(opisanieRu);
 	const opisanieEn = $(dv5).html();
 	const opisanieKz = $(dv6).html();
+
+	var dateValue = $('#'+kk+'NewsDate').val();
+	console.log('#'+kk+'NewsDate');
+	console.log(dateValue);
+	var dateObject = new Date(dateValue);
+	// Получаем день, месяц и год из объекта Date
+	var day = dateObject.getDate();
+	var month = dateObject.getMonth() + 1; // Месяцы в JavaScript начинаются с 0, поэтому добавляем 1
+	var year = dateObject.getFullYear();
+	// Форматируем день и месяц для вывода с ведущими нулями (если необходимо)
+	var formattedDay = day < 10 ? "0" + day : day;
+	var formattedMonth = month < 10 ? "0" + month : month;
+
+	// Формируем отформатированную строку даты в формате "dd.mm.yyyy"
+	const formattedDate = formattedDay + "." + formattedMonth + "." + year;
+	console.log(formattedDate);
 	var databaseRef = firebase.database().ref("news");
 	var storageRef = firebase.storage().ref();
 	var fileInput = document.getElementById(kk + "imageAbout");
@@ -1042,9 +1072,10 @@ function updateNews(kk, dv, dv2, dv3, dv4, dv5, dv6, img) {
 					Opisanieru: opisanieRu,
 					Opisanieen: opisanieEn,
 					Opisaniekz: opisanieKz,
+					dateNews: formattedDate,
 
 				}).then(function () {
-					// loadCert('#certCard');
+					loadNews('#fullNews');
 					alert("File uploaded and saved to database!");
 				}).catch(function (error) {
 					alert("Error saving to database: " + error.message);
@@ -1063,6 +1094,7 @@ function updateNews(kk, dv, dv2, dv3, dv4, dv5, dv6, img) {
 		database.ref('news/' + kk + '/Opisanieru').set(opisanieRu);
 		database.ref('news/' + kk + '/Opisanieen').set(opisanieEn);
 		database.ref('news/' + kk + '/Opisaniekz').set(opisanieKz);
+		database.ref('news/' + kk + '/dateNews').set(formattedDate);
 		alert('Данные обновлены');
 	}
 
@@ -1299,15 +1331,15 @@ function loadTypeProduct(dv) {
 
 }
 
-function loadTypeProductSelect(dv,dv2) {
+function loadTypeProductSelect(dv, dv2) {
 	$(dv).html('');
-	nameType=[];
-nameType2=[];
+	nameType = [];
+	nameType2 = [];
 	database.ref('typeproduct').once('value', (snapshot) => {
 		const data = snapshot.val();
 		for (const key in data) {
 			const item = data[key];
-			nameType[key]=item.Titleru;
+			nameType[key] = item.Titleru;
 			var hasPotType = 'podtype' in item;
 			if (hasPotType) {
 				nameType2.push(key);
@@ -1315,11 +1347,11 @@ nameType2=[];
 			}
 			else { $(dv).append('<li onclick="selectItem(\'' + item.Titleru + '\',\'.dropdown-toggle2\',\'.dropdown-menu2\',0,\'' + key + '\' ")">' + item.Titleru + '</li>'); }
 		}
-	console.log(nameType);
-	localStorage.setItem('nameType', nameType);
-	localStorage.setItem('nameType2', nameType2);
+		console.log(nameType);
+		localStorage.setItem('nameType', nameType);
+		localStorage.setItem('nameType2', nameType2);
 	});
-	
+
 }
 // select2
 function loadTypeProductSelect2(dv, kk, tt) {
@@ -1337,9 +1369,9 @@ function loadTypeProductSelect2(dv, kk, tt) {
 		}
 
 	});
-	if (localStorage.getItem('typeProductCash') !== null) { kl = localStorage.getItem('typeProductCash'); console.log(kl);}
-	if (localStorage.getItem('type2ProductCash') !== null) { kl2 = localStorage.getItem('type2ProductCash'); console.log(kl + ' | ' + kl2);}
-	
+	if (localStorage.getItem('typeProductCash') !== null) { kl = localStorage.getItem('typeProductCash'); console.log(kl); }
+	if (localStorage.getItem('type2ProductCash') !== null) { kl2 = localStorage.getItem('type2ProductCash'); console.log(kl + ' | ' + kl2); }
+
 }
 function addProduct(dv, dv2, dv3, dv4, dv5, dv6, kk, ig) {
 	const titleRu = $(dv).val().replace(/\n/g, "<br>");
@@ -1518,7 +1550,7 @@ function addDirector(fio1, fio2, fio3, post1, post2, post3, email, num, img) {
 		});
 	}
 }
-function updateDirector(fio1, fio2, fio3, post1, post2, post3, email, num, img,key) {
+function updateDirector(fio1, fio2, fio3, post1, post2, post3, email, num, img, key) {
 	const fioRu = $(fio1).val().replace(/\n/g, "<br>");
 	const fioEn = $(fio2).val().replace(/\n/g, "<br>");
 	const fioKz = $(fio3).val().replace(/\n/g, "<br>");
@@ -1566,8 +1598,7 @@ function updateDirector(fio1, fio2, fio3, post1, post2, post3, email, num, img,k
 			alert("Error uploading file: " + error.message);
 		});
 	}
-	else
-	{
+	else {
 		databaseRef.child(key).set({
 			fioru: fioRu,
 			fioen: fioEn,
@@ -1587,7 +1618,7 @@ function updateDirector(fio1, fio2, fio3, post1, post2, post3, email, num, img,k
 	}
 }
 function delNews(id) {
-	var ref = database.ref("news/"+id);
+	var ref = database.ref("news/" + id);
 	// Удаляем запись
 	ref.remove()
 		.then(function () {
@@ -1604,72 +1635,73 @@ function loadDirector(dv) {
 		const data = snapshot.val();
 		for (const key in data) {
 			const item = data[key];
-				$(dv).append(
-					'<div class="card">'+
-'<div class="card-header card-admin" >'+
-'<strong>'+item.fioru+'</strong> '+
-'<button type="button" class="btn btn-primary" onclick="scrit(\''+key+'crd\')"><i class="fa fa-bars"></i>Скрыть</button>'+
-'</div>'+
-'<div id="'+key+'crd" style="display:none">'+
-'<div class="card-body card-block">'+
-'<div class="form-group" style="width: 50%;"><label for="exampleInputEmail2"'+
-'class="px-1  form-control-label">Фотография</label><input type="file" id="'+key+'imageDirector" accept="image/*">'+
-'</div>'+
-'</div>'+
-'<div class="card-body card-block">'+
-'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"'+
-'class="pr-1  form-control-label">ФИО Русский</label><textarea id="'+key+'fioDirectorRu"'+
-'class="form-control w100">'+item.fioru+'</textarea>'+
-'</div>'+
-'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"'+
-'class="pr-1  form-control-label">full name English</label><textarea id="'+key+'fioDirectorEn"'+
-'class="form-control w100">'+item.fioen+'</textarea>'+
-'</div>'+
-'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"'+
-'class="pr-1  form-control-label">ТАӘ Қазақша</label><textarea id="'+key+'fioDirectorKz"'+
-'class="form-control w100">'+item.fiokz+'</textarea>'+
-'</div>'+
-'</div>'+
-'<div class="card-body card-block">'+
-'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"'+
-'class="pr-1  form-control-label">должность Русский</label><textarea id="'+key+'postDirectorRu"'+
-'class="form-control w100">'+item.postru+'</textarea>'+
-'</div>'+
-'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"'+
-'class="pr-1  form-control-label">post English</label><textarea id="'+key+'postDirectorEn"'+
-'class="form-control w100">'+item.posten+'</textarea>'+
-'</div>'+
-'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"'+
-'class="pr-1  form-control-label">лауазымы Қазақша</label><textarea id="'+key+'postDirectorKz"'+
-'class="form-control w100">'+item.postkz+'</textarea>'+
-'</div>'+
-'</div>'+
-'<div class="card-body card-block">'+
-'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"'+
-'class="pr-1  form-control-label">Email</label><textarea id="'+key+'emailDirector"'+
-'class="form-control w100">'+item.email+'</textarea>'+
-'</div>'+
-'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"'+
-'class="pr-1  form-control-label">Номер телефона</label><textarea id="'+key+'numberDirector"'+
-'class="form-control w100">'+item.numberPhone+'</textarea>'+
-'</div>'+
-'</div>'+
-'<div class="card-footer">'+
-'<button type="submit" class="btn btn-primary btn-sm"'+
-'onclick="updateDirector(\'#'+key+'fioDirectorRu\',\'#'+key+'fioDirectorEn\',\'#'+key+'fioDirectorKz\',\'#'+key+'postDirectorRu\',\'#'+key+'postDirectorEn\',\'#'+key+'postDirectorKz\',\'#'+key+'emailDirector\',\'#'+key+'numberDirector\',\''+key+'imageDirector\',\''+key+'\')">'+
-'<i class="fa fa-dot-circle-o"></i> Сохранить'+
-'</button>'+
-'<button type="submit" class="btn btn-primary btn-sm"'+
-'onclick="delDirector(\''+key+'\')">'+
-'<i class="fa fa-dot-circle-o"></i> Удалить'+
-'</button>'+
-'</div>'+
-'</div>'+
-'</div>');}
+			$(dv).append(
+				'<div class="card">' +
+				'<div class="card-header card-admin" >' +
+				'<strong>' + item.fioru + '</strong> ' +
+				'<button type="button" class="btn btn-primary" onclick="scrit(\'' + key + 'crd\')"><i class="fa fa-bars"></i>Скрыть</button>' +
+				'</div>' +
+				'<div id="' + key + 'crd" style="display:none">' +
+				'<div class="card-body card-block">' +
+				'<div class="form-group" style="width: 50%;"><label for="exampleInputEmail2"' +
+				'class="px-1  form-control-label">Фотография</label><input type="file" id="' + key + 'imageDirector" accept="image/*">' +
+				'</div>' +
+				'</div>' +
+				'<div class="card-body card-block">' +
+				'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">ФИО Русский</label><textarea id="' + key + 'fioDirectorRu"' +
+				'class="form-control w100">' + item.fioru + '</textarea>' +
+				'</div>' +
+				'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">full name English</label><textarea id="' + key + 'fioDirectorEn"' +
+				'class="form-control w100">' + item.fioen + '</textarea>' +
+				'</div>' +
+				'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">ТАӘ Қазақша</label><textarea id="' + key + 'fioDirectorKz"' +
+				'class="form-control w100">' + item.fiokz + '</textarea>' +
+				'</div>' +
+				'</div>' +
+				'<div class="card-body card-block">' +
+				'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">должность Русский</label><textarea id="' + key + 'postDirectorRu"' +
+				'class="form-control w100">' + item.postru + '</textarea>' +
+				'</div>' +
+				'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">post English</label><textarea id="' + key + 'postDirectorEn"' +
+				'class="form-control w100">' + item.posten + '</textarea>' +
+				'</div>' +
+				'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">лауазымы Қазақша</label><textarea id="' + key + 'postDirectorKz"' +
+				'class="form-control w100">' + item.postkz + '</textarea>' +
+				'</div>' +
+				'</div>' +
+				'<div class="card-body card-block">' +
+				'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">Email</label><textarea id="' + key + 'emailDirector"' +
+				'class="form-control w100">' + item.email + '</textarea>' +
+				'</div>' +
+				'<div class="form-group" style="width: 50%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">Номер телефона</label><textarea id="' + key + 'numberDirector"' +
+				'class="form-control w100">' + item.numberPhone + '</textarea>' +
+				'</div>' +
+				'</div>' +
+				'<div class="card-footer">' +
+				'<button type="submit" class="btn btn-primary btn-sm"' +
+				'onclick="updateDirector(\'#' + key + 'fioDirectorRu\',\'#' + key + 'fioDirectorEn\',\'#' + key + 'fioDirectorKz\',\'#' + key + 'postDirectorRu\',\'#' + key + 'postDirectorEn\',\'#' + key + 'postDirectorKz\',\'#' + key + 'emailDirector\',\'#' + key + 'numberDirector\',\'' + key + 'imageDirector\',\'' + key + '\')">' +
+				'<i class="fa fa-dot-circle-o"></i> Сохранить' +
+				'</button>' +
+				'<button type="submit" class="btn btn-primary btn-sm"' +
+				'onclick="delDirector(\'' + key + '\')">' +
+				'<i class="fa fa-dot-circle-o"></i> Удалить' +
+				'</button>' +
+				'</div>' +
+				'</div>' +
+				'</div>');
+		}
 	});
 }
 function delDirector(id) {
-	var ref = database.ref("worker/"+id);
+	var ref = database.ref("worker/" + id);
 	// Удаляем запись
 	ref.remove()
 		.then(function () {
@@ -1681,65 +1713,66 @@ function delDirector(id) {
 }
 function loadPodType(dv) {
 	$(dv).html('');
-	nmTp2=localStorage.getItem("nameType2");
-	nmTp=localStorage.getItem("nameType");
+	nmTp2 = localStorage.getItem("nameType2");
+	nmTp = localStorage.getItem("nameType");
 	console.log(nmTp2);
-	database.ref('typeproduct/'+nmTp2+'/podtype').once('value', (snapshot) => {
+	database.ref('typeproduct/' + nmTp2 + '/podtype').once('value', (snapshot) => {
 		const data = snapshot.val();
 		for (const key in data) {
 			const item = data[key];
-				$(dv).append(
-					'<div class="card">'+
-'<div class="card-header">'+
-'<strong>Редактировать под тип продукта: </strong> '+item.Titleru+' '+
-'<button type="button" class="btn btn-primary" onclick="scrit(\''+key+'crd\')"><i class="fa fa-bars"></i>Скрыть</button>'+
-'</div>'+
-'<div id="'+key+'crd" style="display:none">'+
-'<div class="card-body card-block">'+
-'<form action="#" method="post" class="form-inline gap20 align-top fd-column">'+
-'<div class="row form-group">'+
-'<div class="col col-md-3"><label for="select" class=" form-control-label">Тип продукта</label></div>'+
-'<div class="col-12 col-md-9">'+
-'<div class="dropdown">'+
-'<div class="dropdown-toggle2" onclick="toggleDropdown(\'.dropdown-menu2\')" >Выберите элемент</div>'+
-'<ul class="dropdown-menu2" id="'+key+'select">'+
-'  '+
-'</ul>'+
-'  </div>'+
-'</div>'+
-'</div>'+
-'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"'+
-'class="pr-1  form-control-label">Под тип на русском</label>'+
-'<textarea id="'+key+'ProductType2Ru" class="form-control w100"'+
-'style="width: 90%;">'+item.Titleru+'</textarea>'+
-'</div>'+
-'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"'+
-'class="pr-1  form-control-label">Под тип на англиском</label>'+
-'<textarea id="'+key+'ProductType2En" class="form-control w100"'+
-'style="width: 90%;">'+item.Titleen+'</textarea>'+
-'</div>'+
-'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"'+
-'class="pr-1  form-control-label">Под тип на казахском</label>'+
-'<textarea id="'+key+'ProductType2Kz" class="form-control w100"'+
-'style="width: 90%;">'+item.Titlekz+'</textarea>'+
-'</div>'+
-''+
-'</form>'+
-'<br>'+
-''+
-'</div>'+
-'<div class="card-footer">'+
-'<button type="submit" class="btn btn-primary btn-sm"'+
-'onclick="updateType2Product(\'#'+key+'ProductType2Ru\',\'#'+key+'ProductType2En\',\'#'+key+'ProductType2Kz\',\'#'+key+'select\',\''+key+'\')">'+
-'<i class="fa fa-dot-circle-o"></i> Сохранить'+
-'</button>'+
-'<button type="submit" class="btn btn-primary btn-sm"'+
-'onclick="delType2Product(\''+nmTp2+'\',\''+key+'\')">'+
-'<i class="fa fa-dot-circle-o"></i> Удалить'+
-'</button>'+
-'</div>'+
-'</div>'+
-'</div>');}
+			$(dv).append(
+				'<div class="card">' +
+				'<div class="card-header">' +
+				'<strong>Редактировать под тип продукта: </strong> ' + item.Titleru + ' ' +
+				'<button type="button" class="btn btn-primary" onclick="scrit(\'' + key + 'crd\')"><i class="fa fa-bars"></i>Скрыть</button>' +
+				'</div>' +
+				'<div id="' + key + 'crd" style="display:none">' +
+				'<div class="card-body card-block">' +
+				'<form action="#" method="post" class="form-inline gap20 align-top fd-column">' +
+				'<div class="row form-group">' +
+				'<div class="col col-md-3"><label for="select" class=" form-control-label">Тип продукта</label></div>' +
+				'<div class="col-12 col-md-9">' +
+				'<div class="dropdown">' +
+				'<div class="dropdown-toggle2" onclick="toggleDropdown(\'.dropdown-menu2\')" >Выберите элемент</div>' +
+				'<ul class="dropdown-menu2" id="' + key + 'select">' +
+				'  ' +
+				'</ul>' +
+				'  </div>' +
+				'</div>' +
+				'</div>' +
+				'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">Под тип на русском</label>' +
+				'<textarea id="' + key + 'ProductType2Ru" class="form-control w100"' +
+				'style="width: 90%;">' + item.Titleru + '</textarea>' +
+				'</div>' +
+				'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">Под тип на англиском</label>' +
+				'<textarea id="' + key + 'ProductType2En" class="form-control w100"' +
+				'style="width: 90%;">' + item.Titleen + '</textarea>' +
+				'</div>' +
+				'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">Под тип на казахском</label>' +
+				'<textarea id="' + key + 'ProductType2Kz" class="form-control w100"' +
+				'style="width: 90%;">' + item.Titlekz + '</textarea>' +
+				'</div>' +
+				'' +
+				'</form>' +
+				'<br>' +
+				'' +
+				'</div>' +
+				'<div class="card-footer">' +
+				'<button type="submit" class="btn btn-primary btn-sm"' +
+				'onclick="updateType2Product(\'#' + key + 'ProductType2Ru\',\'#' + key + 'ProductType2En\',\'#' + key + 'ProductType2Kz\',\'#' + key + 'select\',\'' + key + '\')">' +
+				'<i class="fa fa-dot-circle-o"></i> Сохранить' +
+				'</button>' +
+				'<button type="submit" class="btn btn-primary btn-sm"' +
+				'onclick="delType2Product(\'' + nmTp2 + '\',\'' + key + '\')">' +
+				'<i class="fa fa-dot-circle-o"></i> Удалить' +
+				'</button>' +
+				'</div>' +
+				'</div>' +
+				'</div>');
+		}
 	});
 
 }
@@ -1750,25 +1783,25 @@ function updateType2Product(dv, dv2, dv3, kk, id) {
 	const titlekz = $(dv3).val().replace(/\n/g, "<br>");
 	const typeProduct = $(kk).val();
 	kl = null, kl2 = null;
-	if (localStorage.getItem('typeProductCash') !== null) { kl = localStorage.getItem('typeProductCash'); 
-	var databaseRef = firebase.database().ref("typeproduct/" + kl + "/podtype/"+id);
-	var randomKey = databaseRef.push().key;
-	databaseRef.child(randomKey).set({
-		Titleru: titleRu,
-		Titleen: titleEn,
-		Titlekz: titlekz,
+	if (localStorage.getItem('typeProductCash') !== null) {
+		kl = localStorage.getItem('typeProductCash');
+		var databaseRef = firebase.database().ref("typeproduct/" + kl + "/podtype/" + id);
+		var randomKey = databaseRef.push().key;
+		databaseRef.child(randomKey).set({
+			Titleru: titleRu,
+			Titleen: titleEn,
+			Titlekz: titlekz,
 
-	}).then(function () {
-		// loadCert('#certCard');
-		alert("File uploaded and saved to database!");
-	}).catch(function (error) {
-		alert("Error saving to database: " + error.message);
-	});
-}
-else
-{
-	alert("Выберите тип продукта");
-}
+		}).then(function () {
+			// loadCert('#certCard');
+			alert("File uploaded and saved to database!");
+		}).catch(function (error) {
+			alert("Error saving to database: " + error.message);
+		});
+	}
+	else {
+		alert("Выберите тип продукта");
+	}
 }
 
 function loadVacans(dv) {
@@ -1777,117 +1810,118 @@ function loadVacans(dv) {
 		const data = snapshot.val();
 		for (const key in data) {
 			const item = data[key];
-				$(dv).append(
-					'<div class="card">'+
-'<div class="card-header">'+
-'<h4>Редактировать вакансию: '+item.Titleru+'</h4>'+
-'<button type="button" class="btn btn-primary" onclick="scrit(\''+key+'crd\')"><i class="fa fa-bars"></i>Скрыть</button>'+
-'</div>'+
-'<div id="'+key+'crd">'+
-'<div class="card-body">'+
-'<div class="custom-tab">'+
-'<div class="tab-content pl-3 pt-2" id="nav-tabContent">'+
-'<!-- Русский -->'+
-'<div class="tab-pane fade active show" id="custom-nav-home" role="tabpanel"'+
-'aria-labelledby="custom-nav-home-tab">'+
-'<div class="card">'+
-'<div class="card-header">'+
-'<strong>Вакансия компании</strong> '+
-'</div>'+
-'<div class="card-body card-block">'+
-'<form action="#" method="post" class="form-inline gap20 align-top fd-column">'+
-'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"'+
-'class="pr-1  form-control-label">Заголовок на русском</label>'+
-'<textarea id="'+key+'VacanTitleRu" class="form-control w100"'+
-'style="width: 90%;">'+item.Titleru+'</textarea>'+
-'</div>'+
-'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"'+
-'class="pr-1  form-control-label">Заголовок на англиском</label>'+
-'<textarea id="'+key+'VacanTitleEn" class="form-control w100"'+
-'style="width: 90%;">'+item.Titleen+'</textarea>'+
-'</div>'+
-'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"'+
-'class="pr-1  form-control-label">Заголовок на казахском</label>'+
-'<textarea id="'+key+'VacanTitleKz" class="form-control w100"'+
-'style="width: 90%;">'+item.Titlekz+'</textarea>'+
-'</div>'+
-'</form>'+
-'<br>'+
-'<div class="toolbar">'+
-'<a href="#" class="toolbar-b fas fa-bold" title="Жирный"></a>'+
-'<a href="#" class="toolbar-i fas fa-italic" title="Курсив"></a>'+
-'<a href="#" class="toolbar-u fas fa-underline" title="Подчёркнутый"></a>'+
-'<a href="#" class="toolbar-s fas fa-strikethrough" title="Зачёркнутый"></a>'+
-'<a href="#" class="toolbar-sup fas fa-superscript" title="Верхний индекс"></a>'+
-'<a href="#" class="toolbar-sub fas fa-subscript" title="Нижний индекс"></a>'+
-'<a href="#" class="toolbar-ul fas fa-list-ul" title="Маркированный список"></a>'+
-'<a href="#" class="toolbar-ol fas fa-list-ol" title="Нумерованный список"></a>'+
-'<a href="#" class="toolbar-p" title="Параграф">p</a>'+
-'<a href="#" class="toolbar-h1" title="Заголовок">H1</a>'+
-'<a href="#" class="toolbar-hr" title="Горизонтальная линия">hr</a>'+
-'<a href="#" class="toolbar-blockquote fas fa-quote-right" title="Цитата"></a>'+
-'<a href="#" class="toolbar-img far fa-image" title="Изображение"></a>'+
-'<a href="#" class="toolbar-a fas fa-link" title="Ссылка"></a>'+
-'<a href="#" class="toolbar-unlink fas fa-unlink" title="Удаление ссылки"></a>'+
-'<a href="#" class="toolbar-html" title="Вставить html">HTML</a>'+
-'<a href="#" class="toolbar-text" title="Вставить текст">Text</a>'+
-'<br>'+
-'<a href="#" class="toolbar-left fas fa-align-left" title="по левому краю"></a>'+
-'<a href="#" class="toolbar-center fas fa-align-center" title="по центру"></a>'+
-'<a href="#" class="toolbar-right fas fa-align-right" title="по правому краю"></a>'+
-'<a href="#" class="toolbar-justify fas fa-align-justify" title="по ширине"></a>'+
-'<select class="toolbar-font">'+
-'<option selected="selected" disabled="disabled">Шрифт</option>'+
-'<option value="arial">Arial</option>'+
-'<option value="Courier New">Courier New</option>'+
-'<option value="georgia">Georgia</option>'+
-'<option value="impact">Impact</option>'+
-'<option value="roboto">Tahoma</option>'+
-'<option value="Times New Roman">Times New Roman</option>'+
-'<option value="verdana">Verdana</option>'+
-'</select>'+
-'<select class="toolbar-size">'+
-'<option selected="selected" disabled="disabled">Размер</option>'+
-'<option value="1">10px</option>'+
-'<option value="2">12px</option>'+
-'<option value="3">14px</option>'+
-'<option value="4">16px</option>'+
-'<option value="5">18px</option>'+
-'<option value="6">21px</option>'+
-'<option value="7">26px</option>'+
-'</select>'+
-'<span>Цвет</span> <input class="toolbar-color" type="color" value="#ff0000">'+
-'<span>Фон</span> <input class="toolbar-bg" type="color" value="#ffff00">'+
-'<br>'+
-'<a href="#" class="toolbar-undo fas fa-undo" title="Отмена"></a>'+
-'<a href="#" class="toolbar-redo fas fa-redo" title="Повтор"></a>'+
-'<a href="#" class="toolbar-delete far fa-trash-alt" title="Удалить"></a>'+
-'<a href="#" class="toolbar-selectAll">Выделить всё</a>'+
-'<a href="#" class="toolbar-removeFormat">Очистить стили</a>'+
-'<a href="#" class="toolbar-cut fas fa-cut" title="Вырезать"></a>'+
-'<a href="#" class="toolbar-copy fas fa-copy" title="Копировать"></a>'+
-'</div>'+
-'<div class="editor" contenteditable="true" id="'+key+'VacanTextRu">'+item.Opisanieru+'</div>'+
-'<div class="editor2" contenteditable="true" id="'+key+'VacanTextEn">'+item.Opisanieen+'</div>'+
-'<div class="editor3" contenteditable="true" id="'+key+'VacanTextKz">'+item.Opisaniekz+'</div>'+
-'</div>'+
-'<div class="card-footer">'+
-'<button type="submit" class="btn btn-primary btn-sm"'+
-'onclick="updateVacan(\'#'+key+'VacanTitleRu\',\'#'+key+'VacanTitleEn\',\'#'+key+'VacanTitleKz\',\'#'+key+'VacanTextRu\',\'#'+key+'VacanTextEn\',\'#'+key+'VacanTextKz\',\''+key+'\')">'+
-'<i class="fa fa-dot-circle-o"></i> Сохранить'+
-'</button>'+
-'<button type="reset" class="btn btn-danger btn-sm"'+
-'onclick="delVacans(\''+key+'\')">'+
-'<i class="fa fa-ban"></i> Удалить'+
-'</button>'+
-'</div>'+
-'</div>'+
-'</div>'+
-'</div>'+
-'</div>'+
-'</div>'+
-'</div>'+
-'</div>');}
+			$(dv).append(
+				'<div class="card">' +
+				'<div class="card-header">' +
+				'<h4>Редактировать вакансию: ' + item.Titleru + '</h4>' +
+				'<button type="button" class="btn btn-primary" onclick="scrit(\'' + key + 'crd\')"><i class="fa fa-bars"></i>Скрыть</button>' +
+				'</div>' +
+				'<div id="' + key + 'crd">' +
+				'<div class="card-body">' +
+				'<div class="custom-tab">' +
+				'<div class="tab-content pl-3 pt-2" id="nav-tabContent">' +
+				'<!-- Русский -->' +
+				'<div class="tab-pane fade active show" id="custom-nav-home" role="tabpanel"' +
+				'aria-labelledby="custom-nav-home-tab">' +
+				'<div class="card">' +
+				'<div class="card-header">' +
+				'<strong>Вакансия компании</strong> ' +
+				'</div>' +
+				'<div class="card-body card-block">' +
+				'<form action="#" method="post" class="form-inline gap20 align-top fd-column">' +
+				'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">Заголовок на русском</label>' +
+				'<textarea id="' + key + 'VacanTitleRu" class="form-control w100"' +
+				'style="width: 90%;">' + item.Titleru + '</textarea>' +
+				'</div>' +
+				'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">Заголовок на англиском</label>' +
+				'<textarea id="' + key + 'VacanTitleEn" class="form-control w100"' +
+				'style="width: 90%;">' + item.Titleen + '</textarea>' +
+				'</div>' +
+				'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">Заголовок на казахском</label>' +
+				'<textarea id="' + key + 'VacanTitleKz" class="form-control w100"' +
+				'style="width: 90%;">' + item.Titlekz + '</textarea>' +
+				'</div>' +
+				'</form>' +
+				'<br>' +
+				'<div class="toolbar">' +
+				'<a href="#" class="toolbar-b fas fa-bold" title="Жирный"></a>' +
+				'<a href="#" class="toolbar-i fas fa-italic" title="Курсив"></a>' +
+				'<a href="#" class="toolbar-u fas fa-underline" title="Подчёркнутый"></a>' +
+				'<a href="#" class="toolbar-s fas fa-strikethrough" title="Зачёркнутый"></a>' +
+				'<a href="#" class="toolbar-sup fas fa-superscript" title="Верхний индекс"></a>' +
+				'<a href="#" class="toolbar-sub fas fa-subscript" title="Нижний индекс"></a>' +
+				'<a href="#" class="toolbar-ul fas fa-list-ul" title="Маркированный список"></a>' +
+				'<a href="#" class="toolbar-ol fas fa-list-ol" title="Нумерованный список"></a>' +
+				'<a href="#" class="toolbar-p" title="Параграф">p</a>' +
+				'<a href="#" class="toolbar-h1" title="Заголовок">H1</a>' +
+				'<a href="#" class="toolbar-hr" title="Горизонтальная линия">hr</a>' +
+				'<a href="#" class="toolbar-blockquote fas fa-quote-right" title="Цитата"></a>' +
+				'<a href="#" class="toolbar-img far fa-image" title="Изображение"></a>' +
+				'<a href="#" class="toolbar-a fas fa-link" title="Ссылка"></a>' +
+				'<a href="#" class="toolbar-unlink fas fa-unlink" title="Удаление ссылки"></a>' +
+				'<a href="#" class="toolbar-html" title="Вставить html">HTML</a>' +
+				'<a href="#" class="toolbar-text" title="Вставить текст">Text</a>' +
+				'<br>' +
+				'<a href="#" class="toolbar-left fas fa-align-left" title="по левому краю"></a>' +
+				'<a href="#" class="toolbar-center fas fa-align-center" title="по центру"></a>' +
+				'<a href="#" class="toolbar-right fas fa-align-right" title="по правому краю"></a>' +
+				'<a href="#" class="toolbar-justify fas fa-align-justify" title="по ширине"></a>' +
+				'<select class="toolbar-font">' +
+				'<option selected="selected" disabled="disabled">Шрифт</option>' +
+				'<option value="arial">Arial</option>' +
+				'<option value="Courier New">Courier New</option>' +
+				'<option value="georgia">Georgia</option>' +
+				'<option value="impact">Impact</option>' +
+				'<option value="roboto">Tahoma</option>' +
+				'<option value="Times New Roman">Times New Roman</option>' +
+				'<option value="verdana">Verdana</option>' +
+				'</select>' +
+				'<select class="toolbar-size">' +
+				'<option selected="selected" disabled="disabled">Размер</option>' +
+				'<option value="1">10px</option>' +
+				'<option value="2">12px</option>' +
+				'<option value="3">14px</option>' +
+				'<option value="4">16px</option>' +
+				'<option value="5">18px</option>' +
+				'<option value="6">21px</option>' +
+				'<option value="7">26px</option>' +
+				'</select>' +
+				'<span>Цвет</span> <input class="toolbar-color" type="color" value="#ff0000">' +
+				'<span>Фон</span> <input class="toolbar-bg" type="color" value="#ffff00">' +
+				'<br>' +
+				'<a href="#" class="toolbar-undo fas fa-undo" title="Отмена"></a>' +
+				'<a href="#" class="toolbar-redo fas fa-redo" title="Повтор"></a>' +
+				'<a href="#" class="toolbar-delete far fa-trash-alt" title="Удалить"></a>' +
+				'<a href="#" class="toolbar-selectAll">Выделить всё</a>' +
+				'<a href="#" class="toolbar-removeFormat">Очистить стили</a>' +
+				'<a href="#" class="toolbar-cut fas fa-cut" title="Вырезать"></a>' +
+				'<a href="#" class="toolbar-copy fas fa-copy" title="Копировать"></a>' +
+				'</div>' +
+				'<div class="editor" contenteditable="true" id="' + key + 'VacanTextRu">' + item.Opisanieru + '</div>' +
+				'<div class="editor2" contenteditable="true" id="' + key + 'VacanTextEn">' + item.Opisanieen + '</div>' +
+				'<div class="editor3" contenteditable="true" id="' + key + 'VacanTextKz">' + item.Opisaniekz + '</div>' +
+				'</div>' +
+				'<div class="card-footer">' +
+				'<button type="submit" class="btn btn-primary btn-sm"' +
+				'onclick="updateVacan(\'#' + key + 'VacanTitleRu\',\'#' + key + 'VacanTitleEn\',\'#' + key + 'VacanTitleKz\',\'#' + key + 'VacanTextRu\',\'#' + key + 'VacanTextEn\',\'#' + key + 'VacanTextKz\',\'' + key + '\')">' +
+				'<i class="fa fa-dot-circle-o"></i> Сохранить' +
+				'</button>' +
+				'<button type="reset" class="btn btn-danger btn-sm"' +
+				'onclick="delVacans(\'' + key + '\')">' +
+				'<i class="fa fa-ban"></i> Удалить' +
+				'</button>' +
+				'</div>' +
+				'</div>' +
+				'</div>' +
+				'</div>' +
+				'</div>' +
+				'</div>' +
+				'</div>' +
+				'</div>');
+		}
 	});
 }
 
@@ -1898,7 +1932,7 @@ function updateVacan(dv, dv2, dv3, dv4, dv5, dv6, kk) {
 	const opisanieRu = $(dv4).html();
 	const opisanieEn = $(dv5).html();
 	const opisanieKz = $(dv6).html();
-	var databaseRef = firebase.database().ref("vacans/"+kk);
+	var databaseRef = firebase.database().ref("vacans/" + kk);
 	var randomKey = databaseRef.push().key;
 	databaseRef.child(randomKey).set({
 		Titleru: titleRu,
@@ -1917,7 +1951,7 @@ function updateVacan(dv, dv2, dv3, dv4, dv5, dv6, kk) {
 }
 
 function delVacans(id) {
-	var ref = database.ref("vacans/"+id);
+	var ref = database.ref("vacans/" + id);
 	// Удаляем запись
 	ref.remove()
 		.then(function () {
@@ -1928,8 +1962,8 @@ function delVacans(id) {
 			console.error("Ошибка при удалении записи:", error);
 		});
 }
-function delType2Product(kl,id) {
-	var ref = database.ref("typeproduct/" + kl + "/podtype/"+id);
+function delType2Product(kl, id) {
+	var ref = database.ref("typeproduct/" + kl + "/podtype/" + id);
 	// Удаляем запись
 	ref.remove()
 		.then(function () {
@@ -1946,164 +1980,164 @@ function loadFullProduct(dv) {
 		const data = snapshot.val();
 		for (const key in data) {
 			const item = data[key];
-				$(dv).append(
-					'<div class="card">'+
-'<div class="card-header">'+
-'<strong>Редактировать продукт:</strong> '+item.Titleru+' '+
-'<button type="button" class="btn btn-primary" onclick="scrit(\''+key+'crd\')"><i class="fa fa-bars"></i>Скрыть</button>'+
-'</div>'+
-'<div id="'+key+'crd" style="display:none">'+
-'<div class="card-body card-block">'+
-'<form action="#" method="post" class="form-inline gap20 align-top fd-column">'+
-'<div class="row form-group">'+
-'<div class="col col-md-3"><label for="select" class=" form-control-label">Тип'+
-'продукта</label></div>'+
-'<div class="col-12 col-md-9">'+
-'<div class="dropdown">'+
-'<div class="dropdown-toggle2"'+
-'onclick="toggleDropdown(\'.dropdown-menu2'+key.substr(-4, 2)+'\')">Выберите элемент</div>'+
-'<ul class="dropdown-menu2 dropdown-menu2'+key.substr(-4, 2)+'" id="'+key+'select" style="display: none;">'+
-'</ul>'+
-'</div>'+
-'</div>'+
-'</div>'+
-'<div class="row form-group">'+
-'<div class="col col-md-3"><label for="select" class=" form-control-label">Под'+
-'тип продукта</label></div>'+
-'<div class="col-12 col-md-9">'+
-'<div class="dropdown2'+key+'">'+
-'<div class="dropdown-toggle3'+key+'"'+
-'onclick="toggleDropdown(\'.dropdown-menu3'+key+'\')">Выберите элемент</div>'+
-'<ul class="dropdown-menu3 dropdown-menu3'+key+'" id="'+key+'select2">'+
-'</ul>'+
-'</div>'+
-'</div>'+
-'</div>'+
-'<br>'+
-'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"'+
-'class="pr-1  form-control-label">Заголовок на русском</label>'+
-'<textarea id="'+key+'ProductTitleRu" class="form-control w100"'+
-'style="width: 90%;">'+item.Titleru+'</textarea>'+
-'</div>'+
-'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"'+
-'class="pr-1  form-control-label">Заголовок на англиском</label>'+
-'<textarea id="'+key+'ProductTitleEn" class="form-control w100"'+
-'style="width: 90%;">'+item.Titleen+'</textarea>'+
-'</div>'+
-'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"'+
-'class="pr-1  form-control-label">Заголовок на казахском</label>'+
-'<textarea id="'+key+'ProductTitleKz" class="form-control w100"'+
-'style="width: 90%;">'+item.Titlekz+'</textarea>'+
-'</div>'+
-'<div class="form-group" style="width: 50%;">'+
-'<div class="form-group" style="width: 50%;">'+
-'<label for="exampleInputEmail2" class="px-1  form-control-label">Фото'+
-'продукта</label>'+
-'<input type="file" id="'+key+'imageProduct" accept="image/*">'+
-'</div>'+
-'</div>'+
-'</form>'+
-'<br>'+
-'<div class="toolbar">'+
-'<a href="#" class="toolbar-b fas fa-bold" title="Жирный"></a>'+
-'<a href="#" class="toolbar-i fas fa-italic" title="Курсив"></a>'+
-'<a href="#" class="toolbar-u fas fa-underline" title="Подчёркнутый"></a>'+
-'<a href="#" class="toolbar-s fas fa-strikethrough" title="Зачёркнутый"></a>'+
-'<a href="#" class="toolbar-sup fas fa-superscript" title="Верхний индекс"></a>'+
-'<a href="#" class="toolbar-sub fas fa-subscript" title="Нижний индекс"></a>'+
-'<a href="#" class="toolbar-ul fas fa-list-ul" title="Маркированный список"></a>'+
-'<a href="#" class="toolbar-ol fas fa-list-ol" title="Нумерованный список"></a>'+
-'<a href="#" class="toolbar-p" title="Параграф">p</a>'+
-'<a href="#" class="toolbar-h1" title="Заголовок">H1</a>'+
-'<a href="#" class="toolbar-hr" title="Горизонтальная линия">hr</a>'+
-'<a href="#" class="toolbar-blockquote fas fa-quote-right" title="Цитата"></a>'+
-'<a href="#" class="toolbar-img far fa-image" title="Изображение"></a>'+
-'<a href="#" class="toolbar-a fas fa-link" title="Ссылка"></a>'+
-'<a href="#" class="toolbar-unlink fas fa-unlink" title="Удаление ссылки"></a>'+
-'<a href="#" class="toolbar-html" title="Вставить html">HTML</a>'+
-'<a href="#" class="toolbar-text" title="Вставить текст">Text</a>'+
-'<br>'+
-'<a href="#" class="toolbar-left fas fa-align-left" title="по левому краю"></a>'+
-'<a href="#" class="toolbar-center fas fa-align-center" title="по центру"></a>'+
-'<a href="#" class="toolbar-right fas fa-align-right" title="по правому краю"></a>'+
-'<a href="#" class="toolbar-justify fas fa-align-justify" title="по ширине"></a>'+
-'<select class="toolbar-font">'+
-'<option selected="selected" disabled="disabled">Шрифт</option>'+
-'<option value="arial">Arial</option>'+
-'<option value="Courier New">Courier New</option>'+
-'<option value="georgia">Georgia</option>'+
-'<option value="impact">Impact</option>'+
-'<option value="roboto">Tahoma</option>'+
-'<option value="Times New Roman">Times New Roman</option>'+
-'<option value="verdana">Verdana</option>'+
-'</select>'+
-'<select class="toolbar-size">'+
-'<option selected="selected" disabled="disabled">Размер</option>'+
-'<option value="1">10px</option>'+
-'<option value="2">12px</option>'+
-'<option value="3">14px</option>'+
-'<option value="4">16px</option>'+
-'<option value="5">18px</option>'+
-'<option value="6">21px</option>'+
-'<option value="7">26px</option>'+
-'</select>'+
-'<span>Цвет</span> <input class="toolbar-color" type="color" value="#ff0000">'+
-'<span>Фон</span> <input class="toolbar-bg" type="color" value="#ffff00">'+
-'<br>'+
-'<a href="#" class="toolbar-undo fas fa-undo" title="Отмена"></a>'+
-'<a href="#" class="toolbar-redo fas fa-redo" title="Повтор"></a>'+
-'<a href="#" class="toolbar-delete far fa-trash-alt" title="Удалить"></a>'+
-'<a href="#" class="toolbar-selectAll">Выделить всё</a>'+
-'<a href="#" class="toolbar-removeFormat">Очистить стили</a>'+
-'<a href="#" class="toolbar-cut fas fa-cut" title="Вырезать"></a>'+
-'<a href="#" class="toolbar-copy fas fa-copy" title="Копировать"></a>'+
-'</div>'+
-'<p> Описание на русском'+
-'<div class="editor" contenteditable="true" id="'+key+'ProductTextRu">'+item.Opisanieru+'</div>'+
-'<p> Описание на англиском'+
-'<div class="editor2" contenteditable="true" id="'+key+'ProductTextEn">'+item.Opisanieen+'</div>'+
-'<p> Описание на казахском'+
-'<div class="editor3" contenteditable="true" id="'+key+'ProductTextKz">'+item.Opisaniekz+'</div>'+
-'</div>'+
-'<div class="card-footer">'+
-'<button type="submit" class="btn btn-primary btn-sm"'+
-'onclick="updateProduct(\'#'+key+'ProductTitleRu\',\'#'+key+'ProductTitleEn\',\'#'+key+'ProductTitleKz\',\'#'+key+'ProductTextRu\',\'#'+key+'ProductTextEn\',\'#'+key+'ProductTextKz\',\'#'+key+'select\',\''+key+'imageProduct\',\''+key+'\')">'+
-'<i class="fa fa-dot-circle-o"></i> Сохранить'+
-'</button>'+
-'<button type="submit" class="btn btn-primary btn-sm"'+
-'onclick="delProduct(\''+key+'\')">'+
-'<i class="fa fa-dot-circle-o"></i> Удалить'+
-'</button>'+
-'</div>'+
-'</div>'+
-'</div>');
-loadTypeProductSelect3('#'+key+'select','#'+key+'select2');
-}
+			$(dv).append(
+				'<div class="card">' +
+				'<div class="card-header">' +
+				'<strong>Редактировать продукт:</strong> ' + item.Titleru + ' ' +
+				'<button type="button" class="btn btn-primary" onclick="scrit(\'' + key + 'crd\')"><i class="fa fa-bars"></i>Скрыть</button>' +
+				'</div>' +
+				'<div id="' + key + 'crd" style="display:none">' +
+				'<div class="card-body card-block">' +
+				'<form action="#" method="post" class="form-inline gap20 align-top fd-column">' +
+				'<div class="row form-group">' +
+				'<div class="col col-md-3"><label for="select" class=" form-control-label">Тип' +
+				'продукта</label></div>' +
+				'<div class="col-12 col-md-9">' +
+				'<div class="dropdown">' +
+				'<div class="dropdown-toggle2"' +
+				'onclick="toggleDropdown(\'.dropdown-menu2' + key.substr(-4, 2) + '\')">Выберите элемент</div>' +
+				'<ul class="dropdown-menu2 dropdown-menu2' + key.substr(-4, 2) + '" id="' + key + 'select" style="display: none;">' +
+				'</ul>' +
+				'</div>' +
+				'</div>' +
+				'</div>' +
+				'<div class="row form-group">' +
+				'<div class="col col-md-3"><label for="select" class=" form-control-label">Под' +
+				'тип продукта</label></div>' +
+				'<div class="col-12 col-md-9">' +
+				'<div class="dropdown2' + key + '">' +
+				'<div class="dropdown-toggle3' + key + '"' +
+				'onclick="toggleDropdown(\'.dropdown-menu3' + key + '\')">Выберите элемент</div>' +
+				'<ul class="dropdown-menu3 dropdown-menu3' + key + '" id="' + key + 'select2">' +
+				'</ul>' +
+				'</div>' +
+				'</div>' +
+				'</div>' +
+				'<br>' +
+				'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">Заголовок на русском</label>' +
+				'<textarea id="' + key + 'ProductTitleRu" class="form-control w100"' +
+				'style="width: 90%;">' + item.Titleru + '</textarea>' +
+				'</div>' +
+				'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">Заголовок на англиском</label>' +
+				'<textarea id="' + key + 'ProductTitleEn" class="form-control w100"' +
+				'style="width: 90%;">' + item.Titleen + '</textarea>' +
+				'</div>' +
+				'<div class="form-group" style="width: 100%;"><label for="exampleInputName2"' +
+				'class="pr-1  form-control-label">Заголовок на казахском</label>' +
+				'<textarea id="' + key + 'ProductTitleKz" class="form-control w100"' +
+				'style="width: 90%;">' + item.Titlekz + '</textarea>' +
+				'</div>' +
+				'<div class="form-group" style="width: 50%;">' +
+				'<div class="form-group" style="width: 50%;">' +
+				'<label for="exampleInputEmail2" class="px-1  form-control-label">Фото' +
+				'продукта</label>' +
+				'<input type="file" id="' + key + 'imageProduct" accept="image/*">' +
+				'</div>' +
+				'</div>' +
+				'</form>' +
+				'<br>' +
+				'<div class="toolbar">' +
+				'<a href="#" class="toolbar-b fas fa-bold" title="Жирный"></a>' +
+				'<a href="#" class="toolbar-i fas fa-italic" title="Курсив"></a>' +
+				'<a href="#" class="toolbar-u fas fa-underline" title="Подчёркнутый"></a>' +
+				'<a href="#" class="toolbar-s fas fa-strikethrough" title="Зачёркнутый"></a>' +
+				'<a href="#" class="toolbar-sup fas fa-superscript" title="Верхний индекс"></a>' +
+				'<a href="#" class="toolbar-sub fas fa-subscript" title="Нижний индекс"></a>' +
+				'<a href="#" class="toolbar-ul fas fa-list-ul" title="Маркированный список"></a>' +
+				'<a href="#" class="toolbar-ol fas fa-list-ol" title="Нумерованный список"></a>' +
+				'<a href="#" class="toolbar-p" title="Параграф">p</a>' +
+				'<a href="#" class="toolbar-h1" title="Заголовок">H1</a>' +
+				'<a href="#" class="toolbar-hr" title="Горизонтальная линия">hr</a>' +
+				'<a href="#" class="toolbar-blockquote fas fa-quote-right" title="Цитата"></a>' +
+				'<a href="#" class="toolbar-img far fa-image" title="Изображение"></a>' +
+				'<a href="#" class="toolbar-a fas fa-link" title="Ссылка"></a>' +
+				'<a href="#" class="toolbar-unlink fas fa-unlink" title="Удаление ссылки"></a>' +
+				'<a href="#" class="toolbar-html" title="Вставить html">HTML</a>' +
+				'<a href="#" class="toolbar-text" title="Вставить текст">Text</a>' +
+				'<br>' +
+				'<a href="#" class="toolbar-left fas fa-align-left" title="по левому краю"></a>' +
+				'<a href="#" class="toolbar-center fas fa-align-center" title="по центру"></a>' +
+				'<a href="#" class="toolbar-right fas fa-align-right" title="по правому краю"></a>' +
+				'<a href="#" class="toolbar-justify fas fa-align-justify" title="по ширине"></a>' +
+				'<select class="toolbar-font">' +
+				'<option selected="selected" disabled="disabled">Шрифт</option>' +
+				'<option value="arial">Arial</option>' +
+				'<option value="Courier New">Courier New</option>' +
+				'<option value="georgia">Georgia</option>' +
+				'<option value="impact">Impact</option>' +
+				'<option value="roboto">Tahoma</option>' +
+				'<option value="Times New Roman">Times New Roman</option>' +
+				'<option value="verdana">Verdana</option>' +
+				'</select>' +
+				'<select class="toolbar-size">' +
+				'<option selected="selected" disabled="disabled">Размер</option>' +
+				'<option value="1">10px</option>' +
+				'<option value="2">12px</option>' +
+				'<option value="3">14px</option>' +
+				'<option value="4">16px</option>' +
+				'<option value="5">18px</option>' +
+				'<option value="6">21px</option>' +
+				'<option value="7">26px</option>' +
+				'</select>' +
+				'<span>Цвет</span> <input class="toolbar-color" type="color" value="#ff0000">' +
+				'<span>Фон</span> <input class="toolbar-bg" type="color" value="#ffff00">' +
+				'<br>' +
+				'<a href="#" class="toolbar-undo fas fa-undo" title="Отмена"></a>' +
+				'<a href="#" class="toolbar-redo fas fa-redo" title="Повтор"></a>' +
+				'<a href="#" class="toolbar-delete far fa-trash-alt" title="Удалить"></a>' +
+				'<a href="#" class="toolbar-selectAll">Выделить всё</a>' +
+				'<a href="#" class="toolbar-removeFormat">Очистить стили</a>' +
+				'<a href="#" class="toolbar-cut fas fa-cut" title="Вырезать"></a>' +
+				'<a href="#" class="toolbar-copy fas fa-copy" title="Копировать"></a>' +
+				'</div>' +
+				'<p> Описание на русском' +
+				'<div class="editor" contenteditable="true" id="' + key + 'ProductTextRu">' + item.Opisanieru + '</div>' +
+				'<p> Описание на англиском' +
+				'<div class="editor2" contenteditable="true" id="' + key + 'ProductTextEn">' + item.Opisanieen + '</div>' +
+				'<p> Описание на казахском' +
+				'<div class="editor3" contenteditable="true" id="' + key + 'ProductTextKz">' + item.Opisaniekz + '</div>' +
+				'</div>' +
+				'<div class="card-footer">' +
+				'<button type="submit" class="btn btn-primary btn-sm"' +
+				'onclick="updateProduct(\'#' + key + 'ProductTitleRu\',\'#' + key + 'ProductTitleEn\',\'#' + key + 'ProductTitleKz\',\'#' + key + 'ProductTextRu\',\'#' + key + 'ProductTextEn\',\'#' + key + 'ProductTextKz\',\'#' + key + 'select\',\'' + key + 'imageProduct\',\'' + key + '\')">' +
+				'<i class="fa fa-dot-circle-o"></i> Сохранить' +
+				'</button>' +
+				'<button type="submit" class="btn btn-primary btn-sm"' +
+				'onclick="delProduct(\'' + key + '\')">' +
+				'<i class="fa fa-dot-circle-o"></i> Удалить' +
+				'</button>' +
+				'</div>' +
+				'</div>' +
+				'</div>');
+			loadTypeProductSelect3('#' + key + 'select', '#' + key + 'select2');
+		}
 
 	});
 }
 
 function loadTypeProductSelect3(dv, dv2) {
 	$(dv).html('');
-	nameType=[];
-nameType2=[];
+	nameType = [];
+	nameType2 = [];
 	database.ref('typeproduct').once('value', (snapshot) => {
 		const data = snapshot.val();
 		for (const key in data) {
 			const item = data[key];
-			nameType[key]=item.Titleru;
+			nameType[key] = item.Titleru;
 			var hasPotType = 'podtype' in item;
 			if (hasPotType) {
 				nameType2.push(key);
-				$(dv).append('<li onclick="loadTypeProductSelect2(\''+dv2+'\',\'' + key + '\',\'' + item.Titleru + '\')">' + item.Titleru + '</li>');
+				$(dv).append('<li onclick="loadTypeProductSelect2(\'' + dv2 + '\',\'' + key + '\',\'' + item.Titleru + '\')">' + item.Titleru + '</li>');
 			}
 			else { $(dv).append('<li onclick="selectItem(\'' + item.Titleru + '\',\'.dropdown-toggle2\',\'.dropdown-menu2\',0,\'' + key + '\')">' + item.Titleru + '</li>'); }
 		}
-	console.log(nameType);
-	localStorage.setItem('nameType', nameType);
-	localStorage.setItem('nameType2', nameType2);
+		console.log(nameType);
+		localStorage.setItem('nameType', nameType);
+		localStorage.setItem('nameType2', nameType2);
 	});
-	
+
 }
 
 function updateProduct(dv, dv2, dv3, dv4, dv5, dv6, kk, ig, id) {
@@ -2185,8 +2219,7 @@ function updateProduct(dv, dv2, dv3, dv4, dv5, dv6, kk, ig, id) {
 			alert("Error uploading file: " + error.message);
 		});
 	}
-	else
-	{
+	else {
 		if (kl2 !== null) {
 			databaseRef.child(id).set({
 				Titleru: titleRu,
@@ -2226,7 +2259,7 @@ function updateProduct(dv, dv2, dv3, dv4, dv5, dv6, kk, ig, id) {
 	loadFullProduct('#fullPrd');
 }
 function delVacans(id) {
-	var ref = database.ref("product/"+id);
+	var ref = database.ref("product/" + id);
 	// Удаляем запись
 	ref.remove()
 		.then(function () {

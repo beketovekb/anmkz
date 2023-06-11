@@ -680,7 +680,10 @@ function loadCertFullPage(dv, lng, pg) {
   });
 
 }
-
+function removeHtmlTags(inputString) {
+  var cleanText = inputString.replace(/<.*?>/g, '');
+  return cleanText;
+}
 function loadNewsGenPage(lng, dv) {
   // document.getElementById(dv).innerHTML = "";
   document.getElementById(dv).innerHTML = "";
@@ -724,7 +727,10 @@ function loadNewsGenPage(lng, dv) {
           default:
             break;
         }
-        opis = truncateText(opis, 145);
+        console.log(opis);
+        
+        opis = truncateText(removeHtmlTags(opis), 145);
+        console.log(opis);
         console.log(value.dateNews, tit, ' : ', opis);
         document.getElementById(dv).insertAdjacentHTML('beforeend', '<a onclick="clickNews(\'' + item[0] + '\')">' +
           '<div class="news_card">' +
@@ -949,7 +955,7 @@ function moreNews(lng, dv, pg) {
           default:
             break;
         }
-        opis = truncateText(opis, 145);
+        opis =  truncateText(removeHtmlTags(opis), 145);
         // console.log(value.dateNews, tit, ' : ', opis);
         document.getElementById(dv).insertAdjacentHTML('beforeend', '<a onclick="clickNews(\'' + item[0] + '\')">' +
           '<div class="news_card">' +
@@ -1121,7 +1127,14 @@ function loadTitleServiMore(dv, lng) {
     }
   });
 }
-
+function getVariableName(value) {
+  for (let key in value) {
+    if (value[key] === value) {
+      return key;
+    }
+  }
+  return null;
+}
 function creatProductCard(dv, id, title, lng) {
   txt = '';
   t2p = [];
@@ -1169,7 +1182,7 @@ function creatProductCard(dv, id, title, lng) {
             kl2.push(item.typeProduct);
             txt += '<div class="accordion-item">' +
               '<button id="' + key + 'acard" aria-expanded="false" onclick="btnAccrdProduct(\'' + key + '\')">' +
-              '<span class="accordion-title" id="' + item.type2Product + 'title">' + item.type2Product + '</span>' +
+              '<span class="accordion-title" id="' + item.type2Product + 'title" >' + item.type2Product + '</span>' +
               '<svg class="icon" aria-hidden="true" width="29" height="17" viewBox="0 0 29 17" fill="none" xmlns="http://www.w3.org/2000/svg">' +
               '<path d="M27 14.7501L14.5001 2.24993L2 14.7501" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>' +
               '</svg>    ' +
@@ -1222,7 +1235,7 @@ function creatProductCard(dv, id, title, lng) {
             '<div class="services_card">' +
             '<div class="services_img img_ad02" style="background-image:url(' + item.imageUrl + ')"></div>' +
             '<div class="services_caption">' +
-            '<span class="services_card_title">' + title2 + '</span>' +
+            '<span class="services_card_title" >' + title2 + '</span>' +
             '<div class="services_card_caption">' + opis + '</div>' +
             '<a onclick="nextToverDetail(\''+key+'\')" class="serv_detailed_btn">'+prd+'</a>' +
             '</div>' +
@@ -1239,9 +1252,10 @@ function creatProductCard(dv, id, title, lng) {
 
     }
     // console.log(txt);
+    console.log(snapshot.key);
     document.getElementById(dv).insertAdjacentHTML('beforeend',
       '<div class="production_type">' +
-      '<span class="services_tilte">' + title + '</span>' +
+      '<span class="services_tilte" onclick="nextTover(\''+id+'\')">' + title + '</span>' +
       '<div class="accordion" id="' + id + 'card">' +
       txt +
       '' +
